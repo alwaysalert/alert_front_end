@@ -1,0 +1,52 @@
+#naverIdLogin_loginButton{
+    display: none
+}
+
+.title-login{
+    color: #6E5DB0;
+    font-size: 40px;
+    padding-top: 30px;
+    margin-bottom: 10px;
+ }
+.login-form {
+    height: 150px;
+ }
+.loginlogo {
+    display: inline-block;
+    width:27px;
+    height: 27px;
+    float:left;
+    margin-left:20px;
+    margin-top:2.5px;
+ }
+.loginword {
+    display: inline-block;
+    vertical-align:top;
+    padding-top:7px;
+    margin-left:-33px;
+    font-size: 14px;
+ }
+.login-container{
+    display: inline-block;
+    width: 90%;
+    margin:0 auto;
+    height:37px;
+    margin-bottom:6px;
+    border-radius: 3.5px;
+    border: 0;
+    outline: 0;
+ }
+ #kakao{
+   
+    background-color: #FFE812;
+    
+ }
+
+ #naver{
+    background-color: #57B048;
+ }
+
+ 
+ #google{
+    background-color: #E9E8E8;
+ }

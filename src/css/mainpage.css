@@ -1,0 +1,361 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+.logo {
+    position: relative;
+    
+    width: 121px;
+    height: 56px;
+    left: calc(50% - 121px/2 + 0.5px);
+    top: 13px;
+}
+
+.navbar{
+    
+
+    position: relative;
+    width: 1536px;
+    height: 72px;
+    
+    margin: 0 auto;
+
+    background: #FFFFFF;
+    border-bottom: 1.5px solid #CECECE;
+    
+}
+@media (min-width: 1600px){
+    .navbar {
+        width: 100%;
+        
+    }
+}
+
+.searchtool{
+    position: absolute;
+    width: 36px;
+    height: 25px;
+    right: 45px;
+    top: 24px;
+}
+.notification{
+    position: absolute;
+    width: 36px;
+    height: 25px;
+    right: 10px;
+    top: 24px;
+}
+
+.draw{
+    position: absolute;
+    width: 36px;
+    height: 20px;
+    left: 10px;
+    top: 17.75px;
+}
+.contents {
+    position: relative;
+    width: 1280px;
+    min-height: 100%;
+    margin: 0 auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
+    
+}
+
+.box-high{
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 80%;
+    background-color: #FDDEDE;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.box-low{
+    margin-bottom: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height:26%;
+    background-color: #FFFFFF;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.box-high-title{
+    
+    padding-top:20px;
+    padding-left: 20px;
+    color: #E56252;
+    width: 50%;
+    height: 50%;
+    font-Size: 40px;
+    text-align: left;
+}
+.box-high-contents{
+    
+    padding-left: 20px;
+    color: #711010;
+    width: 50%;
+    height: 50%;
+    font-Size: 14px;
+    text-align: left;
+}
+
+.freeboho {
+    
+   position: absolute;
+    margin-top:90px;
+    width: 130px;
+
+    height: 185px;
+}
+
+.box-low-title {
+    text-align: left;
+    padding-top: 13px;
+    margin-left: 10px;
+    font-family: 'BM HANNA_TTF';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    text-indent: 5px;
+}
+
+.box-low-contents {
+    display:inline-block;
+    text-align :left;
+    
+    width:75%;
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 40px;
+/* identical to box height */
+
+    text-indent: 15px;
+
+}
+.box-low-contents-time {
+    display:inline-block;
+   
+    
+    width:25%;
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 40px;
+/* identical to box height */
+
+    text-indent: 15px;
+
+}
+
+.box-high-job {
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 80%;
+    background-color: #FFF1C1;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.box-high-title-job{
+    
+    padding-top:20px;
+    padding-left: 20px;
+    color: #E3AF2A;
+    width: 50%;
+    height: 50%;
+    font-Size: 40px;
+    text-align: left;
+}
+.box-high-contents-job{
+    
+    padding-left: 20px;
+    color: #554408;
+    width: 50%;
+    height: 50%;
+    font-Size: 14px;
+    text-align: left;
+}
+
+.jobboho {
+    
+    position: absolute;
+    margin-top:25px;
+     width: 125px;
+ 
+     height: 240px;
+ }
+
+ .box-high-whowe {
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 80%;
+    background-color: #E2F6DD;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.box-high-title-whowe{
+    
+    padding-top:20px;
+    padding-left: 20px;
+    color: #509B3D;
+    width: 50%;
+    height: 50%;
+    font-Size: 40px;
+    text-align: left;
+}
+.box-high-contents-whowe{
+    
+    padding-left: 20px;
+    color: #0E451D;
+    width: 50%;
+    height: 50%;
+    font-Size: 14px;
+    text-align: left;
+}
+.whoweboho {
+    
+    position: absolute;
+    margin-top:70px;
+     width: 140px;
+ 
+     height: 180px;
+ }
+ .box-high-major {
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 80%;
+    background-color: #F8E4FF;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.box-high-title-major{
+    
+    padding-top:20px;
+    padding-left: 20px;
+    color: #9050E3;
+    width: 50%;
+    height: 50%;
+    font-Size: 40px;
+    text-align: left;
+}
+.box-high-contents-major{
+    
+    padding-left: 20px;
+    color: #3A1072;
+    width: 50%;
+    height: 50%;
+    font-Size: 14px;
+    text-align: left;
+}
+.majorboho {
+    
+    position: absolute;
+    margin-top:90px;
+     width: 145px;
+ 
+     height: 165px;
+ }
+
+ .naverlogin {
+    width: 266px;
+    height: 129px;
+ }
+ 
+ .box-high-outside{
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 80%;
+    background: linear-gradient(270deg, #FF8576 0%, #F75256 0.01%, #FF8576 100%);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+ }
+ .advertise {
+    height: 227px;
+
+ }
+
+ .login-form {
+    height: 150px;
+ }
+
+ 
+ .mypage-box{
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+   
+ }
+ .mypage-box-title{
+    color:#6E5DB0;
+    font-Size: 32px;
+    padding-top:20px;
+ }
+ .mypage-box-profile-image{
+    display:block;
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 10px;
+
+ }
+ .mypage-box-nickname{
+    display: inline;
+    font-size: 12px;
+ }
+ .mypage-box-hi{
+    display: inline;
+    font-size: 12px;
+ }
+ 
+ .penicon{
+    
+    
+    display:inline-block;
+    margin-left:3px;
+    
+    width:12px;
+    height:12px;
+ }
+ .mypage-box-etc div{
+    position: relative;
+    display:inline-block;
+    font-size: 5px;
+    -webkit-transform:scale(0.85);
+    padding: 0 10px;
+    margin: 0 -5px;
+
+    
+    
+ }
+ .mypage-box-etc div::before {
+    content: "";
+    position: absolute;
+    top: 1;
+    left:0;
+    margin-top:4.7px;
+    display: block;
+    width: 1px;
+    height:8px;
+    background: #ddd;
+ }
+
+ .mypage-box-etc div:first-child::before {
+    display: none;
+ }
+ 

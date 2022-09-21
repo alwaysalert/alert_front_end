@@ -1,0 +1,289 @@
+.freeart-content{
+    margin-left: 136px;
+    width:1264px;
+}
+@media (min-width: 1600px){
+    .freeart-content {
+        margin: 0 auto;
+        
+    }
+}
+.mypage-content-head{
+    display: block;
+    width: 100%;
+    height: 250px;
+    background: #C6DBFF;
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.mypage-content-head-title{
+    display:inline-block;
+    width:100%;
+    margin-top:100px;
+    margin-left:30px;
+    text-align:left;
+    color: #3677E2;
+    font-size: 65px;
+    margin-bottom:7px;
+
+}
+.mypage-content-head-content{
+    display:inline-block;
+    width:100%;
+    text-align:left;
+    margin-left:30px;
+    color:#3677E2;
+
+}
+
+.mypage-content-profile-correct{
+    display: block;
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.mypage-content-profile-head{
+    
+    position: static;
+    width: 100%;
+    text-align: left;
+    font-family: 'BM HANNA_TTF';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 65px;
+    text-indent: 15px;
+
+    color: #29559F;
+}
+
+
+.mypage-content-profile-text{
+    
+    position: static;
+    width: 100%;
+    text-align: left;
+    
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+
+    line-height: 10px;
+
+    text-indent: 15px;
+
+    color: #000000;
+}
+.mypage-content-profile-content{
+
+    width: 100px;
+    text-align: left;
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 50px;
+    text-indent: 10px;
+
+    color: #000000;
+}
+.mypage-nickname-input{
+    position : relative;
+    width: 800px;
+    border-top:#FFFFFF;
+    border-right:#FFFFFF;
+    border-left:#FFFFFF;
+    size :100px;
+    font-size: 20px;
+    color:#8A8A8A;
+    line-height: 40px;
+}
+.mypage-content-profile-content-position{
+    display: flex;
+}
+.mypage-nickname-button{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 100px;
+    font-size: 20px;
+    background: #FFFFFF;
+    border-color :#8A8A8A;
+    cursor: pointer;
+}
+
+.button-color{
+    color :#8A8A8A;
+}
+
+label {
+    box-sizing: border-box;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #8A8A8A;
+    font-size: 24px;
+    color: #8A8A8A;
+    
+}
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"]:checked + label {
+    border-color: #9c1313;
+    background-color: #B7B7B7;
+  }
+
+.check{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+}
+
+.mypage-content-character-text{
+    position:relative;
+    text-align: left;
+    width: 500px;
+    line-height: 40pt;
+    font-size: 15pt;
+}
+
+.mypage-profile-img{
+    position:absolute;
+    bottom: -90px;
+    width: 500px;
+}
+.mypage-profile-img-in{
+    
+    width:50px;
+    bottom : 0;
+    margin:10px;
+}
+.mypage-profile-color{
+    position:absolute;
+    bottom: -180px;
+    width: 500px;
+}
+.mypage-content-color-text{
+    position:relative;
+    text-align: left;
+    width: 500px;
+    line-height: 40pt;
+    font-size: 15pt;
+}
+.mypage-content-color-text2{
+    position:relative;
+    text-align: left;
+    width: 500px;
+    line-height: 40pt;
+    font-size: 15pt;
+}
+
+.mypage-color{
+    background: #FF6767;
+    border-radius: 10px;
+}
+
+.mypage-color-button{
+    background-color:#FF6767;
+    border:none;
+    color:white; 
+    padding:25px 25px; 
+    text-align:center; 
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px; margin: 4px 2px; 
+    cursor:pointer;
+    border-radius: 10px;
+
+}
+
+/* 프로필 배경 색깔 정하기 */
+.mypage-color-button1{
+    background-color:#FF6767;
+}
+.mypage-color-button2{
+    background-color:#FFA767;
+}
+.mypage-color-button3{
+    background-color:#FFF067;
+}
+.mypage-color-button4{
+    background-color:#4ABD2D;
+}
+.mypage-color-button5{
+    background-color:#14BBE0;
+}
+.mypage-color-button6{
+    background-color:#144DE0;
+}
+.mypage-color-button7{
+    background-color:#AC43FF;
+}
+
+/* 나의 활동 */
+.mypage-content-activity{
+    display: block;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.mypage-content-profile-content{
+
+    width: 100px;
+    text-align: left;
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 50px;
+    text-indent: 10px;
+
+    color: #000000;
+}
+
+.mypage-content-acitivity-text{
+    position: static;
+    width: 100%;
+    text-align: left;
+    
+    font-family: 'AppleSDGothicNeoM00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+
+    line-height: 10px;
+
+    text-indent: 15px;
+
+    color: #000000;
+}
+
+
+/* 이용 안내 */
+
+.mypage-content-useInfo{
+    display: block;
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
