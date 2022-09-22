@@ -14,17 +14,21 @@ function Mypage() {
   console.log('cookie =',cookies.access_token);
   // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내기
 
-  const [userInfo, setUserInfo] = useState({id : "givensik" ,identity :1, character : '/img/profile/profile1.png', background : 1 });
+  const [userInfo, setUserInfo] = useState({id : "givensik" ,identity :1, character : '/img/profile/profile1.png', background : '#FF6767'});
   console.log(userInfo);
   const newUserInfo = {...userInfo};
 
 
   if(cookies.access_token === undefined){
-    document.location = '/';
+    // document.location = '/';
   }else{
     //여기에 mypage 정보를 가져와야할 듯?
     
 
+  }
+
+  let button_style = {
+    background : userInfo.background
   }
 
     return (
@@ -95,8 +99,8 @@ function Mypage() {
             </div>
             <div className ="mypage-content-profile-content-position">
               <div className="mypage-content-profile-content"> 
-                <div className='test'>
-                  <div className ='test3'>
+                <div className='test' >
+                  <div className ='test3' style = {button_style}>
                     <img 
                       alt='test2'
                       className = 'test2'
@@ -184,7 +188,7 @@ function Mypage() {
                     <button 
                       className = 'mypage-color-button mypage-color-button1'
                       onClick ={(e)=>{
-                        newUserInfo.background = 1;
+                        newUserInfo.background = '#FF6767';
                         setUserInfo(newUserInfo);
                       }}
                       > 
@@ -192,40 +196,40 @@ function Mypage() {
                     <button 
                       className = 'mypage-color-button mypage-color-button2'
                       onClick ={(e)=>{
-                       newUserInfo.background = 2;
+                       newUserInfo.background = '#FFA767';
                        setUserInfo(newUserInfo);
                       }}> </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button3'
                       onClick ={(e)=>{
-                        newUserInfo.background = 3;
+                        newUserInfo.background = '#FFF067';
                         setUserInfo(newUserInfo);
                       }}
                       > </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button4'
                       onClick ={(e)=>{
-                        newUserInfo.background = 4;
+                        newUserInfo.background = '#4ABD2D';
                         setUserInfo(newUserInfo);
                       }}> </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button5'
                       onClick ={(e)=>{
-                        newUserInfo.background = 5;
+                        newUserInfo.background = '#14BBE0';
                         setUserInfo(newUserInfo);
                       }}
                       > </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button6'
                       onClick ={(e)=>{
-                        newUserInfo.background = 6;
+                        newUserInfo.background = '#144DE0';
                         setUserInfo(newUserInfo);
                       }}
                       > </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button7'
                       onClick ={(e)=>{
-                          newUserInfo.background = 7;
+                          newUserInfo.background = '#AC43FF';
                           setUserInfo(newUserInfo);
                         }}> 
                       </button>
