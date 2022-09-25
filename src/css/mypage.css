@@ -41,7 +41,7 @@
 .mypage-content-profile-correct{
     display: block;
     width: 100%;
-    height: 550px;
+    height: 600px;
     text-align: center;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
@@ -170,7 +170,7 @@ input[type="checkbox"]:checked + label {
 }
 .mypage-profile-color{
     position:absolute;
-    bottom: -180px;
+    bottom: -250px;
     width: 500px;
 }
 .mypage-content-color-text{
@@ -184,7 +184,7 @@ input[type="checkbox"]:checked + label {
     position:relative;
     text-align: left;
     width: 500px;
-    line-height: 40pt;
+    line-height: 50pt;
     font-size: 15pt;
 }
 
@@ -230,6 +230,14 @@ input[type="checkbox"]:checked + label {
     background-color:#AC43FF;
 }
 
+.mypage-content-correct-button{
+    position : absolute;
+    bottom: 40px;
+    right: 250px;
+    width: 100px;
+}
+
+
 /* 나의 활동 */
 .mypage-content-activity{
     display: block;
@@ -256,6 +264,7 @@ input[type="checkbox"]:checked + label {
     color: #000000;
 }
 
+
 .mypage-content-acitivity-text{
     position: static;
     width: 100%;
@@ -272,6 +281,7 @@ input[type="checkbox"]:checked + label {
 
     color: #000000;
 }
+
 
 
 /* 이용 안내 */
@@ -317,3 +327,4 @@ input[type="checkbox"]:checked + label {
     background-color: #14BBE0;
 
 }
+
