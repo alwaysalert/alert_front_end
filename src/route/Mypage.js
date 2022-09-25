@@ -9,7 +9,24 @@ import { useCookies } from 'react-cookie';
 
 import Button from '@mui/material/Button';
 
-
+function AlertSame(props){
+  const red ={
+    color:"red"
+  }
+  const blue = {
+    color : "blue"
+  }
+  
+    if(props.isSame === true){
+      return (
+        <div style ={red}>사용 불가능한 닉네임입니다.</div>
+      )
+    }else{
+      return (
+        <div style = {blue}>사용 가능한 닉네임입니다.</div>
+      )
+    }
+}
 
 
 function Mypage() {
@@ -71,7 +88,9 @@ function Mypage() {
       console.log('성공');
       //console.log(res.data);   
       if(res.data.is_existing === true){
-        console.log('중복')
+        setIsSame(true);
+      }else{
+        setIsSame(false);
       }
     })
     .catch((err) => {
@@ -103,7 +122,8 @@ function Mypage() {
   }, []);
   
   
-    
+  const [isSame, setIsSame] =useState(true);
+  
   const button_style={
     background : hexcolor()
   }
@@ -145,7 +165,7 @@ function Mypage() {
                 <input 
                 className = "mypage-nickname-input" 
                 name="id" 
-                placeholder='사용하실 닉네임을 입력하세요' 
+                placeholder={userInfo.nickname}
                 onChange ={(e)=>{
                   const { value } = e.target;
                   newUserInfo.nickname = value;
@@ -153,7 +173,10 @@ function Mypage() {
                 }} >
 
                 </input>
-                <button className = "mypage-nickname-button" onClick ={CheckNickName(userInfo.nickname)}><strong className="button-color">중복 확인</strong></button>
+                <button className = "mypage-nickname-button" onClick ={(e)=>{
+                  e.preventDefault();
+                  CheckNickName(userInfo.nickname)
+                  }}><strong className="button-color">중복 확인</strong></button><AlertSame isSame ={isSame}></AlertSame>
                 {/* 중복확인 api 사용 */}
               </form>
             </div>
