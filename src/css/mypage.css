@@ -41,9 +41,8 @@
 .mypage-content-profile-correct{
     display: block;
     width: 100%;
-    height: 500px;
+    height: 600px;
     text-align: center;
-    background: #FFFFFF;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
     margin-bottom: 20px;
@@ -161,17 +160,17 @@ input[type="checkbox"]:checked + label {
 .mypage-profile-img{
     position:absolute;
     bottom: -90px;
-    width: 500px;
+    width: 600px;
 }
 .mypage-profile-img-in{
-    
+    cursor: pointer;
     width:50px;
     bottom : 0;
     margin:10px;
 }
 .mypage-profile-color{
     position:absolute;
-    bottom: -180px;
+    bottom: -250px;
     width: 500px;
 }
 .mypage-content-color-text{
@@ -185,7 +184,7 @@ input[type="checkbox"]:checked + label {
     position:relative;
     text-align: left;
     width: 500px;
-    line-height: 40pt;
+    line-height: 50pt;
     font-size: 15pt;
 }
 
@@ -231,6 +230,14 @@ input[type="checkbox"]:checked + label {
     background-color:#AC43FF;
 }
 
+.mypage-content-correct-button{
+    position : absolute;
+    bottom: 40px;
+    right: 250px;
+    width: 100px;
+}
+
+
 /* 나의 활동 */
 .mypage-content-activity{
     display: block;
@@ -257,6 +264,7 @@ input[type="checkbox"]:checked + label {
     color: #000000;
 }
 
+
 .mypage-content-acitivity-text{
     position: static;
     width: 100%;
@@ -275,6 +283,7 @@ input[type="checkbox"]:checked + label {
 }
 
 
+
 /* 이용 안내 */
 
 .mypage-content-useInfo{
@@ -287,3 +296,35 @@ input[type="checkbox"]:checked + label {
     margin: 0 auto;
     margin-bottom: 20px;
 }
+
+/* test */
+.test{
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+
+    position: absolute;
+    width: 168px;
+    height: 168px;
+    left: 905px;
+    top: 684px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.test2{
+    width: 100px;
+
+}
+.test3{
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+    width : 150px;
+    height: 150px;
+    border-radius: 1150px;
+    background-color: #14BBE0;
+
+}
+
