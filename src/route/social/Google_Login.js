@@ -12,6 +12,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {useSelector, useDispatch} from "react-redux"; // redux
 import { useCookies } from 'react-cookie';
+import { Stack } from '@mui/material';
+import "../../css/register.css";
 
 //let flag = null
 function Google_Login() {
@@ -25,10 +27,10 @@ function Google_Login() {
     const googleClientId = "803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com";
     
 
-    //const drfClientId = 'E8OnwQW68N9XKGqifO9N9MM6bYi0nEoZhIkCG0ea';
-  const drfClientId = 'aYvyQ1SMvUAi6W3J60cwmMRG6ZwxorWSTY3Y00Hl'
-  //const drfClientSecret = '1P3H0iMt6RIGktsFfESorhFCvYOvv5jcwCokCAZlYvFoG4pGB5HRqNh19aouSCQxFTKp9EdGBkBpNeV0ibak0eLIR4nIdVZSv9UVj95kCrOI7KqEnXwDhSGsb8xBYoK2';
-  const drfClientSecret = 'tZ78DGY9qyR94RiKba2uY9JhUUvWEihEio5FqpuM9W69HBxj2s67DSPhDzMQASIfaEn60eAR60WItie3XsNtOuAE4HTaCdYzCWLmCFuwdcdx92pH7kr4QJ57DqVavUBJ'
+    //const drfClientId = 'OmAsECfljwnln9BVsao1iAxOEfFSZvw2lPRxcnA3';
+  const drfClientId = 'ZkWDAanC1QkxPkdAY73HScls5ANgitbcqWdFvtT9'
+  //const drfClientSecret = 'qMkPeWwMmPO9eKAEnf47oka0kyWu6NE6yK3t6UyO4QwnPnXtjSX6TRuBMtaOgaXnBoM0zxESbnCi2trVuBz7mzIB4DH4EfzmYqhixvlk2c73MciFNbvEQKCnEda2vcVx';
+  const drfClientSecret = 'zm4HOISwrpeehXfw6QreMG6OGaC5nEfC3Zp49jkbU1FwDJK6QmpbQSLd28qQdpK4IkxYtPDywQWW4KwwgOv5fk53gaBCynyCNL30GTCFGC0m1znr80kzUfYQ5buGdxBg'
     const baseURL = "http://127.0.0.1:8000"; 
 
     var googleAuth
@@ -47,9 +49,6 @@ const handleClose = () => {
     token: token,
     nickname:name.value,
     user_job: 1,
-    user_email: 2,
-
-
   })
   .then((res) => console.log('post =',res))
   .catch((err) => {
@@ -109,6 +108,7 @@ const handleGoogleLogin = (response) => {
       console.log("Error Google login", err);
     });
 };
+
 useEffect(() => {
 if(flag === true)
 {
@@ -130,22 +130,47 @@ else if(flag === false)
         buttonText="LOGIN WITH GOOGLE"
         render={renderProps => (
           <>
-          <Dialog open={open} onClose={handleClose}>
+          <Dialog open={open} sx={{minWidth: "700px"}} onClose={handleClose}>
           <DialogTitle>Alert에 처음 방문하셨나요?</DialogTitle>
           <DialogContent>
             <DialogContentText>
               보다 나은 사용을 위해 아래와 같은 정보를 입력해주세요
             </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="닉네임"
-              type="text"
-              fullWidth
-              variant="standard"
-            />
+            <div className='classnickname'>
+              <div className='nickname-title'>닉네임</div><input 
+                className = "register-nickname-input"
+                id='name'
+                name="id" 
+                placeholder='사용하실 닉네임을 입력하세요' 
+               >
+                  
+                </input>
+                <button className = "register-nickname-button" type="submit"><strong className="button-color">중복 확인</strong></button>
+             
+            </div>
+            <div className='job'>
+            <div className='job-title' >
+              신분
+            </div>
+            <div className='job-content'>
+            <div>
+            <Stack direction="row" spacing={2}>
+              <Button variant="outlined">중고등학생</Button>
+              <Button variant="outlined">대학생</Button>
+              <Button variant="outlined">졸업생</Button>
+            </Stack>
+            </div>
+            <div>
+            <Stack direction="row" spacing={2.45}> 
+              <Button variant="outlined">교수님</Button>
+              <Button variant="outlined">현직 종사자</Button>
+              <Button variant="outlined">기타</Button>
+            </Stack>
+            </div>
+            </div>
+            </div>
           </DialogContent>
+  
           <DialogActions>
             
             <Button onClick={handleClose}>완료</Button>

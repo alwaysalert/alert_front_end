@@ -11,10 +11,10 @@ function Kakao_Login() {
   const [cookies, setCookie,] = useCookies(['access_token']);
 
   
-  //const drfClientId = 'E8OnwQW68N9XKGqifO9N9MM6bYi0nEoZhIkCG0ea';
-  const drfClientId = 'aYvyQ1SMvUAi6W3J60cwmMRG6ZwxorWSTY3Y00Hl'
-  //const drfClientSecret = '1P3H0iMt6RIGktsFfESorhFCvYOvv5jcwCokCAZlYvFoG4pGB5HRqNh19aouSCQxFTKp9EdGBkBpNeV0ibak0eLIR4nIdVZSv9UVj95kCrOI7KqEnXwDhSGsb8xBYoK2';
-  const drfClientSecret = 'tZ78DGY9qyR94RiKba2uY9JhUUvWEihEio5FqpuM9W69HBxj2s67DSPhDzMQASIfaEn60eAR60WItie3XsNtOuAE4HTaCdYzCWLmCFuwdcdx92pH7kr4QJ57DqVavUBJ'
+  //const drfClientId = 'OmAsECfljwnln9BVsao1iAxOEfFSZvw2lPRxcnA3';
+  const drfClientId = 'ZkWDAanC1QkxPkdAY73HScls5ANgitbcqWdFvtT9'
+  //const drfClientSecret = 'qMkPeWwMmPO9eKAEnf47oka0kyWu6NE6yK3t6UyO4QwnPnXtjSX6TRuBMtaOgaXnBoM0zxESbnCi2trVuBz7mzIB4DH4EfzmYqhixvlk2c73MciFNbvEQKCnEda2vcVx';
+  const drfClientSecret = 'zm4HOISwrpeehXfw6QreMG6OGaC5nEfC3Zp49jkbU1FwDJK6QmpbQSLd28qQdpK4IkxYtPDywQWW4KwwgOv5fk53gaBCynyCNL30GTCFGC0m1znr80kzUfYQ5buGdxBg'
   
   const handleKakaoLogin = (response) => {
     console.log(response);
