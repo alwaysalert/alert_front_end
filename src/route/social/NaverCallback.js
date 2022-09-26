@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios';
 
 import {useSelector, useDispatch} from "react-redux"; // redux
+import Register from '../Register';
 
 function NaverCallback({logged}) {
     const login = useSelector((state)=>state.login);
@@ -19,10 +20,40 @@ function NaverCallback({logged}) {
     const baseURL = "http://localhost:8000";
     
     const [cookies, setCookie,] = useCookies(['token']);
-
-    console.log(cookies.token);
+    const [open, setOpen] = React.useState(false);
+    const [accessToken,setToken] = React.useState(null);
+    const [refreshToken,setToken2] = React.useState(null);
+    const [flag,setFlag] = React.useState(null);
+    
     //여기서 DB랑 연결해서 기존 사용자인지 아닌지 구분해서 기존 사용자가 아니면 회원가입 페이지로 넘어가게하고 기존 사용자면 홈페이지로 돌아가게 만들기
     
+
+    const CheckUser = (access_token) => {
+  
+  
+  
+        axios.get(`${baseURL}/users/check_user`, {
+            params: {
+              token: access_token,
+              format: 'json',
+            }}).then(async (res) => {
+              console.log('data =',res.data.id)
+              if(res.data.id > 0)
+              {
+                console.log('data2 =',res.data.id)
+                setFlag(true);
+              }
+              else if(res.data.is_existing == false)
+              {
+                console.log('falsseeeee')
+                setFlag(false);
+              }
+            }).catch((err) => {
+              console.log("Error check", err);
+            });
+      
+      }
+
     async function handleNaverLogin(token){
     await axios.post(`${baseURL}/auth/convert-token`, {
         token: token,
@@ -33,15 +64,17 @@ function NaverCallback({logged}) {
     })
     .then((res) => {
 
-        console.log('it is naver');
+        
         const { access_token, refresh_token } = res.data;
-        console.log({ access_token, refresh_token });
-        
-        setCookie('access_token',access_token)
-        setCookie('refresh_token',refresh_token)
         
         
-        return res.data;
+        setToken(access_token);
+        setToken2(refresh_token)
+      //setFlag(false);
+        CheckUser(access_token);
+        
+        
+        return true;
         
     })
     .catch((err) => {
@@ -53,23 +86,42 @@ function NaverCallback({logged}) {
 
 
 
-useEffect(async () => {
+useEffect(() => {
+    const doLogin = async () => {
     if(token){
 
         const data = await handleNaverLogin(token)
         console.log('datadata',data)
+        if(flag === true)
+        {
+            console.log('check_one');
+            setCookie('access_token',accessToken);
+            setCookie('refresh_token',refreshToken);
+            document.location='/'
+        }
+        else if(flag === false)
+        {
+            console.log('check_two');
+            setOpen(true);
+  
+  
+        }
         
-        
-        document.location='/'
+        //document.location='/'
 
         
     }else{
         console.log("no..")
         //document.location.href='/'
     }
+}
+    doLogin();
     
     
-}, [])
+}, [flag,])
+return(
+    <Register open={open} setOpen={setOpen} setFlag={setFlag} token={accessToken}/>
+)
 }
 
 export default NaverCallback;

@@ -3,9 +3,25 @@
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: 'apple-font';
+    src: url('../../public/font/AppleSDGothicNeoEB.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'hanna-font';
+    src: url('../../public/font/BM-HANNA.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* body{
+    font-family:'apple-font'
+} */
 a {
     text-decoration: none;
 }
+input:focus {outline: none;}
 .logo {
     position: relative;
     
