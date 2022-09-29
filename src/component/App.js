@@ -27,7 +27,7 @@ function App() {
       <Routes>
 
             <Route exact path="/" element = {<Mainpage isLoggedIn={isLoggedIn}/>}/>
-            <Route exact path="/NaverCallback" element ={<NaverCallback />}></Route>
+            <Route path="/NaverCallback" element ={<NaverCallback />}></Route>
             <Route exact path="/freeart" element = {<Freeart isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/Mypage" element = {<Mypage isLoggedIn={isLoggedIn}/>}/>
 

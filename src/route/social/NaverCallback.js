@@ -4,25 +4,56 @@ import {Link} from 'react-router-dom'
 import axios from 'axios';
 
 import {useSelector, useDispatch} from "react-redux"; // redux
+import Register from '../Register';
 
 function NaverCallback({logged}) {
     const login = useSelector((state)=>state.login);
     const dispatch = useDispatch();
     const token = window.location.href.split('=')[1].split('&')[0];
 
-   //const drfClientId = 'E8OnwQW68N9XKGqifO9N9MM6bYi0nEoZhIkCG0ea';
-  const drfClientId = 'aYvyQ1SMvUAi6W3J60cwmMRG6ZwxorWSTY3Y00Hl'
-  //const drfClientSecret = '1P3H0iMt6RIGktsFfESorhFCvYOvv5jcwCokCAZlYvFoG4pGB5HRqNh19aouSCQxFTKp9EdGBkBpNeV0ibak0eLIR4nIdVZSv9UVj95kCrOI7KqEnXwDhSGsb8xBYoK2';
-  const drfClientSecret = 'tZ78DGY9qyR94RiKba2uY9JhUUvWEihEio5FqpuM9W69HBxj2s67DSPhDzMQASIfaEn60eAR60WItie3XsNtOuAE4HTaCdYzCWLmCFuwdcdx92pH7kr4QJ57DqVavUBJ'
+   //const drfClientId = 'OmAsECfljwnln9BVsao1iAxOEfFSZvw2lPRxcnA3';
+  const drfClientId = 'ZkWDAanC1QkxPkdAY73HScls5ANgitbcqWdFvtT9'
+  //const drfClientSecret = 'qMkPeWwMmPO9eKAEnf47oka0kyWu6NE6yK3t6UyO4QwnPnXtjSX6TRuBMtaOgaXnBoM0zxESbnCi2trVuBz7mzIB4DH4EfzmYqhixvlk2c73MciFNbvEQKCnEda2vcVx';
+  const drfClientSecret = 'zm4HOISwrpeehXfw6QreMG6OGaC5nEfC3Zp49jkbU1FwDJK6QmpbQSLd28qQdpK4IkxYtPDywQWW4KwwgOv5fk53gaBCynyCNL30GTCFGC0m1znr80kzUfYQ5buGdxBg'
 
 
     const baseURL = "http://localhost:8000";
     
     const [cookies, setCookie,] = useCookies(['token']);
-
-    console.log(cookies.token);
+    const [open, setOpen] = React.useState(false);
+    const [accessToken,setToken] = React.useState(null);
+    const [refreshToken,setToken2] = React.useState(null);
+    const [flag,setFlag] = React.useState(null);
+    
     //여기서 DB랑 연결해서 기존 사용자인지 아닌지 구분해서 기존 사용자가 아니면 회원가입 페이지로 넘어가게하고 기존 사용자면 홈페이지로 돌아가게 만들기
     
+
+    const CheckUser = (access_token) => {
+  
+  
+  
+        axios.get(`${baseURL}/users/check_user`, {
+            params: {
+              token: access_token,
+              format: 'json',
+            }}).then(async (res) => {
+              console.log('data =',res.data.id)
+              if(res.data.id > 0)
+              {
+                console.log('data2 =',res.data.id)
+                setFlag(true);
+              }
+              else if(res.data.is_existing == false)
+              {
+                console.log('falsseeeee')
+                setFlag(false);
+              }
+            }).catch((err) => {
+              console.log("Error check", err);
+            });
+      
+      }
+
     async function handleNaverLogin(token){
     await axios.post(`${baseURL}/auth/convert-token`, {
         token: token,
@@ -33,15 +64,17 @@ function NaverCallback({logged}) {
     })
     .then((res) => {
 
-        console.log('it is naver');
+        
         const { access_token, refresh_token } = res.data;
-        console.log({ access_token, refresh_token });
-        
-        setCookie('access_token',access_token)
-        setCookie('refresh_token',refresh_token)
         
         
-        return res.data;
+        setToken(access_token);
+        setToken2(refresh_token)
+      //setFlag(false);
+        CheckUser(access_token);
+        
+        
+        return true;
         
     })
     .catch((err) => {
@@ -53,23 +86,42 @@ function NaverCallback({logged}) {
 
 
 
-useEffect(async () => {
+useEffect(() => {
+    const doLogin = async () => {
     if(token){
 
         const data = await handleNaverLogin(token)
         console.log('datadata',data)
+        if(flag === true)
+        {
+            console.log('check_one');
+            setCookie('access_token',accessToken);
+            setCookie('refresh_token',refreshToken);
+            document.location='/'
+        }
+        else if(flag === false)
+        {
+            console.log('check_two');
+            setOpen(true);
+  
+  
+        }
         
-        
-        document.location='/'
+        //document.location='/'
 
         
     }else{
         console.log("no..")
         //document.location.href='/'
     }
+}
+    doLogin();
     
     
-}, [])
+}, [flag,])
+return(
+    <Register open={open} setOpen={setOpen} setFlag={setFlag} token={accessToken}/>
+)
 }
 
 export default NaverCallback;
