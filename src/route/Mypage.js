@@ -31,7 +31,12 @@ function AlertSame(props){
 
 
 function Mypage() {
+  //수정 or 그냥 마이페이지
+
+  //중복 확인 state
+  const [isSame, setIsSame] =useState(true);
   //axios
+  
   const [userInfo, setUserInfo] = useState({
     auth_user_id : 2,
     id : 1,
@@ -228,7 +233,7 @@ function Mypage() {
     }
 
   
-  const [isSame, setIsSame] =useState(true);
+  
 
   //컬러 숫자 -> ##머시기로 바꾸는 함수
   const hexcolor = (num) =>{
@@ -328,7 +333,7 @@ function Mypage() {
               <Button variant={button1} id='button1' onClick ={(e)=>{
                 newUserInfo.user_job= 1;
                 setUserInfo(newUserInfo);
-                buttonClick(e);
+                buttonClick(userInfo);
               }}>중고등학생</Button>
               <Button variant={button2} id='button2' onClick ={(e)=>{
                 newUserInfo.user_job = 2;
