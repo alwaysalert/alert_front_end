@@ -200,12 +200,12 @@ function Register(props) {
       
       };
   return (
-    <Dialog open={props.open} sx={{minWidth: "700px"}} onClose={handleClose}>
-          <DialogTitle>Alert에 처음 방문하셨나요?</DialogTitle>
+    <Dialog open={props.open} sx={{minWidth: "1200px"}} onClose={handleClose}>
+          <DialogTitle><div style={{fontFamily:'apple-font-EB',fontWeight: 'bold',fontSize: '30px'}}>Alert에 처음 방문하셨나요?</div></DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              보다 나은 사용을 위해 아래와 같은 정보를 입력해주세요
-            </DialogContentText>
+            
+            <div style={{fontFamily:'apple-font-M',fontWeight: '400', fontSize:'13px'}}>보다 나은 사용을 위해 아래와 같은 정보를 입력해주세요<br/>필수로 적어야 하는 정보는 아니니 다음에 입력하셔도 됩니다.</div>
+            
             <div className='classnickname'>
               <div className='nickname-title'>닉네임</div><input 
                 className = "register-nickname-input"
@@ -229,17 +229,17 @@ function Register(props) {
             </div>
             <div className='job-content'>
             <div>
-            <Stack direction="row" spacing={2}>
-              <Button variant={button1} id='button1' onClick={(event)=>{buttonClick(event)}}>중고등학생</Button>
-              <Button variant={button2} id='button2' onClick={(event)=>{buttonClick(event)}}>대학생</Button>
-              <Button variant={button3} id='button3' onClick={(event)=>{buttonClick(event)}}>졸업생</Button>
+            <Stack direction="row" spacing={1.5}>
+              <Button variant={button1} id='button1' sx={{minWidth: "110px"}} onClick={(event)=>{buttonClick(event)}}>중고등학생</Button>
+              <Button variant={button2} id='button2' sx={{minWidth: "110px"}} onClick={(event)=>{buttonClick(event)}}>대학생</Button>
+              <Button variant={button3} id='button3' sx={{minWidth: "110px"}} onClick={(event)=>{buttonClick(event)}}>졸업생</Button>
             </Stack>
             </div>
             <div>
-            <Stack direction="row" spacing={2.45}> 
-              <Button variant={button4} id='button4' onClick={(event)=>{buttonClick(event)}}>교수님</Button>
-              <Button variant={button5} id='button5' onClick={(event)=>{buttonClick(event)}}>현직 종사자</Button>
-              <Button variant={button6} id='button6' onClick={(event)=>{buttonClick(event)}}>기타</Button>
+            <Stack direction="row" spacing={1.5}> 
+              <Button variant={button4} id='button4' sx={{minWidth: "110px"}} onClick={(event)=>{buttonClick(event)}}>교수님</Button>
+              <Button variant={button5} id='button5' sx={{minWidth: "110px"}} onClick={(event)=>{buttonClick(event)}}>현직 종사자</Button>
+              <Button variant={button6} id='button6' sx={{minWidth: "110px"}} onClick={(event)=>{buttonClick(event)}}>기타</Button>
             </Stack>
             </div>
             </div>
