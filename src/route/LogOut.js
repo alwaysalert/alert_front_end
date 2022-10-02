@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie';
 import ModeIcon from '@mui/icons-material/Mode';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,8 @@ import { GoogleLogout } from 'react-google-login';
 import {useDispatch, useSelector} from 'react-redux';
 
 //import {useCookies} from 'react-cookie';
+
+import axios from 'axios';
 
 function LogOut(props) {
   // const dispatch = useDispatch();
@@ -42,14 +44,98 @@ function LogOut(props) {
      google = true;
      console.log("google : ",google)
   }
+  //프로필
+
+  const [userInfo, setUserInfo] = useState({
+    auth_user_id : 0,
+    id : 0,
+    is_existing : true,
+    nickname : 'name',
+    profile_color_id : 0,
+    profile_picture_id : 0,
+    user_email:'',
+    user_job : 0
+  });
+  let newUserInfo = {...userInfo};
+
+  const CheckUser = (access_token) => {
+    const baseurl= 'http://127.0.0.1:8000'
+    
+    axios.get(`${baseurl}/users/check_user`, {
+        params: {
+          token: access_token,
+          format: 'json',
+        }}).then(async (res) => {
+          //console.log('data =',res.data);
+          newUserInfo ={...res.data};
+          setUserInfo(newUserInfo);
+          //console.log('state:',userInfot);
+        })
+  
+  }
+
+  useEffect(() => {
+    CheckUser(cookies.access_token);
+    
+    // console.log('user:', newUserInfo);
+  }, []);
+
+  //프로필 사진
+  
+//컬러 숫자 -> ##머시기로 바꾸는 함수
+const hexcolor = (num) =>{
+  if(num === 1){
+    return '#FF6767'
+  }else if(num === 2){
+    return '#FFA767'
+  }else if(num === 3){
+    return '#FFF067'
+  }else if(num === 4){
+    return '#4ABD2D'
+  }else if(num === 5){
+    return '#14BBE0'
+  }else if(num === 6){
+    return '#144DE0'
+  }else if(num === 7){
+    return '#AC43FF'
+  }
+}
+const button_style={
+  background : hexcolor(newUserInfo.profile_color_id)
+}
+const image_route = (num) => {
+  
+  if(num === 1){
+    return '/img/profile/profile1.png'
+  }else if(num === 2){
+    return '/img/profile/profile2.png'
+  }else if(num === 3){
+    return '/img/profile/profile3.png'
+  }else if(num === 4){
+    return '/img/profile/profile4.png'
+  }else if(num === 5){
+    return '/img/profile/profile5.png'
+  }else if(num === 6){
+    return '/img/profile/profile6.png'
+  }else if(num === 7){
+    return '/img/profile/profile7.png'
+  }
+}
+
 
   return (
     <div className="mypage-box" >
       <div className="mypage-box-title">
         프로필
       </div>
-      <img className="mypage-box-profile-image" src="/img/boho/mypageboho.png" />
-      <div className="mypage-box-nickname">{"조승현"}</div>
+      <div className ='profile2' style ={button_style}>
+          <img 
+              alt='profile3'
+              className = 'profile3'
+              src={image_route(userInfo.profile_picture_id)}
+          />
+      </div>
+      <div className="mypage-box-nickname">{userInfo.nickname}</div>
       <div className="mypage-box-hi"> 님, 안녕하세요</div>
       <ModeIcon className="penicon"></ModeIcon>
       <Grid container>
