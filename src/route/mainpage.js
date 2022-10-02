@@ -32,18 +32,18 @@ function Mainpage(props) {
               borderRadius: 2,
               textAlign: 'center',
               fontSize: '0.875rem',
-              fontWeight: '700',
+              
               }}
             >
               
               <Box
                  className={"box-high"}>
                   <img src="/img/boho/freeboho.png" className="freeboho"/>
-                <div className="box-high-title">
+                <div className="box-high-title" style={{color:"#E56262"}}>
                   자유<br/>게시판
                 </div>
                 
-                <div className="box-high-contents">
+                <div className="box-high-contents" style={{color:"#711010"}}>
                   여러분의 이야기를<br/>들려주세요
                 </div>
                 
@@ -52,7 +52,7 @@ function Mainpage(props) {
               <Box
                  className={"box-low"}>
                 <div className="box-low-title">
-                  <h3>지금 뜨는 이야기</h3>
+                  지금 뜨는 이야기
                 </div>
                 <div className="box-low-contents">
                   <p>갑자기 옛날 학원쌤 생각난다</p>
@@ -78,17 +78,17 @@ function Mainpage(props) {
               borderRadius: 2,
               textAlign: 'center',
               fontSize: '0.875rem',
-              fontWeight: '700',
+              
               }}
             >
               <Box
                  className={"box-high-job"}>
                   <img src="/img/boho/jobboho.png" className="jobboho"/>
-                <div className="box-high-title-job">
+                <div className="box-high-title" style={{color:"#E3AF2A"}}>
                   취업<br/>게시판
                 </div>
                 
-                <div className="box-high-contents-job">
+                <div className="box-high-contents" style={{color:"color: #554408"}}>
                   취업 정보부터<br/>선배들의 이야기까지<br/>들어보세요
                 </div>
                 
@@ -97,7 +97,7 @@ function Mainpage(props) {
               <Box
                  className={"box-low"}>
                 <div className="box-low-title">
-                  <h3>지금 뜨는 이야기</h3>
+                  지금 뜨는 이야기
                 </div>
                 <div className="box-low-contents">
                   <p>KISA 합격수기 올리는 화석</p>
@@ -120,18 +120,18 @@ function Mainpage(props) {
               borderRadius: 2,
               textAlign: 'center',
               fontSize: '0.875rem',
-              fontWeight: '700',
+              
               }}
             >
               <Box
                  className={"box-high-whowe"}>
                   <img src="/img/boho/whoweboho.png" className="whoweboho"/>
-                <div className="box-high-title-whowe">
-                  우리가<br/>누구
+                <div className="box-high-title" style={{color: "#509B3D"}}>
+                  핵린이<br/>게시판
                 </div>
                 
-                <div className="box-high-contents-whowe">
-                  우리의 이야기를<br/>들려줄게요
+                <div className="box-high-contents" style={{color:"#0E451D"}}>
+                  해킹이 처음인 당신을<br/>위해 준비했어요
                 </div>
                 
               </Box>
@@ -139,10 +139,10 @@ function Mainpage(props) {
               <Box
                  className={"box-low"}>
                 <div className="box-low-title">
-                  <h3>김준식의 이야기~~~</h3>
+                  지금 뜨는 이야기
                 </div>
                 <div className="box-low-contents">
-                  <p>Alert가 만들어지게 된 탄생비화</p>
+                  <p>요즘 가장 핫한 해킹툴 모음집</p>
                 </div>
                 <div className="box-low-contents-time">
                   07/09
@@ -162,7 +162,7 @@ function Mainpage(props) {
               borderRadius: 2,
               textAlign: 'center',
               fontSize: '0.875rem',
-              fontWeight: '700',
+              
               }}
             >
                 
@@ -183,7 +183,7 @@ function Mainpage(props) {
               borderRadius: 2,
               textAlign: 'center',
               fontSize: '0.875rem',
-              fontWeight: '700',
+              
               }}
             >
               <Calendarpg />
@@ -201,17 +201,17 @@ function Mainpage(props) {
               borderRadius: 2,
               textAlign: 'center',
               fontSize: '0.875rem',
-              fontWeight: '700',
+              
               }}
             >
               <Box
                  className={"box-high-major"}>
                   <img src="/img/boho/majorboho.png" className="majorboho"/>
-                <div className="box-high-title-major">
-                  우리<br/>학과는
+                <div className="box-high-title" style={{color:"#9050E3"}}>
+                  우리<br/>학교는
                 </div>
                 
-                <div className="box-high-contents-major">
+                <div className="box-high-contents" style={{color:"#3A1072"}}>
                   정보보호학과에<br/>대한 모든 것
                 </div>
                 
@@ -220,7 +220,7 @@ function Mainpage(props) {
               <Box
                  className={"box-low"}>
                 <div className="box-low-title">
-                  <h3>What is INFOSEC</h3>
+                  지금 뜨는 이야기
                 </div>
                 <div className="box-low-contents">
                   <p>22학번 신입생 공학인증과목</p>
@@ -243,7 +243,7 @@ function Mainpage(props) {
               borderRadius: 2,
               textAlign: 'center',
               fontSize: '0.875rem',
-              fontWeight: '700',
+              
               }}
             >
               <Box
@@ -257,16 +257,14 @@ function Mainpage(props) {
               </Box>
               
               <Box
-                 className={"box-low"}>
+                 className={"box-low"} style={{textAlign:"left"}}>
                 <div className="box-low-title">
-                  <h3>지금 모집 중인 대외활동</h3>
+                  지금 모집 중인 대외활동
                 </div>
-                <div className="box-low-contents">
+                <div className="box-low-contents" style={{textIndent:'15px'}}>
                   <p> 한국정보보호산업협회에서 주관하는 AI 보안 네트워크반 교육생 모집</p>
                 </div>
-                <div className="box-low-contents-time">
-                  07/09
-                </div>
+                
               </Box>
               
             </Box>

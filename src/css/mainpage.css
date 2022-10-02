@@ -4,20 +4,28 @@
     padding: 0;
 }
 @font-face {
-    font-family: 'apple-font';
-    src: url('../../public/font/AppleSDGothicNeoEB.ttf') format('truetype');
+    font-family: 'apple-font-M';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'apple-font-EB';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'hanna-font';
-    src: url('../../public/font/BM-HANNA.ttf') format('truetype');
+    src: url('../../public/font/bm/BMHANNA_11yrs_ttf.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+
 /* body{
     font-family:'apple-font'
 } */
+
 a {
     text-decoration: none;
 }
@@ -104,22 +112,24 @@ input:focus {outline: none;}
 }
 
 .box-high-title{
-    
+    font-family: 'hanna-font';
     padding-top:20px;
     padding-left: 20px;
-    color: #E56252;
+    
     width: 50%;
     height: 50%;
-    font-Size: 40px;
+    font-Size: 43px;
     text-align: left;
 }
 .box-high-contents{
-    
+    font-family:'apple-font-M';
     padding-left: 20px;
-    color: #711010;
+   
     width: 50%;
     height: 50%;
-    font-Size: 14px;
+    font-Size: 16px;
+    font-weight: 400;
+    margin-top: -8px;
     text-align: left;
 }
 
@@ -134,12 +144,12 @@ input:focus {outline: none;}
 
 .box-low-title {
     text-align: left;
-    padding-top: 13px;
+    padding-top: 20px;
     margin-left: 10px;
-    font-family: 'BM HANNA_TTF';
+    font-family: 'hanna-font';
     font-style: normal;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 18px;
     line-height: 20px;
     text-indent: 5px;
 }
@@ -147,31 +157,33 @@ input:focus {outline: none;}
 .box-low-contents {
     display:inline-block;
     text-align :left;
-    
-    width:75%;
-    font-family: 'AppleSDGothicNeoM00';
+    vertical-align: top;
+    line-height:25px;
+    width:68%;
+    font-family: 'apple-font-M';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 40px;
+    
 /* identical to box height */
 
-    text-indent: 15px;
+    text-indent: 5px;
 
 }
 .box-low-contents-time {
     display:inline-block;
-   
-    
+    padding-top:-10px;
+    vertical-align: top;
+    line-height:25px;
     width:25%;
-    font-family: 'AppleSDGothicNeoM00';
+    font-family: 'apple-font-M';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 40px;
+    
 /* identical to box height */
 
-    text-indent: 15px;
+    
 
 }
 
@@ -184,25 +196,7 @@ input:focus {outline: none;}
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-.box-high-title-job{
-    
-    padding-top:20px;
-    padding-left: 20px;
-    color: #E3AF2A;
-    width: 50%;
-    height: 50%;
-    font-Size: 40px;
-    text-align: left;
-}
-.box-high-contents-job{
-    
-    padding-left: 20px;
-    color: #554408;
-    width: 50%;
-    height: 50%;
-    font-Size: 14px;
-    text-align: left;
-}
+
 
 .jobboho {
     
@@ -222,25 +216,7 @@ input:focus {outline: none;}
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-.box-high-title-whowe{
-    
-    padding-top:20px;
-    padding-left: 20px;
-    color: #509B3D;
-    width: 50%;
-    height: 50%;
-    font-Size: 40px;
-    text-align: left;
-}
-.box-high-contents-whowe{
-    
-    padding-left: 20px;
-    color: #0E451D;
-    width: 50%;
-    height: 50%;
-    font-Size: 14px;
-    text-align: left;
-}
+
 .whoweboho {
     
     position: absolute;
@@ -258,25 +234,7 @@ input:focus {outline: none;}
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-.box-high-title-major{
-    
-    padding-top:20px;
-    padding-left: 20px;
-    color: #9050E3;
-    width: 50%;
-    height: 50%;
-    font-Size: 40px;
-    text-align: left;
-}
-.box-high-contents-major{
-    
-    padding-left: 20px;
-    color: #3A1072;
-    width: 50%;
-    height: 50%;
-    font-Size: 14px;
-    text-align: left;
-}
+
 .majorboho {
     
     position: absolute;
