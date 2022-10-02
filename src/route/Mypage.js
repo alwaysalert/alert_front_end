@@ -7,6 +7,7 @@ import Nav from './Nav'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
+
 import Button from '@mui/material/Button';
 
 function AlertSame(props){
@@ -17,7 +18,7 @@ function AlertSame(props){
     color : "blue"
   }
   
-    if(props.isSame === true){
+    if(props.isSame === true ){
       return (
         <div style ={red}>사용 불가능한 닉네임입니다.</div>
       )
@@ -57,24 +58,10 @@ function Mypage() {
         })
   
   }
-  //컬러 숫자 -> ##머시기로 바꾸는 함수
-  const hexcolor = (num) =>{
-    if(num === 1){
-      return '#FF6767'
-    }else if(num === 2){
-      return '#FFA767'
-    }else if(num === 3){
-      return '#FFF067'
-    }else if(num === 4){
-      return '#4ABD2D'
-    }else if(num === 5){
-      return '#14BBE0'
-    }else if(num === 6){
-      return '#144DE0'
-    }else if(num === 7){
-      return '#AC43FF'
-    }
-  }
+  
+  //회원 정보 수정 api = /users/edit_profile
+
+
   //닉네임 중복확인 axios 요청
   const CheckNickName = (name) => {
     const baseURL= 'http://127.0.0.1:8000'
@@ -120,12 +107,149 @@ function Mypage() {
     
     //console.log('a:', newUserInfot);
   }, []);
-  
+  //버튼
+  const [button1, setButton1] = useState('outlined');
+  const [button2, setButton2] = useState('outlined');
+  const [button3, setButton3] = useState('outlined');
+  const [button4, setButton4] = useState('outlined');
+  const [button5, setButton5] = useState('outlined');
+  const [button6, setButton6] = useState('outlined');
+  const [jobbb,setjobbb] = useState(6)
+  const buttonClick = (event) =>{
+      if(event.target.id === 'button1')
+      {
+      if(button1 === 'contained')
+      {
+        setButton1('outlined');
+        setjobbb(6)
+      }
+      else
+      {
+        setButton1('contained');
+        setButton2('outlined');
+        setButton3('outlined')
+        setButton4('outlined')
+        setButton5('outlined')
+        setButton6('outlined')
+        setjobbb(1)
+      }
+    }
+    if(event.target.id === 'button2')
+      {
+      if(button2 === 'contained')
+      {
+        setButton2('outlined');
+        setjobbb(6)
+      }
+      else
+      {
+        setButton1('outlined');
+        setButton2('contained');
+        setButton3('outlined')
+        setButton4('outlined')
+        setButton5('outlined')
+        setButton6('outlined')
+        setjobbb(2)
+      }
+    }
+    if(event.target.id === 'button3')
+      {
+      if(button3 === 'contained')
+      {
+        setButton3('outlined');
+        setjobbb(6)
+      }
+      else
+      {
+        setButton1('outlined');
+        setButton2('outlined');
+        setButton3('contained')
+        setButton4('outlined')
+        setButton5('outlined')
+        setButton6('outlined')
+        setjobbb(3)
+      }
+    }
+    if(event.target.id === 'button4')
+      {
+      if(button4 === 'contained')
+      {
+        setButton4('outlined');
+        setjobbb(6)
+      }
+      else
+      {
+        setButton1('outlined');
+        setButton2('outlined');
+        setButton3('outlined')
+        setButton4('contained')
+        setButton5('outlined')
+        setButton6('outlined')
+        setjobbb(4)
+      }
+    }
+    if(event.target.id === 'button5')
+      {
+      if(button5 === 'contained')
+      {
+        setButton5('outlined');
+        setjobbb(6)
+      }
+      else
+      {
+        setButton1('outlined');
+        setButton2('outlined');
+        setButton3('outlined')
+        setButton4('outlined')
+        setButton5('contained')
+        setButton6('outlined')
+        setjobbb(5)
+      }
+    }
+    if(event.target.id === 'button6')
+      {
+      if(button6 === 'contained')
+      {
+        setButton6('outlined');
+        setjobbb(6)
+      }
+      else
+      {
+        setButton1('outlined');
+        setButton2('outlined');
+        setButton3('outlined')
+        setButton4('outlined')
+        setButton5('outlined')
+        setButton6('contained')
+        setjobbb(6)
+      }
+    }
+    
+    }
+
   
   const [isSame, setIsSame] =useState(true);
-  
+
+  //컬러 숫자 -> ##머시기로 바꾸는 함수
+  const hexcolor = (num) =>{
+    if(num === 1){
+      return '#FF6767'
+    }else if(num === 2){
+      return '#FFA767'
+    }else if(num === 3){
+      return '#FFF067'
+    }else if(num === 4){
+      return '#4ABD2D'
+    }else if(num === 5){
+      return '#14BBE0'
+    }else if(num === 6){
+      return '#144DE0'
+    }else if(num === 7){
+      return '#AC43FF'
+    }
+  }
   const button_style={
-    background : hexcolor()
+    background : hexcolor(newUserInfo.profile_color_id)
   }
   const image_route = (num) => {
     
@@ -145,6 +269,25 @@ function Mypage() {
       return '/img/profile/profile7.png'
     }
   }
+  //프로필 수정 api
+  const updateUserInfo = () => {
+    const baseURL= 'http://127.0.0.1:8000'
+    
+    axios.get(`${baseURL}/users/check_nickname`, {
+      params: {
+        
+      }
+    })
+    .then((res) => {
+      
+    })
+    .catch((err) => {
+      
+    });
+  
+  }
+
+
 
 
     return (
@@ -182,29 +325,35 @@ function Mypage() {
             </div>
             <div className ="mypage-content-profile-content-position">
               <div className="mypage-content-profile-content"><strong>신분</strong></div>
-              <Button variant="text"  onClick ={(e)=>{
+              <Button variant={button1} id='button1' onClick ={(e)=>{
                 newUserInfo.user_job= 1;
                 setUserInfo(newUserInfo);
+                buttonClick(e);
               }}>중고등학생</Button>
-              <Button variant="text" onClick ={(e)=>{
+              <Button variant={button2} id='button2' onClick ={(e)=>{
                 newUserInfo.user_job = 2;
                 setUserInfo(newUserInfo);
+                buttonClick(e);
               }}>대학생</Button>
-              <Button variant="text" onClick ={(e)=>{
+              <Button variant={button3} id='button3' onClick ={(e)=>{
                 newUserInfo.user_job = 3;
                 setUserInfo(newUserInfo);
+                buttonClick(e);
               }}>졸업생</Button>
-              <Button variant="text" onClick ={(e)=>{
+              <Button variant={button4} id='button4' onClick ={(e)=>{
                 newUserInfo.user_job = 4;
                 setUserInfo(newUserInfo);
+                buttonClick(e);
               }}>교수님</Button>
-              <Button variant="text" onClick ={(e)=>{
+              <Button variant={button5} id='button5' onClick ={(e)=>{
                 newUserInfo.user_job = 5;
                 setUserInfo(newUserInfo);
+                buttonClick(e);
               }}>현직 종사자</Button>
-              <Button variant="text" onClick ={(e)=>{
+              <Button variant={button6} id='button6' onClick ={(e)=>{
                 newUserInfo.user_job = 6;
                 setUserInfo(newUserInfo);
+                buttonClick(e);
               }}>기타</Button>
 
             </div>
@@ -218,6 +367,7 @@ function Mypage() {
             <div className ="mypage-content-profile-content-position">
               <div className="mypage-content-profile-content"> 
                 <div className='test' >
+                  
                   <div className ='test3' style ={button_style}>
                     <img 
                       alt='test2'
@@ -227,6 +377,10 @@ function Mypage() {
                   </div>
                   
                 </div>
+                <div className ='name'>미리보기</div>
+                <button className ='mypage-content-correct-button'>수정</button>
+                
+                
                 <strong>프로필</strong>
                 
               </div>
@@ -358,13 +512,14 @@ function Mypage() {
                 
                 
               </div>  
-              <button className ='mypage-content-correct-button'>수정</button>
+              
                         
             </div>
             
 
             
           </div>
+          
           <div className='mypage-content-activity'>
             <div className = "mypage-content-profile-head"><strong>나의 활동</strong></div>
             <div className = "mypage-content-acitivity-text">Alert에서 회원님이 활동하신 내역을 확인해보세요.</div>
