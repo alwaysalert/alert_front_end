@@ -11,11 +11,10 @@ function NaverLogin() {
 	const NAVER_CALLBACK_URL = "http://localhost:3000/NaverCallback" // 작성했던 Callback URL 입력
 
 
-	const drfClientId = 's3PEa6tiC1IJuGnHq9Z0S3J39QxTWCS0Yxet9NzV';
-  
-	// const drfClientId = 'ZkWDAanC1QkxPkdAY73HScls5ANgitbcqWdFvtT9'
-	const drfClientSecret = 'iHW0JAQEhKyhBqMapaBM4FNB93kStWNAHzjcD2Z1Yp3DmSVPciF4k0moOlVJEXLZI9vVfumo8ga5KebNWSgMQ90SOTYS3oOB4EtzeHPabFuRZHuSGNsFeG87zy4YkHUX';
-	// const drfClientSecret = 'zm4HOISwrpeehXfw6QreMG6OGaC5nEfC3Zp49jkbU1FwDJK6QmpbQSLd28qQdpK4IkxYtPDywQWW4KwwgOv5fk53gaBCynyCNL30GTCFGC0m1znr80kzUfYQ5buGdxBg'
+//const drfClientId = 's3PEa6tiC1IJuGnHq9Z0S3J39QxTWCS0Yxet9NzV';
+const drfClientId = 'ZkWDAanC1QkxPkdAY73HScls5ANgitbcqWdFvtT9'
+//const drfClientSecret = 'iHW0JAQEhKyhBqMapaBM4FNB93kStWNAHzjcD2Z1Yp3DmSVPciF4k0moOlVJEXLZI9vVfumo8ga5KebNWSgMQ90SOTYS3oOB4EtzeHPabFuRZHuSGNsFeG87zy4YkHUX';
+const drfClientSecret = 'zm4HOISwrpeehXfw6QreMG6OGaC5nEfC3Zp49jkbU1FwDJK6QmpbQSLd28qQdpK4IkxYtPDywQWW4KwwgOv5fk53gaBCynyCNL30GTCFGC0m1znr80kzUfYQ5buGdxBg'
 
 	const baseURL = "http://127.0.0.1:8000";
 
