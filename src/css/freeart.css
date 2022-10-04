@@ -8,6 +8,19 @@
         
     }
 }
+input::placeholder {
+    color: #B7B7B7;
+    font-size: 20px;
+    font-family: apple-font-EB;
+    
+  }
+  textarea::placeholder {
+    color: #B7B7B7;
+    font-size:15px;
+    font-family: apple-font-EB;
+    
+  }
+
 .freeart-content-head{
     display: block;
     width: 100%;
@@ -20,8 +33,9 @@
 }
 .freeart-content-head-title{
     display:inline-block;
+    font-family: 'hanna-font';
     width:100%;
-    margin-top:100px;
+    margin-top:125px;
     margin-left:30px;
     text-align:left;
     color: #E66262;
@@ -31,6 +45,8 @@
 }
 .freeart-content-head-content{
     display:inline-block;
+    font-family: 'apple-font-EB';
+    font-weight: 400;
     width:100%;
     text-align:left;
     margin-left:30px;
@@ -99,22 +115,37 @@
     border: 1px solid #B7B7B7;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }
+.form-title-div{
+    width: 100%;
+    border-bottom: 1px solid #B7B7B7;
+}
 .form-title{
     vertical-align: top;
+    padding-left:7px;
+    font-family: apple-font-EB;
+    font-size: 20px;
+    
     height:55px;
-    width: 100%;
+    width: 97%;
     border: none;
     outline :none;
+    
+}
+.form-contents-div{
+    width: 100%;
     border-bottom: 1px solid #B7B7B7;
 }
 .form-contents{
     vertical-align: top;
     height:190px;
-    width: 100%;
+    width: 97%;
+    padding-left:7px;
+    font-family: apple-font-EB;
+    font-size: 15px;
     resize: none;
     border: none;
     outline :none;
-    border-bottom: 1px solid #B7B7B7;
+    
 }
 .form-last{
     display: inline-block;
@@ -123,24 +154,24 @@
     
     
 }
-.tag-icon{
-    margin-top: 13px;
-    margin-left: 13px;
-    
-    
-}
+
+
 .clip-icon{
-    margin-left:8px;
+    margin-top: 13px;
+    margin-left: 3px;
     
 }
-.form-last input{
+.form-last button{
     float: right;
-    height: 56px;
+    font-family: apple-font-EB;
+    height: 100%;
     width: 122px;
     border: none;
     background: #7A96FC;
     color: #fff;
-    font-size: 20px;
+    cursor:pointer;
+    padding-top:3px;
+    font-size: 23px;
 }
 .freeart-arts-container{
     display: inline-block;
