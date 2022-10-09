@@ -7,6 +7,7 @@ import NaverCallback from '../route/social/NaverCallback';
 import ViewContents from '../route/ViewContents';
 
 import {useCookies} from 'react-cookie';
+import MyActivity from '../route/MyActivity';
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
@@ -30,7 +31,11 @@ function App() {
             <Route path="/NaverCallback" element ={<NaverCallback />}></Route>
             <Route exact path="/freeart" element = {<Freeart isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/Mypage" element = {<Mypage isLoggedIn={isLoggedIn}/>}/>
+
             <Route exact path="/freeart/:id" element ={<ViewContents isLoggedIn={isLoggedIn}/>} />
+
+            <Route exact path="/MyActivity" element = {<MyActivity isLoggedIn={isLoggedIn}/>}/>
+
 
        
       </Routes>

@@ -11,13 +11,56 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import BoardProfile from './BoardProfile'
+import { useCookies } from 'react-cookie';
 
 
-
-function Freeart() {
+function Freeart(props) {
   const baseURL = "http://127.0.0.1:8000"; 
   const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 \n불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
+  //쿠키에서 access_token받아오기
+  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  //console.log('cookie =',cookies.access_token);
+  // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내고, 아니면 checkUser
+  const [userInfo, setUserInfo] = useState({
+    auth_user_id : 2,
+    id : 1,
+    is_existing : true,
+    nickname : 'name',
+    profile_color_id : 3,
+    profile_picture_id : 1,
+    user_email:'',
+    user_job : 1
+  });
+  let newUserInfo = {...userInfo};
+
+  const CheckUser = (access_token) => {
+    const baseurl= 'http://127.0.0.1:8000'
+    
+    axios.get(`${baseurl}/users/check_user`, {
+        params: {
+          token: access_token,
+          format: 'json',
+        }}).then(async (res) => {
+          //console.log('data =',res.data);
+          newUserInfo ={...res.data};
+          setUserInfo(newUserInfo);
+          //console.log('state:',userInfot);
+        })
+  
+  }
+
+
+  useEffect(() => {
+    CheckUser(cookies.access_token);
+    
+    // console.log('a:', userInfo);
+  }, []);
+
+
+
   const [articleArray,setArticle] = useState(null)
+  
   useEffect(() => {
   
   axios.get(`${baseURL}/freeboards/?format=json`).then((res) => {
@@ -37,6 +80,7 @@ function Freeart() {
 
  const[title, setWriteTitle] = useState("");
  const[text, setWriteContents] = useState("");
+ 
  const onSubmit = async(event) => {
     event.preventDefault();
     console.log('hi');
@@ -54,6 +98,8 @@ function Freeart() {
   } = event;
   
   
+  
+
 
 }
 const onGoContents = (event) => {
@@ -71,18 +117,8 @@ const [uurl,setUrl] = useState('');
           <div className="freeart-content-head-title">자유게시판</div>
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
-        <div className="freeart-content-profile">
-          <div className="freeart-content-profile-name"><strong>{'조승현'}</strong></div>
-          <div className="freeart-content-profile-nim"><strong>님</strong></div>
-          <img className="freeart-content-profile-boho" src='/img/boho/mypageboho.png' />
-          <div className="freeart-activity"><strong>자유게시판에서 조승현님의 활동</strong></div>
-          <div className="freeart-buttonBoxes">
-            <div><strong>작성글</strong></div>
-            <div><strong>댓글</strong></div>
-            <div><strong>좋아요</strong></div>
-            <div>알람 설정</div>
-          </div>  
-        </div>
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo}></BoardProfile>
+
         <div className="freeart-form-div">
         <form className="freeart-form" onSubmit={onSubmit}>
             <div className="form-title-div">
