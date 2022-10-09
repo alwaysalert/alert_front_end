@@ -21,7 +21,7 @@
 .mypage-content-head-title{
     display:inline-block;
     width:100%;
-    margin-top:100px;
+    margin-top:125px;
     margin-left:30px;
     text-align:left;
     color: #3677E2;
@@ -231,14 +231,21 @@ input[type="checkbox"]:checked + label {
     background-color:#AC43FF;
 }
 
-.mypage-content-correct-button{
+.mypage-content-correct-button1{
     position: absolute;
-    width: 200px;
     height: 20px;
-    left: 930px;
+    left: 900px;
     top: 900px;
     
-    width: 150px;
+    width: 100px;
+}
+.mypage-content-correct-button2{
+    position: absolute;
+    height: 20px;
+    left: 1010px;
+    top: 900px;
+    
+    width: 100px;
 }
 
 
@@ -279,13 +286,28 @@ input[type="checkbox"]:checked + label {
     font-weight: 400;
     font-size: 15px;
 
-    line-height: 10px;
+    line-height: 20px;
 
     text-indent: 15px;
 
     color: #000000;
 }
 
+.mypage-content-acitvity-button{
+    cursor:pointer;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-right:30px;
+    
+    width : 249px;
+    height: 70px;
+    
+    background: #FFFFFF;
+    border: 1px solid #8A8A8A;
+    color : #8A8A8A;
+    font-size: 35px;
+}
+/* 14 30 249 30 30 249 30 30 249 30 30 249 30 14*/
 
 
 /* 이용 안내 */
@@ -334,7 +356,7 @@ input[type="checkbox"]:checked + label {
 }
 .name{
     position: absolute;
-    width: px;
+    width: 300px;
     height: 10px;
     left: 960px;
     top: 688px;
@@ -384,4 +406,167 @@ color: #686868;
     height: 110px;
     border-radius: 1150px;
 
+}
+
+/* 프로필 기본정보만 나오는거 */
+
+.mypage-profile{
+    
+    display: block;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.mypage-profile-head{
+    
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    font-family: 'BM HANNA_TTF';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 65px;
+    text-indent: 15px;
+
+    color: #29559F;
+}
+.mypage-profile-image1{
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+    position: relative;
+    right: -70px;
+    bottom : -20px;
+    width: 150px;
+    height: 150px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    
+}
+.mypage-profile-image2{
+    width: 200px;
+
+}
+.mypage-profile-image3{
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+    width : 120px;
+    height: 120px;
+    border-radius: 1150px;
+    background-color: #14BBE0;
+
+}
+.mypage-profile-name{
+    position: absolute;
+    width: 81px;
+    height: 0px;
+    left: 270px;
+    top: 100px;
+
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    text-indent: 10px;
+
+    color: #000000;
+
+}
+.mypage-profile-name1{
+    position: absolute;
+    width: 81px;
+    height: 0px;
+    left: 350px;
+    top: 100px;
+
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    text-indent: 10px;
+
+    color: #000000;
+
+}
+.mypage-profile-job{
+    position: absolute;
+    width: 81px;
+    height: 0px;
+    left: 270px;
+    bottom : 60px;
+
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    text-indent: 10px;
+
+    color: #000000;
+
+}
+.mypage-profile-job1{
+    position: absolute;
+    width: 81px;
+    height: 0px;
+    left: 350px;
+    bottom:60px;
+
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    text-indent: 10px;
+
+    color: #000000;
+
+}
+.mypage-profile-belong{
+    position: absolute;
+    width: 81px;
+    height: 0px;
+    left: 270px;
+    bottom  :10px;
+
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    text-indent: 10px;
+
+    color: #000000;
+
+}
+.mypage-profile-belong1{
+    position: absolute;
+    width: 300px;
+    height: 0px;
+    left: 350px;
+    bottom :10px;
+
+    font-family: 'AppleSDGothicNeoEB00';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    text-indent: 10px;
+
+    color: #8A8A8A;;
+
+}
+
+.profile-edit-button{
+    cursor : pointer;
 }
