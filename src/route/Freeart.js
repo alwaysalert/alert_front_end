@@ -10,8 +10,10 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import BoardProfile from './BoardProfile'
 import { useCookies } from 'react-cookie';
+
 
 function Freeart(props) {
   const baseURL = "http://127.0.0.1:8000"; 
@@ -94,13 +96,17 @@ function Freeart(props) {
   const {
     target: { value,}
   } = event;
-  setWriteContents(value);
-
+  
   
   
 
 
 }
+const onGoContents = (event) => {
+  console.log(event.target.name);
+  //window.location.href= `/freeart/${event.target.name}`
+}
+const [uurl,setUrl] = useState('');
   return (
     <>
 
@@ -138,8 +144,9 @@ function Freeart(props) {
           }
           var time = new Date(article.created_time);
           
-          return (<div key={article.id} id="#freeart-arts-grid">
-                
+          
+          return (<div  key={article.id} name={article.id} id="#freeart-arts-grid" >
+                  <Link to={'/freeart/'+article.id}>
                   <img className="freeart-arts-profile" src="/img/boho/mypageboho.png"/>
                 
                 
@@ -156,8 +163,8 @@ function Freeart(props) {
                   </span>                  
                   
                   
-                
-          </div>)
+                  </Link>
+                  </div>)
 })}
         
         </div>
