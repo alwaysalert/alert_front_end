@@ -242,19 +242,19 @@ const setButton = (event) =>{
 //컬러 숫자 -> ##머시기로 바꾸는 함수
 const hexcolor = (num) =>{
   if(num === 1){
-    return '#FF6767'
+    return '#c5e0b4'
   }else if(num === 2){
-    return '#FFA767'
+    return '#ffe699'
   }else if(num === 3){
-    return '#FFF067'
+    return '#bdd7ee'
   }else if(num === 4){
-    return '#4ABD2D'
+    return '#f8cbad'
   }else if(num === 5){
-    return '#14BBE0'
+    return '#ffc5cd'
   }else if(num === 6){
-    return '#144DE0'
+    return '#dfc2ec'
   }else if(num === 7){
-    return '#AC43FF'
+    return '#adb9ca'
   }
 }
 const button_style={

@@ -6,7 +6,7 @@ import '../css/mypage.css'
 import Nav from './Nav'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-
+import { Link } from 'react-router-dom'
 
 import Button from '@mui/material/Button';
 import MypageEdit from './MypageEdit'
@@ -34,7 +34,7 @@ function Mypage() {
     
     axios.get(`${baseurl}/users/check_user`, {
         params: {
-          token: access_token,
+          token : access_token,
           format: 'json',
         }}).then(async (res) => {
           //console.log('data =',res.data);
@@ -75,24 +75,26 @@ function Mypage() {
   //컬러 숫자 -> ##머시기로 바꾸는 함수
 const hexcolor = (num) =>{
   if(num === 1){
-    return '#FF6767'
+    return '#c5e0b4'
   }else if(num === 2){
-    return '#FFA767'
+    return '#ffe699'
   }else if(num === 3){
-    return '#FFF067'
+    return '#bdd7ee'
   }else if(num === 4){
-    return '#4ABD2D'
+    return '#f8cbad'
   }else if(num === 5){
-    return '#14BBE0'
+    return '#ffc5cd'
   }else if(num === 6){
-    return '#144DE0'
+    return '#dfc2ec'
   }else if(num === 7){
-    return '#AC43FF'
+    return '#adb9ca'
   }
 }
+
 const button_style={
   background : hexcolor(newUserInfo.profile_color_id)
 }
+
 const image_route = (num) => {
   
   if(num === 1){
@@ -202,16 +204,27 @@ const EditMode = () =>{
           
           
           <div className='mypage-content-activity'>
+          <Link to ={`/MyActivity`} state = {{ id : 1}}>
             <div className = "mypage-content-profile-head"><strong>나의 활동</strong></div>
+          </Link>
             <div className = "mypage-content-acitivity-text">
               Alert에서 회원님이 활동하신 내역을 확인해보세요.
               
               <div>
+              <Link to ={`/MyActivity`} state = {{ id : 1}}>
                 <button className ='mypage-content-acitvity-button'><strong>작성한 글</strong></button>
+              </Link>
+              <Link to ={`/MyActivity`} state = {{ id : 2}}>
                 <button className ='mypage-content-acitvity-button'><strong>좋아요한 글</strong></button>
+              </Link>
+              <Link to ={`/MyActivity`} state = {{ id : 3}}>
                 <button className ='mypage-content-acitvity-button'><strong>스크랩한 글</strong></button>
+              </Link>
+              <Link to ={`/MyActivity`} state = {{ id : 4}}>
                 <button className ='mypage-content-acitvity-button'><strong>댓글</strong></button>
-                </div>
+              </Link>
+              </div>
+              
             </div>
             
           </div>
