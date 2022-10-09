@@ -8,6 +8,12 @@
         
     }
 }
+@font-face {
+    font-family: 'apple-font-EB';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 input::placeholder {
     color: #B7B7B7;
     font-size: 20px;
@@ -103,7 +109,7 @@ input::placeholder {
     display: inline-block;
     vertical-align: top;
     
-    width: 945px;
+    width: 943.36px;
     margin-left: 15px;
     
 }
@@ -233,6 +239,63 @@ input::placeholder {
     margin-right: 20px;
     
     
+}
+.freeart-maincontents{
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #B7B7B7;
+}
+.fmh-left{
+    margin-top:25px;
+    margin-left:25px;
+    display: inline-block;
+    width:52px;
+    height: 52px;
+    
+    vertical-align: top;
+}
+.fmh-right{
+    display: inline-block;
+    margin-top:25px;
+    width: 90%;
+    height: 70px;
+    /* background-color: blue; */
+    
+}
+.fm-img-background{
+    
+    width:52px;
+    height:52px;
+    background-color: orange;
+    border-radius: 100%;
+    text-align: center;
+}
+.fmh-right div{
+    margin-top: 8px;
+    margin-left: 8px;
+    font-size: 14.5px;
+}
+.fmc-title{
+    
+    margin-left: 25px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.fmc-contents{
+    margin-top: 10px;
+    font-family: 'apple-font-EB';
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
+.fmc-report{
+    display: inline-block;
+    font-family:'apple-font-M';
+    float: right;
+    
+}
+.fmc-icon{
+    margin-left: 25px;
+    margin-bottom: 10px;
 }
 
 
