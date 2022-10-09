@@ -203,7 +203,16 @@ const EditMode = () =>{
           
           <div className='mypage-content-activity'>
             <div className = "mypage-content-profile-head"><strong>나의 활동</strong></div>
-            <div className = "mypage-content-acitivity-text">Alert에서 회원님이 활동하신 내역을 확인해보세요.</div>
+            <div className = "mypage-content-acitivity-text">
+              Alert에서 회원님이 활동하신 내역을 확인해보세요.
+              
+              <div>
+                <button className ='mypage-content-acitvity-button'><strong>작성한 글</strong></button>
+                <button className ='mypage-content-acitvity-button'><strong>좋아요한 글</strong></button>
+                <button className ='mypage-content-acitvity-button'><strong>스크랩한 글</strong></button>
+                <button className ='mypage-content-acitvity-button'><strong>댓글</strong></button>
+                </div>
+            </div>
             
           </div>
           <div className='mypage-content-useInfo'>

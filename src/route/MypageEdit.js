@@ -113,7 +113,7 @@ useEffect(() => {
 useEffect(() => {
   setButton();
   //console.log('a:', newUserInfot);
-}, [userInfo]);
+}, [userInfo.user_job]);
 
 //버튼
 const [button1, setButton1] = useState('outlined');
@@ -281,20 +281,17 @@ const image_route = (num) => {
 //프로필 수정 api
 const updateUserInfo = () => {
   const baseURL= 'http://127.0.0.1:8000'
-  
-  axios.get(`${baseURL}/users/check_nickname`, {
-    params: {
-      
-    }
-  })
+  const config = {"Content-Type": 'application/json'};
+  axios.get(`${baseURL}/users/check_nickname`, userInfo, config )
   .then((res) => {
-    
+    alert('수정 성공');
   })
   .catch((err) => {
-    
+    alert(err);
   });
 
 }
+
 
   return (
     <div>
@@ -378,7 +375,7 @@ const updateUserInfo = () => {
                   
                 </div>
                 <div className ='name'>미리보기</div>
-                <button className ='mypage-content-correct-button1'>수정</button>
+                <button className ='mypage-content-correct-button1' onClick ={ updateUserInfo }>수정</button>
                 <button className ='mypage-content-correct-button2' onClick ={()=>{
                     document.location.reload();
                 }}>취소</button>

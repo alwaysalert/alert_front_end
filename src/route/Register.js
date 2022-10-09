@@ -133,6 +133,7 @@ function Register(props) {
       }
       
       }
+      
     function AlertSame(props){
     
         const visible = clickme ? 'visible' : 'none'
@@ -146,6 +147,7 @@ function Register(props) {
           )
         }
     }
+
     const CheckNickName = (name) => {
         
         console.log('name =',name.length)
