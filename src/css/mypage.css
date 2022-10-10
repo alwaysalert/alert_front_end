@@ -20,6 +20,7 @@
 }
 .mypage-content-head-title{
     display:inline-block;
+    font-family: 'hanna-font';
     width:100%;
     margin-top:125px;
     margin-left:30px;
@@ -31,10 +32,13 @@
 }
 .mypage-content-head-content{
     display:inline-block;
+    font-family: 'apple-font-EB';
+    
     width:100%;
     text-align:left;
     margin-left:30px;
-    color:#3677E2;
+    color:#113A7E;
+    font-weight: bold;
 
 }
 

@@ -74,7 +74,7 @@ function ViewContents() {
               </div>
               <div className="fmh-right">
                   <div style={{display:"inline-block"}}>
-                    <p style={{fontFamily:'apple-font-EB', fontWeight:'bold'}}>{DATA.writer_nickname}</p>
+                    <p style={{fontFamily:'apple-font-EB', fontWeight:'bold'}}>{DATA.author_nickname}</p>
                     <p style={{fontFamily:'apple-font-M',color:'#8A8A8A'}}>{formatDate(newTime)}</p>
                   </div>
                   <div className="fmc-report" style={{color:'#8A8A8A'}}>
@@ -90,8 +90,8 @@ function ViewContents() {
             control={
               <Checkbox
                 {...label}
-                icon={<ThumbUpAltIcon sx={{ color: 'black' }}/>}
-                checkedIcon={<ThumbUpOffAltIcon color="disable" sx={{ color: 'black' }}/>}
+                icon={<ThumbUpOffAltIcon sx={{ color: 'black' }}/>}
+                checkedIcon={<ThumbUpAltIcon sx={{ color: 'black' }}/>}
                 
               />
             }

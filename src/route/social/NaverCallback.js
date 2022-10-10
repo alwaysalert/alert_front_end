@@ -12,9 +12,9 @@ function NaverCallback({logged}) {
     const token = window.location.href.split('=')[1].split('&')[0];
 
    //const drfClientId = 'OmAsECfljwnln9BVsao1iAxOEfFSZvw2lPRxcnA3';
-  const drfClientId = 'ZkWDAanC1QkxPkdAY73HScls5ANgitbcqWdFvtT9'
+  const drfClientId = 'WJ6yp1akpyABDsl5yoguzFhoYjuCFYd1bii1yVDW'
   //const drfClientSecret = 'qMkPeWwMmPO9eKAEnf47oka0kyWu6NE6yK3t6UyO4QwnPnXtjSX6TRuBMtaOgaXnBoM0zxESbnCi2trVuBz7mzIB4DH4EfzmYqhixvlk2c73MciFNbvEQKCnEda2vcVx';
-  const drfClientSecret = 'zm4HOISwrpeehXfw6QreMG6OGaC5nEfC3Zp49jkbU1FwDJK6QmpbQSLd28qQdpK4IkxYtPDywQWW4KwwgOv5fk53gaBCynyCNL30GTCFGC0m1znr80kzUfYQ5buGdxBg'
+  const drfClientSecret = 'bSE5NeIGiD8BivFkXx86PIEXwH3UGBQlN5s7YUvuimNQ8CNX71UVWLe5Fn3sWzWnLIEntHHikDOFErOB7G2IpqHdyw57tW0ZGqPNISwu27x23GzLvf2mSHefD6T5i6QA'
 
 
     const baseURL = "http://localhost:8000";
