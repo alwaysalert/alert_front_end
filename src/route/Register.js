@@ -15,6 +15,7 @@ function Register(props) {
     const [isSame, setIsSame] =useState(true);
   const [clickme,setClickme] = useState(false);
   const [nicknameCheck, setnicknameCheck] = useState(false)
+  const[nickname, setNickname] = useState("");
     const [button1, setButton1] = useState('outlined');
     const [button2, setButton2] = useState('outlined');
     const [button3, setButton3] = useState('outlined');
@@ -139,32 +140,35 @@ function Register(props) {
         const visible = clickme ? 'visible' : 'none'
         if(props.isSame === true){
           return (
-            <div style ={{color:'red',display:visible,textAlign:'center'}}>사용 불가능한 닉네임입니다.</div>
+            <div style ={{color:'red',display:visible,textAlign:'center' ,marginTop:'3px'}}>사용 불가능한 닉네임입니다.</div>
           )
-        }else{
+        }else if(props.isSame === false){
           return (
-            <div style = {{color:'blue',display:visible,textAlign: 'center'}}>사용 가능한 닉네임입니다.</div>
+            <div style = {{color:'blue',display:visible,textAlign: 'center',marginTop:'3px'}}>사용 가능한 닉네임입니다.</div>
           )
+        }
+        else{
+          return(<></>)
         }
     }
 
     const CheckNickName = (name) => {
         
-        console.log('name =',name.length)
+        
         if(name.length === 0)
         {
-          console.log('hi')
+         
           setIsSame(true);
         }
         else{
-          console.log('hi2')
+          
         axios.get(`${baseURL}/users/check_nickname`, {
           params: {
             nickname : name
           }
         })
         .then((res) => {
-          console.log('성공');
+          
           //console.log(res.data);   
           if(res.data.is_existing === true){
             setIsSame(true);
@@ -201,6 +205,17 @@ function Register(props) {
       }
       
       };
+      const onChangeNickname = (event) => {
+        const {
+          target: { value,}
+        } = event;
+       
+        
+          setNickname(value);
+          setnicknameCheck(false);
+          setIsSame(null);
+        
+      }
   return (
     <Dialog open={props.open} sx={{minWidth: "1200px"}} onClose={handleClose}>
           <DialogTitle><div style={{fontFamily:'apple-font-EB',fontWeight: 'bold',fontSize: '30px'}}>Alert에 처음 방문하셨나요?</div></DialogTitle>
@@ -213,7 +228,11 @@ function Register(props) {
                 className = "register-nickname-input"
                 id='name'
                 name="id" 
-                placeholder='사용하실 닉네임을 입력하세요' 
+                placeholder='사용하실 닉네임을 입력하세요'
+                onChange={(event) => {onChangeNickname(event)}}
+                value={nickname}
+                maxLength="12"
+                type='text'
                >
                   
                 </input>

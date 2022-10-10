@@ -152,8 +152,8 @@ const EditMode = () =>{
         <Nav />
         <div className="freeart-content">
           <div className="mypage-content-head">
-            <div className="mypage-content-head-title"><strong>마이페이지</strong></div>
-            <div className="mypage-content-head-content"><strong>Alert에서 사용하게 될 다양한 정보 등을 수정 및 확인할 수 있어요</strong></div>
+            <div className="mypage-content-head-title">마이페이지</div>
+            <div className="mypage-content-head-content">Alert에서 사용하게 될 다양한 정보 등을 수정 및 확인할 수 있어요</div>
           </div>
           {isEdit ? (
         <div>
