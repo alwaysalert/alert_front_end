@@ -31,7 +31,11 @@ function App() {
             <Route path="/NaverCallback" element ={<NaverCallback />}></Route>
             <Route exact path="/freeart" element = {<Freeart isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/Mypage" element = {<Mypage isLoggedIn={isLoggedIn}/>}/>
+
+            <Route exact path="/freeart/:id" element ={<ViewContents isLoggedIn={isLoggedIn}/>} />
+
             <Route exact path="/MyActivity" element = {<MyActivity isLoggedIn={isLoggedIn}/>}/>
+
 
        
       </Routes>
