@@ -15,7 +15,7 @@ function Mainpage(props) {
   
   return (
     <>
-        <Nav />
+        <Nav isLoggedIn={props.isLoggedIn} />
         <div className="contents">
           <Grid container>
           <Link to={'/freeart'}>

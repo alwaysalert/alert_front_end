@@ -14,11 +14,10 @@ function Kakao_Login() {
   const [token2,setToken2] = React.useState(null);
   const [flag,setFlag] = React.useState(null);
   
-
-//const drfClientId = 's3PEa6tiC1IJuGnHq9Z0S3J39QxTWCS0Yxet9NzV';
-const drfClientId = 'WJ6yp1akpyABDsl5yoguzFhoYjuCFYd1bii1yVDW'
-//const drfClientSecret = 'iHW0JAQEhKyhBqMapaBM4FNB93kStWNAHzjcD2Z1Yp3DmSVPciF4k0moOlVJEXLZI9vVfumo8ga5KebNWSgMQ90SOTYS3oOB4EtzeHPabFuRZHuSGNsFeG87zy4YkHUX';
-const drfClientSecret = 'bSE5NeIGiD8BivFkXx86PIEXwH3UGBQlN5s7YUvuimNQ8CNX71UVWLe5Fn3sWzWnLIEntHHikDOFErOB7G2IpqHdyw57tW0ZGqPNISwu27x23GzLvf2mSHefD6T5i6QA'
+  const drfClientId = 'fdrtpI9Oxd5v5nfqWD5jjWgxBBrMztLj2Gjzdo3T';
+  const drfClientSecret = 'n1eCuYarioCEzskYOU4vK3t6NRpuOqPagOqJE76cHi8fr1NbeF1HeZeMVUKzsYcU1xtZAwFbQBwp2gI4M18OeZi4HP8dHo9tqGUYOUXvc8VoDPr0bZEaTO1ZK2eTCq91';
+  // const drfClientId = 'WJ6yp1akpyABDsl5yoguzFhoYjuCFYd1bii1yVDW'
+  // const drfClientSecret = 'bSE5NeIGiD8BivFkXx86PIEXwH3UGBQlN5s7YUvuimNQ8CNX71UVWLe5Fn3sWzWnLIEntHHikDOFErOB7G2IpqHdyw57tW0ZGqPNISwu27x23GzLvf2mSHefD6T5i6QA'
 
   const CheckUser = (access_token) => {
     const baseurl= 'http://127.0.0.1:8000'

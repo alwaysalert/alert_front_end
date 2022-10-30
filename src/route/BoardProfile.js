@@ -11,7 +11,7 @@ import Login from './Login';
 
 function BoardProfile(props) {
     // console.log(props.isLoggedIn);
-    // console.log('profile:',props.uInfo);
+    console.log('profile:',props.uInfo);
 
     //프로필 사진 숫자 -> 사진으로 바꾸기
     const image_route = (num) => {
