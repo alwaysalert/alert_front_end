@@ -162,7 +162,7 @@ const EditMode = () =>{
         ) : (
           <div className = 'mypage-profile'>
             <div className ='mypage-profile-head'>
-              <strong>프로필</strong><img alt ='hello' src ='/img/Vector.png' className='profile-edit-button' onClick ={EditMode}></img>
+              프로필<img alt ='hello' src ='/img/Vector.png' className='profile-edit-button' onClick ={EditMode}></img>
               <div className="mypage-content-profile-content"> 
                 <div className='mypage-profile-image1' >
                   
@@ -182,7 +182,7 @@ const EditMode = () =>{
                   <strong>{userInfo.nickname}</strong>
                 </div>
                 <div className = 'mypage-profile-job'>
-                  <strong>신분</strong>
+                 <strong>신&nbsp;&nbsp;&nbsp;분</strong> 
                 </div>
                 <div className = 'mypage-profile-job1'>
                   <strong>{userJob(userInfo.user_job)}</strong>

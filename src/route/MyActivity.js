@@ -108,12 +108,12 @@ function MyActivity(props) {
       
       <Nav />
       <div className="freeart-content">
-        <div className="freeart-content-head">
-          <div className="freeart-content-head-title">나의 활동</div>
-          <div className="freeart-content-head-content"><strong>너네가 쓴 글이에요</strong></div>
+        <div className="myactivity-content-head1">
+          <div className="myactivity-content-head-title">나의 활동</div>
+          <div className="myactivity-content-head-content"><strong>너네가 쓴 글이에요</strong></div>
         </div>
         <div className='myactivity-content-activity'>
-            <div className = "myactivity-content-head"><strong>나의 활동</strong></div>
+            <div className = "myactivity-content-head">나의 활동</div>
             <div>
                 <button  
                     style={boxStyle1}

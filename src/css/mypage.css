@@ -74,7 +74,7 @@
     width: 100%;
     text-align: left;
     
-    font-family: 'AppleSDGothicNeoM00';
+    font-family: 'apple-font-M';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -89,7 +89,7 @@
 
     width: 100px;
     text-align: left;
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -269,7 +269,7 @@ input[type="checkbox"]:checked + label {
 
     width: 100px;
     text-align: left;
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -285,7 +285,7 @@ input[type="checkbox"]:checked + label {
     width: 100%;
     text-align: left;
     
-    font-family: 'AppleSDGothicNeoM00';
+    font-family: 'apple-font-M';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -345,7 +345,7 @@ input[type="checkbox"]:checked + label {
     
 }
 .test2{
-    width: 100px;
+    width: 150px;
 
 }
 .test3{
@@ -365,7 +365,7 @@ input[type="checkbox"]:checked + label {
     left: 960px;
     top: 688px;
 
-    font-family: 'AppleSDGothicNeoM00';
+    font-family: 'apple-font-M';
     font-style: normal;
     font-size: 18px;
     line-height: 24px;
@@ -476,7 +476,7 @@ color: #686868;
     left: 270px;
     top: 100px;
 
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -493,7 +493,7 @@ color: #686868;
     left: 350px;
     top: 100px;
 
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -510,7 +510,7 @@ color: #686868;
     left: 270px;
     bottom : 60px;
 
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -527,7 +527,7 @@ color: #686868;
     left: 350px;
     bottom:60px;
 
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -544,7 +544,7 @@ color: #686868;
     left: 270px;
     bottom  :10px;
 
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -561,7 +561,7 @@ color: #686868;
     left: 350px;
     bottom :10px;
 
-    font-family: 'AppleSDGothicNeoEB00';
+    font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;

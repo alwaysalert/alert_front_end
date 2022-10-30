@@ -21,6 +21,10 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'BM HANNA_TTF';
+    src: url(../../public/font/bm/BM-HANNA.ttf);
+}
 
 /* body{
     font-family:'apple-font'
