@@ -9,10 +9,13 @@ import { dbService } from '../firebase'
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
+import ChatIcon from '@mui/icons-material/Chat';
+import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import BoardProfile from './BoardProfile'
 import { useCookies } from 'react-cookie';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 
 
@@ -164,12 +167,25 @@ function Freeart(props) {
                   <p><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
                   <span className="freeart-arts-whenwho">{formatDate(time)} | {article.author_nickname}</span>
                   <span className="count-container">
-                    <ThumbUpOffAltIcon />
-                    <span className="count">30</span>
-                    <ChatBubbleOutlineIcon />
-                    <span className="count">30</span>
-                    <StarOutlineOutlinedIcon />
-                    <span className="count">30</span>
+          <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+            
+            <ThumbUpAltIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'3' }}/>
+          </div>
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
+            23
+          </span>
+          <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+            <ChatIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'3px' }}/>
+          </div>
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
+            3
+          </span>
+          <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+            <StarIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'3px' }}/>
+          </div>
+          <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
+            3
+          </span>
                   </span>                  
                   </div>
                   
