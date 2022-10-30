@@ -49,6 +49,7 @@ function Freeart(props) {
         }}).then(async (res) => {
           //console.log('data =',res.data);
           newUserInfo ={...res.data};
+          console.log(newUserInfo);
           setUserInfo(newUserInfo);
           //console.log('state:',userInfot);
         })
@@ -71,7 +72,7 @@ function Freeart(props) {
   axios.get(`${baseURL}/freeboards/?format=json`).then((res) => {
  
     setArticle(res.data);
-    
+    //console.log(res.data);
     
     }).catch((err) => {
       console.log("Error check", err);
@@ -169,21 +170,21 @@ function Freeart(props) {
                   <span className="count-container">
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             
-            <ThumbUpAltIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'3' }}/>
+            <ThumbUpAltIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3' }}/>
           </div>
-          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
             23
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
-            <ChatIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'3px' }}/>
+            <ChatIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
           </div>
-          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
             3
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
-            <StarIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'3px' }}/>
+            <StarIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
           </div>
-          <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
+          <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
             3
           </span>
                   </span>                  
