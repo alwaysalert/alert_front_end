@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import "../css/mainpage.css"
 
-function Nav() {
+function Nav(props) {
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -59,11 +59,11 @@ function Nav() {
           </List>
           <Divider />
           <List>
-            {['마이페이지','고객센터','shop'].map((text, index) => (
+            {[{name:'마이페이지',link:'/Mypage'}, {name:'고객센터',link:'/freeart'}, {name:'shop',link:'/freeart'}].map((text, index) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  
-                    <ListItemText primary={text} />
+                <ListItemButton onClick={() => {movePage(text.link)}}>
+
+                    <ListItemText primary={text.name} />
                   
                 </ListItemButton>
               </ListItem>

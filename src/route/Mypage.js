@@ -60,6 +60,7 @@ function Mypage() {
   
 
   if(cookies.access_token === undefined){
+    alert('로그인 먼저해!')
     document.location = '/';
   }
   //여기에 mypage 정보를 가져와야할 듯?
@@ -214,10 +215,10 @@ const EditMode = () =>{
               <Link to ={`/MyActivity`} state = {{ id : 1}}>
                 <button className ='mypage-content-acitvity-button'><strong>작성한 글</strong></button>
               </Link>
-              <Link to ={`/MyActivity`} state = {{ id : 2}}>
+              <Link to ={`/MyActivity`} state = {{ id : 3}}>
                 <button className ='mypage-content-acitvity-button'><strong>좋아요한 글</strong></button>
               </Link>
-              <Link to ={`/MyActivity`} state = {{ id : 3}}>
+              <Link to ={`/MyActivity`} state = {{ id : 2}}>
                 <button className ='mypage-content-acitvity-button'><strong>스크랩한 글</strong></button>
               </Link>
               <Link to ={`/MyActivity`} state = {{ id : 4}}>
