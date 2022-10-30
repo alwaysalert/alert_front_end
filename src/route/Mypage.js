@@ -163,7 +163,7 @@ const EditMode = () =>{
         ) : (
           <div className = 'mypage-profile'>
             <div className ='mypage-profile-head'>
-              프로필<img alt ='hello' src ='/img/Vector.png' className='profile-edit-button' onClick ={EditMode}></img>
+              프로필 <img alt ='hello' src ='/img/Vector.png' className='profile-edit-button' onClick ={EditMode}></img>
               <div className="mypage-content-profile-content"> 
                 <div className='mypage-profile-image1' >
                   

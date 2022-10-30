@@ -20,11 +20,11 @@ function AlertSame(props){
     
       if(props.isSame === true ){
         return (
-          <div style ={red}>사용 불가능한 닉네임입니다.</div>
+          <div className ='namecheck' style ={red}>사용 불가능한 닉네임입니다.</div>
         )
       }else{
         return (
-          <div style = {blue}>사용 가능한 닉네임입니다.</div>
+          <div className ='namecheck' style = {blue}>사용 가능한 닉네임입니다.</div>
         )
       }
   }
@@ -260,6 +260,9 @@ const hexcolor = (num) =>{
 const button_style={
   background : hexcolor(newUserInfo.profile_color_id)
 }
+const circle_style={
+  background : '#F0F0F0'
+}
 const image_route = (num) => {
   
   if(num === 1){
@@ -281,14 +284,29 @@ const image_route = (num) => {
 //프로필 수정 api
 const updateUserInfo = () => {
   const baseURL= 'http://127.0.0.1:8000'
-  const config = {"Content-Type": 'application/json'};
-  axios.get(`${baseURL}/users/check_nickname`, userInfo, config )
-  .then((res) => {
-    alert('수정 성공');
-  })
-  .catch((err) => {
-    alert(err);
-  });
+  if(isSame){
+    alert('중복확인하세요!')
+  }else{
+    axios.put(`${baseURL}/users/edit_profile`, {
+      token:  cookies.access_token,
+      nickname : userInfo.nickname,
+      user_job : userInfo.user_job,
+      user_email : userInfo.user_email,
+      profile_picture_id : userInfo.profile_picture_id,
+      profile_color_id : userInfo.profile_color_id,
+      auth_user_id : userInfo.auth_user_id
+    })
+    .then((res) => {
+      alert('수정 성공');
+      document.location.reload();
+    })
+    .catch((err) => {
+      alert(err);
+    });
+  }
+
+  
+  
 
 }
 
@@ -297,7 +315,7 @@ const updateUserInfo = () => {
     <div>
 
 <div className ="mypage-content-profile-correct">
-            <div className = "mypage-content-profile-head"><strong>프로필 수정</strong></div>
+            <div className = "mypage-content-profile-head">프로필 수정</div>
             <div className = "mypage-content-profile-text">프로필 사진 배경, 닉네임 등의 프로필을 수정할 수 있어요</div>
             <div className='mypage-content-profile-content-position'>
               <div className="mypage-content-profile-content"><strong>닉네임</strong></div>
@@ -316,7 +334,7 @@ const updateUserInfo = () => {
                 <button className = "mypage-nickname-button" onClick ={(e)=>{
                   e.preventDefault();
                   CheckNickName(userInfo.nickname)
-                  }}><strong className="button-color">중복 확인</strong></button><AlertSame isSame ={isSame}></AlertSame>
+                  }}><strong className="button-color">중복확인</strong></button><AlertSame isSame ={isSame}></AlertSame>
                 {/* 중복확인 api 사용 */}
               </form>
             </div>
@@ -386,16 +404,19 @@ const updateUserInfo = () => {
               </div>
               <div className ="mypage-content-character-text">프로필 사진으로 사용할 캐릭터를 설정하세요.
                 <div className ='mypage-profile-img'>
+                  
+                  <div className ='gray-circle'>
                   <img 
-                  alt = 'character1' 
-                  className ='mypage-profile-img-in' 
-                  src='/img/profile/profile1.png' 
-                  onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 1;
-                  setUserInfo(newUserInfo);
-                }} >
-                    
-                  </img>
+                    alt = 'character1' 
+                    className ='mypage-profile-img-in' 
+                    src='/img/profile/profile1.png' 
+                    onClick ={(e)=>{
+                    newUserInfo.profile_picture_id = 1 ;
+                    setUserInfo(newUserInfo);
+                  }} >
+                    </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character2' 
                   className ='mypage-profile-img-in' 
@@ -405,24 +426,30 @@ const updateUserInfo = () => {
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character3' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile3.png' 
                   onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 3;
+                  newUserInfo.profile_picture_id = 3 ;
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character4' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile4.png' 
                   onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 4;
+                  newUserInfo.profile_picture_id = 4 ;
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character5' 
                   className ='mypage-profile-img-in' 
@@ -432,6 +459,8 @@ const updateUserInfo = () => {
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character6' 
                   className ='mypage-profile-img-in' 
@@ -441,15 +470,19 @@ const updateUserInfo = () => {
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character7' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile7.png' 
                   onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 7;
+                  newUserInfo.profile_picture_id = 7 ;
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                
                   
                 </div>
                 <div className ='mypage-profile-color'>
