@@ -9,6 +9,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import ChatIcon from '@mui/icons-material/Chat';
 import StarIcon from '@mui/icons-material/Star';
 import { FormControlLabel } from '@mui/material';
+import { useCookies } from 'react-cookie';
 
 
 
@@ -17,8 +18,8 @@ import { FormControlLabel } from '@mui/material';
 
 function ViewContents() {
     const baseURL = 'http://127.0.0.1:8000';
-    
-    
+    const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+   
     
     const {id} = useParams();
     const [DATA,datafunc] = useState({})
@@ -44,7 +45,20 @@ function ViewContents() {
     const newTime = new Date(DATA.created_time);
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const label2 = { inputProps: { 'aria-label': 'Checkbox demo' } };
-  return (
+    const like = () => {
+      console.log(cookies.access_token);
+      axios.post(`${baseURL}/freeboards/${id}/like_user`, {
+        
+          token: cookies.access_token
+          
+        }).then(async (res) => {
+          //console.log('data =',res.data);
+          console.log('success')
+          //console.log('state:',userInfot);
+        })
+    }
+     
+    return (
     <>
 
       
@@ -93,8 +107,8 @@ function ViewContents() {
             control={
               <Checkbox
                 {...label}
-                icon={<ThumbUpAltIcon sx={{ color: 'grey',width:'23px',height:'23px' }}/>}
-                checkedIcon={<ThumbUpAltIcon sx={{ color: 'red',width:'23px',height:'23px' }}/>}
+                icon={<ThumbUpAltIcon onClick={like} sx={{ color: '#b9b9b9',width:'23px',height:'23px' }}/>}
+                checkedIcon={<ThumbUpAltIcon onClick={like} sx={{ color: 'red',width:'23px',height:'23px' }}/>}
                 
               />
             }
@@ -104,13 +118,13 @@ function ViewContents() {
             23
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
-            <ChatIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'10px' }}/>
+            <ChatIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'10px' }}/>
           </div>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             3
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
-            <StarIcon sx={{ color: 'grey',width:'23px',height:'23px',marginTop:'10px' }}/>
+            <StarIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'10px' }}/>
           </div>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             3
