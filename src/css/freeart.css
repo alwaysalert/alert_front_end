@@ -246,9 +246,12 @@ input::placeholder {
     width: 99.8%;
     border: 1px solid #B7B7B7;
 }
+.freeart-maincontents-header{
+    height:85px;
+}
 .fmh-left{
-    margin-top:25px;
-    margin-left:25px;
+    margin-top:17px;
+    margin-left:17px;
     display: inline-block;
     width:52px;
     height: 52px;
@@ -258,8 +261,8 @@ input::placeholder {
 .fmh-right{
     display: inline-block;
     margin-top:25px;
-    width: 90%;
-    height: 70px;
+    width: 70%;
+    height: 50px;
     /* background-color: blue; */
     
 }
@@ -276,31 +279,36 @@ input::placeholder {
     height:52px;
 }
 .fmh-right div{
-    margin-top: 8px;
+    margin-top: 0px;
     margin-left: 8px;
     font-size: 14.5px;
 }
 .fmc-title{
     
-    margin-left: 25px;
+    margin-left: 17px;
     font-size: 22px;
     font-weight: bold;
+    margin-bottom:10px
 }
 .fmc-contents{
-    margin-top: 10px;
+    
     font-family: 'apple-font-EB';
-    margin-left: 25px;
-    margin-bottom: 25px;
+    margin-left: 17px;
+    margin-bottom: 10px;
 }
 .fmc-report{
     display: inline-block;
     font-family:'apple-font-M';
+    font-size:11px;
     float: right;
+    margin-top:20px;
+    margin-right:17px;
     
 }
 .fmc-icon{
-    margin-left: 25px;
+    margin-left: 17px;
     margin-bottom: 10px;
+    margin-top:10px;
 }
 
 
@@ -347,5 +355,49 @@ input::placeholder {
     height: 120px;
     border-radius: 1150px;
     background-color: #14BBE0;
+
+}
+.freeart-comment{
+    border: 1px solid #B7B7B7;
+    min-height:100px;
+}
+.freeart-comcomment{
+    border: 1px solid #B7B7B7;
+    min-height:100px;
+    width:95%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom:15px;
+    background-color: #f4f4f4;
+}
+.fmc-comment-input{
+    border: 1px solid #B7B7B7;
+    /* background-color: #f4f4f4; */
+    min-height:35px;
+    margin-bottom: 100px;
+}
+.write-comment{
+    display: inline-block;
+    resize: none;
+    border: none;
+    outline :none;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size:16px;
+    margin-left:13px;
+    margin-top:9px;
+    height:20px;
+    line-height:20px;
+    width:87%;
+    font-family: apple-font-EB;
+    /* background-color: #f4f4f4; */
+}
+.fmc-comment-submit{
+    display:inline-block;
+    float: right;
+    vertical-align: top;
+    height:34.95px;
+    width:34.95px;
+    background-color: grey;
 
 }
