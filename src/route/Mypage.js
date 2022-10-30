@@ -60,6 +60,7 @@ function Mypage() {
   
 
   if(cookies.access_token === undefined){
+    alert('로그인 먼저해!')
     document.location = '/';
   }
   //여기에 mypage 정보를 가져와야할 듯?
@@ -162,7 +163,7 @@ const EditMode = () =>{
         ) : (
           <div className = 'mypage-profile'>
             <div className ='mypage-profile-head'>
-              <strong>프로필</strong><img alt ='hello' src ='/img/Vector.png' className='profile-edit-button' onClick ={EditMode}></img>
+              프로필<img alt ='hello' src ='/img/Vector.png' className='profile-edit-button' onClick ={EditMode}></img>
               <div className="mypage-content-profile-content"> 
                 <div className='mypage-profile-image1' >
                   
@@ -182,7 +183,7 @@ const EditMode = () =>{
                   <strong>{userInfo.nickname}</strong>
                 </div>
                 <div className = 'mypage-profile-job'>
-                  <strong>신분</strong>
+                 <strong>신&nbsp;&nbsp;&nbsp;분</strong> 
                 </div>
                 <div className = 'mypage-profile-job1'>
                   <strong>{userJob(userInfo.user_job)}</strong>
@@ -214,10 +215,10 @@ const EditMode = () =>{
               <Link to ={`/MyActivity`} state = {{ id : 1}}>
                 <button className ='mypage-content-acitvity-button'><strong>작성한 글</strong></button>
               </Link>
-              <Link to ={`/MyActivity`} state = {{ id : 2}}>
+              <Link to ={`/MyActivity`} state = {{ id : 3}}>
                 <button className ='mypage-content-acitvity-button'><strong>좋아요한 글</strong></button>
               </Link>
-              <Link to ={`/MyActivity`} state = {{ id : 3}}>
+              <Link to ={`/MyActivity`} state = {{ id : 2}}>
                 <button className ='mypage-content-acitvity-button'><strong>스크랩한 글</strong></button>
               </Link>
               <Link to ={`/MyActivity`} state = {{ id : 4}}>

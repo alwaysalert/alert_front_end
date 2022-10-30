@@ -11,15 +11,53 @@ import StarIcon from '@mui/icons-material/Star';
 import { FormControlLabel } from '@mui/material';
 import { useCookies } from 'react-cookie';
 
+import BoardProfile from './BoardProfile'
+import { useCookies } from 'react-cookie';
 
 
-
-
-
-function ViewContents() {
+function ViewContents(props) {
     const baseURL = 'http://127.0.0.1:8000';
-    const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+
+    
    
+
+    //쿠키에서 access_token받아오기
+    const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+    const [userInfo, setUserInfo] = useState({
+      auth_user_id : 2,
+      id : 1,
+      is_existing : true,
+      nickname : 'name',
+      profile_color_id : 3,
+      profile_picture_id : 1,
+      user_email:'',
+      user_job : 1
+    });
+    let newUserInfo = {...userInfo};
+  
+    const CheckUser = (access_token) => {
+      const baseurl= 'http://127.0.0.1:8000'
+      
+      axios.get(`${baseurl}/users/check_user`, {
+          params: {
+            token: access_token,
+            format: 'json',
+          }}).then(async (res) => {
+            //console.log('data =',res.data);
+            newUserInfo ={...res.data};
+            setUserInfo(newUserInfo);
+            //console.log('state:',userInfot);
+          })
+    
+    }
+  
+  
+    useEffect(() => {
+      CheckUser(cookies.access_token);
+      
+      // console.log('a:', userInfo);
+    }, []);
+
     
     const {id} = useParams();
     const [DATA,datafunc] = useState({})
@@ -69,16 +107,7 @@ function ViewContents() {
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
         <div className="freeart-content-profile">
-          <div className="freeart-content-profile-name"><strong>{'조승현'}</strong></div>
-          <div className="freeart-content-profile-nim"><strong>님</strong></div>
-          <img className="freeart-content-profile-boho" src='/img/boho/mypageboho.png' />
-          <div className="freeart-activity"><strong>자유게시판에서 조승현님의 활동</strong></div>
-          <div className="freeart-buttonBoxes">
-            <div><strong>작성글</strong></div>
-            <div><strong>댓글</strong></div>
-            <div><strong>좋아요</strong></div>
-            <div><strong>스크랩</strong></div>
-          </div>  
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo}></BoardProfile>
         </div>
         <div className="freeart-form-div">
         <div className="freeart-maincontents" >
