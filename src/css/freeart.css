@@ -401,9 +401,11 @@ input::placeholder {
 .fmc-comment-submit{
     display:inline-block;
     float: right;
+    margin-top:-1px;
     vertical-align: top;
-    height:34.95px;
+    height:36.5px;
     width:34.95px;
+    margin-right:-0.65px;
     background-color: grey;
 
 }

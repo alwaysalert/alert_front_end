@@ -12,7 +12,7 @@ import { FormControlLabel } from '@mui/material';
 import { useCookies } from 'react-cookie';
 
 import BoardProfile from './BoardProfile'
-import { useCookies } from 'react-cookie';
+
 
 
 function ViewContents(props) {
@@ -22,16 +22,17 @@ function ViewContents(props) {
    
 
     //쿠키에서 access_token받아오기
+    const [likeColor, setLikeColor] = useState({'default':'#b9b9b9', 'change':'red'})
     const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
     const [userInfo, setUserInfo] = useState({
-      auth_user_id : 2,
-      id : 1,
-      is_existing : true,
-      nickname : 'name',
-      profile_color_id : 3,
-      profile_picture_id : 1,
-      user_email:'',
-      user_job : 1
+      auth_user_id : null,
+      id : null,
+      is_existing : false,
+      nickname : null,
+      profile_color_id : null,
+      profile_picture_id : null,
+      user_email:null,
+      user_job : null
     });
     let newUserInfo = {...userInfo};
   
@@ -50,13 +51,18 @@ function ViewContents(props) {
           })
     
     }
+    const setColor = (like_users,userInfo) => {
+      if(like_users.includes(userInfo.auth_user_id) === false)
+      {
+        setLikeColor({'default':'#b9b9b9', 'change':'red'})
+      }
+      else{
+        //console.log('yes!')
+        setLikeColor({'default':'red', 'change':'#b9b9b9'})
+      }
+    }
   
-  
-    useEffect(() => {
-      CheckUser(cookies.access_token);
-      
-      // console.log('a:', userInfo);
-    }, []);
+
 
     
     const {id} = useParams();
@@ -64,10 +70,11 @@ function ViewContents(props) {
     
     useEffect(() => {
       
-      axios.get(`${baseURL}/freeboards/${id}/?format=json`).then((res) => {
-        console.log(res.data)
-        datafunc(res.data);
-        console.log('move! =',DATA);
+      axios.get(`${baseURL}/freeboards/${id}/?format=json`)
+      .then(async (res) => {
+      datafunc(res.data);
+      CheckUser(cookies.access_token);
+       
         
         }).catch((err) => {
           console.log("Error check", err);
@@ -80,18 +87,36 @@ function ViewContents(props) {
         date.getHours().toString().padStart(2, '0') + ':' + 
         date.getMinutes().toString().padStart(2, '0')
     }
+    // useEffect(() => {
+      
+      
+    
+      
+      
+    // },[])
+    //console.log(typeof DATA.like_users)
+    useEffect(() => {
+    if(DATA.like_users && userInfo.auth_user_id)
+    {
+      
+      
+      setColor(DATA.like_users,userInfo);
+    
+    }
+  },[DATA.like_users, userInfo.auth_user_id])
+
     const newTime = new Date(DATA.created_time);
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const label2 = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const like = () => {
-      console.log(cookies.access_token);
+      
       axios.post(`${baseURL}/freeboards/${id}/like_user`, {
         
           token: cookies.access_token
           
         }).then(async (res) => {
           //console.log('data =',res.data);
-          console.log('success')
+          //console.log('success')
           //console.log('state:',userInfot);
         })
     }
@@ -136,8 +161,8 @@ function ViewContents(props) {
             control={
               <Checkbox
                 {...label}
-                icon={<ThumbUpAltIcon onClick={like} sx={{ color: '#b9b9b9',width:'23px',height:'23px' }}/>}
-                checkedIcon={<ThumbUpAltIcon onClick={like} sx={{ color: 'red',width:'23px',height:'23px' }}/>}
+                icon={<ThumbUpAltIcon onClick={like} sx={{ color: likeColor.default,width:'23px',height:'23px' }}/>}
+                checkedIcon={<ThumbUpAltIcon onClick={like} sx={{ color: likeColor.change,width:'23px',height:'23px' }}/>}
                 
               />
             }
