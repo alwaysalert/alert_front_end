@@ -271,7 +271,10 @@ input:focus {outline: none;}
     height: 150px;
  }
 
- 
+ .nim{
+    font-size: 25px;
+    color: #000;
+ }
  .mypage-box{
     margin-top: -8px;
     margin-left: -8px;
@@ -282,7 +285,8 @@ input:focus {outline: none;}
  .mypage-box-title{
     color:#6E5DB0;
     font-Size: 32px;
-    padding-top:20px;
+    padding-top: 20px;
+    font-family: 'BM HANNA_TTF';
  }
  .mypage-box-profile-image{
     display:block;

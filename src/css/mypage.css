@@ -125,6 +125,29 @@
     border-color :#8A8A8A;
     cursor: pointer;
 }
+.button-test{
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #8A8A8A;
+    width: 150px;
+    font-size: 15px;
+    color: #8A8A8A;
+    font-family: 'apple-font-EB';
+    cursor: pointer;
+    margin-right: 10px;
+}
+.button-test2{
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #4285F4;
+    width: 150px;
+    font-size: 15px;
+    color: #4285F4;
+    font-family: 'apple-font-EB';
+    cursor: pointer;
+    margin-right: 10px;
+}
+
 
 .namecheck{
     margin-top: 7px;
@@ -412,6 +435,8 @@ color: #686868;
     border-radius: 10px;
 }
 .profile2{
+    position: relative;
+    top: 15px;
     width: 10px;
     display: block;
     margin: 0 auto;
