@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState} from 'react';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -12,8 +13,10 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import "../css/mainpage.css"
+import { Link } from 'react-router-dom';
 
 function Nav(props) {
+    const [search, setSearch] = useState(false);
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -90,7 +93,9 @@ function Nav(props) {
           </div>
           <a href="/"><img src="/img/logo.png" className="logo"/></a>
           <div className="searchtool">
-            <SearchIcon size="large"/>
+          <Link to ={'/Search'}>
+            <SearchIcon size="large" />
+          </Link>
           </div>
           <div className="notification">
             <NotificationsNoneIcon />

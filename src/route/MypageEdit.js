@@ -17,21 +17,25 @@ function AlertSame(props){
     const blue = {
       color : "blue"
     }
-    
-      if(props.isSame === true ){
+      //중복되면 true
+      if(props.isSame === 0){
         return (
-          <div style ={red}>사용 불가능한 닉네임입니다.</div>
+          <div className ='namecheck' style ={blue}>기존 닉네임입니다.</div>
         )
-      }else{
+      }else if(props.isSame === 1 ){
         return (
-          <div style = {blue}>사용 가능한 닉네임입니다.</div>
+          <div className ='namecheck' style ={red}>사용 불가능한 닉네임입니다.</div>
+        )
+      }else if(props.isSame === 2){
+        return (
+          <div className ='namecheck' style = {blue}>사용 가능한 닉네임입니다.</div>
         )
       }
   }
 
 function MypageEdit() {
 //중복 확인 state
-const [isSame, setIsSame] =useState(true);
+const [isSame, setIsSame] = useState(0);
 //axios
 
 const [userInfo, setUserInfo] = useState({
@@ -44,6 +48,17 @@ const [userInfo, setUserInfo] = useState({
   user_email:'',
   user_job : 1
 });
+const [olduserInfo, setOldUserInfo] = useState({
+  auth_user_id : 1,
+  id : 1,
+  is_existing : true,
+  nickname : 'name',
+  profile_color_id : 3,
+  profile_picture_id : 1,
+  user_email:'',
+  user_job : 1
+});
+
 let newUserInfo = {...userInfo};
 const CheckUser = (access_token) => {
   const baseurl= 'http://127.0.0.1:8000'
@@ -55,7 +70,9 @@ const CheckUser = (access_token) => {
       }}).then(async (res) => {
         //console.log('data =',res.data);
         newUserInfo ={...res.data};
+        setOldUserInfo(newUserInfo);
         setUserInfo(newUserInfo);
+
         //console.log('state:',userInfot);
       })
 
@@ -67,7 +84,7 @@ const CheckUser = (access_token) => {
 //닉네임 중복확인 axios 요청
 const CheckNickName = (name) => {
   const baseURL= 'http://127.0.0.1:8000'
-  
+
   axios.get(`${baseURL}/users/check_nickname`, {
     params: {
       nickname : name
@@ -77,9 +94,9 @@ const CheckNickName = (name) => {
     console.log('성공');
     //console.log(res.data);   
     if(res.data.is_existing === true){
-      setIsSame(true);
+      setIsSame(1);
     }else{
-      setIsSame(false);
+      setIsSame(2);
     }
   })
   .catch((err) => {
@@ -116,120 +133,120 @@ useEffect(() => {
 }, [userInfo.user_job]);
 
 //버튼
-const [button1, setButton1] = useState('outlined');
-const [button2, setButton2] = useState('outlined');
-const [button3, setButton3] = useState('outlined');
-const [button4, setButton4] = useState('outlined');
-const [button5, setButton5] = useState('outlined');
-const [button6, setButton6] = useState('outlined');
+const [button1, setButton1] = useState('button-test');
+const [button2, setButton2] = useState('button-test');
+const [button3, setButton3] = useState('button-test');
+const [button4, setButton4] = useState('button-test');
+const [button5, setButton5] = useState('button-test');
+const [button6, setButton6] = useState('button-test');
 const [jobbb,setjobbb] = useState(6)
 const setButton = (event) =>{
     if(userInfo.user_job === 1)
     {
       
-    if(button1 === 'contained')
+    if(button1 === 'button-test2')
     {
-      setButton1('outlined');
+      setButton1('button-test');
       setjobbb(6)
     }
     else
     {
-      setButton1('contained');
-      setButton2('outlined');
-      setButton3('outlined')
-      setButton4('outlined')
-      setButton5('outlined')
-      setButton6('outlined')
+      setButton1('button-test2');
+      setButton2('button-test');
+      setButton3('button-test')
+      setButton4('button-test')
+      setButton5('button-test')
+      setButton6('button-test')
       setjobbb(1)
     }
   }
   if(userInfo.user_job === 2)
     {
-    if(button2 === 'contained')
+    if(button2 === 'button-test2')
     {
-      setButton2('outlined');
+      setButton2('button-test');
       setjobbb(6)
     }
     else
     {
-      setButton1('outlined');
-      setButton2('contained');
-      setButton3('outlined')
-      setButton4('outlined')
-      setButton5('outlined')
-      setButton6('outlined')
+      setButton1('button-test');
+      setButton2('button-test2');
+      setButton3('button-test')
+      setButton4('button-test')
+      setButton5('button-test')
+      setButton6('button-test')
       setjobbb(2)
     }
   }
   if(userInfo.user_job === 3)
     {
-    if(button3 === 'contained')
+    if(button3 === 'button-test2')
     {
-      setButton3('outlined');
+      setButton3('button-test');
       setjobbb(6)
     }
     else
     {
-      setButton1('outlined');
-      setButton2('outlined');
-      setButton3('contained')
-      setButton4('outlined')
-      setButton5('outlined')
-      setButton6('outlined')
+      setButton1('button-test');
+      setButton2('button-test');
+      setButton3('button-test2')
+      setButton4('button-test')
+      setButton5('button-test')
+      setButton6('button-test')
       setjobbb(3)
     }
   }
   if(userInfo.user_job === 4)
     {
-    if(button4 === 'contained')
+    if(button4 === 'button-test2')
     {
-      setButton4('outlined');
+      setButton4('button-test');
       setjobbb(6)
     }
     else
     {
-      setButton1('outlined');
-      setButton2('outlined');
-      setButton3('outlined')
-      setButton4('contained')
-      setButton5('outlined')
-      setButton6('outlined')
+      setButton1('button-test');
+      setButton2('button-test');
+      setButton3('button-test')
+      setButton4('button-test2')
+      setButton5('button-test')
+      setButton6('button-test')
       setjobbb(4)
     }
   }
   if(userInfo.user_job === 5)
     {
-    if(button5 === 'contained')
+    if(button5 === 'button-test2')
     {
-      setButton5('outlined');
+      setButton5('button-test');
       setjobbb(6)
     }
     else
     {
-      setButton1('outlined');
-      setButton2('outlined');
-      setButton3('outlined')
-      setButton4('outlined')
-      setButton5('contained')
-      setButton6('outlined')
+      setButton1('button-test');
+      setButton2('button-test');
+      setButton3('button-test')
+      setButton4('button-test')
+      setButton5('button-test2')
+      setButton6('button-test')
       setjobbb(5)
     }
   }
   if(userInfo.user_job === 6)
     {
-    if(button6 === 'contained')
+    if(button6 === 'button-test2')
     {
-      setButton6('outlined');
+      setButton6('button-test2');
       setjobbb(6)
     }
     else
     {
-      setButton1('outlined');
-      setButton2('outlined');
-      setButton3('outlined')
-      setButton4('outlined')
-      setButton5('outlined')
-      setButton6('contained')
+      setButton1('button-test');
+      setButton2('button-test');
+      setButton3('button-test')
+      setButton4('button-test')
+      setButton5('button-test')
+      setButton6('button-test2')
       setjobbb(6)
     }
   }
@@ -260,6 +277,9 @@ const hexcolor = (num) =>{
 const button_style={
   background : hexcolor(newUserInfo.profile_color_id)
 }
+const circle_style={
+  background : '#F0F0F0'
+}
 const image_route = (num) => {
   
   if(num === 1){
@@ -281,23 +301,38 @@ const image_route = (num) => {
 //프로필 수정 api
 const updateUserInfo = () => {
   const baseURL= 'http://127.0.0.1:8000'
-  const config = {"Content-Type": 'application/json'};
-  axios.get(`${baseURL}/users/check_nickname`, userInfo, config )
-  .then((res) => {
-    alert('수정 성공');
-  })
-  .catch((err) => {
-    alert(err);
-  });
+  if(isSame){
+    alert('중복확인하세요!')
+  }else{
+    axios.put(`${baseURL}/users/edit_profile`, {
+      token:  cookies.access_token,
+      nickname : userInfo.nickname,
+      user_job : userInfo.user_job,
+      user_email : userInfo.user_email,
+      profile_picture_id : userInfo.profile_picture_id,
+      profile_color_id : userInfo.profile_color_id,
+      auth_user_id : userInfo.auth_user_id
+    })
+    .then((res) => {
+      alert('수정 성공');
+      document.location.reload();
+    })
+    .catch((err) => {
+      alert(err);
+    });
+  }
+
+  
+  
 
 }
 
-
+console.log(olduserInfo);
   return (
     <div>
 
 <div className ="mypage-content-profile-correct">
-            <div className = "mypage-content-profile-head"><strong>프로필 수정</strong></div>
+            <div className = "mypage-content-profile-head">프로필 수정</div>
             <div className = "mypage-content-profile-text">프로필 사진 배경, 닉네임 등의 프로필을 수정할 수 있어요</div>
             <div className='mypage-content-profile-content-position'>
               <div className="mypage-content-profile-content"><strong>닉네임</strong></div>
@@ -315,43 +350,46 @@ const updateUserInfo = () => {
                 </input>
                 <button className = "mypage-nickname-button" onClick ={(e)=>{
                   e.preventDefault();
+                  if(userInfo.nickname == olduserInfo.nickname){
+                    setIsSame(0);
+                    return 0;
+                }
                   CheckNickName(userInfo.nickname)
-                  }}><strong className="button-color">중복 확인</strong></button><AlertSame isSame ={isSame}></AlertSame>
+                  }}><strong className="button-color">중복확인</strong></button><AlertSame isSame ={isSame}></AlertSame>
                 {/* 중복확인 api 사용 */}
               </form>
             </div>
             <div className ="mypage-content-profile-content-position">
               <div className="mypage-content-profile-content"><strong>신분</strong></div>
-              <Button variant={button1} id='button1' onClick ={(e)=>{
+              <button className ={button1} onClick ={(e)=>{
                 newUserInfo.user_job= 1;
                 setUserInfo(newUserInfo);
-                setButton(e);
-              }}>중고등학생</Button>
-              <Button variant={button2} id='button2' onClick ={(e)=>{
+                setButton(e);}}><strong>중고등학생</strong></button>
+              <button className ={button2} onClick ={(e)=>{
                 newUserInfo.user_job = 2;
                 setUserInfo(newUserInfo);
                 setButton(e);
-              }}>대학생</Button>
-              <Button variant={button3} id='button3' onClick ={(e)=>{
+              }}><strong>대학생</strong></button>
+              <button className ={button3} onClick ={(e)=>{
                 newUserInfo.user_job = 3;
                 setUserInfo(newUserInfo);
                 setButton(e);
-              }}>졸업생</Button>
-              <Button variant={button4} id='button4' onClick ={(e)=>{
+              }}><strong>졸업생</strong></button>
+              <button className ={button4} onClick ={(e)=>{
                 newUserInfo.user_job = 4;
                 setUserInfo(newUserInfo);
                 setButton(e);
-              }}>교수님</Button>
-              <Button variant={button5} id='button5' onClick ={(e)=>{
+              }}><strong>교수님</strong></button>
+              <button className ={button5} onClick ={(e)=>{
                 newUserInfo.user_job = 5;
                 setUserInfo(newUserInfo);
                 setButton(e);
-              }}>현직 종사자</Button>
-              <Button variant={button6} id='button6' onClick ={(e)=>{
+              }}><strong>현직 종사자</strong></button>   
+              <button className ={button6} onClick ={(e)=>{
                 newUserInfo.user_job = 6;
                 setUserInfo(newUserInfo);
                 setButton(e);
-              }}>기타</Button>
+              }}><strong>기타</strong></button>              
 
             </div>
             <div className='mypage-content-profile-content-position'>
@@ -386,16 +424,19 @@ const updateUserInfo = () => {
               </div>
               <div className ="mypage-content-character-text">프로필 사진으로 사용할 캐릭터를 설정하세요.
                 <div className ='mypage-profile-img'>
+                  
+                  <div className ='gray-circle'>
                   <img 
-                  alt = 'character1' 
-                  className ='mypage-profile-img-in' 
-                  src='/img/profile/profile1.png' 
-                  onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 1;
-                  setUserInfo(newUserInfo);
-                }} >
-                    
-                  </img>
+                    alt = 'character1' 
+                    className ='mypage-profile-img-in' 
+                    src='/img/profile/profile1.png' 
+                    onClick ={(e)=>{
+                    newUserInfo.profile_picture_id = 1 ;
+                    setUserInfo(newUserInfo);
+                  }} >
+                    </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character2' 
                   className ='mypage-profile-img-in' 
@@ -405,24 +446,30 @@ const updateUserInfo = () => {
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character3' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile3.png' 
                   onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 3;
+                  newUserInfo.profile_picture_id = 3 ;
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character4' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile4.png' 
                   onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 4;
+                  newUserInfo.profile_picture_id = 4 ;
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character5' 
                   className ='mypage-profile-img-in' 
@@ -432,6 +479,8 @@ const updateUserInfo = () => {
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character6' 
                   className ='mypage-profile-img-in' 
@@ -441,15 +490,19 @@ const updateUserInfo = () => {
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                  <div className ='gray-circle'>
                   <img 
                   alt = 'character7' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile7.png' 
                   onClick ={(e)=>{
-                  newUserInfo.profile_picture_id = 7;
+                  newUserInfo.profile_picture_id = 7 ;
                   setUserInfo(newUserInfo);
                 }} >
                   </img>
+                  </div>
+                
                   
                 </div>
                 <div className ='mypage-profile-color'>
