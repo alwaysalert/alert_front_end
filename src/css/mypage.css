@@ -278,20 +278,28 @@ input[type="checkbox"]:checked + label {
 }
 
 .mypage-content-correct-button1{
+    cursor: pointer;
     position: absolute;
     height: 20px;
     left: 1000px;
     top: 900px;
-    
-    width: 100px;
+    font-family: 'apple-font-EB';
+    background-color: #aaaaaa6b;
+    border: 0;
+    width: 90px;
+    border-radius: 2px;
 }
 .mypage-content-correct-button2{
+    cursor: pointer;
     position: absolute;
     height: 20px;
     left: 1110px;
     top: 900px;
-    
-    width: 100px;
+    font-family: 'apple-font-EB';
+    background-color: #aaaaaa6b;
+    border: 0;
+    width: 90px;
+    border-radius: 2px;
 }
 
 
@@ -438,7 +446,7 @@ color: #686868;
 }
 .profile2{
     position: relative;
-    top: 15px;
+    top: 5px;
     width: 10px;
     display: block;
     margin: 0 auto;
@@ -458,6 +466,20 @@ color: #686868;
     height: 130px;
     border-radius: 1150px;
 
+}
+.profile4{
+    position: relative;
+    top: 20px;
+    width: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 5px;
+    border-radius: 1150px;
+    text-align: center;
+    /* box-shadow: 4px 4px 4px rgba(0.25, 0.25, 0.25, 0.25); */
 }
 
 /* 프로필 기본정보만 나오는거 */

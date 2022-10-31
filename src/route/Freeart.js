@@ -126,7 +126,7 @@ function Freeart(props) {
           <div className="freeart-content-head-title">자유게시판</div>
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
-        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo}></BoardProfile>
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo} board ='자유게시판'></BoardProfile>
         
         {props.isLoggedIn ? <div className="freeart-form-div">
         <form className="freeart-form" onSubmit={onSubmit}>

@@ -67,7 +67,7 @@ function BoardProfile(props) {
                 />
             </div>
                 
-            <div className="freeart-activity"><strong>자유게시판에서 {props.uInfo.nickname}님의 활동</strong></div>
+            <div className="freeart-activity"><strong>{props.board}에서 {props.uInfo.nickname}님의 활동</strong></div>
             <div className="freeart-buttonBoxes">
             <div><strong>작성글</strong></div>
             <div><strong>댓글</strong></div>
