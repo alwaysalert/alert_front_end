@@ -9,6 +9,7 @@ import ViewContents from '../route/ViewContents';
 import {useCookies} from 'react-cookie';
 import MyActivity from '../route/MyActivity';
 import Search from '../route/Search';
+import ErrorPage from '../route/ErrorPage';
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
@@ -37,6 +38,7 @@ function App() {
 
             <Route exact path="/MyActivity" element = {<MyActivity isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/Search" element = {<Search isLoggedIn={isLoggedIn}/>}/>
+            <Route exact path="/Error" element = {<ErrorPage isLoggedIn={isLoggedIn}/>}/>
 
 
        

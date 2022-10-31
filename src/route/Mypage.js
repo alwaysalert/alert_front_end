@@ -206,7 +206,7 @@ const EditMode = () =>{
           
           <div className='mypage-content-activity'>
           <Link to ={`/MyActivity`} state = {{ id : 1}}>
-            <div className = "mypage-content-profile-head"><strong>나의 활동</strong></div>
+            <div className = "mypage-content-profile-head">나의 활동</div>
           </Link>
             <div className = "mypage-content-acitivity-text">
               Alert에서 회원님이 활동하신 내역을 확인해보세요.
@@ -230,7 +230,7 @@ const EditMode = () =>{
             
           </div>
           <div className='mypage-content-useInfo'>
-            <div className = "mypage-content-profile-head"><strong>이용 문의</strong></div>
+            <div className = "mypage-content-profile-head">이용 문의</div>
             <div className = "mypage-content-acitivity-text">Alert의 중요한 정보들, 개인정보처리방침 등을 확인해보세요.</div>
           </div>
         </div>
