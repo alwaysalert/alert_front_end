@@ -14,6 +14,11 @@
     font-weight: normal;
     font-style: normal;
 }
+a {
+    
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 링크의 색상 제거 */
+  }
 input::placeholder {
     color: #B7B7B7;
     font-size: 20px;
@@ -127,7 +132,7 @@ input::placeholder {
 }
 .form-title{
     vertical-align: top;
-    padding-left:7px;
+    padding-left:10px;
     font-family: apple-font-EB;
     font-size: 20px;
     
@@ -145,7 +150,8 @@ input::placeholder {
     vertical-align: top;
     height:190px;
     width: 97%;
-    padding-left:7px;
+    padding-top: 10px;
+    padding-left:10px;
     font-family: apple-font-EB;
     font-size: 15px;
     resize: none;
@@ -156,14 +162,14 @@ input::placeholder {
 .form-last{
     display: inline-block;
     width: 100%;
-    height: 56.7px;
+    height: 46.1px;
     
     
 }
 
 
 .clip-icon{
-    margin-top: 13px;
+    margin-top: 9px;
     margin-left: 3px;
     
 }
@@ -205,11 +211,11 @@ input::placeholder {
 .freeart-arts-profile{
     display: inline-block;
     float: left;
-    width: 105px;
-    height: 105px;
-    margin-top: 12.5px;
+    width: 90px;
+    height: 90px;
+    margin-top: 20px;
     margin-left:12.5px;
-    margin-right: 15px;
+    margin-right: 25px;
 }
 
 .freeart-arts-container div h4{
@@ -395,9 +401,11 @@ input::placeholder {
 .fmc-comment-submit{
     display:inline-block;
     float: right;
+    margin-top:-1px;
     vertical-align: top;
-    height:34.95px;
+    height:36.5px;
     width:34.95px;
+    margin-right:-0.65px;
     background-color: grey;
 
 }
