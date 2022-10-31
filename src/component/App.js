@@ -8,6 +8,7 @@ import ViewContents from '../route/ViewContents';
 
 import {useCookies} from 'react-cookie';
 import MyActivity from '../route/MyActivity';
+import Search from '../route/Search';
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/freeart/:id" element ={<ViewContents isLoggedIn={isLoggedIn}/>} />
 
             <Route exact path="/MyActivity" element = {<MyActivity isLoggedIn={isLoggedIn}/>}/>
+            <Route exact path="/Search" element = {<Search isLoggedIn={isLoggedIn}/>}/>
 
 
        
