@@ -45,7 +45,7 @@ function Freeart(props) {
         }}).then(async (res) => {
           //console.log('data =',res.data);
           newUserInfo ={...res.data};
-          console.log(newUserInfo);
+          //console.log(newUserInfo);
           setUserInfo(newUserInfo);
           //console.log('state:',userInfot);
         })
@@ -75,6 +75,9 @@ function Freeart(props) {
     });
   
 },[])
+useEffect(() => {
+  
+},[articleArray])
 
  const[title, setWriteTitle] = useState("");
  const[text, setWriteContents] = useState("");
@@ -152,7 +155,7 @@ function Freeart(props) {
               date.getMinutes().toString().padStart(2, '0')
           }
           var time = new Date(article.created_time);
-          
+          console.log("article=",article)
           
           return (<div  key={article.id} name={article.id} id="freeart-arts-grid" >
                   <Link to={'/freeart/'+article.id} style={{width:'945px',height:'130px', backgroundColor:'red'}}>
@@ -162,26 +165,27 @@ function Freeart(props) {
                 
                   <h4 className="freeart-arts-title"><strong>{article.title}</strong></h4>
                   <p><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
-                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_nickname}</span>
+                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                   <span className="count-container">
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             
             <ThumbUpAltIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3' }}/>
           </div>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
-            23
+            {article.like_users.length}
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             <ChatIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
           </div>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
-            3
+          
+          {article.comment_count}
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             <StarIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
           </div>
           <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
-            3
+          {article.bookmark ? article.bookmark.length : "0"}
           </span>
                   </span>                  
                   </div>
