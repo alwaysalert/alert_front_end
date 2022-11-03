@@ -372,8 +372,7 @@ input::placeholder {
     min-height:100px;
     width:95%;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom:15px;
+    
     background-color: #f4f4f4;
 }
 .fmc-comment-input{
@@ -381,6 +380,7 @@ input::placeholder {
     /* background-color: #f4f4f4; */
     min-height:35px;
     margin-bottom: 100px;
+    vertical-align: bottom;
 }
 .write-comment{
     display: inline-block;

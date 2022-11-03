@@ -120,7 +120,13 @@ input:focus {outline: none;}
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-
+.box-low-login{
+    vertical-align:'bottom';
+    height: 20px;
+    background-color: #FFFFFF;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
 .box-high-title{
     font-family: 'hanna-font';
     padding-top:20px;
