@@ -1,9 +1,11 @@
-#### 🌐 S! Web Service Project backend
+#### 🌐 S! Web Service Project frontend
 
 <h3>🧑🏻‍💻Member🧑🏻‍💻</h3>
+1. make-s0me-noise
+<br>
+2. givensik
 
-
-<h3>📓Curriculum📓</h3>
+<h3>📓Implemented Function📓</h3>
 
 
 <p>📚Ref. 📚</p>

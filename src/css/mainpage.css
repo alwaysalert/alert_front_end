@@ -22,6 +22,12 @@
     font-style: normal;
 }
 @font-face {
+    font-family: 'apple-font-B';
+    src: url('../../public/font/apple/AppleSDGothicNeoB.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
     font-family: 'BM HANNA_TTF';
     src: url(../../public/font/bm/BM-HANNA.ttf);
 }
@@ -277,7 +283,10 @@ input:focus {outline: none;}
     height: 150px;
  }
 
- 
+ .nim{
+    font-size: 25px;
+    color: #000;
+ }
  .mypage-box{
     margin-top: -8px;
     margin-left: -8px;
@@ -288,7 +297,8 @@ input:focus {outline: none;}
  .mypage-box-title{
     color:#6E5DB0;
     font-Size: 32px;
-    padding-top:20px;
+    padding-top: 20px;
+    font-family: 'BM HANNA_TTF';
  }
  .mypage-box-profile-image{
     display:block;
@@ -344,3 +354,92 @@ input:focus {outline: none;}
     display: none;
  }
  
+
+ .sLogo{
+    position: absolute;
+    width: 487px;
+    height: 219px;
+    left: calc(50% - 487px/2 - 0.5px);
+    top: 252px;
+ }
+
+ .sinput{
+    position: absolute;
+    position : relative;
+    width: 800px;
+    left: 439px;
+    top: 450px;
+    border-top:#FFFFFF;
+    border-right:#FFFFFF;
+    border-left:#FFFFFF;
+    size :100px;
+    font-size: 20px;
+    color:#8A8A8A;
+    line-height: 40px;
+ }
+ /* width : 136 */
+ .sicon{
+    position: absolute;
+    left : 1190px;
+    top : 522px;
+    
+ }
+
+ /* 에러 페이지 */
+ .error{
+    display: flex;
+    position: absolute;
+    width: 1046px;
+    height: 682px;
+    left: 317px;
+    top: 100px;
+    text-align: center;
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+/* 1680 */
+/* 317 317 */
+.errorImg{
+    position: absolute;
+    width: 487px;
+    height: 219px;
+    left: calc(50% - 487px/2 - 0.5px);
+    top: 150px;
+}
+.errormessage{
+    position: absolute;
+    width: 646px;
+    height: 35px;
+    left: 200px;
+    top: 370px;
+    
+    font-family: 'apple-font-EB';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 45px;
+    text-align: center;
+    color: #ADADAD;
+}
+/* 1046 */
+/* 300 646 300 */
+.errorbutton{
+    position: relative;
+    height: 68px;
+    width: 310px;
+    left: 190px;
+    top: 500px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    border-color: #FFFFFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+    font-family: 'apple-font-B';
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    color: #ADADAD;
+    cursor:pointer;
+    margin: 15px;
+}

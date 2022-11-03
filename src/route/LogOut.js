@@ -126,7 +126,7 @@ const image_route = (num) => {
   return (
     <div className="mypage-box" >
       <div className="mypage-box-title">
-        프로필
+        {userInfo.nickname}<span className='nim'> 님</span>
       </div>
       <div className ='profile2' style ={button_style}>
           <img 
@@ -135,40 +135,55 @@ const image_route = (num) => {
               src={image_route(userInfo.profile_picture_id)}
           />
       </div>
-      <div className="mypage-box-nickname">{userInfo.nickname}</div>
-      <div className="mypage-box-hi"> 님, 안녕하세요</div>
-      <ModeIcon className="penicon"></ModeIcon>
+      <div>
+        <br></br>
+        <br></br>
+      </div>
       <Grid container>
       <Link to={'/Mypage'}>
         <Box sx={{
 
           width: '8.18rem',
           height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
           color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
           p: 1,
           m: 0.3,
           borderRadius: 0.2,
           textAlign: 'center',
-          fontSize: '0.6rem',
+          fontSize: '0.8rem',
           fontWeight: '700',
-        }}>마이페이지</Box></Link>
-        <Link to ={`/MyActivity`} state = {{ id : 4}}>
+        }}><strong>마이페이지</strong></Box></Link>
+        <Link>
         <Box sx={{
           width: '8.18rem',
           height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
           color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
           p: 1,
           m: 0.3,
           borderRadius: 0.2,
           textAlign: 'center',
-          fontSize: '0.6rem',
+          fontSize: '0.8rem',
           fontWeight: '700',
           }}>
-            댓글
+            <GoogleLogout
+          clientId="803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com"
+          buttonText="Logout"
+          render={renderProps => (
+            <div onClick={renderProps.onClick} >
+                <strong>로그아웃</strong>
+            </div>
+          )}
+          onLogoutSuccess={(event)=>{
+            console.log('logout');
+            // dispatch({type :"LogOut"})
+            handle();
+          }}
+        >
+        </GoogleLogout>
           </Box>
         </Link>
         <Link to ={`/MyActivity`} state = {{ id : 2}}>
@@ -176,32 +191,32 @@ const image_route = (num) => {
 
           width: '8.18rem',
           height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
           color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
           p: 1,
           m: 0.3,
           borderRadius: 0.2,
           textAlign: 'center',
-          fontSize: '0.6rem',
+          fontSize: '0.8rem',
           fontWeight: '700',
-        }}>좋아요</Box>
+        }}>스크랩한 글</Box>
         </Link>
         <Link to ={`/MyActivity`} state = {{ id : 3}}>
         <Box sx={{
 
           width: '8.18rem',
           height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
           color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
           p: 1,
           m: 0.3,
           borderRadius: 0.2,
           textAlign: 'center',
-          fontSize: '0.6rem',
+          fontSize: '0.8rem',
           fontWeight: '700',
-        }}>스크랩</Box>
+        }}>+</Box>
         </Link>
       </Grid>
       <div className="mypage-box-etc">
@@ -223,23 +238,8 @@ const image_route = (num) => {
           }}
         >
         </GoogleLogout> */}
-      
-        
-          <GoogleLogout
-          clientId="803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com"
-          buttonText="Logout"
-          render={renderProps => (
-            <div onClick={renderProps.onClick} >
-                로그아웃
-            </div>
-          )}
-          onLogoutSuccess={(event)=>{
-            console.log('logout');
-            // dispatch({type :"LogOut"})
-            handle();
-          }}
-        >
-        </GoogleLogout>
+        <div>환경 설정</div>
+          
       
         </div>
     </div>
