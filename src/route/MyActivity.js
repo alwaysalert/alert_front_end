@@ -57,31 +57,7 @@ function MyActivity(props) {
         //console.log('a:', newUserInfot);
       }, []);
 
-    //스테이트에 따라서 
-    // useEffect(() => {
-    //     if(whatPost1 === true){
-    //         setWhatPost2(false)
-    //         setWhatPost3(false)
-    //         setWhatPost4(false)
-    //     }else if(whatPost2 === true){
-    //         setWhatPost1(false)
-    //         setWhatPost2(true)
-    //         setWhatPost3(false)
-    //         setWhatPost4(false)
-    //     }else if(whatPost3 === true){
-    //         setWhatPost1(false)
-    //         setWhatPost2(false)
-    //         setWhatPost3(true)
-    //         setWhatPost4(false)
-    //     }else if(whatPost4 === true){
-    //         setWhatPost1(false)
-    //         setWhatPost2(false)
-    //         setWhatPost3(false)
-    //         setWhatPost4(true)
-    //     }
-    //     //console.log('a:', newUserInfot);
-    //   }, [whatPost1,whatPost2,whatPost3,whatPost4 ]);
-
+    
       
 
       const boxStyle1 ={
