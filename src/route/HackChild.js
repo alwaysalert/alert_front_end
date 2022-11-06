@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Nav from './Nav'
 import '../css/hackchild.css'
 import { useLocation } from "react-router-dom"
+import HackChildContent from './HackChildContent';
 
 function HackChild(props) {
     //버튼
@@ -131,10 +132,9 @@ function HackChild(props) {
                         setWhatNum(4);
                     }}
                     className = 'myactivity-button4'><strong>기타</strong></button>
-        </div>
-        <div>
-                
-            </div>
+          </div>
+          <HackChildContent></HackChildContent>
+        
         </div>
         
     </div>
