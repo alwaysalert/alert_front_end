@@ -23,8 +23,8 @@ function Google_Login() {
     
 
 
-  const drfClientId = 'Dpt4r9WPkCZ5IbYKIo8XDr81q3awkWoUWFkwPE8s';
-  const drfClientSecret = 'w0wGIZvUgMfxdotiznkIsQQJRC1Px067ac9vVrZnb3Ks3PQArDYrQ0SDwEh42quaGF2RBS64jxT1tSNRD6eKF4WqKVlLDyeqBDOjG1mfnbG9WrpgLtfuNTLzfGb2E2cD';
+  const drfClientId = 'cnejuibVzAZ0kgkHKCuszHrCdXypgcuNzm3Ez35s';
+  const drfClientSecret = 'pgA4GDCYbqNfA6LxAEiAqFNyk5dZZ3GKDQ6hCJddD1m4YNFPYHR4UW8LApZecXLcxIpV5rqyt64Zo8uniWN5aIeG2vkfoLrZwiN5Pbh7GYa5JyYfNUbfjq9D0IXif9C2';
   // const drfClientId = 'NDhVLFJEul6091zuCB7nQCNgcVDd4EvONETHKfOP'
   // const drfClientSecret = '7SiuDr5cULJIss8IkmvyGW9ouyfyR6U78QfFQuCDxQfTz4GbIVk2dOeEbSAvZ8TcPsUQW6lTtheor67jsECmGuWgMfsuVTkpDAigoYGtyAtbkS61utCocQC7esyDcmA6'
   
