@@ -74,7 +74,9 @@ const CheckUser = (access_token) => {
         setUserInfo(newUserInfo);
 
         //console.log('state:',userInfot);
-      })
+      }).catch(err => {
+        document.location="/Error";
+      });
 
 }
 
@@ -98,9 +100,8 @@ const CheckNickName = (name) => {
     }else{
       setIsSame(2);
     }
-  })
-  .catch((err) => {
-    console.log('실패');
+  }).catch(err => {
+    document.location="/Error";
   });
 
 }
@@ -316,9 +317,8 @@ const updateUserInfo = () => {
     .then((res) => {
       alert('수정 성공');
       document.location.reload();
-    })
-    .catch((err) => {
-      alert(err);
+    }).catch(err => {
+      document.location="/Error";
     });
   }
 

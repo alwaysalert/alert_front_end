@@ -177,8 +177,8 @@ function Register(props) {
             setnicknameCheck(true);
           }
         })
-        .catch((err) => {
-          console.log('실패');
+        .catch(err => {
+          document.location="/Error";
         });
         }
       }
@@ -193,8 +193,8 @@ function Register(props) {
           user_job: jobbb,
         })
         .then((res) => console.log('post =',res))
-        .catch((err) => {
-          console.log("Error Register", err);
+        .catch(err => {
+          document.location="/Error";
         });
         props.setOpen(false);
         props.setFlag(true);
