@@ -22,8 +22,10 @@ function ViewContents(props) {
    
 
     //쿠키에서 access_token받아오기
-    const [likeColor, setLikeColor] = useState({'default':'#b9b9b9', 'change':'red'})
-    const [scrapColor, setScrapColor] = useState({'default':'#b9b9b9', 'change':'#FBD405'})
+    const [likeColor, setLikeColor] = useState({'defaultl':'#b9b9b9'})
+    
+    const [scrapColor, setScrapColor] = useState({'defaults':'#b9b9b9'})
+    const [commentLikeLib,setCommentLikeLib] = useState({});
     const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
     const [userInfo, setUserInfo] = useState({
       auth_user_id : null,
@@ -46,10 +48,10 @@ function ViewContents(props) {
             token: access_token,
             format: 'json',
           }}).then(async (res) => {
-            //console.log('data =',res.data);
+           
             newUserInfo ={...res.data};
             setUserInfo(newUserInfo);
-            //console.log('state:',userInfot);
+            
           })
     
     }
@@ -57,21 +59,21 @@ function ViewContents(props) {
       console.log("check ",userInfo)
       if(bookmark.includes(userInfo.auth_user_id) === false)
       {
-        setScrapColor({'default':'#b9b9b9', 'change':'yellow'})
+        setScrapColor({'defaults':'#b9b9b9'})
       }
       else{
         //console.log('yes!')
-        setScrapColor({'default':'yellow', 'change':'#b9b9b9'})
+        setScrapColor({'defaults':'yellow'})
       }
     }
     const checkLikeColor = (like_users,userInfo) => {
       if(like_users.includes(userInfo.auth_user_id) === false)
       {
-        setLikeColor({'default':'#b9b9b9', 'change':'red'})
+        setLikeColor({'defaultl':'#b9b9b9'})
       }
       else{
         //console.log('yes!')
-        setLikeColor({'default':'red', 'change':'#b9b9b9'})
+        setLikeColor({'defaultl':'red'})
       }
     }
   
@@ -94,18 +96,20 @@ function ViewContents(props) {
       .then(async (res) => {
       datafunc(res.data);
       
-      
-       
-        
-        }).catch((err) => {
-          console.log("Error check", err);
-        });
+      }).catch(err => {
+        document.location="/Error";
+      });
       axios.get(`${baseURL}/freeboards/${id}/comment?format=json`)
       .then((res) => {
-          //console.log("comment",res)
+          
           const commentIndex2 = []
           res.data.map(comment => {
-            
+            setCommentLikeLib((prev) => {
+              const tmp = prev;
+              const tmpid = comment.id
+              tmp[tmpid] = comment.like_users.length;
+              return tmp;
+            })
             if(comment.parent_comment === null)
             {
               //console.log(comment)
@@ -132,9 +136,7 @@ function ViewContents(props) {
           
           
           
-          }).catch((err) => {
-            console.log("Error check", err);
-          });
+          })
     },[])
     function formatDate(date) {
       return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
@@ -153,6 +155,7 @@ function ViewContents(props) {
     useEffect(() => {
     //console.log(DATA.like_users)
     console.log("DATA",DATA)
+    console.log("comment",commentLikeLib)
     //console.log("user",userInfo);
     
     console.log("comment =",COMMENT)
@@ -175,7 +178,34 @@ function ViewContents(props) {
     const newTime = new Date(DATA.created_time);
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     
-    
+    const commentLike = (event) => {
+      const comment_id = event.target.parentElement.parentElement.id
+      axios.post(`${baseURL}/freeboards/${id}/comment/${comment_id}/like_user`,{
+        token: cookies.access_token,
+      }).then((res) => {
+          const value =  commentLikeLib[comment_id]
+          if(res.data.message === "like upload")
+          {
+            
+            setCommentLikeLib({
+              ...commentLikeLib,
+              [comment_id]: value + 1
+            })
+            console.log(commentLikeLib)
+          }
+          else if(res.data.message === "like deleted")
+          {
+            
+            setCommentLikeLib({
+              ...commentLikeLib,
+              [comment_id]: value - 1
+            })
+            console.log(commentLikeLib)
+          }
+      }).catch(err => {
+        alert("오류 발생")
+      });
+    }
     
     const like = () => {
       
@@ -188,12 +218,18 @@ function ViewContents(props) {
           if(res.data.message === "like upload")
           {
               setLikeCount(likeCount + 1)
+              
+              setLikeColor({'defaultl':'red'})
           }
           else if(res.data.message ==="like deleted")
           {
              setLikeCount(likeCount - 1);
+             
+             setLikeColor({'defaultl':'#b9b9b9'})
           }
-        })
+        }).catch(err => {
+          alert("오류 발생");
+        });
     }
     const scrap = () => {
       
@@ -206,12 +242,17 @@ function ViewContents(props) {
           if(res.data.message === "bookmark upload")
           {
               setScrapCount(scrapCount + 1)
+              setScrapColor({'defaults':'yellow'})
+              
           }
           else if(res.data.message ==="bookmark deleted")
           {
              setScrapCount(scrapCount - 1);
+             setScrapColor({'defaults':'#b9b9b9'})
           }
-        })
+        }).catch(err => {
+          alert("오류 발생");
+        });
     }
     const onEditSubmit = async(event) => {
       event.preventDefault();
@@ -228,7 +269,9 @@ function ViewContents(props) {
           console.log(res.data)
           setCheckEdit(false)
           document.location.reload();
-        })
+        }).catch(err => {
+          alert("오류 발생");
+        });
       
    }
    const onWriteComment = () => {
@@ -239,7 +282,9 @@ function ViewContents(props) {
       }).then((res) => {
           //console.log(res)
           document.location.reload()
-      })
+      }).catch(err => {
+        alert("오류 발생")
+      });
 
    }
    const onWriteComcomment = (event) => {
@@ -268,8 +313,8 @@ function ViewContents(props) {
       {
         document.location.reload();
       }
-    }).catch((err) => {
-      console.log("Error check", err);
+    }).catch(err => {
+      alert("오류 발생")
     });
 
     
@@ -307,7 +352,9 @@ const onDelete = () => {
       console.log(res.data)
       
       document.location.replace("/freeart");
-    })
+    }).catch(err => {
+      alert("오류 발생")
+    });
   }
   const onCcommentClick = (event) => {
     if(event.target.parentElement.parentElement.lastChild.name === "true")
@@ -389,17 +436,11 @@ const onDelete = () => {
             <div className='fmc-contents'>{DATA.body}</div>
             <div className='fmc-icon'>
             
-            <FormControlLabel style={{border:'none', width:'20px',marginTop: '-15px'}}
-            control={
-              <Checkbox
-                {...label}
-                icon={<ThumbUpAltIcon onClick={like} sx={{ color: likeColor.default,width:'23px',height:'23px' }}/>}
-                checkedIcon={<ThumbUpAltIcon onClick={like} sx={{ color: likeColor.change,width:'23px',height:'23px' }}/>}
-                
-              />
-            }
             
-          />
+          <ThumbUpAltIcon onClick={like} sx={{ color: likeColor.defaultl ,width:'23px',height:'23px' }}/>
+                
+                
+          
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             {likeCount ? likeCount : "0"}
           </span>
@@ -409,17 +450,7 @@ const onDelete = () => {
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             {DATA.comment_count}
           </span>
-          <FormControlLabel style={{border:'none', width:'20px',marginTop: '-15px'}}
-            control={
-              <Checkbox
-                {...label}
-                icon={<StarIcon onClick={scrap} sx={{ color: scrapColor.default,width:'23px',height:'23px' }}/>}
-                checkedIcon={<StarIcon onClick={scrap} sx={{ color: scrapColor.change,width:'23px',height:'23px' }}/>}
-                
-              />
-            }
-            
-          />
+          <StarIcon onClick={scrap} sx={{ color: scrapColor.defaults,width:'23px',height:'23px' }}/>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
           {scrapCount ? scrapCount : "0"}
           </span>
@@ -438,7 +469,7 @@ const onDelete = () => {
           
           var time = new Date(comment.created_time);
           return(<>
-            <div className="freeart-comment">
+            <div className="freeart-comment" id={comment.id}>
         <div className="freeart-maincontents-header">
               <div className="fmh-left">
                 <div className='fm-img-background'>
@@ -449,13 +480,17 @@ const onDelete = () => {
                   <div style={{display:"inline-block"}}>
                     <p style={{fontFamily:'apple-font-EB', fontWeight:'bold'}}>{comment.author_info.nickname}</p>
                     <p style={{fontFamily:'apple-font-M',color:'#8A8A8A'}}>{formatDate(time)}</p>
+                    
                   </div>
-                  
+                  {commentLikeLib[comment.id] ?  <div style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
+                    <ThumbUpAltIcon sx={{ color: 'red',width:'23px',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
+                    <span>{commentLikeLib[comment.id]}</span>
+                  </div> : <></>}              
               </div>
               <div className="fmc-report" onClick={(event) => {onCcommentClick(event)}} style={{color:'#8A8A8A',marginTop:'15px'}}>
                     대댓글
               </div>
-              <div className="fmc-report" style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={(event) => {commentLike(event)}} style={{color:'#8A8A8A',marginTop:'15px'}}>
                     좋아요
               </div>
               <div className="fmc-report" style={{color:'#8A8A8A',marginTop:'15px'}}>
@@ -467,7 +502,7 @@ const onDelete = () => {
               
               var time2 = new Date(child_comment.created_time);
               return(<>
-              <div className='freeart-comcomment'>
+              <div className='freeart-comcomment' id={child_comment.id}>
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
                 <div className='fm-img-background'>
@@ -479,9 +514,14 @@ const onDelete = () => {
                     <p style={{fontFamily:'apple-font-EB', fontWeight:'bold'}}>{child_comment.author_info.nickname}</p>
                     <p style={{fontFamily:'apple-font-M',color:'#8A8A8A'}}>{formatDate(time2)}</p>
                   </div>
+
+                  {commentLikeLib[child_comment.id] ? <div style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
+                    <ThumbUpAltIcon sx={{ color: 'red',width:'23px',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
+                    <span>{commentLikeLib[child_comment.id]}</span>
+                  </div> : <></>}
                   
               </div>
-              <div className="fmc-report" style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={(event) => commentLike(event)} style={{color:'#8A8A8A',marginTop:'15px'}}>
                     좋아요
               </div>
               <div className="fmc-report" style={{color:'#8A8A8A',marginTop:'15px'}}>
