@@ -14,8 +14,10 @@ import BoardProfile from './BoardProfile'
 import { useCookies } from 'react-cookie';
 
 import { useLocation } from "react-router-dom"
+import MyactivityContents from './MyactivityContents'
 
 function MyActivity(props) {
+    const [whatNum, setWhatNum] = useState(1);
     const [whatPost1, setWhatPost1] = useState(false); 
     const [whatPost2, setWhatPost2] = useState(false); 
     const [whatPost3, setWhatPost3] = useState(false); 
@@ -38,21 +40,25 @@ function MyActivity(props) {
             setWhatPost2(false)
             setWhatPost3(false)
             setWhatPost4(false)
+            setWhatNum(1);
         }else if(location.state.id === 2){
             setWhatPost1(false)
             setWhatPost2(true)
             setWhatPost3(false)
             setWhatPost4(false)
+            setWhatNum(2);
         }else if(location.state.id === 3){
             setWhatPost1(false)
             setWhatPost2(false)
             setWhatPost3(true)
             setWhatPost4(false)
+            setWhatNum(3);
         }else if(location.state.id === 4){
             setWhatPost1(false)
             setWhatPost2(false)
             setWhatPost3(false)
             setWhatPost4(true)
+            setWhatNum(4);
         }
         //console.log('a:', newUserInfot);
       }, []);
@@ -100,6 +106,7 @@ function MyActivity(props) {
                         setWhatPost2(false)
                         setWhatPost3(false)
                         setWhatPost4(false)
+                        setWhatNum(1);
                     }}
                     className = 'myactivity-button1'><strong>
                         작성한 글
@@ -114,6 +121,7 @@ function MyActivity(props) {
                         setWhatPost2(true)
                         setWhatPost3(false)
                         setWhatPost4(false)
+                        setWhatNum(2);
                     }}
                     className = 'myactivity-button2'><strong>스크랩한 글</strong></button>
                 <button 
@@ -125,6 +133,7 @@ function MyActivity(props) {
                         setWhatPost2(false)
                         setWhatPost3(true)
                         setWhatPost4(false)
+                        setWhatNum(3);
                     }}
                     className = 'myactivity-button3'><strong>좋아요한 글</strong></button>
                 <button 
@@ -136,19 +145,13 @@ function MyActivity(props) {
                         setWhatPost2(false)
                         setWhatPost3(false)
                         setWhatPost4(true)
+                        setWhatNum(4);
                     }}
                     className = 'myactivity-button4'><strong>댓글</strong></button>
             </div>
             
           </div>
-          <div className='myactivity-content-background'>
-                <div className='myactivity-content-post' >
-                    프로필 알어니ㅏㅁ러ㅣㅏㄴㅇ러ㅏㅣㄴㅁㄹ
-                </div>
-                <div className='myactivity-content-post' >
-                    프로필 알어니ㅏㅁ러ㅣㅏㄴㅇ러ㅏㅣㄴㅁㄹ
-                </div>
-          </div>
+          <MyactivityContents num = {whatNum}></MyactivityContents>
         
       </div>
     </>

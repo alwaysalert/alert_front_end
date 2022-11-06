@@ -149,9 +149,7 @@ const hexcolor = (num) =>{
     return '#adb9ca'
   }
 }
-const button_style={
-  background : hexcolor()
-}
+
 
 
   return (
