@@ -153,7 +153,7 @@ function Mainpage(props) {
               sx={{
               boxShadow: 1,
               width: '18rem',
-              height: '18rem',
+              height: '18.05rem',
               bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
               color: (theme) =>
               theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
@@ -168,7 +168,7 @@ function Mainpage(props) {
                 
                 {/* <Login isLoggedIn={props.isLoggedIn}></Login> */}
                 <Profile isLoggedIn={props.isLoggedIn}></Profile>
-
+                
             </Box>
             <Box
               sx={{
