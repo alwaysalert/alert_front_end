@@ -128,7 +128,7 @@ const image_route = (num) => {
       <div className="mypage-box-title">
         {userInfo.nickname}<span className='nim'> 님</span>
       </div>
-      <div className ='profile2' style ={button_style}>
+      <div className ='profile4' style ={button_style}>
           <img 
               alt='profile3'
               className = 'profile3'

@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import BoardProfile from './BoardProfile'
 import { useCookies } from 'react-cookie';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import { accordionDetailsClasses } from '@mui/material';
 
 
 
@@ -76,7 +77,7 @@ function Freeart(props) {
   
 },[])
 useEffect(() => {
-  
+  console.log('state',articleArray);
 },[articleArray])
 
  const[title, setWriteTitle] = useState("");
@@ -111,12 +112,44 @@ useEffect(() => {
     target: { value,}
   } = event;
   setWriteContents(value);
-  
-  
-  
-
-
 }
+//auther 프로필 수정
+const image_route = (num) => {
+  
+  if(num === 1){
+    return '/img/profile/profile1.png'
+  }else if(num === 2){
+    return '/img/profile/profile2.png'
+  }else if(num === 3){
+    return '/img/profile/profile3.png'
+  }else if(num === 4){
+    return '/img/profile/profile4.png'
+  }else if(num === 5){
+    return '/img/profile/profile5.png'
+  }else if(num === 6){
+    return '/img/profile/profile6.png'
+  }else if(num === 7){
+    return '/img/profile/profile7.png'
+  }
+}
+const hexcolor = (num) =>{
+  if(num === 1){
+    return '#c5e0b4'
+  }else if(num === 2){
+    return '#ffe699'
+  }else if(num === 3){
+    return '#bdd7ee'
+  }else if(num === 4){
+    return '#f8cbad'
+  }else if(num === 5){
+    return '#ffc5cd'
+  }else if(num === 6){
+    return '#dfc2ec'
+  }else if(num === 7){
+    return '#adb9ca'
+  }
+}
+
 
 
   return (
@@ -129,7 +162,7 @@ useEffect(() => {
           <div className="freeart-content-head-title">자유게시판</div>
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
-        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo}></BoardProfile>
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo} board ='자유게시판'></BoardProfile>
         
         {props.isLoggedIn ? <div className="freeart-form-div">
         <form className="freeart-form" onSubmit={onSubmit}>
@@ -160,12 +193,13 @@ useEffect(() => {
           return (<div  key={article.id} name={article.id} id="freeart-arts-grid" >
                   <Link to={'/freeart/'+article.id} style={{width:'945px',height:'130px', backgroundColor:'red'}}>
                   <div>
-                  <img className="freeart-arts-profile" src="/img/boho/mypageboho.png"/>
+                  <div className= "freeart-arts-profile-circle" style ={{background : hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="freeart-arts-profile" src={image_route(article.author_info.profile_picture_id)}/></div>
+                  
                 
                 
                   <h4 className="freeart-arts-title"><strong>{article.title}</strong></h4>
                   <p><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
-                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
+                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}{article.author_info.profile_color_id}{image_route(article.author_info.profile_picture_id)}</span>
                   <span className="count-container">
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             

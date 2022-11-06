@@ -23,10 +23,10 @@ function Google_Login() {
     
 
 
-  //const drfClientId = 'fdrtpI9Oxd5v5nfqWD5jjWgxBBrMztLj2Gjzdo3T';
-  //const drfClientSecret = 'n1eCuYarioCEzskYOU4vK3t6NRpuOqPagOqJE76cHi8fr1NbeF1HeZeMVUKzsYcU1xtZAwFbQBwp2gI4M18OeZi4HP8dHo9tqGUYOUXvc8VoDPr0bZEaTO1ZK2eTCq91';
-  const drfClientId = 'NDhVLFJEul6091zuCB7nQCNgcVDd4EvONETHKfOP'
-  const drfClientSecret = '7SiuDr5cULJIss8IkmvyGW9ouyfyR6U78QfFQuCDxQfTz4GbIVk2dOeEbSAvZ8TcPsUQW6lTtheor67jsECmGuWgMfsuVTkpDAigoYGtyAtbkS61utCocQC7esyDcmA6'
+  const drfClientId = 'cnejuibVzAZ0kgkHKCuszHrCdXypgcuNzm3Ez35s';
+  const drfClientSecret = 'pgA4GDCYbqNfA6LxAEiAqFNyk5dZZ3GKDQ6hCJddD1m4YNFPYHR4UW8LApZecXLcxIpV5rqyt64Zo8uniWN5aIeG2vkfoLrZwiN5Pbh7GYa5JyYfNUbfjq9D0IXif9C2';
+  // const drfClientId = 'NDhVLFJEul6091zuCB7nQCNgcVDd4EvONETHKfOP'
+  // const drfClientSecret = '7SiuDr5cULJIss8IkmvyGW9ouyfyR6U78QfFQuCDxQfTz4GbIVk2dOeEbSAvZ8TcPsUQW6lTtheor67jsECmGuWgMfsuVTkpDAigoYGtyAtbkS61utCocQC7esyDcmA6'
   
   
   
