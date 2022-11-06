@@ -123,19 +123,20 @@ function Mainpage(props) {
               
               }}
             >
-              <Box
-                 className={"box-high-whowe"}>
-                  <img src="/img/boho/whoweboho.png" className="whoweboho"/>
-                <div className="box-high-title" style={{color: "#509B3D"}}>
-                  핵린이<br/>게시판
-                </div>
-                
-                <div className="box-high-contents" style={{color:"#0E451D"}}>
-                  해킹이 처음인 당신을<br/>위해 준비했어요
-                </div>
-                
-              </Box>
-              
+              <Link to={'/HackChild'}>
+                <Box
+                  className={"box-high-whowe"}>
+                    <img src="/img/boho/whoweboho.png" className="whoweboho"/>
+                  <div className="box-high-title" style={{color: "#509B3D"}}>
+                    핵린이<br/>게시판
+                  </div>
+                  
+                  <div className="box-high-contents" style={{color:"#0E451D"}}>
+                    해킹이 처음인 당신을<br/>위해 준비했어요
+                  </div>
+                  
+                </Box>
+              </Link>
               <Box
                  className={"box-low"}>
                 <div className="box-low-title">
