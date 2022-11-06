@@ -36,6 +36,22 @@ function MyactivityContents(props) {
         }).catch((err) => {
           console.log("Error check", err);
         });
+    }else if(props.num === 2){
+      axios.get(`${baseURL}/freeboards/?format=json`).then(async (res) => {
+        setArticle(res.data);
+        console.log(res.data);
+        
+        }).catch((err) => {
+          console.log("Error check", err);
+        });
+    }else if(props.num === 3){
+      axios.get(`${baseURL}/freeboards/?format=json`).then(async (res) => {
+        setArticle(res.data);
+        console.log(res.data);
+        
+        }).catch((err) => {
+          console.log("Error check", err);
+        });
     }
     
   }, []);
