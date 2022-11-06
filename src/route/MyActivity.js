@@ -23,7 +23,7 @@ function MyActivity(props) {
     const [whatPost3, setWhatPost3] = useState(false); 
     const [whatPost4, setWhatPost4] = useState(false); 
     const location = useLocation();
-    console.log(location.state.id)
+    //console.log(location.state.id)
 
     const [isHover1, setIsHover1] = useState(false);
     const [isHover2, setIsHover2] = useState(false);

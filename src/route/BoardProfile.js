@@ -5,6 +5,10 @@ import '../css/mainpage.css'
 import '../css/freeart.css'
 import '../css/mypage.css'
 
+import { Link } from 'react-router-dom';
+import "../css/mainpage.css"
+import { Box } from '@mui/system';
+import { Grid } from '@mui/material';
 
 // Component import
 import Login from './Login';
@@ -68,13 +72,76 @@ function BoardProfile(props) {
             </div>
                 
             <div className="freeart-activity"><strong>{props.board}에서 {props.uInfo.nickname}님의 활동</strong></div>
-            <div className="freeart-buttonBoxes">
-            <div><strong>작성글</strong></div>
-            <div><strong>댓글</strong></div>
-            <div><strong>좋아요</strong></div>
-            <div>알람 설정</div>
-            </div>  
-        </div>
+            <Grid container>
+            <Link to ={`/MyActivity`} state = {{ id : 1}}>
+                <Box sx={{
+
+              width: '8.18rem',
+              height: '0.6rem',
+              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
+              color: (theme) =>
+                theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
+              p: 1,
+              m: 0.3,
+              borderRadius: 0.2,
+              textAlign: 'center',
+              fontSize: '0.8rem',
+              fontWeight: '700',
+            }}>작성한 글</Box>
+            </Link>
+            <Link to ={`/MyActivity`} state = {{ id : 4}}>
+              <Box sx={{
+
+              width: '8.18rem',
+              height: '0.6rem',
+              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
+              color: (theme) =>
+                theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
+              p: 1,
+              m: 0.3,
+              borderRadius: 0.2,
+              textAlign: 'center',
+              fontSize: '0.8rem',
+              fontWeight: '700',
+            }}>댓글</Box></Link>
+        <Link to ={`/MyActivity`} state = {{ id : 3}}>
+          <Box sx={{
+
+          width: '8.18rem',
+          height: '0.6rem',
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
+          color: (theme) =>
+            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
+          p: 1,
+          m: 0.3,
+          borderRadius: 0.2,
+          textAlign: 'center',
+          fontSize: '0.8rem',
+          fontWeight: '700',
+        }}>좋아욧</Box>
+        </Link>
+        <Link to ={`/MyActivity`} state = {{ id : 2}}>
+          <Box sx={{
+
+          width: '8.18rem',
+          height: '0.6rem',
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
+          color: (theme) =>
+            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
+          p: 1,
+          m: 0.3,
+          borderRadius: 0.2,
+          textAlign: 'center',
+          fontSize: '0.8rem',
+          fontWeight: '700',
+        }}>스크랩한 글</Box>
+        </Link>
+        
+            </Grid>
+            </div>
+            
+             
+        
   ) :(<div className="freeart-content-profile">
     <Login ></Login>
   </div>) }

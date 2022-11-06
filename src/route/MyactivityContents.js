@@ -26,10 +26,17 @@ function MyactivityContents(props) {
   const [articleArray,setArticle] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
   console.log('cookie',cookies.access_token);
+  const [whatNum, setWhatNum] = useState(props.num);
   useEffect(() => {
     //1 => 작성한글
+    console.log('num = ',props.num);
     if(props.num === 1){
-      axios.get(`${baseURL}/freeboards/?format=json`).then(async (res) => {
+      console.log(1);
+      axios.get(`${baseURL}/mypage/myarticle`, {
+        params: {
+          token: cookies.access_token,
+          format: 'json',
+        }}).then(async (res) => {
         setArticle(res.data);
         console.log(res.data);
         
@@ -37,7 +44,12 @@ function MyactivityContents(props) {
           console.log("Error check", err);
         });
     }else if(props.num === 2){
-      axios.get(`${baseURL}/freeboards/?format=json`).then(async (res) => {
+      console.log(2);
+      axios.get(`${baseURL}/mypage/myscrap`, {
+        params: {
+          token: cookies.access_token,
+          format: 'json',
+        }}).then(async (res) => {
         setArticle(res.data);
         console.log(res.data);
         
@@ -45,7 +57,12 @@ function MyactivityContents(props) {
           console.log("Error check", err);
         });
     }else if(props.num === 3){
-      axios.get(`${baseURL}/freeboards/?format=json`).then(async (res) => {
+      console.log(3);
+      axios.get(`${baseURL}/mypage/mylike`, {
+        params: {
+          token: cookies.access_token,
+          format: 'json',
+        }}).then(async (res) => {
         setArticle(res.data);
         console.log(res.data);
         
@@ -54,7 +71,7 @@ function MyactivityContents(props) {
         });
     }
     
-  }, []);
+  }, [props.num]);
 
 //auther 프로필 수정
 const image_route = (num) => {
