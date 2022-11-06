@@ -9,6 +9,8 @@ import { useCookies } from 'react-cookie';
 
 import Register from '../Register';
 
+import * as glob from '../../global';
+
 //let flag = null
 function Google_Login() {
     //const login = useSelector((state)=>state.login);
@@ -23,8 +25,8 @@ function Google_Login() {
     
 
 
-  const drfClientId = 'cnejuibVzAZ0kgkHKCuszHrCdXypgcuNzm3Ez35s';
-  const drfClientSecret = 'pgA4GDCYbqNfA6LxAEiAqFNyk5dZZ3GKDQ6hCJddD1m4YNFPYHR4UW8LApZecXLcxIpV5rqyt64Zo8uniWN5aIeG2vkfoLrZwiN5Pbh7GYa5JyYfNUbfjq9D0IXif9C2';
+  const drfClientId = glob.GIVEN_DRF_TOKEN;
+  const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
   // const drfClientId = 'NDhVLFJEul6091zuCB7nQCNgcVDd4EvONETHKfOP'
   // const drfClientSecret = '7SiuDr5cULJIss8IkmvyGW9ouyfyR6U78QfFQuCDxQfTz4GbIVk2dOeEbSAvZ8TcPsUQW6lTtheor67jsECmGuWgMfsuVTkpDAigoYGtyAtbkS61utCocQC7esyDcmA6'
   

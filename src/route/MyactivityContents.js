@@ -32,7 +32,7 @@ function MyactivityContents(props) {
     console.log('num = ',props.num);
     if(props.num === 1){
       console.log(1);
-      axios.get(`${baseURL}/mypage/myarticle`, {
+      axios.get(`${process.env.BACK_BASE_URL}/mypage/myarticle`, {
         params: {
           token: cookies.access_token,
           format: 'json',

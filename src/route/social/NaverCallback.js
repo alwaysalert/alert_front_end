@@ -6,16 +6,15 @@ import axios from 'axios';
 import {useSelector, useDispatch} from "react-redux"; // redux
 import Register from '../Register';
 
+import * as glob from '../../global';
+
 function NaverCallback({logged}) {
     const login = useSelector((state)=>state.login);
     const dispatch = useDispatch();
     const token = window.location.href.split('=')[1].split('&')[0];
 
-    //const drfClientId = 'fdrtpI9Oxd5v5nfqWD5jjWgxBBrMztLj2Gjzdo3T';
-    //const drfClientSecret = 'n1eCuYarioCEzskYOU4vK3t6NRpuOqPagOqJE76cHi8fr1NbeF1HeZeMVUKzsYcU1xtZAwFbQBwp2gI4M18OeZi4HP8dHo9tqGUYOUXvc8VoDPr0bZEaTO1ZK2eTCq91';
-    const drfClientId = 'NDhVLFJEul6091zuCB7nQCNgcVDd4EvONETHKfOP'
-    const drfClientSecret = '7SiuDr5cULJIss8IkmvyGW9ouyfyR6U78QfFQuCDxQfTz4GbIVk2dOeEbSAvZ8TcPsUQW6lTtheor67jsECmGuWgMfsuVTkpDAigoYGtyAtbkS61utCocQC7esyDcmA6'
-  
+    const drfClientId = glob.GIVEN_DRF_TOKEN;
+    const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
 
     const baseURL = "http://localhost:8000";
     

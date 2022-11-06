@@ -13,6 +13,7 @@ import {useDispatch, useSelector} from 'react-redux';
 //import {useCookies} from 'react-cookie';
 
 import axios from 'axios';
+import * as glob from '../global';
 
 function LogOut(props) {
   // const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function LogOut(props) {
     setLogin(false);
     google = null
   }
-
+  // console.log('base',glob.BACK_BASE_URL);
   const [login, setLogin] = useState(props.isLoggedIn);
   // console.log("로그아웃 컴포넌트임");
   // console.log(login);
@@ -59,8 +60,7 @@ function LogOut(props) {
   let newUserInfo = {...userInfo};
 
   const CheckUser = (access_token) => {
-    const baseurl= 'http://127.0.0.1:8000'
-    
+    const baseurl= glob.BACK_BASE_URL;
     axios.get(`${baseurl}/users/check_user`, {
         params: {
           token: access_token,
