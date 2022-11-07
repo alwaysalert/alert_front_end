@@ -60,8 +60,10 @@ function LogOut(props) {
         }}).then(async (res) => {
           newUserInfo ={...res.data};
           setUserInfo(newUserInfo);
-          
-        })
+          //console.log('state:',userInfot);
+        }).catch(err => {
+          document.location="/Error";
+        });
   
   }
 

@@ -48,7 +48,7 @@ function NaverCallback({logged}) {
                 setFlag(false);
               }
             }).catch((err) => {
-              console.log("Error check", err);
+              document.location="/Error";
             });
       
       }
@@ -77,8 +77,7 @@ function NaverCallback({logged}) {
         
     })
     .catch((err) => {
-        console.log("Error Naver login", err)
-        return false;
+        document.location="/Error";
         ///document.location.href='/';
     });
 }	

@@ -84,6 +84,7 @@ const handleGoogleLogin = (response) => {
     })
     .then((res) => {
       
+      //console.log("google res =",res);
       const { access_token, refresh_token } = res.data;
 
       setToken(access_token);
@@ -94,7 +95,7 @@ const handleGoogleLogin = (response) => {
       //dispatch({type :"Login"});
     })
     .catch((err) => {
-      console.log("Error Google login", err);
+        document.location="/Error";
     });
 };
 

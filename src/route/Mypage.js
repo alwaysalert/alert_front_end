@@ -43,7 +43,9 @@ function Mypage() {
         }}).then(async (res) => {
           newUserInfo ={...res.data};
           setUserInfo(newUserInfo);
-        })
+        }).catch(err => {
+          document.location="/Error";
+        });
   
   }
   

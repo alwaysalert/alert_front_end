@@ -65,7 +65,7 @@ function Kakao_Login() {
         
       })
       .catch(err => {
-        console.log("Error Kakao login",err);
+        document.location="/Error";
       });
   };
   useEffect(() => {

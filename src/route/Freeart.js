@@ -91,15 +91,17 @@ useEffect(() => {
     const contents = document.getElementById('freeart-contents').value;
     
     axios.post(`${baseURL}/freeboards/create`, {
-      
+        
         token: cookies.access_token,
         title: title,
         body: contents,
         
       }).then((res) => {
-        console.log(res.data)
+        
         document.location.reload();
-      })
+      }).catch(err => {
+        document.location="/Error";
+      });
     
  }
  const onChangeTitle = (event) => {
