@@ -133,8 +133,8 @@ function HackChild(props) {
                     }}
                     className = 'myactivity-button4'><strong>기타</strong></button>
           </div>
+          {/* 게시물 Component */}
           <HackChildContent></HackChildContent>
-        
         </div>
         
     </div>

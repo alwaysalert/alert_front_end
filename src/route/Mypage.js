@@ -11,13 +11,15 @@ import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import MypageEdit from './MypageEdit'
 
-
+//util.js
+import * as util from '../util/util';
 
 function Mypage() {
   //수정 or 그냥 마이페이지
   //state
+  //편집상태
   const [isEdit, setIsEdit] = useState(false);  
-  
+  //userInfo
   const [userInfo, setUserInfo] = useState({
     auth_user_id : 2,
     id : 1,
@@ -28,7 +30,9 @@ function Mypage() {
     user_email:'',
     user_job : 1
   });
+  //수정할 때 미리 옮겨둘 객체
   let newUserInfo = {...userInfo};
+  //function CheckUser(access_token)
   const CheckUser = (access_token) => {
     const baseurl= 'http://127.0.0.1:8000'
     
@@ -37,114 +41,35 @@ function Mypage() {
           token : access_token,
           format: 'json',
         }}).then(async (res) => {
-          //console.log('data =',res.data);
           newUserInfo ={...res.data};
           setUserInfo(newUserInfo);
-          //console.log('state:',userInfot);
         })
   
   }
   
-  //회원 정보 수정 api = /users/edit_profile
 
   const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
-  console.log('cookie =',cookies.access_token);
   // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내기
-  console.log('state:',userInfo);
-  // const [userInfo, setUserInfo] = useState({id : "givensik" ,identity :1, character : '/img/profile/profile1.png', background : '#FF6767'});
-  //console.log(userInfo);
-
-
-  // const newUserInfo = {...userInfo};
-
-  
-
   if(cookies.access_token === undefined){
     alert('로그인 먼저해!')
     document.location = '/';
   }
-  //여기에 mypage 정보를 가져와야할 듯?
   useEffect(() => {
     CheckUser(cookies.access_token);
-    
-    //console.log('a:', newUserInfot);
   }, []);
   
 
 
-  //profile
-  //컬러 숫자 -> ##머시기로 바꾸는 함수
-const hexcolor = (num) =>{
-  if(num === 1){
-    return '#c5e0b4'
-  }else if(num === 2){
-    return '#ffe699'
-  }else if(num === 3){
-    return '#bdd7ee'
-  }else if(num === 4){
-    return '#f8cbad'
-  }else if(num === 5){
-    return '#ffc5cd'
-  }else if(num === 6){
-    return '#dfc2ec'
-  }else if(num === 7){
-    return '#adb9ca'
-  }
-}
 
+//button style css util.js에 있는 hexcolor를 사용한다.
 const button_style={
-  background : hexcolor(newUserInfo.profile_color_id)
+  background : util.hexcolor(newUserInfo.profile_color_id)
 }
-
-const image_route = (num) => {
-  
-  if(num === 1){
-    return '/img/profile/profile1.png'
-  }else if(num === 2){
-    return '/img/profile/profile2.png'
-  }else if(num === 3){
-    return '/img/profile/profile3.png'
-  }else if(num === 4){
-    return '/img/profile/profile4.png'
-  }else if(num === 5){
-    return '/img/profile/profile5.png'
-  }else if(num === 6){
-    return '/img/profile/profile6.png'
-  }else if(num === 7){
-    return '/img/profile/profile7.png'
-  }
-}
-
-//신분
-const userJob = (num) =>{
-  if(num === 1){
-    return '중고등학생'
-  }else if(num === 2){
-    return '대학생'
-  }else if(num === 3){
-    return '졸업생'
-  }else if(num === 4){
-    return '교수님'
-  }else if(num === 5){
-    return '현직 종사자'
-  }else if(num === 6){
-    return '기타'
-  }
-
-}
-
-const userBelong = (info) =>{
-  if(info){
-    return info
-  }else{
-    return '이메일 인증 바랍니다.'
-  }
-
-}
-
+/**
+ * 편집 버튼 누르면 EditMode로 바뀜 
+ */
 const EditMode = () =>{
   setIsEdit(true)
-
 }
 
     return (
@@ -171,7 +96,7 @@ const EditMode = () =>{
                     <img 
                       alt='test2'
                       className = 'mypage-profile-image2'
-                      src={image_route(userInfo.profile_picture_id)}
+                      src={util.image_route(userInfo.profile_picture_id)}
                     />
                   </div>
                   
@@ -186,13 +111,13 @@ const EditMode = () =>{
                  <strong>신&nbsp;&nbsp;&nbsp;분</strong> 
                 </div>
                 <div className = 'mypage-profile-job1'>
-                  <strong>{userJob(userInfo.user_job)}</strong>
+                  <strong>{util.userJob(userInfo.user_job)}</strong>
                 </div>
                 <div className = 'mypage-profile-belong'>
                   <strong>Email</strong>
                 </div>
                 <div className = 'mypage-profile-belong1'>
-                  <strong>{userBelong(userInfo.user_email)}</strong>
+                  <strong>{util.userBelong(userInfo.user_email)}</strong>
                 </div>
                 
                 

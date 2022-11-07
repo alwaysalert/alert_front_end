@@ -4,9 +4,12 @@ import LogOut from './LogOut';
 import Login from './Login';
 
 import {useSelector, useDispatch} from 'react-redux';
-
+/**
+ * Profile Component in mainpage 
+ * @param {*} props 
+ * @returns 로그인 되었는지에 따라 다름
+ */
 function Profile(props) {
-  const login = useSelector((state)=>state.login);
   return (
     <>
         {props.isLoggedIn ? (

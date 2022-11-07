@@ -10,29 +10,21 @@ import { Grid } from '@mui/material';
 import { GoogleLogout } from 'react-google-login';
 import {useDispatch, useSelector} from 'react-redux';
 
-//import {useCookies} from 'react-cookie';
-
 import axios from 'axios';
 import * as glob from '../global';
 
 function LogOut(props) {
-  // const dispatch = useDispatch();
-  // const login = useSelector((state)=>state.login);
   let google = null;
 
   const handle = () =>{
     setLogin(false);
     google = null
   }
-  // console.log('base',glob.BACK_BASE_URL);
+  
   const [login, setLogin] = useState(props.isLoggedIn);
-  // console.log("로그아웃 컴포넌트임");
-  // console.log(login);
-  // console.log(document.cookie);
+  
   const [cookies, , removeCookie] = useCookies('token');
   if (login === false) {
-//    localStorage.removeItem("access_token")
-    //localStorage.removeItem('refresh_token')
     setLogin(null)
     removeCookie('access_token');
     removeCookie('refresh_token');
@@ -66,18 +58,15 @@ function LogOut(props) {
           token: access_token,
           format: 'json',
         }}).then(async (res) => {
-          //console.log('data =',res.data);
           newUserInfo ={...res.data};
           setUserInfo(newUserInfo);
-          //console.log('state:',userInfot);
+          
         })
   
   }
 
   useEffect(() => {
     CheckUser(cookies.access_token);
-    
-    // console.log('user:', newUserInfo);
   }, []);
 
   //프로필 사진
@@ -122,6 +111,20 @@ const image_route = (num) => {
   }
 }
 
+//box css
+const box = {
+  width: '8.18rem',
+  height: '0.6rem',
+  bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
+  color: (theme) =>
+    theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
+  p: 1,
+  m: 0.3,
+  borderRadius: 0.2,
+  textAlign: 'center',
+  fontSize: '0.8rem',
+  fontWeight: '700',
+};
 
   return (
     <div className="mypage-box" >
@@ -141,34 +144,9 @@ const image_route = (num) => {
       </div>
       <Grid container>
       <Link to={'/Mypage'}>
-        <Box sx={{
-
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.8rem',
-          fontWeight: '700',
-        }}><strong>마이페이지</strong></Box></Link>
+        <Box sx={box}><strong>마이페이지</strong></Box></Link>
         <Link>
-        <Box sx={{
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.8rem',
-          fontWeight: '700',
-          }}>
+        <Box sx={box}>
             <GoogleLogout
           clientId="803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com"
           buttonText="Logout"
@@ -187,60 +165,16 @@ const image_route = (num) => {
           </Box>
         </Link>
         <Link to ={`/MyActivity`} state = {{ id : 2}}>
-        <Box sx={{
-
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.8rem',
-          fontWeight: '700',
-        }}>스크랩한 글</Box>
+        <Box sx={box}>스크랩한 글</Box>
         </Link>
         <Link to ={`/MyActivity`} state = {{ id : 3}}>
-        <Box sx={{
-
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.8rem',
-          fontWeight: '700',
-        }}>+</Box>
+        <Box sx={box}>+</Box>
         </Link>
       </Grid>
       <div className="mypage-box-etc">
         <div>개인정보동의약관</div>
         <div>고객센터</div>
-        {/* <div onClick={(event) => {setLogin(false)}}>로그아웃</div> */}
-        {/* <GoogleLogout
-          clientId="803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com"
-          buttonText="Logout"
-          render={renderProps => (
-            <div onClick={renderProps.onClick} >
-              로그아웃
-            </div>
-          )}
-          onLogoutSuccess={(event)=>{
-            console.log('logout');
-            // dispatch({type :"LogOut"})
-            handle();
-          }}
-        >
-        </GoogleLogout> */}
         <div>환경 설정</div>
-          
-      
         </div>
     </div>
   )

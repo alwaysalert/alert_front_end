@@ -11,34 +11,35 @@ import Profile from './Profile';
 
 
 function Mainpage(props) {
- 
+  //box css
+  const box ={
+    boxShadow: 2,
+    width: '18rem',
+    height: '18rem',
+    bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+    color: (theme) =>
+    theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+    p: 1,
+    m: 1,
+    borderRadius: 2,
+    textAlign: 'center',
+    fontSize: '0.875rem',
+    };
   
   return (
     <>
         <Nav isLoggedIn={props.isLoggedIn} />
+        {/* 자유게시판 */}
         <div className="contents">
           <Grid container>
           <Link to={'/freeart'}>
             <Box
-              sx={{
-              boxShadow: 2,
-              width: '18rem',
-              height: '18rem',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-              color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-              p: 1,
-              m: 1,
-              borderRadius: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              
-              }}
+              sx={box}
             >
               
               <Box
                  className={"box-high"}>
-                  <img src="/img/boho/freeboho.png" className="freeboho"/>
+                  <img alt ='freeboho' src="/img/boho/freeboho.png" className="freeboho"/>
                 <div className="box-high-title" style={{color:"#E56262"}}>
                   자유<br/>게시판
                 </div>
@@ -62,28 +63,16 @@ function Mainpage(props) {
                 </div>
               </Box>
                 
-              
             </Box>
             </Link>
+            {/* 취업 게시판 */}
+            <Link to={'/Error'}>
             <Box
-              sx={{
-              boxShadow: 2,
-              width: '18rem',
-              height: '18rem',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-              color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-              p: 1,
-              m: 1,
-              borderRadius: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              
-              }}
+              sx={box}
             >
               <Box
                  className={"box-high-job"}>
-                  <img src="/img/boho/jobboho.png" className="jobboho"/>
+                  <img alt = 'jobboho'src="/img/boho/jobboho.png" className="jobboho"/>
                 <div className="box-high-title" style={{color:"#E3AF2A"}}>
                   취업<br/>게시판
                 </div>
@@ -107,26 +96,15 @@ function Mainpage(props) {
                 </div>
               </Box>
             </Box>
+            </Link>
+            {/* 핵린이 핵핵 */}
             <Box
-              sx={{
-              boxShadow: 2,
-              width: '18rem',
-              height: '18rem',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-              color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-              p: 1,
-              m: 1,
-              borderRadius: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              
-              }}
+              sx={box}
             >
               <Link to={'/HackChild'}>
                 <Box
                   className={"box-high-whowe"}>
-                    <img src="/img/boho/whoweboho.png" className="whoweboho"/>
+                    <img alt='whoweboho' src="/img/boho/whoweboho.png" className="whoweboho"/>
                   <div className="box-high-title" style={{color: "#509B3D"}}>
                     핵린이<br/>게시판
                   </div>
@@ -150,73 +128,38 @@ function Mainpage(props) {
                 </div>
               </Box>
             </Box>
+            {/* 프로필 */}
             <Box
-              sx={{
-              boxShadow: 1,
-              width: '18rem',
-              height: '18.05rem',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-              color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-              p: 1,
-              m: 1,
-              borderRadius: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              
-              }}
+              sx={box}
             >
                 
                 {/* <Login isLoggedIn={props.isLoggedIn}></Login> */}
                 <Profile isLoggedIn={props.isLoggedIn}></Profile>
                 
             </Box>
+            {/* 달력 */}
             <Box
-              sx={{
-              boxShadow: 1,
-              width: '18rem',
-              height: '18rem',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-              color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-              p: 1,
-              m: 1,
-              borderRadius: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              
-              }}
+              sx={box}
             >
               <Calendarpg />
             </Box>
             <Box
-              sx={{
-              boxShadow: 2,
-              width: '18rem',
-              height: '18rem',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-              color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-              p: 1,
-              m: 1,
-              borderRadius: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              
-              }}
+              sx={box}
             >
-              <Box
-                 className={"box-high-major"}>
-                  <img src="/img/boho/majorboho.png" className="majorboho"/>
-                <div className="box-high-title" style={{color:"#9050E3"}}>
-                  우리<br/>학교는
-                </div>
-                
-                <div className="box-high-contents" style={{color:"#3A1072"}}>
-                  정보보호학과에<br/>대한 모든 것
-                </div>
-                
-              </Box>
+              <Link to={'/Error'}>
+                <Box
+                  className={"box-high-major"}>
+                    <img alt ='majorboho' src="/img/boho/majorboho.png" className="majorboho"/>
+                  <div className="box-high-title" style={{color:"#9050E3"}}>
+                    우리<br/>학교는
+                  </div>
+                  
+                  <div className="box-high-contents" style={{color:"#3A1072"}}>
+                    정보보호학과에<br/>대한 모든 것
+                  </div>
+                  
+                </Box>
+              </Link>
               
               <Box
                  className={"box-low"}>
@@ -233,30 +176,25 @@ function Mainpage(props) {
             </Box>
             <Box
               sx={{
-              boxShadow: 2,
-              width: '38rem',
-              height: '18rem',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-              color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-              p: 1,
-              m: 1,
-              borderRadius: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              
-              }}
+                boxShadow: 2,
+                width: '38rem',
+                height: '18rem',
+                bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+                color: (theme) =>
+                theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+                p: 1,
+                m: 1,
+                borderRadius: 2,
+                textAlign: 'center',
+                fontSize: '0.875rem',
+                
+                }}
             >
               <Box
                  className={"box-high-outside"}
                  >
-                  <img src="img/advertise.png" className="advertise"/>
-                
-                
-                
-                
+                  <img alt='advertise'src="img/advertise.png" className="advertise"/>
               </Box>
-              
               <Box
                  className={"box-low"} style={{textAlign:"left"}}>
                 <div className="box-low-title">
@@ -265,9 +203,7 @@ function Mainpage(props) {
                 <div className="box-low-contents" style={{textIndent:'15px'}}>
                   <p> 한국정보보호산업협회에서 주관하는 AI 보안 네트워크반 교육생 모집</p>
                 </div>
-                
               </Box>
-              
             </Box>
           </Grid>
         </div>

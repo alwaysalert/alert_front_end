@@ -1,7 +1,11 @@
 import React from 'react'
 import Nav from './Nav';
 import "../css/mainpage.css"
-
+/**
+ * Search Page Component
+ * @param {*} props 
+ * @returns 
+ */
 function Search(props) {
   return (
     

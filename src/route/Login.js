@@ -8,7 +8,6 @@ import "../css/login.css"
 import { Grid } from '@mui/material';
 
 import NaverLogin from './social/NaverLogin';
-
 import Kakao_Login from './social/Kakao_Login';
 import Google_Login from './social/Google_Login';
 

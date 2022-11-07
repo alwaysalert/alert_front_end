@@ -63,9 +63,7 @@ function MyActivity(props) {
         //console.log('a:', newUserInfot);
       }, []);
 
-    
-      
-
+    //마우스 올렸을때 색깔 다르게
       const boxStyle1 ={
         color: isHover1 ? '#4285F4' : 'black',
         borderBottom : whatPost1 ? 'solid 5px #4285F4' : 'white'
@@ -86,8 +84,6 @@ function MyActivity(props) {
 
   return (
     <>
-
-      
       <Nav />
       <div className="freeart-content">
         <div className="myactivity-content-head1">
