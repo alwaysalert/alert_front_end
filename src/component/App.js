@@ -11,6 +11,7 @@ import MyActivity from '../route/MyActivity';
 import Search from '../route/Search';
 import ErrorPage from '../route/ErrorPage';
 import HackChild from '../route/HackChild';
+import HackViewContents from '../route/HackViewContents';
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
@@ -36,7 +37,7 @@ function App() {
             <Route exact path="/Mypage" element = {<Mypage isLoggedIn={isLoggedIn}/>}/>
 
             <Route exact path="/freeart/:id" element ={<ViewContents isLoggedIn={isLoggedIn}/>} />
-            <Route exact path="/HackChild/:id" element ={<ViewContents isLoggedIn={isLoggedIn}/>} />
+            <Route exact path="/HackChild/:id" element ={<HackViewContents isLoggedIn={isLoggedIn}/>} />
             <Route exact path="/HackChild" element = {<HackChild isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/MyActivity" element = {<MyActivity isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/Search" element = {<Search isLoggedIn={isLoggedIn}/>}/>
