@@ -41,8 +41,10 @@ function MyactivityContents(props) {
         console.log(res.data);
         
         }).catch((err) => {
-          console.log("Error check", err);
+          console.log("1 Error check", err);
+          // document.location.href = "/Error";
         });
+
     }else if(props.num === 2){
       console.log(2);
       axios.get(`${baseURL}/mypage/myscrap`, {
@@ -126,9 +128,6 @@ const hexcolor = (num) =>{
                   <Link to={'/freeart/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
                   <div>
                   <div className= "myactivity-arts-profile-circle" style ={{background : hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={image_route(article.author_info.profile_picture_id)}/></div>
-                  
-                
-                
                   <h4 className="myactivity-arts-title"><strong>{article.title}</strong></h4>
                   <p className = 'myactivity-arts-text'><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
                   <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>

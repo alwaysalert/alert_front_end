@@ -7,9 +7,11 @@ import Nav from './Nav'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
-
-import Button from '@mui/material/Button';
-
+/**
+ * function AlertSame
+ * @param {props} props for get isSame state
+ * @returns jsx 
+ */
 function AlertSame(props){
     const red ={
       color:"red"
@@ -36,8 +38,6 @@ function AlertSame(props){
 function MypageEdit() {
 //중복 확인 state
 const [isSame, setIsSame] = useState(0);
-//axios
-
 const [userInfo, setUserInfo] = useState({
   auth_user_id : 2,
   id : 1,
@@ -48,6 +48,7 @@ const [userInfo, setUserInfo] = useState({
   user_email:'',
   user_job : 1
 });
+//userInfo before correction
 const [olduserInfo, setOldUserInfo] = useState({
   auth_user_id : 1,
   id : 1,
@@ -58,8 +59,8 @@ const [olduserInfo, setOldUserInfo] = useState({
   user_email:'',
   user_job : 1
 });
-
 let newUserInfo = {...userInfo};
+
 const CheckUser = (access_token) => {
   const baseurl= 'http://127.0.0.1:8000'
   
@@ -68,22 +69,20 @@ const CheckUser = (access_token) => {
         token: access_token,
         format: 'json',
       }}).then(async (res) => {
-        //console.log('data =',res.data);
         newUserInfo ={...res.data};
         setOldUserInfo(newUserInfo);
         setUserInfo(newUserInfo);
-
-        //console.log('state:',userInfot);
       }).catch(err => {
         document.location="/Error";
       });
 
 }
 
-//회원 정보 수정 api = /users/edit_profile
-
-
-//닉네임 중복확인 axios 요청
+/**
+ * CheckNickName
+ * @param {*} name
+ * axios for 중복확인 
+ */
 const CheckNickName = (name) => {
   const baseURL= 'http://127.0.0.1:8000'
 
@@ -107,30 +106,18 @@ const CheckNickName = (name) => {
 }
 
 const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
-console.log('cookie =',cookies.access_token);
-// 쿠키를 확인했을때 access_token이 없으면 되돌려 보내기
-console.log('state:',userInfo);
-// const [userInfo, setUserInfo] = useState({id : "givensik" ,identity :1, character : '/img/profile/profile1.png', background : '#FF6767'});
-//console.log(userInfo);
-
-
-// const newUserInfo = {...userInfo};
-
-
 
 if(cookies.access_token === undefined){
   document.location = '/';
 }
-//여기에 mypage 정보를 가져와야할 듯?
 useEffect(() => {
   CheckUser(cookies.access_token);
-  
-  //console.log('a:', newUserInfot);
 }, []);
-//setButton();
+
+//userInfo 객체의 user_job이 바뀔때마다 setButton 실행
 useEffect(() => {
   setButton();
-  //console.log('a:', newUserInfot);
+  
 }, [userInfo.user_job]);
 
 //버튼
@@ -144,42 +131,40 @@ const [jobbb,setjobbb] = useState(6)
 const setButton = (event) =>{
     if(userInfo.user_job === 1)
     {
-      
-    if(button1 === 'button-test2')
-    {
-      setButton1('button-test');
-      setjobbb(6)
+      if(button1 === 'button-test2')
+      {
+        setButton1('button-test');
+      }
+      else
+      {
+        setButton1('button-test2');
+        setButton2('button-test');
+        setButton3('button-test')
+        setButton4('button-test')
+        setButton5('button-test')
+        setButton6('button-test')
+        setjobbb(1)
+      }
     }
-    else
+    if(userInfo.user_job === 2)
     {
-      setButton1('button-test2');
-      setButton2('button-test');
-      setButton3('button-test')
-      setButton4('button-test')
-      setButton5('button-test')
-      setButton6('button-test')
-      setjobbb(1)
+      if(button2 === 'button-test2')
+      {
+        setButton2('button-test');
+        setjobbb(6)
+      }
+      else
+      {
+        setButton1('button-test');
+        setButton2('button-test2');
+        setButton3('button-test')
+        setButton4('button-test')
+        setButton5('button-test')
+        setButton6('button-test')
+        setjobbb(2)
+      }
     }
-  }
-  if(userInfo.user_job === 2)
-    {
-    if(button2 === 'button-test2')
-    {
-      setButton2('button-test');
-      setjobbb(6)
-    }
-    else
-    {
-      setButton1('button-test');
-      setButton2('button-test2');
-      setButton3('button-test')
-      setButton4('button-test')
-      setButton5('button-test')
-      setButton6('button-test')
-      setjobbb(2)
-    }
-  }
-  if(userInfo.user_job === 3)
+    if(userInfo.user_job === 3)
     {
     if(button3 === 'button-test2')
     {
@@ -299,7 +284,10 @@ const image_route = (num) => {
     return '/img/profile/profile7.png'
   }
 }
-//프로필 수정 api
+/**
+ * updateUserInfo
+ * axios for update user information
+ */
 const updateUserInfo = () => {
   const baseURL= 'http://127.0.0.1:8000'
   if(isSame){
@@ -327,7 +315,7 @@ const updateUserInfo = () => {
 
 }
 
-console.log(olduserInfo);
+// console.log(olduserInfo);
   return (
     <div>
 
