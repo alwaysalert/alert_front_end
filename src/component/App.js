@@ -14,7 +14,7 @@ import HackChild from '../route/HackChild';
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  const [cookies,,] = useCookies(['access_token']);
   //console.log('cookie =',cookies.access_token)
   useEffect(() => {
     if(cookies.access_token){

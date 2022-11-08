@@ -1,18 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie';
-import ModeIcon from '@mui/icons-material/Mode';
+
 import { Link } from 'react-router-dom';
 import "../css/mainpage.css"
 import { Box } from '@mui/system';
 import { Grid } from '@mui/material';
 
 import { GoogleLogout } from 'react-google-login';
-import {useDispatch, useSelector} from 'react-redux';
+
 
 import axios from 'axios';
-import * as glob from '../global';
-
+import * as glob from '../global'
 function LogOut(props) {
   let google = null;
 
@@ -69,6 +68,7 @@ function LogOut(props) {
 
   useEffect(() => {
     CheckUser(cookies.access_token);
+  //eslint-disable-next-line
   }, []);
 
   //프로필 사진
@@ -116,7 +116,7 @@ const image_route = (num) => {
 //box css
 const box = {
   width: '8.18rem',
-  height: '0.6rem',
+  height: '0.5rem',
   bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
   color: (theme) =>
     theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
@@ -124,8 +124,11 @@ const box = {
   m: 0.3,
   borderRadius: 0.2,
   textAlign: 'center',
+  
   fontSize: '0.8rem',
-  fontWeight: '700',
+  fontWeight: 'bold',
+  lineHeight: '11px',
+  fontFamily: 'apple-font-M',
 };
 
   return (
@@ -145,8 +148,8 @@ const box = {
         <br></br>
       </div>
       <Grid container>
-      <Link to={'/Mypage'}>
-        <Box sx={box}><strong>마이페이지</strong></Box></Link>
+      <Link to={'/Mypage'} >
+        <Box sx={box}>마이페이지</Box></Link>
         <Link>
         <Box sx={box}>
             <GoogleLogout
@@ -154,7 +157,7 @@ const box = {
           buttonText="Logout"
           render={renderProps => (
             <div onClick={renderProps.onClick} >
-                <strong>로그아웃</strong>
+                로그아웃
             </div>
           )}
           onLogoutSuccess={(event)=>{

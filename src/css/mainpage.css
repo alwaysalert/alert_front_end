@@ -280,30 +280,34 @@ input:focus {outline: none;}
  }
 
  .login-form {
+    margin-top: 35px;
     height: 150px;
  }
 
  .nim{
-    font-size: 25px;
+    font-size: 22px;
+    margin-left:3px;
     color: #000;
+    font-family: 'BM HANNA_TTF';
+    font-weight: '100';
  }
  .mypage-box{
     margin-top: -8px;
     margin-left: -8px;
     margin-right: -8px;
-    background-color: #F6F6F6;
+    
 ;
  }
  .mypage-box-title{
     color:#6E5DB0;
-    font-Size: 32px;
+    font-Size: 35px;
     padding-top: 20px;
     font-family: 'BM HANNA_TTF';
  }
  .mypage-box-profile-image{
     display:block;
     margin: 0 auto;
-    margin-top: 15px;
+    margin-top: 11px;
     width: 110px;
     height: 110px;
     margin-bottom: 10px;
@@ -322,7 +326,7 @@ input:focus {outline: none;}
     
     
     display:inline-block;
-    margin-left:3px;
+    margin-left:5px;
     
     width:12px;
     height:12px;
@@ -331,6 +335,8 @@ input:focus {outline: none;}
     position: relative;
     display:inline-block;
     font-size: 5px;
+    cursor:pointer;
+    /* font-family: 'apple-font-M'; */
     -webkit-transform:scale(0.85);
     padding: 0 10px;
     margin: 0 -5px;

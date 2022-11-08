@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { useCookies } from 'react-cookie';
-import {Link} from 'react-router-dom'
 import axios from 'axios';
-
-import {useSelector, useDispatch} from "react-redux"; // redux
 import Register from '../Register';
-
 import * as glob from '../../global';
 
+
 function NaverCallback({logged}) {
-    const login = useSelector((state)=>state.login);
-    const dispatch = useDispatch();
+    
     const token = window.location.href.split('=')[1].split('&')[0];
 
     const drfClientId = glob.GIVEN_DRF_TOKEN;
     const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
-
-    const baseURL = "http://localhost:8000";
+    const baseURL = glob.BACK_BASE_URL;
     
-    const [cookies, setCookie,] = useCookies(['token']);
+    const [, setCookie,] = useCookies(['token']);
     const [open, setOpen] = React.useState(false);
     const [accessToken,setToken] = React.useState(null);
     const [refreshToken,setToken2] = React.useState(null);
@@ -36,19 +31,17 @@ function NaverCallback({logged}) {
               token: access_token,
               format: 'json',
             }}).then(async (res) => {
-              console.log('data =',res.data.id)
+              
               if(res.data.id > 0)
               {
-                console.log('data2 =',res.data.id)
                 setFlag(true);
               }
-              else if(res.data.is_existing == false)
-              {
-                console.log('falsseeeee')
+              else if(res.data.is_existing === false)
+              { 
                 setFlag(false);
               }
             }).catch((err) => {
-              document.location="/Error";
+                console.log('로그인이 필요합니다.')
             });
       
       }
@@ -114,8 +107,8 @@ useEffect(() => {
     }
 }
     doLogin();
-    
-    
+
+//eslint-disable-next-line
 }, [flag,])
 return(
     <Register open={open} setOpen={setOpen} setFlag={setFlag} token={accessToken}/>

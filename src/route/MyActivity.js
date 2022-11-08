@@ -3,15 +3,6 @@ import React, { useEffect, useState } from 'react'
 import '../css/mainpage.css'
 import '../css/myactivity.css'
 import Nav from './Nav'
-import TagIcon from '@mui/icons-material/Tag';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { dbService } from '../firebase'
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
-import axios from 'axios'
-import BoardProfile from './BoardProfile'
-import { useCookies } from 'react-cookie';
 
 import { useLocation } from "react-router-dom"
 import MyactivityContents from './MyactivityContents'

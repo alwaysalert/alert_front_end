@@ -3,7 +3,7 @@ import React from 'react'
 import LogOut from './LogOut';
 import Login from './Login';
 
-import {useSelector, useDispatch} from 'react-redux';
+
 /**
  * Profile Component in mainpage 
  * @param {*} props 

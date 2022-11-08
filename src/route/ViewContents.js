@@ -12,11 +12,11 @@ import { FormControlLabel } from '@mui/material';
 import { useCookies } from 'react-cookie';
 
 import BoardProfile from './BoardProfile'
-
+import * as glob from '../global'
 
 
 function ViewContents(props) {
-    const baseURL = 'http://127.0.0.1:8000';
+    const baseURL = glob.BACK_BASE_URL;
 
     
    
@@ -26,7 +26,7 @@ function ViewContents(props) {
     
     const [scrapColor, setScrapColor] = useState({'defaults':'#b9b9b9'})
     const [commentLikeLib,setCommentLikeLib] = useState({});
-    const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+    const [cookies, , ] = useCookies(['access_token']);
     const [userInfo, setUserInfo] = useState({
       auth_user_id : null,
       id : null,
@@ -41,9 +41,9 @@ function ViewContents(props) {
     let newUserInfo = {...userInfo};
   
     const CheckUser = (access_token) => {
-      const baseurl= 'http://127.0.0.1:8000'
+    
       
-      axios.get(`${baseurl}/users/check_user`, {
+      axios.get(`${baseURL}/users/check_user`, {
           params: {
             token: access_token,
             format: 'json',
@@ -63,7 +63,7 @@ function ViewContents(props) {
       }
       else{
         //console.log('yes!')
-        setScrapColor({'defaults':'yellow'})
+        setScrapColor({'defaults':'#FBD405'})
       }
     }
     const checkLikeColor = (like_users,userInfo) => {
@@ -137,6 +137,7 @@ function ViewContents(props) {
           
           
           })
+          //eslint-disable-next-line
     },[])
     function formatDate(date) {
       return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
@@ -173,10 +174,11 @@ function ViewContents(props) {
       setTitle(DATA.title);
       setText(DATA.body);
     }
+    //eslint-disable-next-line
   },[DATA.like_users, userInfo.auth_user_id,COMMENT])
 
     const newTime = new Date(DATA.created_time);
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
     
     const commentLike = (event) => {
       const comment_id = event.target.parentElement.parentElement.id
@@ -242,7 +244,7 @@ function ViewContents(props) {
           if(res.data.message === "bookmark upload")
           {
               setScrapCount(scrapCount + 1)
-              setScrapColor({'defaults':'yellow'})
+              setScrapColor({'defaults':'#FBD405'})
               
           }
           else if(res.data.message ==="bookmark deleted")
@@ -403,7 +405,7 @@ const onDelete = () => {
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
                 <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img"></img>
+                  <img src='/img/profile/profile4.png' className="fm-img" alt="owner_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
@@ -469,11 +471,11 @@ const onDelete = () => {
           
           var time = new Date(comment.created_time);
           return(<>
-            <div className="freeart-comment" id={comment.id}>
+            <div className="freeart-comment" id={comment.id} key={Math.random()}>
         <div className="freeart-maincontents-header">
               <div className="fmh-left">
                 <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img"></img>
+                  <img src='/img/profile/profile4.png' className="fm-img" alt="writer_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
@@ -483,7 +485,7 @@ const onDelete = () => {
                     
                   </div>
                   {commentLikeLib[comment.id] ?  <div style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
-                    <ThumbUpAltIcon sx={{ color: 'red',width:'23px',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
+                    <ThumbUpAltIcon sx={{ color: 'red',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
                     <span>{commentLikeLib[comment.id]}</span>
                   </div> : <></>}              
               </div>
@@ -502,11 +504,11 @@ const onDelete = () => {
               
               var time2 = new Date(child_comment.created_time);
               return(<>
-              <div className='freeart-comcomment' id={child_comment.id}>
+              <div className='freeart-comcomment' id={child_comment.id} key={Math.random()}>
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
                 <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img"></img>
+                  <img src='/img/profile/profile4.png' className="fm-img" alt="writer_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
@@ -516,7 +518,7 @@ const onDelete = () => {
                   </div>
 
                   {commentLikeLib[child_comment.id] ? <div style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
-                    <ThumbUpAltIcon sx={{ color: 'red',width:'23px',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
+                    <ThumbUpAltIcon sx={{ color: 'red',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
                     <span>{commentLikeLib[child_comment.id]}</span>
                   </div> : <></>}
                   
@@ -539,7 +541,7 @@ const onDelete = () => {
           <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'12.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>익명</span>
           <div className="fmc-comment-submit" id="submittt" onClick={onWriteComcomment}>
-            <CreateIcon sx={{marginLeft:'10px' ,width:'25px',heigth:'25px' ,color:'white',marginTop:'5px',marginLeft:'7px'}}/>
+            <CreateIcon sx={{width:'25px',heigth:'25px' ,color:'white',marginTop:'5px',marginLeft:'7px'}}/>
           </div>
         </div>
         </div>
@@ -551,7 +553,7 @@ const onDelete = () => {
           <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'12.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>익명</span>
           <div className="fmc-comment-submit" onClick={(event) => onWriteComment(event)}>
-            <CreateIcon sx={{marginLeft:'10px' ,width:'25px',heigth:'25px' ,color:'white',marginTop:'5px',marginLeft:'7px'}}/>
+            <CreateIcon sx={{width:'25px',heigth:'25px' ,color:'white',marginTop:'5px',marginLeft:'7px'}}/>
           </div>
         </div>
         </div>
