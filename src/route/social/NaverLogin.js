@@ -2,7 +2,7 @@ import React from 'react'
 import {useEffect} from 'react'
 import "../../css/login.css"
 import "../../css/mainpage.css"
-
+import * as glob from '../../global';
 
 function NaverLogin() {
     

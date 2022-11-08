@@ -12,7 +12,10 @@ import { Link } from 'react-router-dom'
 import BoardProfile from './BoardProfile'
 import { useCookies } from 'react-cookie';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import { accordionDetailsClasses } from '@mui/material';
 
+//util.js
+import * as util from '../util/util';
 
 
 function Freeart(props) {
@@ -76,7 +79,7 @@ function Freeart(props) {
   
 },[])
 useEffect(() => {
-  
+  console.log('state',articleArray);
 },[articleArray])
 
  const[title, setWriteTitle] = useState("");
@@ -113,14 +116,7 @@ useEffect(() => {
     target: { value,}
   } = event;
   setWriteContents(value);
-  
-  
-  
-
-
 }
-
-
   return (
     <>
 
@@ -131,7 +127,7 @@ useEffect(() => {
           <div className="freeart-content-head-title">자유게시판</div>
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
-        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo}></BoardProfile>
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo} board ='자유게시판'></BoardProfile>
         
         {props.isLoggedIn ? <div className="freeart-form-div">
         <form className="freeart-form" onSubmit={onSubmit}>
@@ -162,12 +158,13 @@ useEffect(() => {
           return (<div  key={article.id} name={article.id} id="freeart-arts-grid" >
                   <Link to={'/freeart/'+article.id} style={{width:'945px',height:'130px', backgroundColor:'red'}}>
                   <div>
-                  <img className="freeart-arts-profile" src="/img/boho/mypageboho.png"/>
+                  <div className= "freeart-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="freeart-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
+                  
                 
                 
                   <h4 className="freeart-arts-title"><strong>{article.title}</strong></h4>
                   <p><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
-                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
+                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                   <span className="count-container">
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             

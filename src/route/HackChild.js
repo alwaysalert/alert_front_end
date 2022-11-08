@@ -1,30 +1,20 @@
-import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
-import '../css/mainpage.css'
-import '../css/myactivity.css'
 import Nav from './Nav'
-import TagIcon from '@mui/icons-material/Tag';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { dbService } from '../firebase'
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
-import axios from 'axios'
-import BoardProfile from './BoardProfile'
-import { useCookies } from 'react-cookie';
-
+import '../css/hackchild.css'
 import { useLocation } from "react-router-dom"
-import MyactivityContents from './MyactivityContents'
+import HackChildContent from './HackChildContent';
 
-function MyActivity(props) {
+function HackChild(props) {
+    //버튼
     const [whatNum, setWhatNum] = useState(1);
+    const [whatPost0, setWhatPost0] = useState(true); 
     const [whatPost1, setWhatPost1] = useState(false); 
     const [whatPost2, setWhatPost2] = useState(false); 
     const [whatPost3, setWhatPost3] = useState(false); 
     const [whatPost4, setWhatPost4] = useState(false); 
-    const location = useLocation();
-    //console.log(location.state.id)
 
+    //console.log(location.state.id)
+    const [isHover0, setIsHover0] = useState(true);
     const [isHover1, setIsHover1] = useState(false);
     const [isHover2, setIsHover2] = useState(false);
     const [isHover3, setIsHover3] = useState(false);
@@ -35,35 +25,15 @@ function MyActivity(props) {
 
     //어떤 버튼을 누르고 들어왔냐에 따라서 스테이트 다르게
     useEffect(() => {
-        if(location.state.id === 1){
-            setWhatPost1(true)
-            setWhatPost2(false)
-            setWhatPost3(false)
-            setWhatPost4(false)
-            setWhatNum(1);
-        }else if(location.state.id === 2){
-            setWhatPost1(false)
-            setWhatPost2(true)
-            setWhatPost3(false)
-            setWhatPost4(false)
-            setWhatNum(2);
-        }else if(location.state.id === 3){
-            setWhatPost1(false)
-            setWhatPost2(false)
-            setWhatPost3(true)
-            setWhatPost4(false)
-            setWhatNum(3);
-        }else if(location.state.id === 4){
-            setWhatPost1(false)
-            setWhatPost2(false)
-            setWhatPost3(false)
-            setWhatPost4(true)
-            setWhatNum(4);
-        }
-        //console.log('a:', newUserInfot);
+        
       }, []);
 
-    //마우스 올렸을때 색깔 다르게
+    
+      
+      const boxStyle0 ={
+        color: isHover0 ? '#4285F4' : 'black',
+        borderBottom : whatPost0 ? 'solid 5px #4285F4' : 'white'
+      }
       const boxStyle1 ={
         color: isHover1 ? '#4285F4' : 'black',
         borderBottom : whatPost1 ? 'solid 5px #4285F4' : 'white'
@@ -81,23 +51,38 @@ function MyActivity(props) {
         borderBottom : whatPost4 ? 'solid 5px #4285F4' : 'white'
       }
 
-
   return (
-    <>
-      <Nav />
-      <div className="freeart-content">
-        <div className="myactivity-content-head1">
-          <div className="myactivity-content-head-title">나의 활동</div>
-          <div className="myactivity-content-head-content"><strong>너네가 쓴 글이에요</strong></div>
+    <div>
+        <Nav />
+        <div className="freeart-content">
+        <div className="hackChild-content-head1">
+          <div className="hackChild-content-head-title">핵린이 게시판</div>
+          <div className="hackChild-content-head-content"><strong>응애 나 핵린이</strong></div>
         </div>
         <div className='myactivity-content-activity'>
-            <div className = "myactivity-content-head">나의 활동</div>
-            <div>
-                <button  
+            <div className = "myactivity-content-head">For 핵린이</div>
+            <button  
+                    style={boxStyle0}
+                    onMouseEnter={()=>{setIsHover0(true)}}
+                    onMouseLeave={()=>{setIsHover0(false)}}
+                    onClick={()=>{
+                        setWhatPost0(true)
+                        setWhatPost1(false)
+                        setWhatPost2(false)
+                        setWhatPost3(false)
+                        setWhatPost4(false)
+                        setWhatNum(0);
+                    }}
+                    className = 'myactivity-button1'><strong>
+                        Q&A
+                    </strong>
+                </button>
+            <button  
                     style={boxStyle1}
                     onMouseEnter={()=>{setIsHover1(true)}}
                     onMouseLeave={()=>{setIsHover1(false)}}
                     onClick={()=>{
+                        setWhatPost0(false)
                         setWhatPost1(true)
                         setWhatPost2(false)
                         setWhatPost3(false)
@@ -105,7 +90,7 @@ function MyActivity(props) {
                         setWhatNum(1);
                     }}
                     className = 'myactivity-button1'><strong>
-                        작성한 글
+                        시스템 해킹
                     </strong>
                 </button>
                 <button 
@@ -113,45 +98,48 @@ function MyActivity(props) {
                     onMouseEnter={()=>{setIsHover2(true)}}
                     onMouseLeave={()=>{setIsHover2(false)}}
                     onClick={()=>{
+                        setWhatPost0(false)
                         setWhatPost1(false)
                         setWhatPost2(true)
                         setWhatPost3(false)
                         setWhatPost4(false)
                         setWhatNum(2);
                     }}
-                    className = 'myactivity-button2'><strong>스크랩한 글</strong></button>
+                    className = 'myactivity-button2'><strong>웹 해킹</strong></button>
                 <button 
                     style={boxStyle3}
                     onMouseEnter={()=>{setIsHover3(true)}}
                     onMouseLeave={()=>{setIsHover3(false)}}
                     onClick={()=>{
+                        setWhatPost0(false)
                         setWhatPost1(false)
                         setWhatPost2(false)
                         setWhatPost3(true)
                         setWhatPost4(false)
                         setWhatNum(3);
                     }}
-                    className = 'myactivity-button3'><strong>좋아요한 글</strong></button>
+                    className = 'myactivity-button3'><strong>리버싱</strong></button>
                 <button 
                     style={boxStyle4}
                     onMouseEnter={()=>{setIsHover4(true)}}
                     onMouseLeave={()=>{setIsHover4(false)}}
                     onClick={()=>{
+                        setWhatPost0(false)
                         setWhatPost1(false)
                         setWhatPost2(false)
                         setWhatPost3(false)
                         setWhatPost4(true)
                         setWhatNum(4);
                     }}
-                    className = 'myactivity-button4'><strong>댓글</strong></button>
-            </div>
-            
+                    className = 'myactivity-button4'><strong>기타</strong></button>
           </div>
-          <MyactivityContents num = {whatNum}></MyactivityContents>
+          {/* 게시물 Component */}
+          <HackChildContent></HackChildContent>
+        </div>
         
-      </div>
-    </>
+    </div>
+    
   )
 }
 
-export default MyActivity;
+export default HackChild
