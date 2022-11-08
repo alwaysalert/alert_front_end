@@ -10,6 +10,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import { Link } from 'react-router-dom'
 //util.js
 import * as util from '../util/util';
+import Qna from './Qna'
 
 function HackChildContent(props) {
     const baseURL = "http://127.0.0.1:8000"; 
@@ -31,7 +32,9 @@ function HackChildContent(props) {
   return (
     <div className='hackchild-content-background'>
         {articleArray && articleArray.map(article =>{
-          if(article.tag === props.num){
+          if(article.tag === 0){
+            return <Qna article = {article}/>
+          }else if(article.tag === props.num){
             function formatDate(date) {
               return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
                 date.getDate().toString().padStart(2, '0')  + ' ' +
