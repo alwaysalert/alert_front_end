@@ -3,7 +3,7 @@ import "../css/mainpage.css"
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Login from './Login';
+
 import { Link } from 'react-router-dom';
 import Calendarpg from './social/googlecalendar';
 import Nav from './Nav';
@@ -16,7 +16,7 @@ function Mainpage(props) {
     boxShadow: 2,
     width: '18rem',
     height: '18rem',
-    bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+    bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#f6f6f6'),
     color: (theme) =>
     theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
     p: 1,
