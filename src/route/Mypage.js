@@ -1,4 +1,4 @@
-import { Box } from '@mui/system'
+
 import React, { useEffect, useState } from 'react'
 import '../css/mainpage.css'
 import '../css/freeart.css'
@@ -8,7 +8,6 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { Link } from 'react-router-dom'
 
-import Button from '@mui/material/Button';
 import MypageEdit from './MypageEdit'
 
 //util.js
@@ -21,14 +20,14 @@ function Mypage() {
   const [isEdit, setIsEdit] = useState(false);  
   //userInfo
   const [userInfo, setUserInfo] = useState({
-    auth_user_id : 2,
-    id : 1,
-    is_existing : true,
-    nickname : 'name',
-    profile_color_id : 3,
-    profile_picture_id : 1,
-    user_email:'',
-    user_job : 1
+    auth_user_id : null,
+    id : null,
+    is_existing : null,
+    nickname : null,
+    profile_color_id : null,
+    profile_picture_id : null,
+    user_email:null,
+    user_job : null
   });
   //수정할 때 미리 옮겨둘 객체
   let newUserInfo = {...userInfo};
@@ -50,7 +49,7 @@ function Mypage() {
   }
   
 
-  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  const [cookies, ,] = useCookies(['access_token']);
   // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내기
   if(cookies.access_token === undefined){
     alert('로그인 먼저해!')
@@ -58,6 +57,7 @@ function Mypage() {
   }
   useEffect(() => {
     CheckUser(cookies.access_token);
+      //eslint-disable-next-line
   }, []);
   
 

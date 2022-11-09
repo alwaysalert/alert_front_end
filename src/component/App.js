@@ -5,12 +5,13 @@ import Mypage from  '../route/Mypage';
 import Mainpage from '../route/mainpage';
 import NaverCallback from '../route/social/NaverCallback';
 import ViewContents from '../route/ViewContents';
-
 import {useCookies} from 'react-cookie';
 import MyActivity from '../route/MyActivity';
 import Search from '../route/Search';
 import ErrorPage from '../route/ErrorPage';
 import HackChild from '../route/HackChild';
+//import * as glob from '../global'
+
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
@@ -25,6 +26,7 @@ function App() {
     }else{
       setLogin(false);
     }
+     //eslint-disable-next-line
   }, []);
   return (
     <Router>

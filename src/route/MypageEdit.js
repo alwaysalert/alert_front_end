@@ -1,9 +1,9 @@
-import { Box } from '@mui/system'
+
 import React, { useEffect, useState } from 'react'
 import '../css/mainpage.css'
 import '../css/freeart.css'
 import '../css/mypage.css'
-import Nav from './Nav'
+
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
@@ -105,19 +105,20 @@ const CheckNickName = (name) => {
 
 }
 
-const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+const [cookies,,] = useCookies(['access_token']);
 
 if(cookies.access_token === undefined){
   document.location = '/';
 }
 useEffect(() => {
   CheckUser(cookies.access_token);
+    //eslint-disable-next-line
 }, []);
 
 //userInfo 객체의 user_job이 바뀔때마다 setButton 실행
 useEffect(() => {
   setButton();
-  
+    //eslint-disable-next-line
 }, [userInfo.user_job]);
 
 //버튼
@@ -263,9 +264,9 @@ const hexcolor = (num) =>{
 const button_style={
   background : hexcolor(newUserInfo.profile_color_id)
 }
-const circle_style={
-  background : '#F0F0F0'
-}
+// const circle_style={
+//   background : '#F0F0F0'
+// }
 const image_route = (num) => {
   
   if(num === 1){
@@ -338,7 +339,7 @@ const updateUserInfo = () => {
                 </input>
                 <button className = "mypage-nickname-button" onClick ={(e)=>{
                   e.preventDefault();
-                  if(userInfo.nickname == olduserInfo.nickname){
+                  if(userInfo.nickname === olduserInfo.nickname){
                     setIsSame(0);
                     return 0;
                 }
