@@ -11,6 +11,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { FormControlLabel } from '@mui/material';
 import { useCookies } from 'react-cookie';
 
+import CheckBox from './CheckBox';
 import BoardProfile from './BoardProfile'
 import * as glob from '../global'
 
@@ -23,7 +24,7 @@ function ViewContents(props) {
 
     //쿠키에서 access_token받아오기
     const [likeColor, setLikeColor] = useState({'defaultl':'#b9b9b9'})
-    
+    const [open2,setOpen2] = useState(false)
     const [scrapColor, setScrapColor] = useState({'defaults':'#b9b9b9'})
     const [commentLikeLib,setCommentLikeLib] = useState({});
     const [cookies, , ] = useCookies(['access_token']);
@@ -39,7 +40,9 @@ function ViewContents(props) {
     });
     const [checkAuthor, setcheckAuthor] = useState(false)
     let newUserInfo = {...userInfo};
-  
+    const handleClickOpen = () => {
+      setOpen2(true);
+    };
     const CheckUser = (access_token) => {
     
       
@@ -150,10 +153,7 @@ function ViewContents(props) {
   
     useEffect(() => {
     
-    console.log("DATA",DATA)
-    console.log("comment",commentLikeLib)
-    
-    console.log("comment =",COMMENT)
+
     if(DATA.author_info && userInfo.auth_user_id)
     {
       
@@ -175,6 +175,8 @@ function ViewContents(props) {
 
     
     const commentLike = (event) => {
+      if(cookies.access_token)
+      {
       const comment_id = event.target.parentElement.parentElement.id
       axios.post(`${baseURL}/freeboards/${id}/comment/${comment_id}/like_user`,{
         token: cookies.access_token,
@@ -201,10 +203,14 @@ function ViewContents(props) {
       }).catch(err => {
         alert("오류 발생")
       });
+    }else{
+      alert("로그인 후 이용 바랍니다.")
+    }
     }
     
     const like = () => {
-      
+      if(cookies.access_token)
+      {
       axios.post(`${baseURL}/freeboards/${id}/like_user`, {
         
           token: cookies.access_token
@@ -226,9 +232,13 @@ function ViewContents(props) {
         }).catch(err => {
           alert("오류 발생");
         });
+      }else{
+        alert("로그인 후 이용 바랍니다.")
+      }
     }
     const scrap = () => {
-      
+      if(cookies.access_token)
+      {
       axios.post(`${baseURL}/freeboards/${id}/bookmark`, {
         
           token: cookies.access_token
@@ -249,38 +259,62 @@ function ViewContents(props) {
         }).catch(err => {
           alert("오류 발생");
         });
+      }else{
+        alert("로그인 후 이용 바랍니다.")
+      }
     }
     const onEditSubmit = async(event) => {
       event.preventDefault();
       const title = document.getElementById('freeart-title').value;
       const contents = document.getElementById('freeart-contents').value;
-      
-      axios.post(`${baseURL}/freeboards/${id}/update`, {
+      if(title.length === 0 || title.length > 20)
+        {
+          alert("제목은 1글자부터 20글자까지입니다.")
+        }
+        else if(contents.length === 0)
+        {
+          alert("본문을 입력하세요.")
+        }
+        else if(cookies.access_token)
+        {
+          axios.post(`${baseURL}/freeboards/${id}/update`, {
         
-          token: cookies.access_token,
-          title: title,
-          body: contents,
-          
-        }).then((res) => {
-          console.log(res.data)
-          setCheckEdit(false)
-          document.location.reload();
-        }).catch(err => {
-          alert("오류 발생");
-        });
+            token: cookies.access_token,
+            title: title,
+            body: contents,
+            
+          }).then((res) => {
+            console.log(res.data)
+            setCheckEdit(false)
+            document.location.reload();
+          }).catch(err => {
+            alert("오류 발생");
+          });
+        }
+    
       
    }
    const onWriteComment = () => {
       const val = document.getElementById("writeComment").value;
+      if(val.length === 0)
+      {
+        alert("댓글을 입력하세요")
+      }
+      else if(cookies.access_token)
+      {
       axios.post(`${baseURL}/freeboards/${id}/comment/create`,{
-        token: cookies.access_token,
-        text: val,
-      }).then((res) => {
+          token: cookies.access_token,
+          text: val,
+        }).then((res) => {
           //console.log(res)
-          document.location.reload()
-      }).catch(err => {
-        alert("오류 발생")
-      });
+           document.location.reload()
+        }).catch(err => {
+          alert("오류 발생")
+        });
+      }
+      else{
+        alert('로그인 후 이용 바랍니다.')
+      }
 
    }
    const onWriteComcomment = (event) => {
@@ -299,29 +333,27 @@ function ViewContents(props) {
       val = event.target.parentElement.parentElement.parentElement;
     }
     const inputVal = val.firstChild.value;
-    console.log("key =",val.id)
-    console.log(cookies.access_token)
-    axios.post(`${baseURL}/freeboards/${id}/comment/${val.id}/ccomment/create`,{
-      token: cookies.access_token,
-      text: inputVal,
-    }).then(res => {
-      if(res.data.message === "Comment create successfully")
-      {
-        document.location.reload();
-      }
-    }).catch(err => {
-      alert("오류 발생")
-    });
+    if(inputVal.length === 0)
+    {
+      alert('댓글을 입력해주세요')
+    }
+    else if(cookies.access_token)
+    {
+      axios.post(`${baseURL}/freeboards/${id}/comment/${val.id}/ccomment/create`,{
+        token: cookies.access_token,
+        text: inputVal,
+        }).then(res => {
+        if(res.data.message === "Comment create successfully")
+        {
+          document.location.reload();
+        }
+        }).catch(err => {
+        alert("오류 발생")
+      });
+    }else{
+      alert("로그인 후 이용 바랍니다.")
+    }
 
-    
-    
-    // axios.post(`${baseURL}/freeboards/${id}/comment/create`,{
-    //   token: cookies.access_token,
-    //   text: val,
-    // }).then((res) => {
-    //     //console.log(res)
-    //     document.location.reload()
-    // })
 
  }
    const onChangeTitle = (event) => {
@@ -337,20 +369,36 @@ function ViewContents(props) {
   } = event;
   setText(value);
 }
-const onDelete = () => {
-    console.log('ok')
-    console.log(cookies.access_token)
+const CheckButton = () => {
+ 
+  
+  if(cookies.access_token)
+  {
     axios.delete(`${baseURL}/freeboards/${id}/delete`, {
         
       data:{token: cookies.access_token}
       
     }).then((res) => {
-      console.log(res.data)
+      
       
       document.location.replace("/freeart");
     }).catch(err => {
       alert("오류 발생")
     });
+    
+  }
+  else{
+    alert("로그인 후 이용 바랍니다")
+  }
+  setOpen2(false);
+}
+const CancelButton = () => {
+  
+  setOpen2(false);
+}
+const onDelete = () => {
+    
+    handleClickOpen()
   }
   const onCcommentClick = (event) => {
     if(event.target.parentElement.parentElement.lastChild.name === "true")
@@ -368,6 +416,7 @@ const onDelete = () => {
 
       
       <Nav />
+      <CheckBox Open={open2} cancelButton={CancelButton} checkButton={CheckButton} contents={"정말 삭제하시겠습니까?"}/>
       <div className="freeart-content">
         <div className="freeart-content-head">
           <div className="freeart-content-head-title">자유게시판</div>
@@ -390,7 +439,7 @@ const onDelete = () => {
             <div className="form-last">
               
               <AttachFileIcon className="clip-icon" sx={{ fontSize: 30,color: '#B7B7B7' }}/>
-              <button className="form-submit" type="submit" onClick={(event) => {onEditSubmit(event);}}>작성 완료</button>
+              <button className="form-submit" type="submit" onClick={(event) => {onEditSubmit(event)}}>작성 완료</button>
             </div>
         </form>
         </div>
@@ -411,7 +460,7 @@ const onDelete = () => {
               </div>
               {checkAuthor ? (
                 <>
-                  <div className="fmc-report" style={{color:'#8A8A8A'}}>
+                  <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A'}}>
                     신고하기
                   </div>
                   <div className="fmc-report" onClick={() => onDelete()} style={{color:'#8A8A8A'}}>
@@ -422,7 +471,7 @@ const onDelete = () => {
                   </div>
                   </>
                   ) : (
-                  <div className="fmc-report" style={{color:'#8A8A8A'}}>
+                  <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A'}}>
                     신고하기
                   </div>
                   )}
@@ -489,7 +538,7 @@ const onDelete = () => {
               <div className="fmc-report" onClick={(event) => {commentLike(event)}} style={{color:'#8A8A8A',marginTop:'15px'}}>
                     좋아요
               </div>
-              <div className="fmc-report" style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A',marginTop:'15px'}}>
                     신고하기
               </div>
             </div>
@@ -520,7 +569,7 @@ const onDelete = () => {
               <div className="fmc-report" onClick={(event) => commentLike(event)} style={{color:'#8A8A8A',marginTop:'15px'}}>
                     좋아요
               </div>
-              <div className="fmc-report" style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A',marginTop:'15px'}}>
                     신고하기
               </div>
             </div>
@@ -532,8 +581,8 @@ const onDelete = () => {
             <div id={comment.id} name="false" className='fmc-comment-input' style={{marginBottom:'2px',width:'99%',marginLeft:'5px',display:"none"}}>
           <textarea  id='writeComcomment' className='write-comment' placeholder="댓글을 입력하세요." ></textarea>
           
-          <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />
-          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'12.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>익명</span>
+          {/* <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'12.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>익명</span> */}
           <div className="fmc-comment-submit" id="submittt" onClick={onWriteComcomment}>
             <CreateIcon sx={{width:'25px',heigth:'25px' ,color:'white',marginTop:'5px',marginLeft:'7px'}}/>
           </div>
@@ -544,8 +593,8 @@ const onDelete = () => {
         <div className='fmc-comment-input'>
           <textarea  id='writeComment' className='write-comment' placeholder="댓글을 입력하세요." ></textarea>
           
-          <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />
-          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'12.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>익명</span>
+          {/* <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'12.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>익명</span> */}
           <div className="fmc-comment-submit" onClick={(event) => onWriteComment(event)}>
             <CreateIcon sx={{width:'25px',heigth:'25px' ,color:'white',marginTop:'5px',marginLeft:'7px'}}/>
           </div>
