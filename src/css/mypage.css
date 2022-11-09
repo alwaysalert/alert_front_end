@@ -88,10 +88,11 @@
 .mypage-content-profile-content{
 
     width: 100px;
-    text-align: left;
+    text-align: center;
     font-family: 'apple-font-EB';
     font-style: normal;
-    font-weight: 400;
+    font-weight: '800';
+    
     font-size: 24px;
     line-height: 50px;
     
@@ -317,17 +318,19 @@ input[type="checkbox"]:checked + label {
 
 .mypage-content-profile-content{
 
-    width: 100px;
-    text-align: left;
+    width: 63px;
+    
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 50px;
-    text-indent: 10px;
+    margin-right:20px;
+    /* text-indent: 10px; */
 
     color: #000000;
 }
+
 
 
 .mypage-content-acitivity-text{
@@ -381,7 +384,7 @@ input[type="checkbox"]:checked + label {
 
 /* test */
 .test{
-    display: flex;
+    /* display: flex; */
     justify-content:center; 
     align-items : center;
 
@@ -401,21 +404,19 @@ input[type="checkbox"]:checked + label {
 
 }
 .test3{
-    display: flex;
-    justify-content:center; 
-    align-items : center;
+    display: 'block';
+    margin: 0 auto;
     width : 150px;
     height: 150px;
     border-radius: 1150px;
     background-color: #14BBE0;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 .name{
-    position: absolute;
-    width: 300px;
-    height: 10px;
-    left: 1055px;
-    top: 684px;
+    display: block;
+    width: 100%;
+    margin-top:3px;
+    
 
     font-family: 'apple-font-M';
     font-style: normal;
@@ -544,7 +545,7 @@ color: #686868;
     height: 0px;
     left: 270px;
     top: 100px;
-
+    text-align: center;
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
@@ -561,14 +562,14 @@ color: #686868;
     height: 0px;
     left: 350px;
     top: 100px;
-
+    margin-left:5px;
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 34px;
     text-indent: 10px;
-
+    text-align: left;
     color: #000000;
 
 }
@@ -578,7 +579,7 @@ color: #686868;
     height: 0px;
     left: 270px;
     bottom : 60px;
-
+    text-align: center;
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
@@ -595,14 +596,14 @@ color: #686868;
     height: 0px;
     left: 350px;
     bottom:60px;
-
+    margin-left:5px;
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 34px;
     text-indent: 10px;
-
+    text-align: left;
     color: #000000;
 
 }
@@ -612,7 +613,7 @@ color: #686868;
     height: 0px;
     left: 270px;
     bottom  :10px;
-
+    text-align: center;
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
@@ -629,18 +630,19 @@ color: #686868;
     height: 0px;
     left: 350px;
     bottom :10px;
-
+    margin-left:5px;
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 34px;
     text-indent: 10px;
-
+    text-align: left;
     color: #8A8A8A;;
 
 }
 
 .profile-edit-button{
     cursor : pointer;
+    
 }

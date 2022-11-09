@@ -158,8 +158,9 @@ function Register(props) {
          
           setIsSame(true);
         }
-        else{
-          
+        
+      else if(name.length <= 12)
+        {
         axios.get(`${baseURL}/users/check_nickname`, {
           params: {
             nickname : name
@@ -179,6 +180,10 @@ function Register(props) {
           document.location="/Error";
         });
         }
+        else{
+          alert("닉네임은 12글자를 넘길 수 없습니다.")
+        }
+      
       }
     const handleClose = () => {
         const name = document.getElementById("name");
@@ -192,7 +197,7 @@ function Register(props) {
         })
         .then((res) => console.log('post =',res))
         .catch(err => {
-          document.location="/Error";
+          
         });
         props.setOpen(false);
         props.setFlag(true);
