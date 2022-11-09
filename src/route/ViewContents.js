@@ -374,7 +374,7 @@ const onDelete = () => {
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
         <div className="freeart-content-profile">
-        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo}></BoardProfile>
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo} board ='자유게시판'></BoardProfile>
         </div>
         <div className="freeart-form-div">
         {checkEdit ?

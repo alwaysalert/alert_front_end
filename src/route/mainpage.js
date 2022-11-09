@@ -193,7 +193,8 @@ function Mainpage(props) {
               <Box
                  className={"box-high-outside"}
                  >
-                  <img alt='advertise'src="img/advertise.png" className="advertise"/>
+                  <img alt='advertise'src="https://www.boannews.com/media/upFiles2/2022/11/20221105hack-s.jpg" className="advertise"/>
+                  <div className='advertise-back' ><img alt='advertise'src="https://www.boannews.com/media/upFiles2/2022/11/20221105hack-s.jpg" className="advertise-div-back"/></div>
               </Box>
               <Box
                  className={"box-low"} style={{textAlign:"left"}}>

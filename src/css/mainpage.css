@@ -272,12 +272,31 @@ html {
     margin-left: -8px;
     margin-right: -8px;
     height: 80%;
-    background: linear-gradient(270deg, #FF8576 0%, #F75256 0.01%, #FF8576 100%);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+
  }
  .advertise {
-    height: 227px;
+    position: relative;
+    width: 39rem;
+    height: 230px;
+    filter: blur(5px);
+    border-radius: 3px;
+    border-color: white;
+
+ }
+ .advertise-back{
+    position: absolute;
+    height: 240px;
+    border-radius: 3px;
+
+ }
+ .advertise-div-back{
+    position:relative;
+    bottom:230px;
+    left: 150px;
+    height: 230px;
+    border-radius: 5px;
 
  }
 
