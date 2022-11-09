@@ -36,8 +36,10 @@ function BoardProfile(props) {
         m: 0.3,
         borderRadius: 0.2,
         textAlign: 'center',
-        fontSize: '0.8rem',
+        lineHeight:'15px',
+        fontSize: '0.85rem',
         fontWeight: '700',
+        fontFamily: 'apple-font-EB'
       
     }
 
@@ -46,7 +48,7 @@ function BoardProfile(props) {
         {props.isLoggedIn ? (
         <div className="freeart-content-profile">
             <div className="freeart-content-profile-name"><strong>{props.uInfo.nickname}</strong></div>
-            <div className="freeart-content-profile-nim"><strong>님</strong></div>
+            <div className="freeart-content-profile-nim">님</div>
             
             <div className ='profile2' style ={button_style}>
                 <img 

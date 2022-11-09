@@ -5,17 +5,19 @@ import Mypage from  '../route/Mypage';
 import Mainpage from '../route/mainpage';
 import NaverCallback from '../route/social/NaverCallback';
 import ViewContents from '../route/ViewContents';
-
 import {useCookies} from 'react-cookie';
 import MyActivity from '../route/MyActivity';
 import Search from '../route/Search';
 import ErrorPage from '../route/ErrorPage';
 import HackChild from '../route/HackChild';
+
 import HackViewContents from '../route/HackViewContents';
+//import * as glob from '../global'
+
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  const [cookies,,] = useCookies(['access_token']);
   //console.log('cookie =',cookies.access_token)
   useEffect(() => {
     if(cookies.access_token){
@@ -26,6 +28,7 @@ function App() {
     }else{
       setLogin(false);
     }
+     //eslint-disable-next-line
   }, []);
   return (
     <Router>

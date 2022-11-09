@@ -25,7 +25,9 @@
     vertical-align:top;
     padding-top:7px;
     margin-left:-33px;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: '600';
+    font-family: 'apple-font-B'
  }
 .login-container{
     cursor: pointer;

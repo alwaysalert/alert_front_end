@@ -1,32 +1,26 @@
-import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import '../css/mainpage.css'
 import '../css/myactivity.css'
-
 import { useCookies } from 'react-cookie';
-
-
 import '../css/freeart.css'
-import Nav from './Nav'
-import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 import ChatIcon from '@mui/icons-material/Chat';
 import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import BoardProfile from './BoardProfile'
 
+import * as glob from '../global'
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import { accordionDetailsClasses } from '@mui/material';
+
 
 function MyactivityContents(props) {
   //baseURL
-  const baseURL = "http://127.0.0.1:8000"; 
+  const baseURL = glob.BACK_BASE_URL; 
   //articleArray
   const [articleArray,setArticle] = useState(null);
-  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  const [cookies, , ] = useCookies(['access_token']);
   console.log('cookie',cookies.access_token);
-  const [whatNum, setWhatNum] = useState(props.num);
+  //const [whatNum, setWhatNum] = useState(props.num);
   useEffect(() => {
     //1 => 작성한글
     console.log('num = ',props.num);
@@ -72,7 +66,7 @@ function MyactivityContents(props) {
           console.log("Error check", err);
         });
     }
-    
+     //eslint-disable-next-line
   }, [props.num]);
 
 //auther 프로필 수정

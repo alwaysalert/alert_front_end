@@ -74,17 +74,19 @@ input::placeholder {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }
 .freeart-content-profile-name{
-    margin-top: 33px;
-    font-size: 40px;
+    margin-top: 20px;
+    font-size: 30px;
     color:#6E5DB0;
     display: inline-block;
+    font-family:'apple-font-EB';
     
 }
 .freeart-content-profile-nim{
     margin-left: 7px;
     display: inline-block;
     margin-top: 33px;
-    font-size: 20px;
+    font-size: 24px;
+    font-family:'BM HANNA_TTF'
 }
 .freeart-content-profile-boho{
     display: block;
@@ -94,9 +96,10 @@ input::placeholder {
     height: 120px;
 }
 .freeart-activity{
-    margin-top: 10px;
+    margin-top: 22px;
     font-size: 14px;
     margin-bottom: 3px;
+    font-family:'apple-font-EB';
 }
 
 .freeart-buttonBoxes div{
@@ -312,6 +315,7 @@ input::placeholder {
     margin-bottom: 10px;
 }
 .fmc-report{
+    cursor:pointer;
     display: inline-block;
     font-family:'apple-font-M';
     font-size:11px;
@@ -387,6 +391,7 @@ input::placeholder {
 .fmc-comment-input{
     border: 1px solid #B7B7B7;
     /* background-color: #f4f4f4; */
+    
     min-height:35px;
     margin-bottom: 100px;
     vertical-align: bottom;
@@ -408,6 +413,7 @@ input::placeholder {
     /* background-color: #f4f4f4; */
 }
 .fmc-comment-submit{
+    cursor:pointer;
     display:inline-block;
     float: right;
     margin-top:-1px;
