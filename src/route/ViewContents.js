@@ -94,6 +94,8 @@ function ViewContents(props) {
       CheckUser(cookies.access_token);
       axios.get(`${baseURL}/freeboards/${id}/?format=json`)
       .then(async (res) => {
+      
+      console.log("change =",res.data)
       datafunc(res.data);
       
       }).catch(err => {
@@ -145,19 +147,11 @@ function ViewContents(props) {
         date.getHours().toString().padStart(2, '0') + ':' + 
         date.getMinutes().toString().padStart(2, '0')
     }
-    // useEffect(() => {
-      
-      
-    
-      
-      
-    // },[])
-    //console.log(typeof DATA.like_users)
+  
     useEffect(() => {
-    //console.log(DATA.like_users)
+    
     console.log("DATA",DATA)
     console.log("comment",commentLikeLib)
-    //console.log("user",userInfo);
     
     console.log("comment =",COMMENT)
     if(DATA.author_info && userInfo.auth_user_id)
@@ -535,7 +529,7 @@ const onDelete = () => {
               </>)
             })}
             <div style={{marginBottom:'15px'}}></div>
-            <div id={comment.id} name="false" className='fmc-comment-input' style={{marginBottom:'-0.5px',display:"none"}}>
+            <div id={comment.id} name="false" className='fmc-comment-input' style={{marginBottom:'2px',width:'99%',marginLeft:'5px',display:"none"}}>
           <textarea  id='writeComcomment' className='write-comment' placeholder="댓글을 입력하세요." ></textarea>
           
           <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />

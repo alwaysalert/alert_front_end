@@ -391,6 +391,7 @@ input::placeholder {
 .fmc-comment-input{
     border: 1px solid #B7B7B7;
     /* background-color: #f4f4f4; */
+    
     min-height:35px;
     margin-bottom: 100px;
     vertical-align: bottom;

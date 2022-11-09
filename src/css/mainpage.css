@@ -48,7 +48,9 @@ input:focus {outline: none;}
     left: calc(50% - 121px/2 + 0.5px);
     top: 13px;
 }
-
+html {
+    white-space:pre-wrap;
+}
 .navbar{
     
 
