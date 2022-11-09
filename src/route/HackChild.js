@@ -3,18 +3,22 @@ import Nav from './Nav'
 import '../css/hackchild.css'
 //import { useLocation } from "react-router-dom"
 import HackChildContent from './HackChildContent';
+import BoardProfile from './BoardProfile';
+
+import axios from 'axios'
+import { useCookies } from 'react-cookie';
 
 function HackChild(props) {
     //버튼
     const [whatNum, setWhatNum] = useState(1);
-    const [whatPost0, setWhatPost0] = useState(true); 
+    const [whatPost0, setWhatPost0] = useState(false); 
     const [whatPost1, setWhatPost1] = useState(false); 
     const [whatPost2, setWhatPost2] = useState(false); 
     const [whatPost3, setWhatPost3] = useState(false); 
     const [whatPost4, setWhatPost4] = useState(false); 
 
     //console.log(location.state.id)
-    const [isHover0, setIsHover0] = useState(true);
+    const [isHover0, setIsHover0] = useState(false);
     const [isHover1, setIsHover1] = useState(false);
     const [isHover2, setIsHover2] = useState(false);
     const [isHover3, setIsHover3] = useState(false);
@@ -22,6 +26,46 @@ function HackChild(props) {
 
     
 
+    //쿠키에서 access_token받아오기
+  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  //console.log('cookie =',cookies.access_token);
+  // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내고, 아니면 checkUser
+  
+  const [userInfo, setUserInfo] = useState({
+    auth_user_id : 2,
+    id : 1,
+    is_existing : true,
+    nickname : 'name',
+    profile_color_id : 3,
+    profile_picture_id : 1,
+    user_email:'',
+    user_job : 1
+  });
+  let newUserInfo = {...userInfo};
+
+  const CheckUser = (access_token) => {
+    const baseurl= 'http://127.0.0.1:8000'
+    
+    axios.get(`${baseurl}/users/check_user`, {
+        params: {
+          token: access_token,
+          format: 'json',
+        }}).then(async (res) => {
+          //console.log('data =',res.data);
+          newUserInfo ={...res.data};
+          //console.log(newUserInfo);
+          setUserInfo(newUserInfo);
+          //console.log('state:',userInfot);
+        })
+  
+  }
+
+
+  useEffect(() => {
+    CheckUser(cookies.access_token);
+    
+    // console.log('a:', userInfo);
+  }, []);
 
     //어떤 버튼을 누르고 들어왔냐에 따라서 스테이트 다르게
     useEffect(() => {
@@ -58,8 +102,10 @@ function HackChild(props) {
         <div className="hackChild-content-head1">
           <div className="hackChild-content-head-title">핵린이 게시판</div>
           <div className="hackChild-content-head-content"><strong>응애 나 핵린이</strong></div>
+          
         </div>
-        <div className='myactivity-content-activity'>
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo ={userInfo} board ='자유게시판'></BoardProfile>
+        <div className='hackChild-content-activity'>
             <div className = "myactivity-content-head">For 핵린이</div>
             <button  
                     style={boxStyle0}
@@ -73,9 +119,9 @@ function HackChild(props) {
                         setWhatPost4(false)
                         setWhatNum(0);
                     }}
-                    className = 'myactivity-button1'><strong>
+                    className = 'hackChild-button0'>
                         Q&A
-                    </strong>
+                    
                 </button>
             <button  
                     style={boxStyle1}
@@ -89,9 +135,9 @@ function HackChild(props) {
                         setWhatPost4(false)
                         setWhatNum(1);
                     }}
-                    className = 'myactivity-button1'><strong>
+                    className = 'hackChild-button1'>
                         시스템 해킹
-                    </strong>
+                    
                 </button>
                 <button 
                     style={boxStyle2}
@@ -105,7 +151,7 @@ function HackChild(props) {
                         setWhatPost4(false)
                         setWhatNum(2);
                     }}
-                    className = 'myactivity-button2'><strong>웹 해킹</strong></button>
+                    className = 'hackChild-button2'>웹 해킹</button>
                 <button 
                     style={boxStyle3}
                     onMouseEnter={()=>{setIsHover3(true)}}
@@ -118,7 +164,7 @@ function HackChild(props) {
                         setWhatPost4(false)
                         setWhatNum(3);
                     }}
-                    className = 'myactivity-button3'><strong>리버싱</strong></button>
+                    className = 'hackChild-button3'>리버싱</button>
                 <button 
                     style={boxStyle4}
                     onMouseEnter={()=>{setIsHover4(true)}}
@@ -131,10 +177,12 @@ function HackChild(props) {
                         setWhatPost4(true)
                         setWhatNum(4);
                     }}
-                    className = 'myactivity-button4'><strong>기타</strong></button>
+                    className = 'hackChild-button4'>기타</button>
+                    {/* 게시물 Component */}
+                    <HackChildContent num ={whatNum}></HackChildContent>
           </div>
-          {/* 게시물 Component */}
-          <HackChildContent></HackChildContent>
+          
+          
         </div>
         
     </div>
