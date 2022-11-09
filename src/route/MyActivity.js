@@ -1,4 +1,3 @@
-import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import '../css/mainpage.css'
 import '../css/myactivity.css'
@@ -52,6 +51,7 @@ function MyActivity(props) {
             setWhatNum(4);
         }
         //console.log('a:', newUserInfot);
+         //eslint-disable-next-line
       }, []);
 
     //마우스 올렸을때 색깔 다르게

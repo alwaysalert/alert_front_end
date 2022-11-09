@@ -7,7 +7,7 @@ import Register from '../Register';
 import * as glob from '../../global';
 
 
-function Kakao_Login() {
+function KakaoLoginFunc() {
   const baseURL = glob.BACK_BASE_URL;
 
   const kakaoClientId =glob.KAKAO_CLIENT_ID;
@@ -19,7 +19,12 @@ function Kakao_Login() {
   
   const drfClientId = glob.GIVEN_DRF_TOKEN;
   const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
-  
+  if (!window.Kakao.isInitialized()) {
+    // JavaScript key를 인자로 주고 SDK 초기화
+    window.Kakao.init(glob.KAKAO_CLIENT_ID);
+    // SDK 초기화 여부를 확인하자.
+    console.log(window.Kakao.isInitialized());
+  }
   const CheckUser = (access_token) => {
     
     
@@ -104,4 +109,4 @@ return (
 )
 }
 
-export default Kakao_Login
+export default KakaoLoginFunc

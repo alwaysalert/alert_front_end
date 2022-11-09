@@ -8,7 +8,7 @@ import Register from '../Register';
 import * as glob from '../../global';
 
 
-function Google_Login() {
+function GoogleLoginFunc() {
     
     const [, setCookie,] = useCookies(['access_token']);
     const [open, setOpen] = React.useState(false);
@@ -131,4 +131,4 @@ else if(flag === false)
   )
 }
 
-export default Google_Login
+export default GoogleLoginFunc

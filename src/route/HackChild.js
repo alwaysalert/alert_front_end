@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Nav from './Nav'
 import '../css/hackchild.css'
-import { useLocation } from "react-router-dom"
+//import { useLocation } from "react-router-dom"
 import HackChildContent from './HackChildContent';
 
 function HackChild(props) {
