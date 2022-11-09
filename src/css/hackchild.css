@@ -64,7 +64,7 @@
     display: inline-block;
     vertical-align: top;
     margin-bottom:22px;
-    width: 930.36px;
+    width: 930px;
     height: 200px;
     margin-left: 22px;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
@@ -238,21 +238,18 @@
 }
 
 /* 930 */
-/*  */
-.hackchild-qna-box{
+.hackchild-qna{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    /* background-color: darkcyan; */
     position: relative;
-    width: 642px;
-    height: 400px;
-    left: 144px;
-    top: 70px;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
 }
+
 
 .hackchild-qna-box-head{
     position: relative;
-    width: 642px;
+    width: 630px;
     height: 62px;
     left: 0px;
     top: 0px;
@@ -275,9 +272,9 @@
 }
 .circle1{
     display: inline-block;
-    position: relative;
-    top: 22px;
-    left: 250px;
+    position: absolute;
+    top: 26px;
+    right: 80px;
     white-space: normal;
     width: 10px;
     height: 10px;
@@ -286,9 +283,9 @@
 }
 .circle2{
     display: inline-block;
-    position: relative;
-    top: 22px;
-    left: 270px;
+    position: absolute;
+    top: 26px;
+    right: 50px;
     white-space: normal;
     width: 10px;
     height: 10px;
@@ -297,9 +294,9 @@
 }
 .circle3{
     display: inline-block;
-    position: relative;
-    top: 22px;
-    left: 290px;
+    position: absolute;
+    top: 26px;
+    right: 20px;
     white-space: normal;
     width: 10px;
     height: 10px;
@@ -309,11 +306,11 @@
 
 .hackchild-qna-box-title{
     text-align: left;
-    position: relative;
+    position: absolute;
     width: 606px;
     height: 90px;
     left: 10px;
-    top: 30px;
+    top: 100px;
 
     font-family: 'apple-font-EB';
     font-style: normal;
@@ -331,9 +328,9 @@
     text-indent: 0px;
 }
 .hackchild-qna-box-answer1{
-    position: relative;
+    position: absolute;
     left: 10px;
-    top: 100px;
+    top: 210px;
     width: 608px;
     height: 50px;
     background: #F2F2F2;
@@ -351,9 +348,9 @@
 }
 .hackchild-qna-box-answer2{
     display: inline-block;
-    position: relative;
-    left: -46px;
-    top: 100px;
+    position: absolute;
+    left: 10px;
+    top: 260px;
     width: 530px;
     height: 50px;
     background: #F2F2F2;
@@ -379,8 +376,8 @@
 }
 .hackchild-qna-box-answer-button{
     cursor: pointer;
-    position: relative;
-    top: 44px;
+    position: absolute;
+    top: 260px;
     left: 540px;
     width: 78px;
     height: 50px;
@@ -394,4 +391,176 @@
     text-align: center;
     vertical-align:middle;
 
+}
+
+@keyframes slideToRight {
+    from{
+        left: 0px;
+        
+    }to{
+        left :800px;
+    }
+}
+/* qna box0 */
+.hackchild-qna-box0{
+    position: absolute;
+    display: none;
+    width: 642px;
+    height: 400px;
+    left: -1000px; 
+    top: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-right: 200px;
+    /* animation: slideToRight 2s; */
+}
+
+/* qna box 1 */
+.hackchild-qna-box1{
+    position: relative;
+    width: 630px; 
+    height: 350px; 
+    left: 60px;
+    top: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-left:75px;
+    margin-right: 75px;
+    /* animation: slideToRight 2s; */
+}
+/* qna box2 */
+.hackchild-qna-box2{
+    z-index: 2;
+    position: relative;
+    width: 630px; 
+    height: 350px; 
+    left: 0px;
+    top: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-left: 37.5px;
+    margin-right: 37.5px;
+    /* animation: slideToRight 2s; */
+    
+}
+
+.hackchild-qna-box3{
+    position: relative;
+    width: 642px; 
+    height: 400px; 
+    left: 200px;
+    top: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* animation: slideToRight 2s; */
+}
+
+.hackchild-qna-box4{
+    position: absolute;
+    display: none;
+    width: 642px; 
+    height: 400px; 
+    left: 900px;
+    top: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* animation: slideToRight 2s; */
+}
+
+.qna-container{
+    /* overflow: hidden; */
+    display: flex;
+    /* background-color: yellow; */
+    width: 930px;
+    height: 500px;
+    /* transition :  0.5s ease-in-out; */
+    
+/* matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()) */
+}
+
+.qna-test{
+    width: 10px;
+}
+
+.cloudleft{
+    cursor: pointer;
+    position: absolute;
+    width: 79px;
+    height: 350px;
+    left: 0px;
+    top: 70px;
+    z-index: 3;
+    background-color: #0E451D;
+    background: linear-gradient(90deg, #F4F4F4 19.27%, rgba(244, 244, 244, 0) 100%);
+}
+.cloudright{
+    cursor: pointer;
+    position: absolute;
+    width: 79px;
+    height: 350px;
+    right: 0px;
+    top: 70px;
+    z-index: 3;
+    background-color: #0E451D;
+    background: linear-gradient(90deg, #F4F4F4 19.27%, rgba(244, 244, 244, 0) 100%);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.filter-box{
+    position: relative;
+    display: flex;
+    align-content: center;
+    width: 930px;
+    height: 300px;
+}
+.qna-findBoho{
+    position: relative;
+    left: 300px;
+    top:-50px;
+    width: 280px;
+}
+.qna-filter{
+    position: absolute;
+    width: 80%;
+    height: 157px;
+    left: 10%;
+    top: 20%;
+    background: #D9D9D9;
+    border-radius: 100px;
+}
+.qna-filter-text{
+    position: absolute;
+    width: 606px;
+    height: 61px;
+    top: 30px;
+    left: -60px;
+
+    font-family: 'apple-font-EB';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    text-indent: 10px;
+    
+    color: #000000;
+}
+.qna-filter-text2{
+    position: absolute;
+    width: 606px;
+    height: 61px;
+    top: 30px;
+    left: 70px;
+
+    font-family: 'apple-font-EB';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    text-indent: 10px;
+    
+    color: #000000;
 }
