@@ -110,7 +110,7 @@ const EditMode = () =>{
                   <strong>{userInfo.nickname}</strong>
                 </div>
                 <div className = 'mypage-profile-job'>
-                 <strong>신&nbsp;&nbsp;&nbsp;분</strong> 
+                 <strong>신&nbsp;&nbsp;분</strong> 
                 </div>
                 <div className = 'mypage-profile-job1'>
                   <strong>{util.userJob(userInfo.user_job)}</strong>
