@@ -138,7 +138,7 @@ const EditMode = () =>{
             <div className = "mypage-content-acitivity-text">
               Alert에서 회원님이 활동하신 내역을 확인해보세요.
               
-              <div>
+              <div style={{marginLeft:'-30px'}}>
               <Link to ={`/MyActivity`} state = {{ id : 1}}>
                 <button className ='mypage-content-acitvity-button'><strong>작성한 글</strong></button>
               </Link>
