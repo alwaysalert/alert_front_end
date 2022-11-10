@@ -6,6 +6,7 @@ import '../css/mypage.css'
 
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import * as util from '../util/util';
 
 /**
  * function AlertSame
@@ -240,51 +241,11 @@ const setButton = (event) =>{
   
   }
 
-
-
-
-//컬러 숫자 -> ##머시기로 바꾸는 함수
-const hexcolor = (num) =>{
-  if(num === 1){
-    return '#c5e0b4'
-  }else if(num === 2){
-    return '#ffe699'
-  }else if(num === 3){
-    return '#bdd7ee'
-  }else if(num === 4){
-    return '#f8cbad'
-  }else if(num === 5){
-    return '#ffc5cd'
-  }else if(num === 6){
-    return '#dfc2ec'
-  }else if(num === 7){
-    return '#adb9ca'
-  }
-}
+//button_style
 const button_style={
-  background : hexcolor(newUserInfo.profile_color_id)
+  background : util.hexcolor(newUserInfo.profile_color_id)
 }
-// const circle_style={
-//   background : '#F0F0F0'
-// }
-const image_route = (num) => {
-  
-  if(num === 1){
-    return '/img/profile/profile1.png'
-  }else if(num === 2){
-    return '/img/profile/profile2.png'
-  }else if(num === 3){
-    return '/img/profile/profile3.png'
-  }else if(num === 4){
-    return '/img/profile/profile4.png'
-  }else if(num === 5){
-    return '/img/profile/profile5.png'
-  }else if(num === 6){
-    return '/img/profile/profile6.png'
-  }else if(num === 7){
-    return '/img/profile/profile7.png'
-  }
-}
+
 /**
  * updateUserInfo
  * axios for update user information
@@ -315,8 +276,6 @@ const updateUserInfo = () => {
   
 
 }
-
-// console.log(olduserInfo);
   return (
     <div>
 
@@ -324,6 +283,7 @@ const updateUserInfo = () => {
             <div className = "mypage-content-profile-head">프로필 수정</div>
             <div className = "mypage-content-profile-text">프로필 사진 배경, 닉네임 등의 프로필을 수정할 수 있어요</div>
             <div className='mypage-content-profile-content-position'>
+              {/* 닉네임 입력 , 중복확인 */}
               <div className="mypage-content-profile-content"><strong>닉네임</strong></div>
               <form>
                 <input 
@@ -335,7 +295,6 @@ const updateUserInfo = () => {
                   newUserInfo.nickname = value;
                   setUserInfo(newUserInfo);
                 }} >
-
                 </input>
                 <button className = "mypage-nickname-button" onClick ={(e)=>{
                   e.preventDefault();
@@ -348,6 +307,7 @@ const updateUserInfo = () => {
                 {/* 중복확인 api 사용 */}
               </form>
             </div>
+            {/* 신분 선택 */}
             <div className ="mypage-content-profile-content-position">
               <div className="mypage-content-profile-content"><strong>신분</strong></div>
               <button className ={button1} onClick ={(e)=>{
@@ -382,12 +342,14 @@ const updateUserInfo = () => {
 
             </div>
             <div className='mypage-content-profile-content-position'>
+              {/* 소속 선택 */}
               <div className="mypage-content-profile-content"><strong>소속</strong></div>
               <form>
                 <input className = "mypage-nickname-input" name="id" placeholder='소속을 입력하세요. 학교인증을 통해 학교게시판을 이용할 수 있습니다.'/>
                 <button className = "mypage-nickname-button" type="submit" ><strong className="button-color">인증하기</strong></button>
               </form>
             </div>
+            {/* 프로필 수정 미리보기 */}
             <div className ="mypage-content-profile-content-position">
               <div className="mypage-content-profile-content"> 
                 <div className='test' >
@@ -396,7 +358,7 @@ const updateUserInfo = () => {
                     <img 
                       alt='test2'
                       className = 'test2'
-                      src={image_route(userInfo.profile_picture_id)}
+                      src={util.image_route(userInfo.profile_picture_id)}
                     />
                   </div>
                   
@@ -411,6 +373,7 @@ const updateUserInfo = () => {
                 <strong>프로필</strong>
                 
               </div>
+              {/* 캐릭터 설정 */}
               <div className ="mypage-content-character-text">프로필 사진으로 사용할 캐릭터를 설정하세요.
                 <div className ='mypage-profile-img'>
                   
@@ -494,6 +457,7 @@ const updateUserInfo = () => {
                 
                   
                 </div>
+                {/* 프로필 배경 색깔 선택 */}
                 <div className ='mypage-profile-color'>
                   <div className ="mypage-content-color-text2">
                     프로필 사진의 배경색을 설정하세요
