@@ -145,9 +145,9 @@ const box = {
         </Link>
       </Grid>
       <div className="mypage-box-etc">
-        <div>개인정보동의약관</div>
-        <div>고객센터</div>
-        <div>환경 설정</div>
+        <div className="document">개인정보동의약관</div>
+        <div className="document">고객센터</div>
+        <div className="document">환경 설정</div>
         </div>
     </div>
   )

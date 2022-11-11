@@ -62,15 +62,15 @@ function BoardProfile(props) {
             <div className="freeart-activity"><strong>{props.board}에서 {props.uInfo.nickname}님의 활동</strong></div>
             <Grid container>
             <Link to ={`/MyActivity`} state = {{ id : 1}}>
-                <Box sx={box}>작성한 글</Box>
+                <Box sx={box} className="mypagehover">작성한 글</Box>
             </Link>
             <Link to ={`/MyActivity`} state = {{ id : 4}}>
-              <Box sx={box}>댓글</Box></Link>
+              <Box sx={box} className="mypagehover">댓글</Box></Link>
           <Link to ={`/MyActivity`} state = {{ id : 3}}>
-            <Box sx={box}>좋아욧</Box>
+            <Box sx={box} className="mypagehover">좋아욧</Box>
           </Link>
           <Link to ={`/MyActivity`} state = {{ id : 2}}>
-            <Box sx={box}>스크랩한 글</Box>
+            <Box sx={box} className="mypagehover">스크랩한 글</Box>
           </Link>
         
             </Grid>

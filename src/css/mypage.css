@@ -116,38 +116,67 @@
     margin-left: 30px;
 }
 .mypage-nickname-button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    width: 100px;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    width: 80px;
     background: #FFFFFF;
-    border-color :#8A8A8A;
+    /* border-color :#8A8A8A;*/ 
+    border: solid 2.5px #8a8a8a;
+    color: #8a8a8a;
     cursor: pointer;
 }
+.mypage-nickname-button:hover{
+    border-color:#000;
+    color: #000;
+}
+.mypage-nickname-button:active{
+    border-color:#7A96FC;
+    color: #7A96FC;
+}
+
 .button-test{
     box-sizing: border-box;
     background: #FFFFFF;
-    border: 1px solid #8A8A8A;
+    border: 1.8px solid #8A8A8A;
     width: 150px;
+    height: 30px;
     font-size: 15px;
     color: #8A8A8A;
     font-family: 'apple-font-EB';
     cursor: pointer;
+    margin-top:8.5px;
     margin-right: 10px;
+    font-family:'apple-font-EB'
+}
+.button-test:hover{
+    border: 1.8px solid  #000;
+    color:  #000;
+}
+.button-test:active{
+    border: 1.8px solid #4285F4;
+    color: #4285F4;
 }
 .button-test2{
     box-sizing: border-box;
     background: #FFFFFF;
-    border: 1px solid #4285F4;
+    border: 1.8px solid #4285F4;
     width: 150px;
+    height: 30px;
     font-size: 15px;
     color: #4285F4;
     font-family: 'apple-font-EB';
     cursor: pointer;
+    margin-top:8.5px;
     margin-right: 10px;
 }
+
 
 
 .namecheck{
@@ -370,10 +399,11 @@ input[type="checkbox"]:checked + label {
     margin-top: 20px;
     margin-right:30px;
     margin-left:30px;
-    
+    font-family: 'apple-font-EB';
     width : 249px;
     height: 70px;
     
+    font-weight:600;
     background: #FFFFFF;
     border: 1px solid #8A8A8A;
     color : #8A8A8A;
@@ -381,8 +411,15 @@ input[type="checkbox"]:checked + label {
 }
 /* 1264 */
 /* 14 30 249 30 30 249 30 30 249 30 30 249 30 14*/
-
-
+.mypage-content-acitvity-button:hover{
+    border: 1px solid #000;
+    color : #000;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+}
+.mypage-content-acitvity-button:active{
+    border: 1px solid #4285F4;
+    color : #4285F4;
+}
 /* 이용 안내 */
 
 .mypage-content-useInfo{
@@ -662,6 +699,16 @@ color: #686868;
 }
 
 .profile-edit-button{
-    cursor : pointer;
     
+    color: #8E8E8E;
+    cursor : pointer;
+    vertical-align: middle;
+    margin-bottom: -1px;
+    margin-left: 1px;
+}
+.profile-edit-button:hover{
+    color: #000
+}
+.profile-edit-button:active{
+    color: #4285F4
 }

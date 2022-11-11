@@ -23,9 +23,9 @@ function ViewContents(props) {
    
 
     //쿠키에서 access_token받아오기
-    const [likeColor, setLikeColor] = useState({'defaultl':'#b9b9b9'})
+    const [likeColor, setLikeColor] = useState('thumbutton1')
     const [open2,setOpen2] = useState(false)
-    const [scrapColor, setScrapColor] = useState({'defaults':'#b9b9b9'})
+    const [scrapColor, setScrapColor] = useState('scrapbutton1')
     const [commentLikeLib,setCommentLikeLib] = useState({});
     const [commentFlag,setCommentFlag] = useState(false) 
       const commentClick = () => {
@@ -66,21 +66,21 @@ function ViewContents(props) {
       console.log("check ",userInfo)
       if(bookmark.includes(userInfo.auth_user_id) === false)
       {
-        setScrapColor({'defaults':'#b9b9b9'})
+        setScrapColor('scrapbutton1')
       }
       else{
         //console.log('yes!')
-        setScrapColor({'defaults':'#FBD405'})
+        setScrapColor('scrapbutton2')
       }
     }
     const checkLikeColor = (like_users,userInfo) => {
       if(like_users.includes(userInfo.auth_user_id) === false)
       {
-        setLikeColor({'defaultl':'#b9b9b9'})
+        setLikeColor('thumbutton1')
       }
       else{
         //console.log('yes!')
-        setLikeColor({'defaultl':'red'})
+        setLikeColor('thumbutton2')
       }
     }
   
@@ -225,13 +225,13 @@ function ViewContents(props) {
           {
               setLikeCount(likeCount + 1)
               
-              setLikeColor({'defaultl':'red'})
+              setLikeColor('thumbutton2')
           }
           else if(res.data.message ==="like deleted")
           {
              setLikeCount(likeCount - 1);
              
-             setLikeColor({'defaultl':'#b9b9b9'})
+             setLikeColor('thumbutton1')
           }
         }).catch(err => {
           alert("오류 발생");
@@ -252,13 +252,13 @@ function ViewContents(props) {
           if(res.data.message === "bookmark upload")
           {
               setScrapCount(scrapCount + 1)
-              setScrapColor({'defaults':'#FBD405'})
+              setScrapColor('scrapbutton2')
               
           }
           else if(res.data.message ==="bookmark deleted")
           {
              setScrapCount(scrapCount - 1);
-             setScrapColor({'defaults':'#b9b9b9'})
+             setScrapColor('scrapbutton1')
           }
         }).catch(err => {
           alert("오류 발생");
@@ -464,18 +464,18 @@ const onDelete = () => {
               </div>
               {checkAuthor ? (
                 <>
-                  <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A'}}>
+                  <div className="fmc-report" onClick={() => alert("준비중입니다.")} >
                     신고하기
                   </div>
-                  <div className="fmc-report" onClick={() => onDelete()} style={{color:'#8A8A8A'}}>
+                  <div className="fmc-report" onClick={() => onDelete()}>
                     삭제하기
                   </div>
-                  <div className="fmc-report" onClick={() => setCheckEdit(true)} style={{color:'#8A8A8A'}}>
+                  <div className="fmc-report" onClick={() => setCheckEdit(true)} >
                     수정하기
                   </div>
                   </>
                   ) : (
-                  <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A'}}>
+                  <div className="fmc-report" onClick={() => alert("준비중입니다.")}>
                     신고하기
                   </div>
                   )}
@@ -486,7 +486,7 @@ const onDelete = () => {
             <div className='fmc-icon'>
             
             
-          <ThumbUpAltIcon onClick={like} sx={{ color: likeColor.defaultl ,width:'23px',height:'23px' }}/>
+          <ThumbUpAltIcon onClick={like} sx={{shadow:1}}className={likeColor}/>
                 
                 
           
@@ -494,12 +494,12 @@ const onDelete = () => {
             {likeCount ? likeCount : "0"}
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
-            <ChatIcon onClick={commentClick} sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'10px' }}/>
+            <ChatIcon onClick={commentClick} className="chatbutton"/>
           </div>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             {DATA.comment_count}
           </span>
-          <StarIcon onClick={scrap} sx={{ color: scrapColor.defaults,width:'23px',height:'23px' }}/>
+          <StarIcon onClick={scrap} className={scrapColor} sx={{ color: scrapColor.defaults,width:'23px',height:'23px' }}/>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
           {scrapCount ? scrapCount : "0"}
           </span>
@@ -536,13 +536,13 @@ const onDelete = () => {
                     <span>{commentLikeLib[comment.id]}</span>
                   </div> : <></>}              
               </div>
-              <div className="fmc-report" onClick={(event) => {onCcommentClick(event)}} style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={(event) => {onCcommentClick(event)}} style={{marginTop:'15px'}}>
                     대댓글
               </div>
-              <div className="fmc-report" onClick={(event) => {commentLike(event)}} style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={(event) => {commentLike(event)}} style={{marginTop:'15px'}}>
                     좋아요
               </div>
-              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{marginTop:'15px'}}>
                     신고하기
               </div>
             </div>
@@ -570,10 +570,10 @@ const onDelete = () => {
                   </div> : <></>}
                   
               </div>
-              <div className="fmc-report" onClick={(event) => commentLike(event)} style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={(event) => commentLike(event)} style={{marginTop:'15px'}}>
                     좋아요
               </div>
-              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{color:'#8A8A8A',marginTop:'15px'}}>
+              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{marginTop:'15px'}}>
                     신고하기
               </div>
             </div>

@@ -7,7 +7,7 @@ import Nav from './Nav'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { Link } from 'react-router-dom'
-
+import EditIcon from '@mui/icons-material/Edit';
 import MypageEdit from './MypageEdit'
 
 //util.js
@@ -90,7 +90,7 @@ const EditMode = () =>{
         ) : (
           <div className = 'mypage-profile'>
             <div className ='mypage-profile-head'>
-              프로필 <img alt ='hello' src ='/img/Vector.png' className='profile-edit-button' onClick ={EditMode}></img>
+              프로필 <EditIcon sx={{width:20, height:20}} className="profile-edit-button"onClick ={EditMode} />
               <div className="mypage-content-profile-content"> 
                 <div className='mypage-profile-image1' >
                   
@@ -140,16 +140,16 @@ const EditMode = () =>{
               
               <div style={{marginLeft:'-30px'}}>
               <Link to ={`/MyActivity`} state = {{ id : 1}}>
-                <button className ='mypage-content-acitvity-button'><strong>작성한 글</strong></button>
+                <button className ='mypage-content-acitvity-button'>작성한 글</button>
               </Link>
               <Link to ={`/MyActivity`} state = {{ id : 3}}>
-                <button className ='mypage-content-acitvity-button'><strong>좋아요한 글</strong></button>
+                <button className ='mypage-content-acitvity-button'>좋아요한 글</button>
               </Link>
               <Link to ={`/MyActivity`} state = {{ id : 2}}>
-                <button className ='mypage-content-acitvity-button'><strong>스크랩한 글</strong></button>
+                <button className ='mypage-content-acitvity-button'>스크랩한 글</button>
               </Link>
               <Link to ={`/MyActivity`} state = {{ id : 4}}>
-                <button className ='mypage-content-acitvity-button'><strong>댓글</strong></button>
+                <button className ='mypage-content-acitvity-button'>댓글</button>
               </Link>
               </div>
               
