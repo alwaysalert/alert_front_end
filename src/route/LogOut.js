@@ -149,9 +149,9 @@ const box = {
       </div>
       <Grid container>
       <Link to={'/Mypage'} >
-        <Box sx={box}>마이페이지</Box></Link>
+        <Box sx={box} className='mypagehover'>마이페이지</Box></Link>
         <Link>
-        <Box sx={box}>
+        <Box sx={box} className="mypagehover">
             <GoogleLogout
           clientId="803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com"
           buttonText="Logout"
@@ -170,10 +170,10 @@ const box = {
           </Box>
         </Link>
         <Link to ={`/MyActivity`} state = {{ id : 2}}>
-        <Box sx={box}>스크랩한 글</Box>
+        <Box sx={box} className="mypagehover">스크랩한 글</Box>
         </Link>
         <Link to ={`/MyActivity`} state = {{ id : 3}}>
-        <Box sx={box}>+</Box>
+        <Box sx={box} className="mypagehover">+</Box>
         </Link>
       </Grid>
       <div className="mypage-box-etc">
