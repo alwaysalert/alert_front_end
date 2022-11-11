@@ -16,6 +16,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 //util.js
 import * as util from '../util/util';
 import * as glob from '../global'
+import CheckBox from './CheckBox';
 
 function Freeart(props) {
   const baseURL = glob.BACK_BASE_URL; 
@@ -24,7 +25,48 @@ function Freeart(props) {
   const [cookies, , ] = useCookies(['access_token']);
   //console.log('cookie =',cookies.access_token);
   // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내고, 아니면 checkUser
-  
+  const [open2, setOpen2] = useState(false);
+    const handleClickOpen = () => {
+        setOpen2(true);
+      };
+   
+      const CheckButton = () => {
+        const title = document.getElementById('freeart-title').value;
+      const contents = document.getElementById('freeart-contents').value;
+        if(title.length === 0 || title.length > 20)
+        {
+          alert("제목은 1글자부터 20글자까지입니다.")
+        }
+        else if(contents.length === 0)
+        {
+          alert("본문을 입력하세요.")
+        }
+        else if(cookies.access_token)
+        {
+          console.log(cookies.access_token)
+          axios.post(`${baseURL}/freeboards/create`, {
+        
+            token: cookies.access_token,
+            title: title,
+            body: contents,
+          
+          }).then((res) => {
+          
+            document.location.reload();
+          }).catch(err => {
+            console.log(err)
+          });
+        }
+        else{
+          alert("로그인 후 이용 바랍니다")
+        }
+        setOpen2(false);
+      }
+      const CancelButton = () => {
+        
+        setOpen2(false);
+      }
+
   const [userInfo, setUserInfo] = useState({
     auth_user_id : null,
     id : null,
@@ -86,22 +128,8 @@ useEffect(() => {
  
  const onSubmit = async(event) => {
     event.preventDefault();
-    const title = document.getElementById('freeart-title').value;
-    const contents = document.getElementById('freeart-contents').value;
-    
-    axios.post(`${baseURL}/freeboards/create`, {
-        
-        token: cookies.access_token,
-        title: title,
-        body: contents,
-        
-      }).then((res) => {
-        
-        document.location.reload();
-      }).catch(err => {
-        document.location="/Error";
-      });
-    
+   
+    handleClickOpen();   
  }
  const onChangeTitle = (event) => {
     const {
@@ -121,6 +149,7 @@ useEffect(() => {
 
       
       <Nav />
+      <CheckBox Open={open2} cancelButton={CancelButton} checkButton={CheckButton} contents={"정말 작성하시겠습니까?"}/>
       <div className="freeart-content">
         <div className="freeart-content-head">
           <div className="freeart-content-head-title">자유게시판</div>
@@ -139,7 +168,7 @@ useEffect(() => {
             <div className="form-last">
               
               <AttachFileIcon className="clip-icon" sx={{ fontSize: 30,color: '#B7B7B7' }}/>
-              <button className="form-submit" type="submit" onClick={(event) => {onSubmit(event);}}>작성 완료</button>
+              <button className="form-submit" style={{fontSize:'20px'}} type="submit" onClick={(event) => {onSubmit(event);}}>작성완료</button>
             </div>
         </form>
         </div> : <></>}
@@ -152,7 +181,7 @@ useEffect(() => {
               date.getMinutes().toString().padStart(2, '0')
           }
           var time = new Date(article.created_time);
-          console.log("article=",article)
+          
           
           return (<div  key={article.id} name={article.id} id="freeart-arts-grid" >
                   <Link to={'/freeart/'+article.id} style={{width:'945px',height:'130px', backgroundColor:'red'}}>
@@ -162,7 +191,7 @@ useEffect(() => {
                 
                 
                   <h4 className="freeart-arts-title"><strong>{article.title}</strong></h4>
-                  <p><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
+                  <p className="freeart-arts-content">{article.body.split('\n').length < 3 ? article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body : article.body.split('\n')[0] + '\n...'}</p>
                   <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                   <span className="count-container">
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>

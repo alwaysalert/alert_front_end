@@ -95,9 +95,9 @@ function MyActivity(props) {
                         setWhatPost4(false)
                         setWhatNum(1);
                     }}
-                    className = 'myactivity-button1'><strong>
+                    className = 'myactivity-button1'>
                         작성한 글
-                    </strong>
+                    
                 </button>
                 <button 
                     style={boxStyle2}
@@ -110,7 +110,7 @@ function MyActivity(props) {
                         setWhatPost4(false)
                         setWhatNum(2);
                     }}
-                    className = 'myactivity-button2'><strong>스크랩한 글</strong></button>
+                    className = 'myactivity-button2'>스크랩한 글</button>
                 <button 
                     style={boxStyle3}
                     onMouseEnter={()=>{setIsHover3(true)}}
@@ -122,7 +122,7 @@ function MyActivity(props) {
                         setWhatPost4(false)
                         setWhatNum(3);
                     }}
-                    className = 'myactivity-button3'><strong>좋아요한 글</strong></button>
+                    className = 'myactivity-button3'>좋아요한 글</button>
                 <button 
                     style={boxStyle4}
                     onMouseEnter={()=>{setIsHover4(true)}}
@@ -134,7 +134,7 @@ function MyActivity(props) {
                         setWhatPost4(true)
                         setWhatNum(4);
                     }}
-                    className = 'myactivity-button4'><strong>댓글</strong></button>
+                    className = 'myactivity-button4'>댓글</button>
             </div>
             
           </div>

@@ -274,15 +274,21 @@ html {
     height: 80%;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-
+    overflow: hidden;
  }
  .advertise {
     position: relative;
-    width: 39rem;
-    height: 230px;
-    filter: blur(5px);
+    width: 110%;
+    height: 100%;   
+    filter: blur(10px);
+    overflow: hidden;
+
+ 
+
+
+    
     border-radius: 3px;
-    border-color: white;
+   
 
  }
  .advertise-back{
@@ -439,12 +445,12 @@ html {
     width: 646px;
     height: 35px;
     left: 200px;
-    top: 370px;
+    top: 395px;
     
     font-family: 'apple-font-EB';
     font-weight: 400;
-    font-size: 32px;
-    line-height: 45px;
+    font-size: 23px;
+    line-height: 30px;
     text-align: center;
     color: #ADADAD;
 }

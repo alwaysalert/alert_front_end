@@ -27,19 +27,19 @@ function HackChild(props) {
     
 
     //쿠키에서 access_token받아오기
-  const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
+  const [cookies,,] = useCookies(['access_token']);
   //console.log('cookie =',cookies.access_token);
   // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내고, 아니면 checkUser
   
   const [userInfo, setUserInfo] = useState({
-    auth_user_id : 2,
-    id : 1,
-    is_existing : true,
-    nickname : 'name',
-    profile_color_id : 3,
-    profile_picture_id : 1,
-    user_email:'',
-    user_job : 1
+    auth_user_id : null,
+    id : null,
+    is_existing : null,
+    nickname : null,
+    profile_color_id : null,
+    profile_picture_id : null,
+    user_email:null,
+    user_job : null
   });
   let newUserInfo = {...userInfo};
 

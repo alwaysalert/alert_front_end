@@ -110,7 +110,7 @@ const EditMode = () =>{
                   <strong>{userInfo.nickname}</strong>
                 </div>
                 <div className = 'mypage-profile-job'>
-                 <strong>신&nbsp;&nbsp;&nbsp;분</strong> 
+                 <strong>신&nbsp;&nbsp;분</strong> 
                 </div>
                 <div className = 'mypage-profile-job1'>
                   <strong>{util.userJob(userInfo.user_job)}</strong>
@@ -138,7 +138,7 @@ const EditMode = () =>{
             <div className = "mypage-content-acitivity-text">
               Alert에서 회원님이 활동하신 내역을 확인해보세요.
               
-              <div>
+              <div style={{marginLeft:'-30px'}}>
               <Link to ={`/MyActivity`} state = {{ id : 1}}>
                 <button className ='mypage-content-acitvity-button'><strong>작성한 글</strong></button>
               </Link>
