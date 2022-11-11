@@ -12,6 +12,8 @@ import Profile from './Profile';
 import MainSlide from './MainSlide';
 
 
+
+
 function Mainpage(props) {
   //box css
   const box ={
@@ -29,20 +31,30 @@ function Mainpage(props) {
     };
 
     const baseurl= 'http://127.0.0.1:8000';
-    let xnews=[]
-    const [news, setNews] = useState(null);
+    let xnews=[];
+    const [new1, setNews1] =useState({});
+    const [new2, setNews2] =useState({});
+    const [new3, setNews3] =useState({});
+
+
     useEffect(() => {
         axios.get(`${baseurl}/boannews/`)
             .then(async (res) => {
+              // eslint-disable-next-line react-hooks/exhaustive-deps
               xnews = [...res.data];
-              console.log(xnews);
-              setNews(xnews);
+              // console.log(xnews[0]);
+              // eslint-disable-next-line react-hooks/exhaustive-deps
+              setNews1(xnews[0]);
+              // eslint-disable-next-line react-hooks/exhaustive-deps
+              setNews2(xnews[1]);
+              // eslint-disable-next-line react-hooks/exhaustive-deps
+              setNews3(xnews[2]);
             }).catch(err => {
             //   document.location="/Error";
             });
-        console.log("news",news[0]);
-    },[])
   
+    },[])
+    
   return (
     <>
         <Nav isLoggedIn={props.isLoggedIn} />
@@ -207,7 +219,7 @@ function Mainpage(props) {
                 
                 }}
             >
-              <MainSlide></MainSlide>
+              <MainSlide new1 = {new1} new2 = {new2} new3 = {new3}></MainSlide>
               {/* <Box
                  className={"box-high-outside"}
                  >
@@ -217,7 +229,7 @@ function Mainpage(props) {
               <Box
                  className={"box-low"} style={{textAlign:"left"}}>
                 <div className="box-low-title">
-                  지금 모집 중인 대외활동
+                  {new1.title}
                 </div>
                 <div className="box-low-contents" style={{textIndent:'15px'}}>
                   <p> 한국정보보호산업협회에서 주관하는 AI 보안 네트워크반 교육생 모집</p>
