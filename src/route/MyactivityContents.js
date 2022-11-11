@@ -119,31 +119,31 @@ const hexcolor = (num) =>{
           console.log("article=",article)
           
           return (<div  key={article.id} name={article.id} id="myactivity-arts-grid" >
-                  <Link to={'/freeart/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
+                  <Link to={'/freeart/'+article.id} style={{width:'930px',height:'130px'}}>
                   <div>
-                  <div className= "myactivity-arts-profile-circle" style ={{background : hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={image_route(article.author_info.profile_picture_id)}/></div>
-                  <h4 className="myactivity-arts-title"><strong>{article.title}</strong></h4>
-                  <p className = 'myactivity-arts-text'><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
-                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
+                  <div className= "freeart-arts-profile-circle" style ={{background : hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="freeart-arts-profile" src={image_route(article.author_info.profile_picture_id)}/></div>
+                  <div className="arts-title" style={{height:'20px'}}><strong>{article.title}</strong></div>
+                  <p className = 'arts-text'>{article.body.split('\n').length < 3 ? article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body : article.body.split('\n')[0] + '\n...'}</p>
+                  <span className="arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                   <span className="count-container">
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             
-            <ThumbUpAltIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3' }}/>
+            <ThumbUpAltIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'13px' }}/>
           </div>
-          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'19.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
             {article.like_users.length}
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             <ChatIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
           </div>
-          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'19.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
           
           {article.comment_count}
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
             <StarIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
           </div>
-          <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+          <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'19.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
           {article.bookmark ? article.bookmark.length : "0"}
           </span>
                   </span>                  

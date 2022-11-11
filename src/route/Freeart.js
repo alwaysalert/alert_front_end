@@ -29,8 +29,7 @@ function Freeart(props) {
     const handleClickOpen = () => {
         setOpen2(true);
       };
-    
-      
+   
       const CheckButton = () => {
         const title = document.getElementById('freeart-title').value;
       const contents = document.getElementById('freeart-contents').value;
@@ -169,7 +168,7 @@ useEffect(() => {
             <div className="form-last">
               
               <AttachFileIcon className="clip-icon" sx={{ fontSize: 30,color: '#B7B7B7' }}/>
-              <button className="form-submit" type="submit" onClick={(event) => {onSubmit(event);}}>작성 완료</button>
+              <button className="form-submit" style={{fontSize:'20px'}} type="submit" onClick={(event) => {onSubmit(event);}}>작성완료</button>
             </div>
         </form>
         </div> : <></>}
@@ -192,7 +191,7 @@ useEffect(() => {
                 
                 
                   <h4 className="freeart-arts-title"><strong>{article.title}</strong></h4>
-                  <p><strong>{article.body.split('\n').length < 3 ? article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body : article.body.split('\n')[0] + '\n...'}</strong></p>
+                  <p className="freeart-arts-content">{article.body.split('\n').length < 3 ? article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body : article.body.split('\n')[0] + '\n...'}</p>
                   <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                   <span className="count-container">
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>

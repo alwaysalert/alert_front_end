@@ -524,7 +524,7 @@ const updateUserInfo = () => {
                   <div className ="mypage-content-color-text2">
                     프로필 사진의 배경색을 설정하세요
                   </div>
-                  <div>
+                  <div className="profile-background-container">
                     <button 
                       className = 'mypage-color-button mypage-color-button1'
                       onClick ={(e)=>{
