@@ -45,14 +45,15 @@ function Nav(props) {
           role="presentation"
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
+          
         >
           <List>
-            {[{name:'자유게시판',link:'/freeart'}, {name:'취업게시판',link:'/freeart'}, {name:'우리가 누구',link:'/freeart'}, {name:'우리 학과는',link:'/freeart'},{name:'캘린더',link:'/freeart'},{name:'지금 모집중인 대외활동',link:'/freeart'}].map((text, index) => (
-              <ListItem key={text.name} disablePadding>
+            {[{name:'자유게시판',link:'/freeart'}, {name:'취업게시판',link:'/Error'}, {name:'핵린이 게시판',link:'/HackChild'}, {name:'우리 학과는',link:'/Error'},{name:'캘린더',link:'/Error'},{name:'지금 모집중인 대외활동',link:'/Error'}].map((text, index) => (
+              <ListItem key={text.name} sx={{fontFamily:'apple-font-B'}} disablePadding>
                  
                     <ListItemButton onClick={() => {movePage(text.link)}}>
                   
-                        <ListItemText primary={text.name} />
+                        <ListItemText primaryTypographyProps={{ style: {fontFamily:'apple-font-B',fontWeight:'bold'} }} primary={text.name} />
                     
                     </ListItemButton>
                 
@@ -61,11 +62,11 @@ function Nav(props) {
           </List>
           <Divider />
           <List>
-            {[{name:'마이페이지',link:'/Mypage'}, {name:'고객센터',link:'/freeart'}, {name:'shop',link:'/freeart'}].map((text, index) => (
+            {[{name:'마이페이지',link:'/Mypage'}, {name:'고객센터',link:'/Error'}, {name:'shop',link:'/Error'}].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton onClick={() => {movePage(text.link)}}>
 
-                    <ListItemText primary={text.name} />
+                    <ListItemText primaryTypographyProps={{ style: {fontFamily:'apple-font-B',fontWeight:'bold'} }} primary={text.name} />
                   
                 </ListItemButton>
               </ListItem>

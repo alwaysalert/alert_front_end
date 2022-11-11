@@ -79,15 +79,15 @@
     font-style: normal;
     font-weight: 400;
     font-size: 48px;
-    line-height: 90px;
-    text-indent: 30px;
-    top:20px;
-    left:10px;
+    /* line-height: 90px;
+    text-indent: 30px; */
+    /* top:20px;
+    left:10px; */
     color: #29559F;
 }
 .myactivity-button1{
     cursor:pointer;
-    
+    font-family: 'apple-font-B';
     border-top: #FFFFFF;
     border-left: #FFFFFF;
     border-right: #FFFFFF;
@@ -105,7 +105,7 @@
     box-sizing: border-box;
     margin-top: 20px;
     border : none;
-    
+    font-family: 'apple-font-B';
     width : 215px;
     height: 90px;
     
@@ -118,7 +118,7 @@
     box-sizing: border-box;
     margin-top: 20px;
     border : none;
-    
+    font-family: 'apple-font-B';
     width : 215px;
     height: 90px;
     
@@ -131,7 +131,7 @@
     box-sizing: border-box;
     margin-top: 20px;
     border : none;
-    
+    font-family: 'apple-font-B';
     width : 215px;
     height: 90px;
     
@@ -140,10 +140,11 @@
     font-size: 35px;
 }
 
+
 .myactivity-content-background{
-    display: block;
+
     width: 100%;
-    height: 1000px;
+    min-height: 1000px;
     text-align: center;
     background: #F4F4F4;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
@@ -151,7 +152,7 @@
     margin-bottom: 20px;
 
 }
-.myactivity-content-post{
+/* .myactivity-content-post{
     display: block;
     width: 900px;
     height: 200px;
@@ -160,63 +161,47 @@
     margin: 0 auto;
     margin-bottom: 0.1px;
     border: 1px solid #B7B7B7;
-}
-.myactivity-arts-profile{
-    display: inline-block;
-    float: left;
-    width: 120px;
-    height: 120px;
-}
-
-
-.myactivity-arts-profile-circle{
-    display: flex;
-    align-items : center;
-    border-radius: 1150px;
-    text-align: center;
-    float: left;
-    width: 120px;
-    height: 120px;
-    margin-top: 20px;
-    margin-left:12.5px;
-    margin-right: 25px;
-}
+} */
 
 #myactivity-arts-grid{
-    
-    display: block;
-    width: 900px;
-    height: 200px;
-    background: #FFFFFF;
+    display: inline-block;
+    vertical-align: top;
     text-align: left;
-    margin: 0 auto;
-    margin-bottom: 0.1px;
-    width: 900px;
+    /* margin: 0 auto; */
+    width: 940px;
     border: 1px solid #B7B7B7;
-    height: 180px;
-    text-indent: 15px;
+    height: 130px;
+    background-color: #FFFFFF;
+    
     
 }
-.myactivity-arts-title{
-    position: relative;
-    width: 447px;
-    height: 113px;
-    left: 0px;
-    top: 10px;
 
-    font-family: 'apple-font-EB';
-    font-style: normal;
+.arts-title{
+    font-family: 'apple-font-M';
+    
+    
+    display: inline-block;
+    vertical-align: top;
     font-weight: 400;
-    font-size: 30px;
-    line-height: 34px;
-    text-indent: 10px;
-
-    color: #000000;
+    font-size: 19px;
+    clear:both;
+    margin-top: 16px;
+    
+    
+    color: #000;
 }
-.myactivity-arts-text{
-    position: relative;
-    bottom:50px;
-    font-size: 20px;
-    font-family: 'apple-font-EB';
-    color: #000000;
+.arts-text{
+    font-family: 'apple-font-M';
+    color: #000;
+    height:48px;
+    width:97%;
+    font-size: 15px;
+}
+.arts-whenwho{
+    font-family: 'apple-font-M';
+    display: inline-block;
+    vertical-align:bottom;
+    margin-top: 15px;
+    color: #b7b7b7;
+    font-size: 13px;
 }

@@ -27,6 +27,10 @@ function ViewContents(props) {
     const [open2,setOpen2] = useState(false)
     const [scrapColor, setScrapColor] = useState({'defaults':'#b9b9b9'})
     const [commentLikeLib,setCommentLikeLib] = useState({});
+    const [commentFlag,setCommentFlag] = useState(false) 
+      const commentClick = () => {
+        setCommentFlag(!commentFlag)
+      }
     const [cookies, , ] = useCookies(['access_token']);
     const [userInfo, setUserInfo] = useState({
       auth_user_id : null,
@@ -439,7 +443,7 @@ const onDelete = () => {
             <div className="form-last">
               
               <AttachFileIcon className="clip-icon" sx={{ fontSize: 30,color: '#B7B7B7' }}/>
-              <button className="form-submit" type="submit" onClick={(event) => {onEditSubmit(event)}}>작성 완료</button>
+              <button className="form-submit" type="submit" style={{fontSize:'20px'}} onClick={(event) => {onEditSubmit(event)}}>작성완료</button>
             </div>
         </form>
         </div>
@@ -490,7 +494,7 @@ const onDelete = () => {
             {likeCount ? likeCount : "0"}
           </span>
           <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
-            <ChatIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'10px' }}/>
+            <ChatIcon onClick={commentClick} sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'10px' }}/>
           </div>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             {DATA.comment_count}
@@ -578,7 +582,7 @@ const onDelete = () => {
               </>)
             })}
             <div style={{marginBottom:'15px'}}></div>
-            <div id={comment.id} name="false" className='fmc-comment-input' style={{marginBottom:'2px',width:'99%',marginLeft:'5px',display:"none"}}>
+            <div id={comment.id} name="false" className='fmc-comment-input' style={{width:'95%',margin:'auto',marginBottom:'10px',display:"none"}}>
           <textarea  id='writeComcomment' className='write-comment' placeholder="댓글을 입력하세요." ></textarea>
           
           {/* <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />
@@ -590,6 +594,7 @@ const onDelete = () => {
         </div>
           </>)
 })}
+        {commentFlag ? (<>
         <div className='fmc-comment-input'>
           <textarea  id='writeComment' className='write-comment' placeholder="댓글을 입력하세요." ></textarea>
           
@@ -599,7 +604,10 @@ const onDelete = () => {
             <CreateIcon sx={{width:'25px',heigth:'25px' ,color:'white',marginTop:'5px',marginLeft:'7px'}}/>
           </div>
         </div>
+        </>) : <></>}
+        <div style={{marginBottm:'50px'}}></div>
         </div>
+       
         
         
       </div>

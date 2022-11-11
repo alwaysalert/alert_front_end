@@ -155,7 +155,9 @@
 }
 
 .button-color{
+    
     color :#8A8A8A;
+    font-size:16px;
 }
 
 label {
@@ -187,9 +189,10 @@ input[type="checkbox"]:checked + label {
     position:relative;
     text-align: left;
     width: 500px;
-    line-height: 35pt;
+    line-height: 37pt;
     margin-bottom: 20px;
     font-size: 15pt;
+    font-family:'apple-font-M';
 }
 .gray-circle{
     display: flex;
@@ -207,11 +210,13 @@ input[type="checkbox"]:checked + label {
 .mypage-profile-img{
     position:absolute;
     bottom: -90px;
-    width: 10000px;
+    width: 600px;
+    left: -20px;
 }
 .mypage-profile-img-in{
     cursor: pointer;
     width : 60px;
+    height: 60px;
 }
 .mypage-profile-color{
     position:absolute;
@@ -230,10 +235,19 @@ input[type="checkbox"]:checked + label {
     position:relative;
     text-align: left;
     width: 500px;
-    line-height: 60pt;
+    line-height: 80pt;
     font-size: 15pt;
 }
-
+.profile-background-container{
+    position:absolute;
+    left:-20px;
+    margin-top: -25px;
+}
+.profile-background-container button{
+    width: 60px;
+    height: 60px;
+    vertical-align: top;
+}
 .mypage-color{
     background: #FF6767;
     border-radius: 10px;
@@ -282,7 +296,7 @@ input[type="checkbox"]:checked + label {
     cursor: pointer;
     position: absolute;
     height: 20px;
-    left: 1000px;
+    left: 1300px;
     top: 900px;
     font-family: 'apple-font-EB';
     background-color: #aaaaaa6b;
@@ -294,7 +308,7 @@ input[type="checkbox"]:checked + label {
     cursor: pointer;
     position: absolute;
     height: 20px;
-    left: 1110px;
+    left: 1200px;
     top: 900px;
     font-family: 'apple-font-EB';
     background-color: #aaaaaa6b;
@@ -391,8 +405,8 @@ input[type="checkbox"]:checked + label {
     position: absolute;
     width: 200px;
     height: 200px;
-    left: 1000px;
-    top: 684px;
+    left: 825px;
+    top: 648px;
 
     background: #FFFFFF;
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
@@ -410,17 +424,17 @@ input[type="checkbox"]:checked + label {
     height: 150px;
     border-radius: 1150px;
     background-color: #14BBE0;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 .name{
     display: block;
     width: 100%;
-    margin-top:3px;
+    margin-top:5px;
     
 
     font-family: 'apple-font-M';
     font-style: normal;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 24px;
 
 
@@ -499,7 +513,7 @@ color: #686868;
 .mypage-profile-head{
     
     position: absolute;
-    width: 100%;
+    width: 500px;
     text-align: left;
     font-family: 'BM HANNA_TTF';
     font-style: normal;
