@@ -45,6 +45,7 @@ function BoardProfile(props) {
 
   return (
     <>
+    {/* 로그인 됐는지에 따라 다르게 */}
         {props.isLoggedIn ? (
         <div className="freeart-content-profile">
             <div className="freeart-content-profile-name"><strong>{props.uInfo.nickname}</strong></div>
@@ -77,7 +78,7 @@ function BoardProfile(props) {
             
              
         
-  ) :(<div className="freeart-content-profile">
+  ) :( <div className="freeart-content-profile">
     <Login ></Login>
   </div>) }
     </>

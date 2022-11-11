@@ -33,8 +33,9 @@ function QnaBox(props){
     )
 }
 function CenterQnaBox(props){
+    const boxstyle = {transform:`scale(${props.boxScale})`}
     return (
-        <div ref = {props.Ref}className={props.class} style ={props.style}>
+        <div className={props.class} style ={boxstyle}>
             <div className ='hackchild-qna-box-head'>
                 <span className ='hackchild-qna-box-head-text'>지금 뜨는 질문</span>
                 <div className='circle1'> </div>
@@ -59,22 +60,6 @@ function CenterQnaBox(props){
     )
 }
 
-const boxnum = (num) => {
-    if(num<0){
-        return num+5;
-    }else if(num>4){
-        return parseInt(num%5);
-    }
-    return num;
-}
-const arraynum = (num) => {
-    if(num<0){
-        return num+10;
-    }else if(num>9){
-        return parseInt(num%10);
-    }
-    return num;
-}
 
 
 function Qna() {
@@ -84,33 +69,42 @@ function Qna() {
     const QNA = [0,1,2,3,4,5,6,7,8,9];//일단 이게 article이라고 생각
     const [whatnum, setWhatNum] = useState(2);//가운데 박스 번호, 0, 1, 2, 3, 4
     // const style = [{display :'none',left:'-1000px',height:'350px', top:'100px'},{left:'-500px',height:'350px', top:'100px'},{left:'144px'},{left:'844px',height:'350px', top:'100px'},{display :'none',left :'900px',height:'350px', top:'100px'}];
+
+    //contain객체 -> className :qna-container인 div DOM
     const contain = useRef();
+
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [beforeIndex, setBeforeIndex] = useState(1);
+
     const [transit, setTransition] =useState('0.5s ease-in-out')
-
+    const [boxscale, setBoxccale] = useState([1,1,1.2,1,1,1,1,1])
     
-    
-    const element = useRef([])
-
+    let newboxscale =[...boxscale];
+    console.log(newboxscale);
      const changeSlide = (num) =>{
         setTransition('');
         setTimeout(() => {
             if(num === 4){
+                setBeforeIndex(-1);
                 setCurrentIndex(4);
             }else if(num === 0){
+                setBeforeIndex(5);
                 setCurrentIndex(0);
             }
-        }, 49)
+        }, 10)
     }
     const lonclick = () =>{
-        
+        setBeforeIndex(currentIndex);
         setTransition('0.5s ease-in-out');
         setCurrentIndex(currentIndex-1);
+        boxscale[currentIndex+2] = 1.2;
     }
     const ronclick = () =>{
+        setBeforeIndex(currentIndex);
         setTransition('0.5s ease-in-out');
         setCurrentIndex(currentIndex+1);
     }
+    
 
     useEffect(() => {
         setTimeout(() => {
@@ -119,32 +113,39 @@ function Qna() {
             }else if(currentIndex+1 === 6){//5일때
                 changeSlide(0);
             }
-        }, 450)
-        
+        }, 400)
+        newboxscale[currentIndex+2] = 1.2;
+        newboxscale[beforeIndex+2] = 1;
+        setBoxccale(newboxscale);
+
     },[currentIndex])
 
     // qna css for 무한 슬라이드
     const style ={transition : transit, transform :`matrix(1,0,0,1,${-705*currentIndex - 593 -703},0)`};
+
+    
+
 
   return (
   <div>
     {/* <button onClick={lonclick}>왼</button>
     <button onClick={ronclick}>오</button> */}
     
-    {/* <div>{currentIndex}</div> */}
+    {/* <div>current : {currentIndex}</div>
+    <div>before : {beforeIndex}</div> */}
     <div className ='hackchild-qna'>
         <div className ='cloudleft' onClick={lonclick} ></div>
         <div className ='cloudright' onClick={ronclick}></div>
-        <div ref={contain} style = {style}className='qna-container'>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[3]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[4]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[0]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[1]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[2]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[3]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[4]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[0]}></CenterQnaBox>
-            <CenterQnaBox class = 'hackchild-qna-box2'  content = {QNA[1]}></CenterQnaBox>
+        <div ref={contain} style = {style} className='qna-container'>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[0]} content = {QNA[3]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[1]} content = {QNA[4]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[2]} content = {QNA[0]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[3]} content = {QNA[1]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[4]} content = {QNA[2]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[5]} content = {QNA[3]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[6]} content = {QNA[4]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[7]} content = {QNA[0]}></CenterQnaBox>
+            <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[8]} content = {QNA[1]}></CenterQnaBox>
         </div>
         
     </div>
