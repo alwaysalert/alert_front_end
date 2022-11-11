@@ -470,3 +470,10 @@ html {
     cursor:pointer;
     margin: 15px;
 }
+
+main slide */
+.MainSlide{
+    background-color: #6E5DB0;
+    position: relative;
+    left: 0px;
+}

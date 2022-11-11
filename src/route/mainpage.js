@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import "../css/mainpage.css"
 
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
@@ -8,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Calendarpg from './social/googlecalendar';
 import Nav from './Nav';
 import Profile from './Profile';
+import MainSlide from './MainSlide';
 
 
 function Mainpage(props) {
@@ -25,6 +27,21 @@ function Mainpage(props) {
     textAlign: 'center',
     fontSize: '0.875rem',
     };
+
+    const baseurl= 'http://127.0.0.1:8000';
+    let xnews=[]
+    const [news, setNews] = useState(null);
+    useEffect(() => {
+        axios.get(`${baseurl}/boannews/`)
+            .then(async (res) => {
+              xnews = [...res.data];
+              console.log(xnews);
+              setNews(xnews);
+            }).catch(err => {
+            //   document.location="/Error";
+            });
+        console.log("news",news[0]);
+    },[])
   
   return (
     <>
@@ -176,6 +193,7 @@ function Mainpage(props) {
             </Box>
             <Box
               sx={{
+                
                 boxShadow: 2,
                 width: '38rem',
                 height: '18rem',
@@ -185,12 +203,12 @@ function Mainpage(props) {
                 p: 1,
                 m: 1,
                 borderRadius: 2,
-                textAlign: 'center',
                 fontSize: '0.875rem',
                 
                 }}
             >
-              <Box
+              <MainSlide></MainSlide>
+              {/* <Box
                  className={"box-high-outside"}
                  >
                   <img alt='advertise'src="https://www.boannews.com/media/upFiles2/2022/11/20221105hack-s.jpg" className="advertise"/>
@@ -204,8 +222,9 @@ function Mainpage(props) {
                 <div className="box-low-contents" style={{textIndent:'15px'}}>
                   <p> 한국정보보호산업협회에서 주관하는 AI 보안 네트워크반 교육생 모집</p>
                 </div>
-              </Box>
+              </Box> */}
             </Box>
+            
           </Grid>
         </div>
     </>
