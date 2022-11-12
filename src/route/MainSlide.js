@@ -46,11 +46,13 @@ function MainSlide(props) {
     return (
         <div>
             <div className ='boannews'>실시간 보안 뉴스</div>
-            <Slider {...settings}>
-                <MainArticle news = {props.new3}></MainArticle> 
-                <MainArticle news = {props.new2}></MainArticle> 
-                <MainArticle news = {props.new1}></MainArticle>
-            </Slider>
+                <Slider {...settings}>
+                    <MainArticle news = {props.new3}></MainArticle> 
+                    <MainArticle news = {props.new2}></MainArticle> 
+                    <MainArticle news = {props.new1}></MainArticle>
+                </Slider>
+
+            
             
         </div>
         
