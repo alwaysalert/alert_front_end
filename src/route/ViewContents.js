@@ -493,9 +493,9 @@ const onDelete = () => {
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             {likeCount ? likeCount : "0"}
           </span>
-          <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+          <a href='#writeComment' style={{display:'inline-block',marginTop:'10px',width:'20px',height:'20px',marginRight:'6px'}}>
             <ChatIcon onClick={commentClick} className="chatbutton"/>
-          </div>
+          </a>
           <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'16.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#6B6B6B'}}>
             {DATA.comment_count}
           </span>
@@ -582,7 +582,7 @@ const onDelete = () => {
               </>)
             })}
             <div style={{marginBottom:'15px'}}></div>
-            <div id={comment.id} name="false" className='fmc-comment-input' style={{width:'95%',margin:'auto',marginBottom:'10px',display:"none"}}>
+            <div id={comment.id} name="false" className='fmc-comment-input' style={{width:'97.65%',margin:'auto',marginBottom:'10px',display:"none"}}>
           <textarea  id='writeComcomment' className='write-comment' placeholder="댓글을 입력하세요." ></textarea>
           
           {/* <FormControlLabel style={{border:'none', display: 'inline-block', width:'25px',verticalAlign:'top',marginTop:'-2px',marginLeft:'3px'}} control={<Checkbox coler="default" />} />

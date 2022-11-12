@@ -79,9 +79,10 @@ function MyActivity(props) {
       <div className="freeart-content">
         <div className="myactivity-content-head1">
           <div className="myactivity-content-head-title">나의 활동</div>
-          <div className="myactivity-content-head-content"><strong>너네가 쓴 글이에요</strong></div>
+          <div className="myactivity-content-head-content"><strong>Alert에서 사용하게 될 다양한 정보 등을 수정 및 확인할 수 있어요</strong></div>
         </div>
-        <div className='myactivity-content-activity'>
+        <div className="myactivity-content-activity">
+        <div className='myactivity-content-activity-header'>
             <div className = "myactivity-content-head">나의 활동</div>
             <div>
                 <button  
@@ -139,7 +140,7 @@ function MyActivity(props) {
             
           </div>
           <MyactivityContents num = {whatNum}></MyactivityContents>
-        
+        </div>
       </div>
     </>
   )

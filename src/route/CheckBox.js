@@ -21,11 +21,12 @@ return (
         open={props.Open}
         TransitionComponent={Transition}
         onClose={props.cancelButton}
+        PaperProps={{ sx: { width: "30%" } }}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText id="alert-dialog-description" sx={{fontFamily:"apple-font-EB",fontWeight:'700',fontSize:'20px'}}>
             {props.contents}
           </DialogContentText>
         </DialogContent>
