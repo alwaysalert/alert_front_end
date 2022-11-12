@@ -2,36 +2,6 @@ import { height } from '@mui/system';
 import React, { useState, useRef, useEffect } from 'react'
 import '../css/hackchild.css'
 
-
-function QnaBox(props){
-
-
-
-    return (
-        <div className={props.class} style ={{height:'350px', top:'100px'}} >
-            <div className ='hackchild-qna-box-head'>
-                <span className ='hackchild-qna-box-head-text'>지금 뜨는 질문</span>
-                <div className='circle1'> </div>
-                <div className='circle2'> </div>
-                <div className='circle3'> </div>
-            </div>
-            <div className ='hackchild-qna-box-title' style ={{fontSize:'20px', top:'80px'}} >
-                <strong>정보보호학과 공부순서 어떻게 해야할까요?</strong><span>(tag)</span>
-                <div className ='hackchild-qna-box-content' style ={{fontSize:'16px', top:'80px'}}>
-                {props.content}
-                </div>
-            </div>
-            <div className='hackchild-qna-box-answer1' style ={{top:'220px'}}>
-                (프사) (댓글 내용)
-            </div>
-            <div className='hackchild-qna-box-answer2' style ={{top:'270px'}}>
-                <textarea className='hackchild-qna-box-answer-input' rows='1' cols='40' placehoder ='(닉네임)님, 해킹이 처음인 핵린이를 위해 답변을 달아주세요.' ></textarea>
-            </div>
-            <div className='hackchild-qna-box-answer-button' style ={{top:'270px'}}>답변 달기</div>
-            
-        </div>
-    )
-}
 function CenterQnaBox(props){
     const boxstyle = {transform:`scale(${props.boxScale})`}
     return (
@@ -43,9 +13,9 @@ function CenterQnaBox(props){
                 <div className='circle3'> </div>
             </div>
             <div className ='hackchild-qna-box-title'>
-                <strong>정보보호학과 공부순서 어떻게 해야할까요?</strong><span>(tag)</span>
+                <strong>{props.content.title}</strong><span>(tag)</span>
                 <div className ='hackchild-qna-box-content'>
-                {props.content}
+                {props.content.content}
                 </div>
             </div>
             <div className='hackchild-qna-box-answer1'>
@@ -65,8 +35,14 @@ function CenterQnaBox(props){
 function Qna() {
     // https://ye-yo.github.io/react/2022/01/21/infinite-carousel.html 시발 이거보고 하자
 
+    const temp ={
+        title:'hi',
+        tag : '1',
+        content : 'Always Alert!'
+    }
     // q&a 받아와서 array에 저장
-    const QNA = [0,1,2,3,4,5,6,7,8,9];//일단 이게 article이라고 생각
+    const QNA = [temp,1,2,3,4];//일단 이게 article이라고 생각
+
     const [whatnum, setWhatNum] = useState(2);//가운데 박스 번호, 0, 1, 2, 3, 4
     // const style = [{display :'none',left:'-1000px',height:'350px', top:'100px'},{left:'-500px',height:'350px', top:'100px'},{left:'144px'},{left:'844px',height:'350px', top:'100px'},{display :'none',left :'900px',height:'350px', top:'100px'}];
 
@@ -76,7 +52,7 @@ function Qna() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [beforeIndex, setBeforeIndex] = useState(1);
 
-    const [transit, setTransition] =useState('0.5s ease-in-out')
+    const [transit, setTransition] = useState('0.5s ease-in-out')
     const [boxscale, setBoxccale] = useState([1,1,1.2,1,1,1,1,1])
     
     let newboxscale =[...boxscale];
