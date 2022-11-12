@@ -4,6 +4,7 @@ import '../css/myactivity.css'
 import '../css/hackchild.css'
 import axios from 'axios'
 
+import EditIcon from '@mui/icons-material/Edit';
 import ChatIcon from '@mui/icons-material/Chat';
 import StarIcon from '@mui/icons-material/Star';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -11,6 +12,30 @@ import { Link } from 'react-router-dom'
 //util.js
 import * as util from '../util/util';
 import Qna from './Qna'
+
+
+function CreateAriticle(){
+
+  return (
+    <div className="hackchild-create-article">
+      <span className='hackchild-create-text'>
+        <strong>
+          이 분야를 공부하며 모르는 부분은 질문을 통해 해결하세요! 공유하고 싶은 정보도 나눠보아요! 
+          </strong>
+      </span>
+     
+      <span className='hackChild-create-button'>
+      <EditIcon className='hackChild-create-button-edit' sx={{width:18, height:18}} />
+          <span className ='hackChild-create-button-text'> 
+            글 작성하기 
+          </span>
+      </span>
+      
+    </div>
+  )
+
+}
+
 
 function HackChildContent(props) {
     const baseURL = "http://127.0.0.1:8000"; 
@@ -44,6 +69,7 @@ function HackChildContent(props) {
   }else{
     return (
       <div className='hackchild-content-background'>
+        <CreateAriticle></CreateAriticle>
           {articleArray && articleArray.map(article =>{
             if(article.tag === props.num){
               function formatDate(date) {
