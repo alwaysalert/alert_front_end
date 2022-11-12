@@ -10,8 +10,8 @@ import { useCookies } from 'react-cookie';
 
 function HackChild(props) {
     //버튼
-    const [whatNum, setWhatNum] = useState(1);
-    const [whatPost0, setWhatPost0] = useState(false); 
+    const [whatNum, setWhatNum] = useState(0);
+    const [whatPost0, setWhatPost0] = useState(true); 
     const [whatPost1, setWhatPost1] = useState(false); 
     const [whatPost2, setWhatPost2] = useState(false); 
     const [whatPost3, setWhatPost3] = useState(false); 
