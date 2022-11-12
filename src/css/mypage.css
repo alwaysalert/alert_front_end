@@ -127,7 +127,7 @@
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     width: 80px;
     background: #FFFFFF;
     /* border-color :#8A8A8A;*/ 
@@ -246,10 +246,19 @@ input[type="checkbox"]:checked + label {
     left: -20px;
 }
 .mypage-profile-img-in{
+    position:absolute;
     cursor: pointer;
     width : 60px;
     height: 60px;
 }
+.profileCheck{
+    position:absolute;
+    margin: 0 auto;
+}
+.gray-circle:hover{
+    box-shadow:0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+}
+
 .mypage-profile-color{
     position:absolute;
     bottom: -250px;
@@ -287,11 +296,13 @@ input[type="checkbox"]:checked + label {
 }
 
 .mypage-color-button{
+    
     background-color:#FF6767;
     border:none;
     color:white; 
-    padding:30px 30px; 
-    text-align:center; 
+    
+    
+  
     text-decoration:none;
     display: inline-block;
     font-size: 16px; 
@@ -300,7 +311,9 @@ input[type="checkbox"]:checked + label {
     margin-right: 0px;
     margin-left: 20px;
 }
-
+.mypage-color-button:hover{
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+}
 /* 프로필 배경 색깔 정하기 */
 .mypage-color-button1{
     background-color:#c5e0b4;
@@ -338,6 +351,12 @@ input[type="checkbox"]:checked + label {
     width: 28%;
     border-radius: 2px;
 }
+.mypage-content-correct-button1:hover{
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.4));
+}
+.mypage-content-correct-button1:active{
+    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+}
 .mypage-content-correct-button2{
     cursor: pointer;
     position: absolute;
@@ -347,9 +366,19 @@ input[type="checkbox"]:checked + label {
     font-family: 'apple-font-EB';
     background: #FFFFFF;
     border: 1px solid #8A8A8A;
+    color:#8A8A8A;
     font-size: 15px;
     width: 28%;
+    font-weight: 400;
     border-radius: 2px;
+}
+.mypage-content-correct-button2:hover{
+    border: 1px solid #000;
+    color:#000;
+}
+.mypage-content-correct-button2:active{
+    border: 1px solid #4285F4;
+    color:#4285F4;
 }
 
 
@@ -448,7 +477,7 @@ input[type="checkbox"]:checked + label {
     width: 200px;
     height: 200px;
     left: 55%;
-    top: 50%;
+    top: 50.7%;
 
     background: #FFFFFF;
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
