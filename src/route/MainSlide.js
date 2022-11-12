@@ -14,7 +14,7 @@ import axios from 'axios';
 function MainArticle(props){
     return (
         <div >
-            <a href = {props.news.link}>
+            <a href = {props.news.link} target="_blank" rel="noreferrer">
                 <div className ="news-container">
                     <img className = 'news-img'alt ={props.news.id} src ={props.news.img} ></img>
                 </div>
@@ -51,7 +51,9 @@ function MainSlide(props) {
                 <MainArticle news = {props.new2}></MainArticle> 
                 <MainArticle news = {props.new1}></MainArticle>
             </Slider>
+            
         </div>
+        
       )
   
 }
