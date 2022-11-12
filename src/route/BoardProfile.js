@@ -67,7 +67,7 @@ function BoardProfile(props) {
             <Link to ={`/MyActivity`} state = {{ id : 4}}>
               <Box sx={box} className="mypagehover">댓글</Box></Link>
           <Link to ={`/MyActivity`} state = {{ id : 3}}>
-            <Box sx={box} className="mypagehover">좋아욧</Box>
+            <Box sx={box} className="mypagehover">좋아요</Box>
           </Link>
           <Link to ={`/MyActivity`} state = {{ id : 2}}>
             <Box sx={box} className="mypagehover">스크랩한 글</Box>
