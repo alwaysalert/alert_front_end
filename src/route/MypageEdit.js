@@ -386,25 +386,17 @@ const updateUserInfo = () => {
             <div className ="mypage-content-profile-content-position">
               <div className="mypage-content-profile-content"> 
                 <div className='test' >
-                <div className ='name'>미리보기</div>
-                  <div className ='test3' style ={button_style}>
-                    <img 
-                      alt='test2'
-                      className = 'test2'
-                      src={util.image_route(userInfo.profile_picture_id)}
-                    />
-                  </div>
-                  
+                  <div className ='name'>미리보기</div>
+                    <div className ='test3' style ={button_style}>
+                      <img 
+                        alt='test2'
+                        className = 'test2'
+                        src={util.image_route(userInfo.profile_picture_id)}
+                      />
+                    </div>
                 </div>
                 
-                <button className ='mypage-content-correct-button1' onClick ={ updateUserInfo }>수정</button>
-                <button className ='mypage-content-correct-button2' onClick ={()=>{
-                    document.location.reload();
-                }}>취소</button>
-                
-                
                 <strong>프로필</strong>
-                
               </div>
               {/* 캐릭터 설정 */}
               <div className ="mypage-content-character-text">프로필 사진으로 사용할 캐릭터를 설정하세요.
@@ -531,8 +523,12 @@ const updateUserInfo = () => {
                         setUserInfo({...userInfo,profile_color_id:7});
                         }}> 
                       </button>
-                      
+                  
                   </div>
+                  <button className ='mypage-content-correct-button1' onClick ={ updateUserInfo }>수정하기</button>
+                  <button className ='mypage-content-correct-button2' onClick ={()=>{
+                      document.location.reload();
+                  }}>다음에 하기</button>
 
                 </div>
                 
@@ -545,7 +541,7 @@ const updateUserInfo = () => {
 
             
           </div>
-
+          
     </div>
   )
 }

@@ -10,6 +10,7 @@
 }
 .mypage-content-head{
     display: block;
+    position: relative;
     width: 100%;
     height: 250px;
     background: #C6DBFF;
@@ -43,6 +44,8 @@
 }
 
 .mypage-content-profile-correct{
+    position :relative;
+
     display: block;
     width: 100%;
     height: 600px;
@@ -324,25 +327,28 @@ input[type="checkbox"]:checked + label {
 .mypage-content-correct-button1{
     cursor: pointer;
     position: absolute;
-    height: 20px;
-    left: 1300px;
-    top: 900px;
+    height: 15%;
+    left: 30%;
+    top: 88%;
     font-family: 'apple-font-EB';
-    background-color: #aaaaaa6b;
-    border: 0;
-    width: 90px;
+    background: #4285F4;
+    color: #FFFFFF;
+    font-size: 15px;
+    border: none;
+    width: 28%;
     border-radius: 2px;
 }
 .mypage-content-correct-button2{
     cursor: pointer;
     position: absolute;
-    height: 20px;
-    left: 1200px;
-    top: 900px;
+    height: 15%;
+    left: 0%;
+    top: 88%;
     font-family: 'apple-font-EB';
-    background-color: #aaaaaa6b;
-    border: 0;
-    width: 90px;
+    background: #FFFFFF;
+    border: 1px solid #8A8A8A;
+    font-size: 15px;
+    width: 28%;
     border-radius: 2px;
 }
 
@@ -438,12 +444,11 @@ input[type="checkbox"]:checked + label {
     /* display: flex; */
     justify-content:center; 
     align-items : center;
-
     position: absolute;
     width: 200px;
     height: 200px;
-    left: 920px;
-    top: 648px;
+    left: 55%;
+    top: 50%;
 
     background: #FFFFFF;
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
