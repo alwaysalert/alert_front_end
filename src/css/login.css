@@ -5,6 +5,7 @@
 .title-login{
     color: #6E5DB0;
     font-size: 40px;
+    font-family: hanna-font;
     padding-top: 30px;
     margin-bottom: 10px;
  }
@@ -24,9 +25,12 @@
     vertical-align:top;
     padding-top:7px;
     margin-left:-33px;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: '600';
+    font-family: 'apple-font-B'
  }
 .login-container{
+    cursor: pointer;
     display: inline-block;
     width: 90%;
     margin:0 auto;
@@ -50,3 +54,4 @@
  #google{
     background-color: #E9E8E8;
  }
+

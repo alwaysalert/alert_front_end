@@ -12,8 +12,10 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import "../css/mainpage.css"
+import { Link } from 'react-router-dom';
 
-function Nav() {
+function Nav(props) {
+    
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -43,14 +45,15 @@ function Nav() {
           role="presentation"
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
+          
         >
           <List>
-            {[{name:'자유게시판',link:'/freeart'}, {name:'취업게시판',link:'/freeart'}, {name:'우리가 누구',link:'/freeart'}, {name:'우리 학과는',link:'/freeart'},{name:'캘린더',link:'/freeart'},{name:'지금 모집중인 대외활동',link:'/freeart'}].map((text, index) => (
-              <ListItem key={text.name} disablePadding>
+            {[{name:'자유게시판',link:'/freeart'}, {name:'취업게시판',link:'/Error'}, {name:'핵린이 게시판',link:'/HackChild'}, {name:'우리 학과는',link:'/Error'},{name:'캘린더',link:'/Error'},{name:'지금 모집중인 대외활동',link:'/Error'}].map((text, index) => (
+              <ListItem key={text.name} sx={{fontFamily:'apple-font-B'}} disablePadding>
                  
                     <ListItemButton onClick={() => {movePage(text.link)}}>
                   
-                        <ListItemText primary={text.name} />
+                        <ListItemText primaryTypographyProps={{ style: {fontFamily:'apple-font-B',fontWeight:'bold'} }} primary={text.name} />
                     
                     </ListItemButton>
                 
@@ -59,11 +62,11 @@ function Nav() {
           </List>
           <Divider />
           <List>
-            {['마이페이지','고객센터','shop'].map((text, index) => (
+            {[{name:'마이페이지',link:'/Mypage'}, {name:'고객센터',link:'/Error'}, {name:'shop',link:'/Error'}].map((text, index) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  
-                    <ListItemText primary={text} />
+                <ListItemButton onClick={() => {movePage(text.link)}}>
+
+                    <ListItemText primaryTypographyProps={{ style: {fontFamily:'apple-font-B',fontWeight:'bold'} }} primary={text.name} />
                   
                 </ListItemButton>
               </ListItem>
@@ -88,9 +91,11 @@ function Nav() {
             </React.Fragment>
             ))}
           </div>
-          <a href="/"><img src="/img/logo.png" className="logo"/></a>
+          <a href="/"><img src="/img/logo.png" className="logo" alt="main_logo"/></a>
           <div className="searchtool">
-            <SearchIcon size="large"/>
+          <Link to ={'/Search'}>
+            <SearchIcon size="large" />
+          </Link>
           </div>
           <div className="notification">
             <NotificationsNoneIcon />

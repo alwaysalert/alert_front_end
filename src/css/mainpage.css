@@ -3,9 +3,43 @@
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: 'apple-font-M';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'apple-font-EB';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'hanna-font';
+    src: url('../../public/font/bm/BMHANNA_11yrs_ttf.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'apple-font-B';
+    src: url('../../public/font/apple/AppleSDGothicNeoB.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BM HANNA_TTF';
+    src: url(../../public/font/bm/BM-HANNA.ttf);
+}
+
+/* body{
+    font-family:'apple-font'
+} */
+
 a {
     text-decoration: none;
 }
+input:focus {outline: none;}
 .logo {
     position: relative;
     
@@ -14,7 +48,9 @@ a {
     left: calc(50% - 121px/2 + 0.5px);
     top: 13px;
 }
-
+html {
+    white-space:pre-wrap;
+}
 .navbar{
     
 
@@ -86,24 +122,32 @@ a {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-
+.box-low-login{
+    vertical-align:'bottom';
+    height: 20px;
+    background-color: #FFFFFF;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
 .box-high-title{
-    
+    font-family: 'hanna-font';
     padding-top:20px;
     padding-left: 20px;
-    color: #E56252;
+    
     width: 50%;
     height: 50%;
-    font-Size: 40px;
+    font-Size: 43px;
     text-align: left;
 }
 .box-high-contents{
-    
+    font-family:'apple-font-M';
     padding-left: 20px;
-    color: #711010;
+   
     width: 50%;
     height: 50%;
-    font-Size: 14px;
+    font-Size: 16px;
+    font-weight: 400;
+    margin-top: -8px;
     text-align: left;
 }
 
@@ -118,12 +162,12 @@ a {
 
 .box-low-title {
     text-align: left;
-    padding-top: 13px;
+    padding-top: 20px;
     margin-left: 10px;
-    font-family: 'BM HANNA_TTF';
+    font-family: 'hanna-font';
     font-style: normal;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 18px;
     line-height: 20px;
     text-indent: 5px;
 }
@@ -131,31 +175,33 @@ a {
 .box-low-contents {
     display:inline-block;
     text-align :left;
-    
-    width:75%;
-    font-family: 'AppleSDGothicNeoM00';
+    vertical-align: top;
+    line-height:25px;
+    width:68%;
+    font-family: 'apple-font-M';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 40px;
+    
 /* identical to box height */
 
-    text-indent: 15px;
+    text-indent: 5px;
 
 }
 .box-low-contents-time {
     display:inline-block;
-   
-    
+    padding-top:-10px;
+    vertical-align: top;
+    line-height:25px;
     width:25%;
-    font-family: 'AppleSDGothicNeoM00';
+    font-family: 'apple-font-M';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 40px;
+    
 /* identical to box height */
 
-    text-indent: 15px;
+    
 
 }
 
@@ -168,25 +214,7 @@ a {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-.box-high-title-job{
-    
-    padding-top:20px;
-    padding-left: 20px;
-    color: #E3AF2A;
-    width: 50%;
-    height: 50%;
-    font-Size: 40px;
-    text-align: left;
-}
-.box-high-contents-job{
-    
-    padding-left: 20px;
-    color: #554408;
-    width: 50%;
-    height: 50%;
-    font-Size: 14px;
-    text-align: left;
-}
+
 
 .jobboho {
     
@@ -206,25 +234,7 @@ a {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-.box-high-title-whowe{
-    
-    padding-top:20px;
-    padding-left: 20px;
-    color: #509B3D;
-    width: 50%;
-    height: 50%;
-    font-Size: 40px;
-    text-align: left;
-}
-.box-high-contents-whowe{
-    
-    padding-left: 20px;
-    color: #0E451D;
-    width: 50%;
-    height: 50%;
-    font-Size: 14px;
-    text-align: left;
-}
+
 .whoweboho {
     
     position: absolute;
@@ -242,25 +252,7 @@ a {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-.box-high-title-major{
-    
-    padding-top:20px;
-    padding-left: 20px;
-    color: #9050E3;
-    width: 50%;
-    height: 50%;
-    font-Size: 40px;
-    text-align: left;
-}
-.box-high-contents-major{
-    
-    padding-left: 20px;
-    color: #3A1072;
-    width: 50%;
-    height: 50%;
-    font-Size: 14px;
-    text-align: left;
-}
+
 .majorboho {
     
     position: absolute;
@@ -280,35 +272,69 @@ a {
     margin-left: -8px;
     margin-right: -8px;
     height: 80%;
-    background: linear-gradient(270deg, #FF8576 0%, #F75256 0.01%, #FF8576 100%);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    overflow: hidden;
  }
  .advertise {
-    height: 227px;
+    position: relative;
+    width: 110%;
+    height: 100%;   
+    filter: blur(10px);
+    overflow: hidden;
+
+ 
+
+
+    
+    border-radius: 3px;
+   
+
+ }
+ .advertise-back{
+    position: absolute;
+    height: 240px;
+    border-radius: 3px;
+
+ }
+ .advertise-div-back{
+    position:relative;
+    bottom:230px;
+    left: 150px;
+    height: 230px;
+    border-radius: 5px;
 
  }
 
  .login-form {
+    margin-top: 35px;
     height: 150px;
  }
 
- 
+ .nim{
+    font-size: 22px;
+    margin-left:3px;
+    color: #000;
+    font-family: 'BM HANNA_TTF';
+    font-weight: '100';
+ }
  .mypage-box{
     margin-top: -8px;
     margin-left: -8px;
     margin-right: -8px;
-   
+    
+;
  }
  .mypage-box-title{
     color:#6E5DB0;
-    font-Size: 32px;
-    padding-top:20px;
+    font-Size: 35px;
+    padding-top: 20px;
+    font-family: 'BM HANNA_TTF';
  }
  .mypage-box-profile-image{
     display:block;
     margin: 0 auto;
-    margin-top: 15px;
+    margin-top: 11px;
     width: 110px;
     height: 110px;
     margin-bottom: 10px;
@@ -322,12 +348,28 @@ a {
     display: inline;
     font-size: 12px;
  }
+ .mypagehover:hover{
+    background-color: #E6E6E6
+ }
+ .mypagehover:active {
+    background-color: #4285F4;
+    color:#ffffff; 
+ }
+ .document{
+    color:#8A8A8A;
+ }
+ .document:hover{
+    color: #000
+ }
+ .document:active {
+    color: #4285F4;
  
+ }
  .penicon{
     
     
     display:inline-block;
-    margin-left:3px;
+    margin-left:5px;
     
     width:12px;
     height:12px;
@@ -336,6 +378,8 @@ a {
     position: relative;
     display:inline-block;
     font-size: 5px;
+    cursor:pointer;
+    /* font-family: 'apple-font-M'; */
     -webkit-transform:scale(0.85);
     padding: 0 10px;
     margin: 0 -5px;
@@ -359,3 +403,143 @@ a {
     display: none;
  }
  
+
+ .sLogo{
+    position: absolute;
+    width: 487px;
+    height: 219px;
+    left: calc(50% - 487px/2 - 0.5px);
+    top: 252px;
+ }
+
+ .sinput{
+    position: absolute;
+    position : relative;
+    width: 800px;
+    left: 439px;
+    top: 450px;
+    border-top:#FFFFFF;
+    border-right:#FFFFFF;
+    border-left:#FFFFFF;
+    size :100px;
+    font-size: 20px;
+    color:#8A8A8A;
+    line-height: 40px;
+ }
+ /* width : 136 */
+ .sicon{
+    position: absolute;
+    left : 1190px;
+    top : 522px;
+    
+ }
+
+ /* 에러 페이지 */
+ .error{
+    display: flex;
+    position: absolute;
+    width: 1046px;
+    height: 682px;
+    left: 317px;
+    top: 100px;
+    text-align: center;
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+/* 1680 */
+/* 317 317 */
+.errorImg{
+    position: absolute;
+    width: 487px;
+    height: 219px;
+    left: calc(50% - 487px/2 - 0.5px);
+    top: 150px;
+}
+.errormessage{
+    position: absolute;
+    width: 646px;
+    height: 35px;
+    left: 200px;
+    top: 395px;
+    
+    font-family: 'apple-font-EB';
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 30px;
+    text-align: center;
+    color: #ADADAD;
+}
+/* 1046 */
+/* 300 646 300 */
+.errorbutton{
+    position: relative;
+    
+    height: 68px;
+    width: 310px;
+    left: 190px;
+    top: 500px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border-color: #FFFFFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+    font-family: 'apple-font-B';
+    outline:0;
+    border: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 33px;
+    color: #737373;
+    cursor:pointer;
+    margin: 15px;
+}
+.errorbutton:hover{
+    background: #C6C6C6;
+    color:#000
+}
+.errorbutton:active{
+    background: #4285F4;
+    color: #fff
+}
+main slide */
+.MainSlide{
+    background-color: #6E5DB0;
+    position: relative;
+    left: 0px;
+}
+.news-container{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-content: center;
+}
+.news-img{
+    margin-left: 15%;
+    width: 70%;
+
+    margin-right: 1%;
+    border-radius: 2px;
+    transform: scale(1.0);
+}
+.news-titile{
+    text-align: center;
+    font-family: 'hanna-font';
+    font-size: 20px;
+    width: 500px;
+}
+
+.boannews{
+    font-family: 'hanna-font';
+    font-size: 20px;
+    margin: 0px;
+}
+/* to make arrow hidden */
+.slick-prev {
+    left: 3% !important;
+    z-index: 1;
+  }
+  .slick-next {
+    right: 3% !important;
+    z-index: 1;
+  }

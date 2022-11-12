@@ -1,35 +1,31 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie';
-import ModeIcon from '@mui/icons-material/Mode';
+
 import { Link } from 'react-router-dom';
 import "../css/mainpage.css"
 import { Box } from '@mui/system';
 import { Grid } from '@mui/material';
 
 import { GoogleLogout } from 'react-google-login';
-import {useDispatch, useSelector} from 'react-redux';
 
-//import {useCookies} from 'react-cookie';
+
+import axios from 'axios';
+import * as glob from '../global'
+import * as util from '../util/util'
 
 function LogOut(props) {
-  // const dispatch = useDispatch();
-  // const login = useSelector((state)=>state.login);
   let google = null;
 
   const handle = () =>{
     setLogin(false);
     google = null
   }
-
+  
   const [login, setLogin] = useState(props.isLoggedIn);
-  // console.log("로그아웃 컴포넌트임");
-  // console.log(login);
-  // console.log(document.cookie);
+  
   const [cookies, , removeCookie] = useCookies('token');
   if (login === false) {
-//    localStorage.removeItem("access_token")
-    //localStorage.removeItem('refresh_token')
     setLogin(null)
     removeCookie('access_token');
     removeCookie('refresh_token');
@@ -42,97 +38,89 @@ function LogOut(props) {
      google = true;
      console.log("google : ",google)
   }
+  //프로필
+
+  const [userInfo, setUserInfo] = useState({
+    auth_user_id : 0,
+    id : 0,
+    is_existing : true,
+    nickname : 'name',
+    profile_color_id : 0,
+    profile_picture_id : 0,
+    user_email:'',
+    user_job : 0
+  });
+  let newUserInfo = {...userInfo};
+
+  const CheckUser = (access_token) => {
+    const baseurl= glob.BACK_BASE_URL;
+    axios.get(`${baseurl}/users/check_user`, {
+        params: {
+          token: access_token,
+          format: 'json',
+        }}).then(async (res) => {
+          newUserInfo ={...res.data};
+          setUserInfo(newUserInfo);
+          //console.log('state:',userInfot);
+        }).catch(err => {
+          document.location="/Error";
+        });
+  
+  }
+
+  useEffect(() => {
+    CheckUser(cookies.access_token);
+  //eslint-disable-next-line
+  }, []);
+
+  //프로필 사진
+  
+
+const button_style={
+  background : util.hexcolor(newUserInfo.profile_color_id)
+}
+
+
+//box css
+const box = {
+  width: '8.18rem',
+  height: '0.5rem',
+  bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#FFFFFF'),
+  color: (theme) =>
+    theme.palette.mode === 'dark' ? 'grey.300' : '#000000',
+  p: 1,
+  m: 0.3,
+  borderRadius: 0.2,
+  textAlign: 'center',
+  
+  fontSize: '0.8rem',
+  fontWeight: 'bold',
+  lineHeight: '11px',
+  fontFamily: 'apple-font-M',
+};
 
   return (
     <div className="mypage-box" >
       <div className="mypage-box-title">
-        프로필
+        {userInfo.nickname}<span className='nim'> 님</span>
       </div>
-      <img className="mypage-box-profile-image" src="/img/boho/mypageboho.png" />
-      <div className="mypage-box-nickname">{"조승현"}</div>
-      <div className="mypage-box-hi"> 님, 안녕하세요</div>
-      <ModeIcon className="penicon"></ModeIcon>
+      <div className ='profile4' style ={button_style}>
+          <img 
+              alt='profile3'
+              className = 'profile3'
+              src={util.image_route(userInfo.profile_picture_id)}
+          />
+      </div>
+      <div>
+        <br></br>
+        <br></br>
+      </div>
       <Grid container>
-      <Link to={'/Mypage'}>
-        <Box sx={{
-
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.6rem',
-          fontWeight: '700',
-        }}>마이페이지</Box></Link>
-        <Box sx={{
-
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.6rem',
-          fontWeight: '700',
-        }}>댓글</Box>
-        <Box sx={{
-
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.6rem',
-          fontWeight: '700',
-        }}>좋아요</Box>
-        <Box sx={{
-
-          width: '8.18rem',
-          height: '0.6rem',
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#E9E8E8'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-          p: 1,
-          m: 0.3,
-          borderRadius: 0.2,
-          textAlign: 'center',
-          fontSize: '0.6rem',
-          fontWeight: '700',
-        }}>스크랩</Box>
-      </Grid>
-      <div className="mypage-box-etc">
-        <div>개인정보동의약관</div>
-        <div>고객센터</div>
-        {/* <div onClick={(event) => {setLogin(false)}}>로그아웃</div> */}
-        {/* <GoogleLogout
-          clientId="803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com"
-          buttonText="Logout"
-          render={renderProps => (
-            <div onClick={renderProps.onClick} >
-              로그아웃
-            </div>
-          )}
-          onLogoutSuccess={(event)=>{
-            console.log('logout');
-            // dispatch({type :"LogOut"})
-            handle();
-          }}
-        >
-        </GoogleLogout> */}
-      
-        
-          <GoogleLogout
+      <Link to={'/Mypage'} >
+        <Box sx={box} className='mypagehover'>마이페이지</Box></Link>
+        <Link>
+        <Box sx={box} className="mypagehover">
+            <GoogleLogout
           clientId="803239834488-48ardhc03rvd229mppei0bpu2k91t6f3.apps.googleusercontent.com"
           buttonText="Logout"
           render={renderProps => (
@@ -147,7 +135,19 @@ function LogOut(props) {
           }}
         >
         </GoogleLogout>
-      
+          </Box>
+        </Link>
+        <Link to ={`/MyActivity`} state = {{ id : 2}}>
+        <Box sx={box} className="mypagehover">스크랩한 글</Box>
+        </Link>
+        <Link to ={`/MyActivity`} state = {{ id : 3}}>
+        <Box sx={box} className="mypagehover">+</Box>
+        </Link>
+      </Grid>
+      <div className="mypage-box-etc">
+        <div className="document">개인정보동의약관</div>
+        <div className="document">고객센터</div>
+        <div className="document">환경 설정</div>
         </div>
     </div>
   )

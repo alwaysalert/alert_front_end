@@ -8,6 +8,30 @@
         
     }
 }
+@font-face {
+    font-family: 'apple-font-EB';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+a {
+    
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 링크의 색상 제거 */
+  }
+input::placeholder {
+    color: #B7B7B7;
+    font-size: 20px;
+    font-family: apple-font-EB;
+    
+  }
+  textarea::placeholder {
+    color: #B7B7B7;
+    font-size:15px;
+    font-family: apple-font-EB;
+    
+  }
+
 .freeart-content-head{
     display: block;
     width: 100%;
@@ -20,8 +44,9 @@
 }
 .freeart-content-head-title{
     display:inline-block;
+    font-family: 'hanna-font';
     width:100%;
-    margin-top:100px;
+    margin-top:125px;
     margin-left:30px;
     text-align:left;
     color: #E66262;
@@ -31,6 +56,8 @@
 }
 .freeart-content-head-content{
     display:inline-block;
+    font-family: 'apple-font-EB';
+    font-weight: 400;
     width:100%;
     text-align:left;
     margin-left:30px;
@@ -47,17 +74,19 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }
 .freeart-content-profile-name{
-    margin-top: 33px;
-    font-size: 40px;
+    margin-top: 20px;
+    font-size: 30px;
     color:#6E5DB0;
     display: inline-block;
+    font-family:'apple-font-EB';
     
 }
 .freeart-content-profile-nim{
     margin-left: 7px;
     display: inline-block;
     margin-top: 33px;
-    font-size: 20px;
+    font-size: 24px;
+    font-family:'BM HANNA_TTF'
 }
 .freeart-content-profile-boho{
     display: block;
@@ -67,9 +96,10 @@
     height: 120px;
 }
 .freeart-activity{
-    margin-top: 10px;
+    margin-top: 22px;
     font-size: 14px;
     margin-bottom: 3px;
+    font-family:'apple-font-EB';
 }
 
 .freeart-buttonBoxes div{
@@ -86,9 +116,9 @@
     
     display: inline-block;
     vertical-align: top;
-    
-    width: 945px;
-    margin-left: 15px;
+    margin-bottom:22px;
+    width: 943.36px;
+    margin-left: 16.5px;
     
 }
 .freeart-form{
@@ -99,79 +129,111 @@
     border: 1px solid #B7B7B7;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }
+.form-title-div{
+    width: 100%;
+    border-bottom: 1px solid #B7B7B7;
+}
 .form-title{
     vertical-align: top;
+    padding-left:10px;
+    font-family: apple-font-EB;
+    font-size: 20px;
+    
     height:55px;
-    width: 100%;
+    width: 97%;
     border: none;
     outline :none;
+    
+}
+.form-contents-div{
+    width: 100%;
     border-bottom: 1px solid #B7B7B7;
 }
 .form-contents{
     vertical-align: top;
     height:190px;
-    width: 100%;
+    width: 97%;
+    padding-top: 10px;
+    padding-left:10px;
+    font-family: apple-font-EB;
+    font-size: 15px;
     resize: none;
     border: none;
     outline :none;
-    border-bottom: 1px solid #B7B7B7;
+    
+}
+.freeart-arts-title{
+    font-family: 'apple-font-M';
+    line-height: 30px;
+}
+.freeart-arts-content{
+    font-family: 'apple-font-M';
 }
 .form-last{
     display: inline-block;
     width: 100%;
-    height: 56.7px;
+    height: 46.1px;
     
     
 }
-.tag-icon{
-    margin-top: 13px;
-    margin-left: 13px;
-    
-    
-}
+
+
 .clip-icon{
-    margin-left:8px;
+    margin-top: 9px;
+    margin-left: 3px;
     
 }
-.form-last input{
+.form-last button{
     float: right;
-    height: 56px;
+    font-family: apple-font-EB;
+    height: 100%;
     width: 122px;
     border: none;
     background: #7A96FC;
     color: #fff;
-    font-size: 20px;
+    cursor:pointer;
+    padding-top:3px;
+    font-size: 23px;
 }
 .freeart-arts-container{
     display: inline-block;
     vertical-align: top;
     float: right;
-    width: 943px;
-    border: 1px solid #B7B7B7;
-    margin-top:22px;
+    margin-right:1.5px;
+    width: 941px;
+    
+    
     border-bottom:none;
     margin-bottom: 60px;
     
 }
-.freeart-arts-container div{
+#freeart-arts-grid{
     
     
     vertical-align: top;
-    float: right;
-    width: 945px;
-    border-bottom: 1px solid #B7B7B7;
+    float: left;
+    width: 940px;
+    border: 1px solid #B7B7B7;
     height: 130px;
     margin-right:-1px;    
     
 }
+.freeart-arts-profile-circle{
+    display: inline-block;
+    align-items : center;
+    border-radius: 1150px;
+    float: left;
+    width: 90px;
+    height: 90px;
+    margin-top: 20px;
+    margin-left:12.5px;
+    margin-right: 25px;
+}
 .freeart-arts-profile{
     display: inline-block;
     float: left;
-    width: 105px;
-    height: 105px;
-    margin-top: 12.5px;
-    margin-left:12.5px;
-    margin-right: 15px;
+    width: 90px;
+    height: 90px;
 }
 
 .freeart-arts-container div h4{
@@ -187,12 +249,14 @@
 }
 .freeart-arts-container div p{
     color: #000;
-    height:54px;
+    height:48px;
+    width:97%;
     font-size: 15px;
 }
 .freeart-arts-whenwho{
     display: inline-block;
     vertical-align:bottom;
+    font-family: 'apple-font-M';
     color: #b7b7b7;
     font-size: 13px;
 }
@@ -203,7 +267,229 @@
     
     
 }
+.freeart-maincontents{
+    display: inline-block;
+    width: 99.8%;
+    border: 1px solid #B7B7B7;
+}
+.freeart-maincontents-header{
+    height:85px;
+}
+.fmh-left{
+    margin-top:17px;
+    margin-left:17px;
+    display: inline-block;
+    width:52px;
+    height: 52px;
+    
+    vertical-align: top;
+}
+.fmh-right{
+    display: inline-block;
+    margin-top:25px;
+    width: 70%;
+    height: 50px;
+    /* background-color: blue; */
+    
+}
+.fm-img-background{
+    
+    width:52px;
+    height:52px;
+    background-color: orange;
+    border-radius: 100%;
+    text-align: center;
+}
+.fm-img{
+    width:52px;
+    height:52px;
+}
+.fmh-right div{
+    margin-top: 0px;
+    margin-left: 8px;
+    font-size: 14.5px;
+}
+.fmc-title{
+    
+    margin-left: 17px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom:10px
+}
+.fmc-contents{
+    
+    font-family: 'apple-font-EB';
+    margin-left: 17px;
+    margin-bottom: 10px;
+}
+.fmc-report{
+    cursor:pointer;
+    display: inline-block;
+    font-family:'apple-font-M';
+    font-size:11px;
+    float: right;
+    margin-top:20px;
+    margin-right:17px;
+    color:#8A8A8A
+}
+.fmc-report:hover{
+    color: #000;
+}
+.fmc-report:active{
+    color: #4285F4;
+}
+.thumbutton1{
+    color: #b9b9b9;
+    width:'23px';
+    height:'23px';
+    cursor:pointer;
+}
+.thumbutton1:hover{
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+.thumbutton2{
+    color: #F85858;
+    width:'23px';
+    height:'23px';
+    cursor:pointer;
+}
+.thumbutton2:hover{
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+.thumbutton:hover{
+    color: black;
+}
+.chatbutton{
+    color: #b9b9b9;
+    width:23px;
+    height:23px;
+    margin-top:10px;
+    cursor:pointer;
+}
+.chatbutton:hover{
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+.chatbutton:active{
+    color: #4285F4;
+}
+.scrapbutton1{
+    color: #b9b9b9;
+    width:23px;
+    height:23px;
+    cursor:pointer;
+}
+.scrapbutton2{
+    color: #FBD405;
+    cursor:pointer;
+    width:23px;
+    height:23px;
+}
+.scrapbutton1:hover{
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+.scrapbutton2:hover{
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+.fmc-icon{
+    margin-left: 17px;
+    margin-bottom: 10px;
+    margin-top:10px;
+}
 
 
 
 
+
+.mypage-profile-image1{
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+    position: relative;
+    right: -70px;
+    bottom : -20px;
+    width: 150px;
+    height: 150px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    
+}
+.board-profile-image2{
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+    position: relative;
+    right: -70px;
+    bottom : -20px;
+    width: 150px;
+    height: 150px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    
+    width: 200px;
+
+}
+.board-profile-image3{
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+    width : 120px;
+    height: 120px;
+    border-radius: 1150px;
+    background-color: #14BBE0;
+
+}
+.freeart-comment{
+    border: 1px solid #B7B7B7;
+    min-height:100px;
+}
+.freeart-comcomment{
+    border: 1px solid #B7B7B7;
+    min-height:100px;
+    width:95%;
+    margin: auto;
+    
+    background-color: #f4f4f4;
+}
+.fmc-comment-input{
+    border: 1px solid #B7B7B7;
+    /* background-color: #f4f4f4; */
+    
+    min-height:35px;
+    vertical-align: bottom;
+}
+.write-comment{
+    display: inline-block;
+    resize: none;
+    border: none;
+    outline :none;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size:16px;
+    margin-left:13px;
+    margin-top:9px;
+    height:20px;
+    line-height:20px;
+    width:87%;
+    font-family: apple-font-EB;
+    /* background-color: #f4f4f4; */
+}
+.fmc-comment-submit{
+    cursor:pointer;
+    display:inline-block;
+    float: right;
+    
+    margin-top:-1px;
+    vertical-align: top;
+    height:36.5px;
+    width:34.95px;
+    margin-right:-0.65px;
+    background-color: #D9D9D9;
+
+}
+.fmc-comment-submit:hover{
+    background-color: #4285F4;
+}
