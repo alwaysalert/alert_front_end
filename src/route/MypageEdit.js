@@ -31,6 +31,33 @@ const [userInfo, setUserInfo] = useState({
   user_email:null,
   user_job : null
 });
+const setBackground = {
+  1: {display:'none'},
+  2: {display:'none'},
+  3: {display:'none'},
+  4: {display:'none'},
+  5: {display:'none'},
+  6: {display:'none'},
+  7: {display:'none'}
+}
+const setProfile = {
+  1: {display:'none'},
+  back1: {background: '#F0F0F0'},
+  2: {display:'none'},
+  back2: {background: '#F0F0F0'},
+  3: {display:'none'},
+  back3: {background: '#F0F0F0'},
+  4: {display:'none'},
+  back4: {background: '#F0F0F0'},
+  5: {display:'none'},
+  back5: {background: '#F0F0F0'},
+  6: {display:'none'},
+  back6: {background: '#F0F0F0'},
+  7: {display:'none'},
+  back7: {background: '#F0F0F0'},
+}
+const [profilePlace, setProfilePlace] = useState(setProfile);
+const [colorPlace, setColorPlace] = useState(setBackground);
 //userInfo before correction
 const [olduserInfo, setOldUserInfo] = useState({
   auth_user_id : null,
@@ -125,6 +152,9 @@ const CheckUser = (access_token) => {
         
         setOldUserInfo(res.data);
         setUserInfo(res.data);
+        setProfilePlace({...profilePlace,[res.data.profile_picture_id]: {},['back'+res.data.profile_picture_id]:{background:'rgba(0, 0, 0, 0.3)'}})
+        
+        setColorPlace({...colorPlace,[res.data.profile_color_id]: {}})
       }).catch(err => {
         document.location="/Error";
       });
@@ -165,12 +195,6 @@ const [jobbb,setjobbb] = useState(6)
 const setButton = (event) =>{
     if(userInfo.user_job === 1)
     {
-      if(button1 === 'button-test2')
-      {
-        setButton1('button-test');
-      }
-      else
-      {
         setButton1('button-test2');
         setButton2('button-test');
         setButton3('button-test')
@@ -178,17 +202,10 @@ const setButton = (event) =>{
         setButton5('button-test')
         setButton6('button-test')
         setjobbb(1)
-      }
+      
     }
     if(userInfo.user_job === 2)
     {
-      if(button2 === 'button-test2')
-      {
-        setButton2('button-test');
-        setjobbb(6)
-      }
-      else
-      {
         setButton1('button-test');
         setButton2('button-test2');
         setButton3('button-test')
@@ -196,17 +213,11 @@ const setButton = (event) =>{
         setButton5('button-test')
         setButton6('button-test')
         setjobbb(2)
-      }
+      
     }
     if(userInfo.user_job === 3)
     {
-    if(button3 === 'button-test2')
-    {
-      setButton3('button-test');
-      setjobbb(6)
-    }
-    else
-    {
+    
       setButton1('button-test');
       setButton2('button-test');
       setButton3('button-test2')
@@ -214,17 +225,11 @@ const setButton = (event) =>{
       setButton5('button-test')
       setButton6('button-test')
       setjobbb(3)
-    }
+    
   }
   if(userInfo.user_job === 4)
     {
-    if(button4 === 'button-test2')
-    {
-      setButton4('button-test');
-      setjobbb(6)
-    }
-    else
-    {
+    
       setButton1('button-test');
       setButton2('button-test');
       setButton3('button-test')
@@ -233,15 +238,8 @@ const setButton = (event) =>{
       setButton6('button-test')
       setjobbb(4)
     }
-  }
+  
   if(userInfo.user_job === 5)
-    {
-    if(button5 === 'button-test2')
-    {
-      setButton5('button-test');
-      setjobbb(6)
-    }
-    else
     {
       setButton1('button-test');
       setButton2('button-test');
@@ -250,17 +248,10 @@ const setButton = (event) =>{
       setButton5('button-test2')
       setButton6('button-test')
       setjobbb(5)
-    }
+  
   }
   if(userInfo.user_job === 6)
-    {
-    if(button6 === 'button-test2')
-    {
-      setButton6('button-test2');
-      setjobbb(6)
-    }
-    else
-    {
+  {
       setButton1('button-test');
       setButton2('button-test');
       setButton3('button-test')
@@ -268,11 +259,11 @@ const setButton = (event) =>{
       setButton5('button-test')
       setButton6('button-test2')
       setjobbb(6)
-    }
-  }
+    
+  
   
   }
-
+}
 //button_style
 const button_style={
   background : util.hexcolor(newUserInfo.profile_color_id)
@@ -309,6 +300,7 @@ const updateUserInfo = () => {
   
 
 }
+
   return (
     <div>
 
@@ -402,76 +394,90 @@ const updateUserInfo = () => {
               <div className ="mypage-content-character-text">프로필 사진으로 사용할 캐릭터를 설정하세요.
                 <div className ='mypage-profile-img'>
                   
-                  <div className ='gray-circle'>
+                  <div className ='gray-circle' style={profilePlace.back1}>
                   <img 
                     alt = 'character1' 
                     className ='mypage-profile-img-in' 
                     src='/img/profile/profile1.png' 
                     onClick ={(e)=>{
-                    
+                      setProfilePlace({...setProfile,1: {},back1:{background:'rgba(0, 0, 0, 0.3)'}})
                     setUserInfo({...userInfo,profile_picture_id:1});
                   }} >
+                      
                     </img>
+                    <img className="profileCheck" alt="profileCheck" src='/img/Group.png' style={profilePlace['1']}></img>
                   </div>
-                  <div className ='gray-circle'>
+                  <div className ='gray-circle' style={profilePlace.back2}>
                   <img 
                   alt = 'character2' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile2.png' 
                   onClick ={(e)=>{
+                    setProfilePlace({...setProfile,2: {},back2:{background:'rgba(0, 0, 0, 0.3)'}})
                     setUserInfo({...userInfo,profile_picture_id:2});
                 }} >
                   </img>
+                  <img className="profileCheck" alt="profileCheck" src='/img/Group.png' style={profilePlace['2']}></img>
                   </div>
-                  <div className ='gray-circle'>
+                  <div className ='gray-circle' style={profilePlace.back3}>
                   <img 
                   alt = 'character3' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile3.png' 
                   onClick ={(e)=>{
+                    setProfilePlace({...setProfile,3: {},back3:{background:'rgba(0, 0, 0, 0.3)'}})
                     setUserInfo({...userInfo,profile_picture_id:3});
                 }} >
                   </img>
+                  <img className="profileCheck" alt="profileCheck" src='/img/Group.png' style={profilePlace['3']}></img>
                   </div>
-                  <div className ='gray-circle'>
+                  <div className ='gray-circle' style={profilePlace.back4}>
                   <img 
                   alt = 'character4' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile4.png' 
                   onClick ={(e)=>{
+                    setProfilePlace({...setProfile,4: {},back4:{background:'rgba(0, 0, 0, 0.3)'}})
                     setUserInfo({...userInfo,profile_picture_id:4});
                 }} >
                   </img>
+                  <img className="profileCheck" alt="profileCheck" src='/img/Group.png' style={profilePlace['4']}></img>
                   </div>
-                  <div className ='gray-circle'>
+                  <div className ='gray-circle' style={profilePlace.back5}>
                   <img 
                   alt = 'character5' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile5.png' 
                   onClick ={(e)=>{
+                    setProfilePlace({...setProfile,5: {},back5:{background:'rgba(0, 0, 0, 0.3)'}})
                     setUserInfo({...userInfo,profile_picture_id:5});
                 }} >
                   </img>
+                  <img className="profileCheck" alt="profileCheck" src='/img/Group.png' style={profilePlace['5']}></img>
                   </div>
-                  <div className ='gray-circle'>
+                  <div className ='gray-circle' style={profilePlace.back6}>
                   <img 
                   alt = 'character6' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile6.png' 
                   onClick ={(e)=>{
+                    setProfilePlace({...setProfile,6: {},back6:{background:'rgba(0, 0, 0, 0.3)'}})
                     setUserInfo({...userInfo,profile_picture_id:6});
                 }} >
                   </img>
+                  <img className="profileCheck" alt="profileCheck" src='/img/Group.png' style={profilePlace['6']}></img>
                   </div>
-                  <div className ='gray-circle'>
+                  <div className ='gray-circle' style={profilePlace.back7}>
                   <img 
                   alt = 'character7' 
                   className ='mypage-profile-img-in' 
                   src='/img/profile/profile7.png' 
                   onClick ={(e)=>{
+                    setProfilePlace({...setProfile,7: {},back7:{background:'rgba(0, 0, 0, 0.3)'}})
                     setUserInfo({...userInfo,profile_picture_id:7});
                 }} >
                   </img>
+                  <img className="profileCheck" alt="profileCheck" src='/img/Group.png' style={profilePlace['7']}></img>
                   </div>
                 
                   
@@ -485,43 +491,62 @@ const updateUserInfo = () => {
                     <button 
                       className = 'mypage-color-button mypage-color-button1'
                       onClick ={(e)=>{
+                        setColorPlace({...setBackground,1:{}})
                         setUserInfo({...userInfo,profile_color_id:1});
                       }}
                       > 
+                        <img style={colorPlace['1']} className="profileCheck2" alt="profileCheck2" src='/img/Group.png'></img>
                       </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button2'
                       onClick ={(e)=>{
+                        setColorPlace({...setBackground,2:{}})
                         setUserInfo({...userInfo,profile_color_id:2});
-                      }}> </button>
+                      }}>
+                        <img style={colorPlace['2']} className="profileCheck2" alt="profileCheck2" src='/img/Group.png'></img> 
+                      </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button3'
                       onClick ={(e)=>{
+                        setColorPlace({...setBackground,3:{}})
                         setUserInfo({...userInfo,profile_color_id:3});
                       }}
-                      > </button>
+                      >
+                        <img style={colorPlace['3']}  className="profileCheck2" alt="profileCheck2" src='/img/Group.png'></img> 
+                      </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button4'
                       onClick ={(e)=>{
+                        setColorPlace({...setBackground,4:{}})
                         setUserInfo({...userInfo,profile_color_id:4});
-                      }}> </button>
+                      }}>
+                        <img style={colorPlace['4']}  className="profileCheck2" alt="profileCheck2" src='/img/Group.png'></img> 
+                      </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button5'
                       onClick ={(e)=>{
+                        setColorPlace({...setBackground,5:{}})
                         setUserInfo({...userInfo,profile_color_id:5});
                       }}
-                      > </button>
+                      >
+                        <img  style={colorPlace['5']} className="profileCheck2" alt="profileCheck2" src='/img/Group.png'></img> 
+                      </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button6'
                       onClick ={(e)=>{
+                        setColorPlace({...setBackground,6:{}})
                         setUserInfo({...userInfo,profile_color_id:6});
                       }}
-                      > </button>
+                      >
+                        <img  style={colorPlace['6']} className="profileCheck2" alt="profileCheck2" src='/img/Group.png'></img> 
+                      </button>
                     <button 
                       className = 'mypage-color-button mypage-color-button7'
                       onClick ={(e)=>{
+                        setColorPlace({...setBackground,7:{}})
                         setUserInfo({...userInfo,profile_color_id:7});
                         }}> 
+                        <img  style={colorPlace['7']} className="profileCheck2" alt="profileCheck2" src='/img/Group.png'></img>
                       </button>
                   
                   </div>
