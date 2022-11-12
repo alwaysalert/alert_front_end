@@ -208,6 +208,20 @@ function Register(props) {
       }
       
       };
+      const handleClose2 = () => {
+        
+        axios.post(`${baseURL}/users/register`, {
+          token: props.token,
+          nickname:'',
+          user_job: 6,
+        })
+        .then((res) => console.log('post =',res))
+        .catch(err => {
+          
+        });
+        props.setOpen(false);
+        props.setFlag(true);
+      };
       const onChangeNickname = (event) => {
         const {
           target: { value,}
@@ -219,6 +233,7 @@ function Register(props) {
           setIsSame(null);
         
       }
+  
   return (
     <Dialog open={props.open} sx={{minWidth: "1200px"}} onClose={handleClose}>
           <DialogTitle><div style={{fontFamily:'apple-font-EB',fontWeight: 'bold',fontSize: '30px'}}>Alert에 처음 방문하셨나요?</div></DialogTitle>
@@ -244,7 +259,7 @@ function Register(props) {
                   setClickme(true);
                   CheckNickName(document.getElementById("name").value);
                 }} 
-                type="submit"><strong className="button-color">중복 확인</strong></button>
+                type="submit">중복확인</button>
                 <AlertSame isSame ={isSame} ></AlertSame>
             </div>
             <div className='job'>
@@ -271,7 +286,7 @@ function Register(props) {
           </DialogContent>
   
           <DialogActions>
-            
+            <Button onClick={handleClose2}>다음에 하기</Button>
             <Button onClick={handleClose}>완료</Button>
           </DialogActions>
         </Dialog>

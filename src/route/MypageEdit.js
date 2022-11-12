@@ -340,7 +340,7 @@ const updateUserInfo = () => {
                   }
                   CheckNickName(value)
                  
-                  }}><strong className="button-color">중복확인</strong></button><AlertSame isSame ={isSame}></AlertSame>
+                  }}>중복확인</button><AlertSame isSame ={isSame}></AlertSame>
                 {/* 중복확인 api 사용 */}
               </form>
             </div>
@@ -379,7 +379,7 @@ const updateUserInfo = () => {
               <div className="mypage-content-profile-content"><strong>소 속</strong></div>
               <form>
                 <input className = "mypage-nickname-input" name="id" placeholder='소속을 입력하세요. 학교인증을 통해 학교게시판을 이용할 수 있습니다.'/>
-                <button className = "mypage-nickname-button" type="submit" onClick={(e) => {e.preventDefault();alert("준비중이에요")}}><strong className="button-color">인증하기</strong></button>
+                <button className = "mypage-nickname-button" type="submit" onClick={(e) => {e.preventDefault();alert("준비중이에요")}}>인증하기</button>
               </form>
             </div>
             {/* 프로필 수정 미리보기 */}
