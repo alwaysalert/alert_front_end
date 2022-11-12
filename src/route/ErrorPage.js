@@ -15,7 +15,7 @@ function ErrorPage(props) {
                 홈 화면으로 이동
             </button></Link>
             <button className ='errorbutton' onClick={()=>{
-                window.history.go(-2)
+                window.history.go(-1)
             }}>
                 이전 화면으로 이동
             </button>
