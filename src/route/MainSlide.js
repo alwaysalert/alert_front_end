@@ -9,7 +9,7 @@ import axios from 'axios';
 /**
  * function MainArticle
  * @param {*} props 
- * @returns 뉴스 한 개 해당하는 컴포넌트 
+ * @returns 뉴스 한 개 해당하는 컴포넌트  자러미ㅏ
  */
 function MainArticle(props){
     return (
