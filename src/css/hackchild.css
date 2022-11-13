@@ -598,7 +598,7 @@
 .hackChild-create-button{
     position: relative;
     background: #FFFFFF;
-    border: 1px solid #000000;
+    border: 1px solid grey;
     color: #000000;
     border-radius: 80px;
     cursor : pointer;
@@ -608,6 +608,13 @@
     font-size: 18px;
     width: 13%;
     height: 25%;
+}
+.hackChild-create-button:hover{
+   
+    border: 1px solid black;
+}
+.hackChild-create-button:active{
+    border:1px solid #4285F4;
 }
 
 .hackChild-create-button:hover{
@@ -629,4 +636,51 @@
     position: absolute;
     left: 12%;
     top:3%;
+}
+.hackchild-form-title{
+    padding-left:3px;
+    font-family: apple-font-EB;
+    font-size: 30px;
+    margin-top:10px;
+    
+    width: 97%;
+    border: none;
+    outline :none;
+}
+.hackchild-form-title::placeholder{
+   
+    font-family: apple-font-EB;
+    font-size: 30px;
+}
+.hackchild-form-contents{
+    vertical-align: top;
+    height:315px;
+    width: 100%;
+    padding-top: 10px;
+    padding-left:3px;
+    font-family: apple-font-EB;
+    font-size: 15px;
+    resize: none;
+    border: none;
+    outline :none;
+    
+}
+.question-check{
+    border:none;
+}
+.hackchild-submit{
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-weight: 400;
+    font-family: 'apple-font-EB';
+    font-size: 20px;
+    line-height: 45px;
+    cursor: pointer;
+    background: #7A96FC;
+    color:white;
+}
+.checkbox{
+    
 }

@@ -101,7 +101,7 @@ function HackChild(props) {
         <div className="freeart-content">
         <div className="hackChild-content-head1">
           <div className="hackChild-content-head-title">핵린이 게시판</div>
-          <div className="hackChild-content-head-content"><strong>응애 나 핵린이</strong></div>
+          <div className="hackChild-content-head-content"><strong>해킹이 처음인 당신을 위해 준비했어요</strong></div>
           
         </div>
         <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo ={userInfo} board ='자유게시판'></BoardProfile>
