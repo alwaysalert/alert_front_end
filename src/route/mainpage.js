@@ -48,6 +48,7 @@ function Mainpage(props) {
       }).catch(res => {
   
       })
+      // 보안 뉴스 받아오기
         axios.get(`${baseurl}/boannews/`)
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
