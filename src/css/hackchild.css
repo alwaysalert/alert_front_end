@@ -303,38 +303,53 @@
     border-radius: 10px;
     background: #57B04B;
 }
+.hackchild-qna-box-body{
+    position: relative;
+    height: 40%;
+    /* background-color: #29559F; */
+}
+
 
 .hackchild-qna-box-title{
     text-align: left;
-    position: absolute;
-    width: 606px;
-    height: 90px;
-    left: 10px;
-    top: 100px;
+    float: left;
+    position: relative;
+    height: 40%;
+    left: 0%;
+    top: 0%;
 
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 34px;
+    font-size: 28px;
+    
     text-indent: 10px;
-
+    margin-left: 2%;
+    margin-top: 2%;
+    /* background-color: #0E451D; */
     color: #000000;
 }
 .hackchild-qna-box-content{
-    display: flex;
-    margin-left: 20px;
-    font-size: 16px;
+    position: absolute;
+    top: 43%;
+    left: 0%;
+    width: 100%;
+    text-align: left;
+    font-family: 'apple-font-M';
+    margin-left: 4%;
+    font-size: 24px;
     text-indent: 0px;
 }
 .hackchild-qna-box-answer1{
     position: absolute;
-    left: 10px;
-    top: 210px;
-    width: 608px;
-    height: 50px;
+    
+    left: 2%;
+    top:60%;
+    width: 96%;
+    height: 14%;
     background: #F2F2F2;
     text-align: left;
+    vertical-align: middle;
     font-family: 'apple-font-M';
     font-style: normal;
     font-weight: 400;
@@ -349,10 +364,10 @@
 .hackchild-qna-box-answer2{
     display: inline-block;
     position: absolute;
-    left: 10px;
-    top: 260px;
-    width: 530px;
-    height: 50px;
+    left: 2%;
+    top:74%;
+    width: 96%;
+    height: 14%;
     background: #F2F2F2;
     text-align: left;
     font-family: 'apple-font-M';
@@ -366,6 +381,49 @@
     border-top: 1px solid #CBCBCB;
     color: #000000;
 }
+.qna-tag{
+    /* display: inline-block; */
+    position: relative;
+    float: left;
+    top: 12%;
+    width: 15%;
+    font-size: 17px;
+    border: 1.5px solid;
+    border-radius: 100px;
+    text-align: center;
+    text-indent: 1px;
+    margin-left: 2%;
+    margin-bottom: 5%;
+    font-family: 'apple-font-B';
+}
+.qna-no-comment{
+    height: 85%;
+    text-align: center;
+    vertical-align: middle;
+    margin-top:1.5%;
+}
+.qna-comment{
+    text-indent: 4%;
+    height: 85%;
+    vertical-align: middle;
+    margin-top:1.5%;
+}
+.qna-comment-profile{
+    display: flex;
+    align-items : center;
+    border-radius: 1150px;
+    float: left;
+    width: 6%;
+    height: 90%;
+    margin-left: 2%;
+    margin-top: -0.5%;
+}
+.qna-comment-profile-image{
+    width: 100%;
+}
+
+
+
 .hackchild-qna-box-answer-input{
     border: #F2F2F2;
     resize: none;
@@ -377,10 +435,10 @@
 .hackchild-qna-box-answer-button{
     cursor: pointer;
     position: absolute;
-    top: 260px;
-    left: 540px;
-    width: 78px;
-    height: 50px;
+    top:74%;
+    left: 85.6%;
+    width: 12.4%;
+    height: 14%;
     color: #FFFFFF;
     background: #4285F4;
 
@@ -449,31 +507,6 @@
     
 }
 
-.hackchild-qna-box3{
-    position: relative;
-    width: 642px; 
-    height: 400px; 
-    left: 200px;
-    top: 70px;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    /* animation: slideToRight 2s; */
-}
-
-.hackchild-qna-box4{
-    position: absolute;
-    display: none;
-    width: 642px; 
-    height: 400px; 
-    left: 900px;
-    top: 70px;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    /* animation: slideToRight 2s; */
-}
-
 .qna-container{
     /* overflow: hidden; */
     display: flex;
@@ -512,12 +545,14 @@
     background: linear-gradient(90deg, #F4F4F4 19.27%, rgba(244, 244, 244, 0) 100%);
     transform: matrix(-1, 0, 0, 1, 0, 0);
 }
+
+/* filter box */
 .filter-box{
     position: relative;
     display: flex;
     align-content: center;
-    width: 930px;
-    height: 300px;
+    width: 100%;
+    height: 500px;
 }
 .qna-findBoho{
     position: relative;
@@ -536,10 +571,10 @@
 }
 .qna-filter-text{
     position: absolute;
-    width: 606px;
+    width: 80%;
     height: 61px;
-    top: 30px;
-    left: -60px;
+    top: 15%;
+    left: -10%;
 
     font-family: 'apple-font-EB';
     font-style: normal;
@@ -552,7 +587,7 @@
 }
 .qna-filter-text2{
     position: absolute;
-    width: 606px;
+    width: 100%;
     height: 61px;
     top: 30px;
     left: 70px;
@@ -566,6 +601,33 @@
     
     color: #000000;
 }
+
+.qna-filter-checkboxs{
+    position: relative;
+    text-align: left;
+    top: 58%;
+    left: 24%;
+}
+.qna-filter-checkbox{
+    cursor: pointer;
+    float:left;
+    width:30px;
+    height:30px;
+    background: #FFFFFF;
+    border-radius: 3px;
+    margin-left: 8px;
+}
+.qna-filter-checkbox:hover{
+    background: #FFFFFF;
+}
+.qna-filter-checkbox:active{
+    background: #4285F4;
+}
+
+.qna-filter-name{
+    float:left
+}
+
 /* hackchild 게시물 생성 */
 .hackchild-create-article{
     position: relative;
