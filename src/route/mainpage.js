@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 import { Link } from 'react-router-dom';
-import Calendarpg from './social/googlecalendar';
+// import Calendarpg from './social/googlecalendar';
 import Nav from './Nav';
 import Profile from './Profile';
 import MainSlide from './MainSlide';
@@ -36,8 +36,18 @@ function Mainpage(props) {
     const [new2, setNews2] =useState({});
     const [new3, setNews3] =useState({});
 
+    const [hotArticles,setHotArticles] = useState([]);
+    function formatDate(date) {
+      return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
+        date.getDate().toString().padStart(2, '0')  + ' ' 
+    }
 
     useEffect(() => {
+      axios.get(`${baseurl}/mainpage/boards`).then(res => {
+        setHotArticles(res.data);
+      }).catch(res => {
+  
+      })
         axios.get(`${baseurl}/boannews/`)
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,6 +64,21 @@ function Mainpage(props) {
             });
   
     },[])
+    const [freeTime,setFreeTime] = useState('');
+    const [hackTime,setHackTime] = useState('');
+    //
+    
+    
+    useEffect(() => {
+      if(hotArticles[0])
+      {
+        //console.log(hotArticles[0].freeboard.date)
+        const val1 = new Date(hotArticles[0].freeboard.date)
+        const val2 = new Date(hotArticles[0].hackchildren.date)
+        setFreeTime(formatDate(val1))
+        setHackTime(formatDate(val2))
+      }
+    },[hotArticles,new1,new2,new3,]);
     
   return (
     <>
@@ -84,12 +109,18 @@ function Mainpage(props) {
                 <div className="box-low-title">
                   지금 뜨는 이야기
                 </div>
+                {hotArticles[0] ?
+                <> 
+                <Link to={`/freeart/${hotArticles[0].freeboard.id}`}>
                 <div className="box-low-contents">
-                  <p>갑자기 옛날 학원쌤 생각난다</p>
+                  {hotArticles[0].freeboard.title}
                 </div>
                 <div className="box-low-contents-time">
-                  07/09
+                  {freeTime ? freeTime  : '로딩중,,,'}
                 </div>
+                </Link>
+                </> 
+                : <></>}
               </Box>
                 
             </Box>
@@ -118,10 +149,10 @@ function Mainpage(props) {
                   지금 뜨는 이야기
                 </div>
                 <div className="box-low-contents">
-                  <p>KISA 합격수기 올리는 화석</p>
+                  <p>준비중</p>
                 </div>
                 <div className="box-low-contents-time">
-                  07/09
+                  00/00
                 </div>
               </Box>
             </Box>
@@ -149,12 +180,19 @@ function Mainpage(props) {
                 <div className="box-low-title">
                   지금 뜨는 이야기
                 </div>
+                {/* 핵린이 게시판 지금 뜨는 이야기 */}
+                {hotArticles[0] ?
+                <> 
+                <Link to={`/HackChild/${hotArticles[0].freeboard.id}`}>         
                 <div className="box-low-contents">
-                  <p>요즘 가장 핫한 해킹툴 모음집</p>
+                  {hotArticles[0].hackchildren.title}
                 </div>
                 <div className="box-low-contents-time">
-                  07/09
+                  {hackTime ? hackTime  : '로딩중,,,'}
                 </div>
+                </Link>
+                </> 
+                : <></>}
               </Box>
             </Box>
             {/* 프로필 */}
@@ -170,7 +208,7 @@ function Mainpage(props) {
             <Box
               sx={box}
             >
-              <Calendarpg />
+              달력이 들어갈 자리에요
             </Box>
             <Box
               sx={box}
@@ -196,10 +234,10 @@ function Mainpage(props) {
                   지금 뜨는 이야기
                 </div>
                 <div className="box-low-contents">
-                  <p>22학번 신입생 공학인증과목</p>
+                  <p>준비중입니다</p>
                 </div>
                 <div className="box-low-contents-time">
-                  07/09
+                  00/00
                 </div>
               </Box>
             </Box>
