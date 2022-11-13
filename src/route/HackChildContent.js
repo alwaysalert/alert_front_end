@@ -25,7 +25,7 @@ import Qna from './Qna'
 
 
 function HackChildContent(props) {
-    console.log("props =",props)
+    // console.log("props =",props)
     const baseURL = "http://127.0.0.1:8000"; 
     const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 \n불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
     const [cookies,,] = useCookies(['access_token']);
@@ -33,7 +33,7 @@ function HackChildContent(props) {
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
     const handleClickOpen2 = () => { //작성하시겠습니까?
-      console.log(qnaCheck);  
+      // console.log(qnaCheck);  
       setOpen2(true);
       };
       const CancelButton = () => {
@@ -86,7 +86,7 @@ function HackChildContent(props) {
       }
         
     },[props.num]);
-  const createContents = () => {          //글 생성
+    const createContents = () => {          //글 생성
     const title1 = document.getElementById('hackchild-title').value;
     const contents1 = document.getElementById('hackchild-contents').value;
     if(title1.length === 0)
@@ -117,6 +117,7 @@ function HackChildContent(props) {
 
 
   }
+  // props.num이 0이면 Q&A 게시판 띄우기(default가 Q&A)
   if(props.num === 0){
     return (
       <div className='hackchild-content-background'>
@@ -128,35 +129,35 @@ function HackChildContent(props) {
       <div className='hackchild-content-background'>
         <CheckBox Open={open2} cancelButton={CancelButton} checkButton={createContents} contents={"정말 작성하시겠습니까?"}/>
         <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll={'paper'}
-        PaperProps={{ sx: { width: '200%',height:'500px' } }}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogTitle id="scroll-dialog-title">
-              <input type="text" className="hackchild-form-title" id='hackchild-title' placeholder="글 제목을 입력하세요" ></input>
-        </DialogTitle>
-        <DialogContent dividers={true}>
-          <DialogContentText
-            id="scroll-dialog-description"
+          open={open}
+          onClose={handleClose}
+          scroll={'paper'}
+          PaperProps={{ sx: { width: '200%',height:'500px' } }}
+          aria-labelledby="scroll-dialog-title"
+          aria-describedby="scroll-dialog-description"
+        >
+          <DialogTitle id="scroll-dialog-title">
+                <input type="text" className="hackchild-form-title" id='hackchild-title' placeholder="글 제목을 입력하세요" ></input>
+          </DialogTitle>
+          <DialogContent dividers={true}>
+            <DialogContentText
+              id="scroll-dialog-description"
+              
+              tabIndex={-1}
+            >
+            <textarea className="hackchild-form-contents" id='hackchild-contents' placeholder={contentsPlaceholder} ></textarea>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+          <FormGroup className="question-check" >
+            <FormControlLabel sx={{border:'0',outline:'0',width:'80px'}} control={<Checkbox onChange={e => {
+            setQnaCheck(e.target.checked);
             
-            tabIndex={-1}
-          >
-           <textarea className="hackchild-form-contents" id='hackchild-contents' placeholder={contentsPlaceholder} ></textarea>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-        <FormGroup className="question-check" >
-          <FormControlLabel sx={{border:'0',outline:'0',width:'80px'}} control={<Checkbox onChange={e => {
-          setQnaCheck(e.target.checked);
-          
-        }}/>} label="질문" />
-          </FormGroup>
-          <div className="hackchild-submit" onClick={handleClickOpen2}>작성완료</div>
-        </DialogActions>
-      </Dialog>
+          }}/>} label="질문" />
+            </FormGroup>
+            <div className="hackchild-submit" onClick={handleClickOpen2}>작성완료</div>
+          </DialogActions>
+        </Dialog>
         <CreateAriticle></CreateAriticle>
           {articleArray && articleArray.map(article =>{
             if(article.tag === props.num){
