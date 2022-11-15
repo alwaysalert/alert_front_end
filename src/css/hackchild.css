@@ -213,25 +213,35 @@
     text-indent: 15px;
     
 }
-.myactivity-arts-title{
+.hackchild-art-body{
     position: relative;
-    width: 447px;
-    height: 113px;
-    left: 0px;
-    top: 10px;
+    height: 150px;
+    /* background-color: #4285F4; */
+}
+.hackchild-arts-title{
+    text-align: left;
+    float: left;
+    position: relative;
+    height: 0%;
+    left: 0%;
+    top: 0%;
 
     font-family: 'apple-font-EB';
     font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 34px;
-    text-indent: 10px;
-
+    font-weight: 0;
+    font-size: 28px;
+    
+    
+    margin-left: 0%;
+    margin-top: 2%;
+    /* background-color: #0E451D; */
     color: #000000;
 }
-.myactivity-arts-text{
-    position: relative;
-    bottom:50px;
+.hackchild-arts-text{
+    position: absolute;
+    top: 40%;
+    left: 17%;
+
     font-size: 20px;
     font-family: 'apple-font-EB';
     color: #000000;
@@ -393,6 +403,20 @@
     text-align: center;
     text-indent: 1px;
     margin-left: 2%;
+    margin-bottom: 5%;
+    font-family: 'apple-font-B';
+}
+.hackchild-tag{
+    position: relative;
+    float: left;
+    top: 17%;
+    width: 15%;
+    font-size: 17px;
+    border: 1.5px solid;
+    border-radius: 100px;
+    text-align: center;
+    text-indent: 0px;
+    margin-left: 0%;
     margin-bottom: 5%;
     font-family: 'apple-font-B';
 }

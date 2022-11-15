@@ -24,6 +24,39 @@ import * as util from '../util/util';
 import Qna from './Qna'
 
 
+/**
+ * Component Tag
+ * @param {*} props Hot Q&A에 있는 게시물의 tag값
+ * @returns tag 값에 해당하는 tag 명을 반환
+ */
+ function Tag(props){
+  let tcolor = '';
+  let tag = '가나다라';
+  const style = {
+      color : {tcolor},
+      borderColor: {tcolor}
+  }
+  if(props.tag===1){
+      tag = '시스템 해킹';
+      style.color = '#4285F4'
+  }else if(props.tag===2){
+     tag ='웹 해킹';
+     style.color = '#34A853'
+  }else if(props.tag===3){
+     tag = '리버싱'
+     style.color = '#FBBC05'
+  }else if(props.tag===4){
+      tag = '기타'
+      style.color = '#F85858'
+  }
+  console.log(tag)
+
+  return (<div className='hackchild-tag' style = {style}>
+      {tag}
+  </div>)
+}
+
+
 function HackChildContent(props) {
     // console.log("props =",props)
     const baseURL = "http://127.0.0.1:8000"; 
@@ -173,9 +206,15 @@ function HackChildContent(props) {
               return (<div  key={article.id} name={article.id} id="hackchild-arts-grid" >
                       <Link to={'/HackChild/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
                       <div>
+                      
+                      <div className='hackchild-art-body'>
                       <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
-                      <h4 className="myactivity-arts-title"><strong>{article.title}</strong></h4>
-                      <p className = 'myactivity-arts-text'><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
+                        <div className="hackchild-arts-title">{article.title} </div>
+                        <Tag tag = {article.tag}></Tag>
+                         
+                        <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
+                      </div>
+                      
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                       <span className="count-container">
               <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
