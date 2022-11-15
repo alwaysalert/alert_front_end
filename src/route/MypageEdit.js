@@ -14,7 +14,6 @@ import * as util from '../util/util';
  * @returns jsx 
  */
 
-
 function MypageEdit() {
 //중복 확인 state
 const baseURL = 'http://127.0.0.1:8000'

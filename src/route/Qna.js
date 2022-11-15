@@ -3,9 +3,17 @@ import React, { useState, useRef, useEffect } from 'react'
 import '../css/hackchild.css'
 import axios from 'axios';
 import * as util from '../util/util';
+import CheckIcon from '@mui/icons-material/Check';
 
+import EditIcon from '@mui/icons-material/Edit';
+import ChatIcon from '@mui/icons-material/Chat';
+import StarIcon from '@mui/icons-material/Star';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import Checkbox from '@mui/material/Checkbox';
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import CheckBox from './CheckBox';
+import { Link } from 'react-router-dom'
 
 
 /**
@@ -106,10 +114,86 @@ function CenterQnaBox(props){
  */
 function FilterBox(){
 
+    // filtering 번호 관련
+    const articleCheck = [1,2,3,4];
+    const [isCheck1, setIsCheck1] = useState(0);
+    const [isCheck2, setIsCheck2] = useState(0);
+    const [isCheck3, setIsCheck3] = useState(0);
+    const [isCheck4, setIsCheck4] = useState(0);
+
+    //디자인 관련(hover, checked, unchecked)
+    const [isHover1, setIsHover1] = useState(false);
+    const [isHover2, setIsHover2] = useState(false);
+    const [isHover3, setIsHover3] = useState(false);
+    const [isHover4, setIsHover4] = useState(false);
+
+    let checkColor1 = isHover1 ? '#4285F4':'#FFFFFF';
+    let checkColor2 = isHover2 ? '#4285F4':'#FFFFFF';
+    let checkColor3 = isHover3 ? '#4285F4':'#FFFFFF';
+    let checkColor4 = isHover4 ? '#4285F4':'#FFFFFF';
+
+    let borderColor1 = isHover1 ? '#4285F4':'#FFFFFF';
+    let borderColor2 = isHover2 ? '#4285F4':'#FFFFFF';
+    let borderColor3 = isHover3 ? '#4285F4':'#FFFFFF';
+    let borderColor4 = isHover4 ? '#4285F4':'#FFFFFF';
     
+    let backgroundColor1 = isHover1 ? '#FFFFFF':'#4285F4';
+    let backgroundColor2 = isHover2 ? '#FFFFFF':'#4285F4';
+    let backgroundColor3 = isHover3 ? '#FFFFFF':'#4285F4';
+    let backgroundColor4 = isHover4 ? '#FFFFFF':'#4285F4';
+
+    backgroundColor1 = isCheck1 ? '#4285F4':'#FFFFFF';
+    backgroundColor2 = isCheck2 ? '#4285F4':'#FFFFFF';
+    backgroundColor3 = isCheck3 ? '#4285F4':'#FFFFFF';
+    backgroundColor4 = isCheck4 ? '#4285F4':'#FFFFFF';
+    
+    if(isCheck1){
+        backgroundColor1 = '#4285F4';
+        borderColor1 = '#4285F4';
+    }
+    if(isCheck2){
+        backgroundColor2 = '#4285F4';
+        borderColor2 = '#4285F4';
+    }
+    if(isCheck3){
+        backgroundColor3 = '#4285F4';
+        borderColor3 = '#4285F4';
+    }
+    if(isCheck4){
+        backgroundColor4 = '#4285F4';
+        borderColor4 = '#4285F4';
+    }
+   
+    let newfilter;
+    // filter callback 함수
+    const isCheck = (element) => {
+        if(element === isCheck1){
+            return true;
+        }else if(element === isCheck2){
+            return true;
+        }else if(element === isCheck3){
+            return true;
+        }else if(element === isCheck4){
+            return true;
+        }
+    }
+    // Q&A 받아오기
+    const [QnaArray, setArticle] = useState(null);
+    const baseurl= 'http://127.0.0.1:8000';
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        newfilter = articleCheck.filter(isCheck);
+        axios.post(`${baseurl}/hackchildren/qna`, {
+                tags : newfilter
+            }).then(async (res) => {
+                // console.log(res.data);
+                setArticle(res.data);
+            })
+    },[isCheck1,isCheck2,isCheck3,isCheck4])
 
     return (
-        <div className='filter-box'>
+        <div>
+            <div className='filter-box'>
                   <div className='qna-filter'>
                       <img alt ='1' src="/img/boho/majorboho.png" className="qna-findBoho"/>
                       <div className='qna-filter-text'>
@@ -118,27 +202,144 @@ function FilterBox(){
                               분야별 태그를 활용해, 원하는 정보를 손쉽게 찾아가세요.
                           </div>
                           <div className='qna-filter-checkboxs'>
-                          <div className='qna-filter-checkbox'></div>
-                            <div className='qna-filter-name'>
-                                시스템 해킹
+                            <div className='qna-filter-checkbox' 
+                                style = {{background : backgroundColor1, color:borderColor1}}
+                                onMouseEnter={()=>{
+                                    setIsHover1(true);
+                                }}
+                                onMouseLeave={()=>{
+                                    setIsHover1(false);
+                                }}
+                                onClick={()=>{
+                                    if(isCheck1 === 1){
+                                        setIsCheck1(0);
+                                        borderColor1 = '#4285F4'
+                                    }else{
+                                        setIsCheck1(1); 
+                                    }
+                            }}>
+                                <CheckIcon sx={{width:30, height:30, color :checkColor1}}></CheckIcon>
                             </div>
-                            <div className='qna-filter-checkbox'></div>
-                            <div className='qna-filter-name'>
-                                웹 해킹
+                                <div className='qna-filter-name'>
+                                    시스템 해킹
+                                </div>
+                            <div className='qna-filter-checkbox' 
+                                style = {{background : backgroundColor2, color:borderColor2}}
+                                onMouseEnter={()=>{
+                                    setIsHover2(true);
+                                }}
+                                onMouseLeave={()=>{
+                                    setIsHover2(false);
+                                }}
+                                onClick={()=>{
+                                if(isCheck2 === 2){
+                                    setIsCheck2(0);
+                                }else{
+                                    setIsCheck2(2);
+                                }
+                                }}>
+                                <CheckIcon sx={{width:30, height:30, color :checkColor2}}></CheckIcon>
                             </div>
-                            <div className='qna-filter-checkbox'></div>
-                            <div className='qna-filter-name'>
-                                리버싱
+                                <div className='qna-filter-name'>
+                                    웹 해킹
+                                </div>
+                            <div className='qna-filter-checkbox' 
+                                style = {{background : backgroundColor3, color:borderColor3}}
+                                onMouseEnter={()=>{
+                                    setIsHover3(true);
+                                }}
+                                onMouseLeave={()=>{
+                                    setIsHover3(false);
+                                }}
+                                onClick={()=>{
+                                if(isCheck3 === 3){
+                                    setIsCheck3(0);
+                                }else{
+                                    setIsCheck3(3);
+                                }
+                            }}>
+                                <CheckIcon sx={{width:30, height:30, color :checkColor3}}></CheckIcon>
                             </div>
-                            <div className='qna-filter-checkbox'></div>
                             <div className='qna-filter-name'>
-                                기타
+                                    리버싱
+                                </div>
+                            <div className='qna-filter-checkbox' 
+                                style = {{background : backgroundColor4, color:borderColor4}}
+                                onMouseEnter={()=>{
+                                    setIsHover4(true);  
+                                }}
+                                onMouseLeave={()=>{
+                                    setIsHover4(false);
+                                }}
+                                onClick={()=>{
+                                if(isCheck4 === 4){
+                                    setIsCheck4(0);
+                                }else{
+                                    setIsCheck4(4);
+                                }
+                            }}>
+                                <CheckIcon sx={{width:30, height:30, color :checkColor4}}></CheckIcon>
                             </div>
+                                <div className='qna-filter-name'>
+                                    기타
+                                </div>
 
                           </div>
                       </div>
                   </div>
+                <div className='qna-article-box'>
+            {QnaArray && QnaArray.map(article =>{
+            
+              function formatDate(date) {
+                return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
+                  date.getDate().toString().padStart(2, '0')  + ' ' +
+                  date.getHours().toString().padStart(2, '0') + ':' + 
+                  date.getMinutes().toString().padStart(2, '0')
+              }
+              var time = new Date(article.created_time);
+             
+              
+              return (<div  key={article.id} name={article.id} id="hackchild-arts-grid" >
+                      <Link to={'/HackChild/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
+                      <div>
+                      <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
+                      <h4 className="myactivity-arts-title"><strong>{article.title}</strong></h4>
+                      <p className = 'myactivity-arts-text'><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
+                      <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
+                      <span className="count-container">
+              <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+                
+                <ThumbUpAltIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3' }}/>
+              </div>
+              <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+                {article.like_users.length}
+              </span>
+              <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+                <ChatIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
+              </div>
+              <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+              
+              {article.comment_count}
+              </span>
+              <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+                <StarIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
+              </div>
+              <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+              {article.bookmark ? article.bookmark.length : "0"}
+              </span>
+                      </span>                  
+                      </div>
+                      
+                      </Link>
+                      </div>)
+            
+            
+  })}
+                </div>
+            </div>
+            
         </div>
+        
     )
 }
 
@@ -155,9 +356,10 @@ function Qna() {
     const baseurl= 'http://127.0.0.1:8000'
     useEffect(() => {
         axios.get(`${baseurl}/hackchildren/hotqna`).then(async (res) => {
-            console.log('qna',res.data);
+            // console.log('qna',res.data);
             setHotQna(res.data);
         })
+
     },[])
 
 
@@ -221,33 +423,38 @@ function Qna() {
     const style ={transition : transit, transform :`matrix(1,0,0,1,${-705*currentIndex - 593 -703},0)`};
 
     if(hotqna){
-        return (
-            <div>
-            {/* 무한 슬라이드인데 구현을 좀 억지로함 나중에 제대로 공부하고 해야할 듯 */}
-              <div className ='hackchild-qna'>
-                  <div className ='cloudleft' onClick={lonclick} ></div>
-                  <div className ='cloudright' onClick={ronclick}></div>
-                  <div ref={contain} style = {style} className='qna-container'>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[0]} content = {hotqna[3]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[1]} content = {hotqna[4]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[2]} content = {hotqna[0]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[3]} content = {hotqna[1]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[4]} content = {hotqna[2]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[5]} content = {hotqna[3]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[6]} content = {hotqna[4]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[7]} content = {hotqna[0]}></CenterQnaBox>
-                      <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[8]} content = {hotqna[1]}></CenterQnaBox>
+        let len = hotqna.length;
+        // hotqna 게시물이 5개보다 적을 때 -> 지금까지 온 애들로 5개를 채우기
+            return (
+                <div>
+                {/* 무한 슬라이드인데 구현을 좀 억지로함 나중에 제대로 공부하고 해야할 듯 */}
+                  <div className ='hackchild-qna'>
+                      <div className ='cloudleft' onClick={lonclick} ></div>
+                      <div className ='cloudright' onClick={ronclick}></div>
+                      <div ref={contain} style = {style} className='qna-container'>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[0]} content = {hotqna[3%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[1]} content = {hotqna[4%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[2]} content = {hotqna[0%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[3]} content = {hotqna[1%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[4]} content = {hotqna[2%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[5]} content = {hotqna[3%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[6]} content = {hotqna[4%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[7]} content = {hotqna[0%len]}></CenterQnaBox>
+                          <CenterQnaBox class = 'hackchild-qna-box2' boxScale = {boxscale[8]} content = {hotqna[1]}></CenterQnaBox>
+                      </div>
+                      
                   </div>
+                  <FilterBox></FilterBox>
+                   
                   
-              </div>
-              <FilterBox></FilterBox>
-               
               
-          
-            </div>
-              
-              
-            )
+                </div>
+                  
+                  
+                )
+        
+
+        
     }else{
         return (
             <div>

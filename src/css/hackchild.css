@@ -160,7 +160,7 @@
 .hackchild-content-background{
     display: block;
     width: 100%;
-    height: 1000px;
+    height: 2000px;
     text-align: center;
     background: #F4F4F4;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
@@ -552,7 +552,8 @@
     display: flex;
     align-content: center;
     width: 100%;
-    height: 500px;
+    height: 1500px;
+    /* background-color: #0E451D; */
 }
 .qna-findBoho{
     position: relative;
@@ -565,7 +566,7 @@
     width: 80%;
     height: 157px;
     left: 10%;
-    top: 20%;
+    top: 5%;
     background: #D9D9D9;
     border-radius: 100px;
 }
@@ -601,7 +602,9 @@
     
     color: #000000;
 }
-
+.qna-check{
+    width: 30px;
+}
 .qna-filter-checkboxs{
     position: relative;
     text-align: left;
@@ -610,30 +613,42 @@
 }
 .qna-filter-checkbox{
     cursor: pointer;
+    display: flex;
+    align-items: center;
     float:left;
     width:30px;
     height:30px;
     background: #FFFFFF;
+    border: 1px;
+    border: 1px solid;
     border-radius: 3px;
     margin-left: 8px;
 }
 .qna-filter-checkbox:hover{
     background: #FFFFFF;
 }
-.qna-filter-checkbox:active{
-    background: #4285F4;
-}
+
 
 .qna-filter-name{
     float:left
 }
+
+.qna-article-box{
+    position: absolute;
+    /* background-color: #4285F4; */
+    width: 100%;
+    height: 80%;
+    top: 20%;
+}
+
+
 
 /* hackchild 게시물 생성 */
 .hackchild-create-article{
     position: relative;
     display: flex;
     align-items: center;
-    height: 10%;
+    height: 100px;
     
     border: 2px solid #B7B7B7;
     border-top-style: none;

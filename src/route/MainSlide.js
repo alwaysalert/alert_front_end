@@ -7,7 +7,7 @@ import * as glob from '../global';
 import axios from 'axios';
 
 /**
- * function MainArticle
+ * Component MainArticle
  * @param {*} props 
  * @returns 뉴스 한 개 해당하는 컴포넌트  자러미ㅏ
  */
@@ -25,8 +25,15 @@ function MainArticle(props){
     )
 }
 
+
+/**
+ * Component MainSlide
+ * @param {*} props -> 보안뉴스 정보 받아옴
+ * @returns 보안뉴스 슬라이드
+ * npm slick 라이브러리를 이용했다. 나중에 내맘대로 고칠 예정
+ */
 function MainSlide(props) {
-    console.log(props);
+    // console.log(props);
     
     let image_url1 = 'https://www.boannews.com/media/upFiles2/2022/11/01 utoimage_21724_sum.jpg';
     var settings = {
@@ -38,11 +45,6 @@ function MainSlide(props) {
         slidesToScroll: 1,
         centerMode :true
       };
-    // console.log(props.news[0]);
-    // console.log("1",image_url1);
-    useEffect(() => {
-  
-    },[])
     return (
         <div>
             <div className ='boannews'>실시간 보안 뉴스</div>

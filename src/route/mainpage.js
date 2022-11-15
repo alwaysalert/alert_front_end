@@ -48,6 +48,7 @@ function Mainpage(props) {
       }).catch(res => {
   
       })
+      // 보안 뉴스
         axios.get(`${baseurl}/boannews/`)
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,24 +87,23 @@ function Mainpage(props) {
         {/* 자유게시판 */}
         <div className="contents">
           <Grid container>
-          <Link to={'/freeart'}>
             <Box
               sx={box}
             >
-              
-              <Box
-                 className={"box-high"}>
-                  <img alt ='freeboho' src="/img/boho/freeboho.png" className="freeboho"/>
-                <div className="box-high-title" style={{color:"#E56262"}}>
-                  자유<br/>게시판
-                </div>
-                
-                <div className="box-high-contents" style={{color:"#711010"}}>
-                  여러분의 이야기를<br/>들려주세요
-                </div>
-                
-              </Box>
-              
+              <Link to={'/freeart'}>
+                <Box
+                  className={"box-high"}>
+                    <img alt ='freeboho' src="/img/boho/freeboho.png" className="freeboho"/>
+                  <div className="box-high-title" style={{color:"#E56262"}}>
+                    자유<br/>게시판
+                  </div>
+                  
+                  <div className="box-high-contents" style={{color:"#711010"}}>
+                    여러분의 이야기를<br/>들려주세요
+                  </div>
+                  
+                </Box>
+              </Link>
               <Box
                  className={"box-low"}>
                 <div className="box-low-title">
@@ -124,7 +124,7 @@ function Mainpage(props) {
               </Box>
                 
             </Box>
-            </Link>
+          
             {/* 취업 게시판 */}
             <Link to={'/Error'}>
             <Box
@@ -184,12 +184,12 @@ function Mainpage(props) {
                 {hotArticles[0] ?
                 <> 
                 <Link to={`/HackChild/${hotArticles[0].freeboard.id}`}>         
-                <div className="box-low-contents">
-                  {hotArticles[0].hackchildren.title}
-                </div>
-                <div className="box-low-contents-time">
-                  {hackTime ? hackTime  : '로딩중,,,'}
-                </div>
+                  <div className="box-low-contents">
+                    {hotArticles[0].hackchildren.title}
+                  </div>
+                  <div className="box-low-contents-time">
+                    {hackTime ? hackTime  : '로딩중,,,'}
+                  </div>
                 </Link>
                 </> 
                 : <></>}
@@ -258,7 +258,9 @@ function Mainpage(props) {
                 }}
             >
               <MainSlide new1 = {new1} new2 = {new2} new3 = {new3}></MainSlide>
-              {/* <Box
+              {/*
+              이건 html이 아니라 jsx임 그리고 html도 // 안됨
+               <Box
                  className={"box-high-outside"}
                  >
                   <img alt='advertise'src="https://www.boannews.com/media/upFiles2/2022/11/20221105hack-s.jpg" className="advertise"/>
