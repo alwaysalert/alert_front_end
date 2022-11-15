@@ -10,8 +10,8 @@ import MyActivity from '../route/MyActivity';
 import Search from '../route/Search';
 import ErrorPage from '../route/ErrorPage';
 import HackChild from '../route/HackChild';
-
 import HackViewContents from '../route/HackViewContents';
+import WhoAreWe from '../route/WhoAreWe';
 //import * as glob from '../global'
 
 
@@ -45,6 +45,7 @@ function App() {
             <Route exact path="/MyActivity" element = {<MyActivity isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/Search" element = {<Search isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/Error" element = {<ErrorPage isLoggedIn={isLoggedIn}/>}/>
+            <Route exact path="/WhoAreWe" element ={<WhoAreWe />}/>
 
 
        
