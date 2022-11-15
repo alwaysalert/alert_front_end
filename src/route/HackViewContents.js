@@ -65,7 +65,7 @@ function HackViewContents(props) {
     
     }
     const checkScrapColor = (bookmark,userInfo) => {
-      console.log("check ",userInfo)
+      // console.log("check ",userInfo)
       if(bookmark.includes(userInfo.auth_user_id) === false)
       {
         setScrapColor('scrapbutton1')
@@ -104,7 +104,7 @@ function HackViewContents(props) {
       axios.get(`${baseURL}/hackchildren/${id}/?format=json`)
       .then(async (res) => {
       
-      console.log("change =",res.data)
+      // console.log("change =",res.data)
       datafunc(res.data);
       
       }).catch(err => {
@@ -127,7 +127,7 @@ function HackViewContents(props) {
               comment.child = [];
               setCOMMENT(prev => [...prev, comment]);
               commentIndex2[commentIndex2.length] = comment.id
-              console.log("index",commentIndex2)
+              // console.log("index",commentIndex2)
             }
             else
             {
@@ -523,27 +523,30 @@ const onDelete = () => {
             </div>
         </div>
         </>}
+        {/* map을 사용할때 루트요소가 <></>이면 오류가 나니까 조심하자. */}
         {COMMENT && COMMENT.map(comment =>  {
-          
           var time = new Date(comment.created_time);
-          return(<>
-            <div className="hackview-comment" id={comment.id} key={Math.random()}>
-        <div className="freeart-maincontents-header">
-              <div className="fmh-left">
-                <div className='fm-img-background' style ={{background : util.hexcolor(comment.author_info.profile_color_id)}}>
-                  <img src={util.image_route(comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
+          return(<div key={Math.random()}>
+            <div className="hackview-comment" id={comment.id} >
+              <div className="freeart-maincontents-header">
+                <div className="fmh-left">
+                   <div className='fm-img-background' style ={{background : util.hexcolor(comment.author_info.profile_color_id)}}>
+                      <img src={util.image_route(comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
+                  </div>
                 </div>
-              </div>
               <div className="fmh-right">
                   <div style={{display:"inline-block"}}>
                     <p style={{fontFamily:'apple-font-EB', fontWeight:'bold'}}>{comment.author_info.nickname}</p>
                     <p style={{fontFamily:'apple-font-M',color:'#8A8A8A'}}>{formatDate(time)}</p>
                     
                   </div>
-                  {commentLikeLib[comment.id] ?  <div style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
+                  {commentLikeLib[comment.id] ?  
+                  <div key={Math.random()} style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
                     <ThumbUpAltIcon sx={{ color: 'red',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
                     <span>{commentLikeLib[comment.id]}</span>
-                  </div> : <></>}              
+                  </div> 
+                    : 
+                    <></>}              
               </div>
               <div className="fmc-report" onClick={(event) => {onCcommentClick(event)}} style={{marginTop:'15px'}}>
                     대댓글
@@ -554,41 +557,40 @@ const onDelete = () => {
               <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{marginTop:'15px'}}>
                     신고하기
               </div>
-            </div>
-            <div className='fmc-contents'>{comment.text}</div>
-            {comment.child && comment.child.map(child_comment => {
-              
-              var time2 = new Date(child_comment.created_time);
-              return(<>
-              <div className='freeart-comcomment' id={child_comment.id} key={Math.random()}>
-            <div className="freeart-maincontents-header">
-              <div className="fmh-left">
-                <div className='fm-img-background' style ={{background : util.hexcolor(child_comment.author_info.profile_color_id)}}>
-                  <img src={util.image_route(child_comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
-                </div>
               </div>
-              <div className="fmh-right">
-                  <div style={{display:"inline-block"}}>
-                    <p style={{fontFamily:'apple-font-EB', fontWeight:'bold'}}>{child_comment.author_info.nickname}</p>
-                    <p style={{fontFamily:'apple-font-M',color:'#8A8A8A'}}>{formatDate(time2)}</p>
-                  </div>
+              <div className='fmc-contents'>{comment.text}</div>
+                {comment.child && comment.child.map(child_comment => {
+                  var time2 = new Date(child_comment.created_time);
+                  return(<div key={Math.random()}>
+                          <div className='freeart-comcomment' id={child_comment.id} >
+                            <div className="freeart-maincontents-header">
+                              <div className="fmh-left">
+                                <div className='fm-img-background' style ={{background : util.hexcolor(child_comment.author_info.profile_color_id)}}>
+                                  <img src={util.image_route(child_comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
+                                </div>
+                              </div>
+                              <div className="fmh-right">
+                                  <div style={{display:"inline-block"}}>
+                                    <p style={{fontFamily:'apple-font-EB', fontWeight:'bold'}}>{child_comment.author_info.nickname}</p>
+                                    <p style={{fontFamily:'apple-font-M',color:'#8A8A8A'}}>{formatDate(time2)}</p>
+                                  </div>
 
-                  {commentLikeLib[child_comment.id] ? <div style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
-                    <ThumbUpAltIcon sx={{ color: 'red',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
-                    <span>{commentLikeLib[child_comment.id]}</span>
-                  </div> : <></>}
-                  
-              </div>
-              <div className="fmc-report" onClick={(event) => commentLike(event)} style={{marginTop:'15px'}}>
-                    좋아요
-              </div>
-              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{marginTop:'15px'}}>
-                    신고하기
-              </div>
-            </div>
-            <div className='fmc-contents'>{child_comment.text}</div>
-            </div>
-              </>)
+                                  {commentLikeLib[child_comment.id] ? <div style={{marginTop:'10px',marginLeft:'10px',width:'30px',display:'inline'}}>
+                                    <ThumbUpAltIcon sx={{ color: 'red',height:'23px',width:'18px', verticalAlign:'bottom'}}/>
+                                    <span>{commentLikeLib[child_comment.id]}</span>
+                                  </div> : <></>}
+                                  
+                              </div>
+                              <div className="fmc-report" onClick={(event) => commentLike(event)} style={{marginTop:'15px'}}>
+                                    좋아요
+                              </div>
+                              <div className="fmc-report" onClick={() => alert("준비중입니다.")} style={{marginTop:'15px'}}>
+                                    신고하기
+                              </div>
+                            </div>
+                            <div className='fmc-contents'>{child_comment.text}</div>
+                          </div>
+                        </div>)
             })}
             <div style={{marginBottom:'15px'}}></div>
             <div id={comment.id} name="false" className='fmc-comment-input' style={{width:'97.65%',margin:'auto',marginBottom:'10px',display:"none"}}>
@@ -601,7 +603,7 @@ const onDelete = () => {
           </div>
         </div>
         </div>
-          </>)
+          </div>)
 })}
         {commentFlag ? (<>
         <div className='fmc-comment-input'>
