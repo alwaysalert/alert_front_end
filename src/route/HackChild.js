@@ -104,7 +104,7 @@ function HackChild(props) {
           <div className="hackChild-content-head-content"><strong>해킹이 처음인 당신을 위해 준비했어요</strong></div>
           
         </div>
-        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo ={userInfo} board ='자유게시판'></BoardProfile>
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo ={userInfo} board ='핵린이 게시판'></BoardProfile>
         <div className='hackChild-content-activity'>
             <div className = "myactivity-content-head">For 핵린이</div>
             <button  
