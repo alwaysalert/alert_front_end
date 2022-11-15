@@ -356,8 +356,9 @@ function Qna() {
     // https://ye-yo.github.io/react/2022/01/21/infinite-carousel.html 시발 이거보고 하자
     
     const [hotqna, setHotQna] = useState();
-    
+    let newHotqna;
     const baseurl= 'http://127.0.0.1:8000'
+    //hotqna 받아오는 axios
     useEffect(() => {
         axios.get(`${baseurl}/hackchildren/hotqna`).then(async (res) => {
             // console.log('qna',res.data);
@@ -378,7 +379,14 @@ function Qna() {
     const [boxscale, setBoxccale] = useState([1,1,1.2,1,1,1,1,1])
     
     let newboxscale =[...boxscale];
-    
+    //빈 qna 정보, hotqna 게시물 없으면 이거로 채우기
+    let emptyQna = {
+        body :"게시물이 없어요",
+        comment : 'does not exist',
+        id : 0,
+        tag : 4,
+        title :"게시물이 없어요"
+    }
     /**
      * function changeSlide
      * @param {*} num에 해당하는 값으로 index를 고침
@@ -425,9 +433,17 @@ function Qna() {
 
     // qna css for 무한 슬라이드
     const style ={transition : transit, transform :`matrix(1,0,0,1,${-705*currentIndex - 593 -703},0)`};
-
+    // console.log(hotqna);
     if(hotqna){
         let len = hotqna.length;
+        if(len === 0){
+            hotqna.push(emptyQna);
+            hotqna.push(emptyQna);
+            len =2;
+        }else if(len === 1){
+            hotqna.push(emptyQna);
+            len ++;
+        }
         // hotqna 게시물이 5개보다 적을 때 -> 지금까지 온 애들로 5개를 채우기
             return (
                 <div>
@@ -462,7 +478,7 @@ function Qna() {
     }else{
         return (
             <div>
-                gg
+                지금 뜨는 질문이 없어요 ㅠ
             </div>
         )
     }
