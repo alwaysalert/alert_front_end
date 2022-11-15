@@ -14,7 +14,9 @@ import { useCookies } from 'react-cookie';
 import CheckBox from './CheckBox';
 import BoardProfile from './BoardProfile'
 import * as glob from '../global'
+import * as util from '../util/util'
 
+import '../css/hackchildview.css'
 
 function HackViewContents(props) {
     const baseURL = glob.BACK_BASE_URL;
@@ -447,11 +449,16 @@ const onDelete = () => {
         </form>
         </div>
         </> : <>
-        <div className="freeart-maincontents" >
+        <div className="hackview-maincontents" >
+          <div className ='hackview-header'>
+                <div className='circle1'> </div>
+                <div className='circle2'> </div>
+                <div className='circle3'> </div>
+          </div>
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
-                <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img" alt="owner_profile"></img>
+                <div className='fm-img-background' style ={{background : util.hexcolor(userInfo.profile_color_id)}}>
+                  <img src={util.image_route(userInfo.profile_picture_id)} className="fm-img" alt="owner_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
@@ -480,9 +487,12 @@ const onDelete = () => {
                   )}
               
             </div>
-            <div className='fmc-title' style={{fontFamily: 'apple-font-EB'}}>{DATA.title}</div>
-            <div className='fmc-contents'>{DATA.body}</div>
-            <div className='fmc-icon'>
+            <div className = 'hackview-body'>
+              <div className='fmc-title' style={{fontFamily: 'apple-font-EB'}}>{DATA.title}</div>
+              <div className='fmc-contents'>{DATA.body}</div>
+            </div>
+            
+            <div className='hackview-icon'>
             
             
           <ThumbUpAltIcon onClick={like} sx={{shadow:1}}className={likeColor}/>
@@ -517,11 +527,11 @@ const onDelete = () => {
           
           var time = new Date(comment.created_time);
           return(<>
-            <div className="freeart-comment" id={comment.id} key={Math.random()}>
+            <div className="hackview-comment" id={comment.id} key={Math.random()}>
         <div className="freeart-maincontents-header">
               <div className="fmh-left">
-                <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img" alt="writer_profile"></img>
+                <div className='fm-img-background' style ={{background : util.hexcolor(comment.author_info.profile_color_id)}}>
+                  <img src={util.image_route(comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
@@ -553,8 +563,8 @@ const onDelete = () => {
               <div className='freeart-comcomment' id={child_comment.id} key={Math.random()}>
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
-                <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img" alt="writer_profile"></img>
+                <div className='fm-img-background' style ={{background : util.hexcolor(child_comment.author_info.profile_color_id)}}>
+                  <img src={util.image_route(child_comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
