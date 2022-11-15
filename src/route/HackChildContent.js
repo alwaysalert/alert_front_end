@@ -78,7 +78,7 @@ function HackChildContent(props) {
       }else{
         axios.get(`${baseURL}/hackchildren/?tag=${props.num}&format=json`).then((res) => {
           setArticle(res.data);
-          console.log(res.data);
+          // console.log(res.data);
           
           }).catch((err) => {
             console.log("Error check", err);
