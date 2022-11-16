@@ -202,7 +202,7 @@
 #hackchild-arts-grid{
     
     display: block;
-    width: 100%;
+    width: 99.9%;
     height: 10%;
     background: #FFFFFF;
     text-align: left;
@@ -259,6 +259,7 @@
 
 .hackchild-qna-box-head{
     position: relative;
+    
     width: 630px;
     height: 62px;
     left: 0px;
@@ -269,7 +270,8 @@
 .hackchild-qna-box-head-text{
     position: absolute;
     left: 14px;
-    top: 10px;
+    top: 15px;
+    
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 400;
@@ -330,7 +332,7 @@
 
     font-family: 'apple-font-EB';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 28px;
     
     text-indent: 10px;
@@ -394,8 +396,9 @@
 .qna-tag{
     /* display: inline-block; */
     position: relative;
+    padding-top: 4px;
     float: left;
-    top: 12%;
+    top: 9%;
     width: 15%;
     font-size: 17px;
     border: 1.5px solid;
@@ -403,12 +406,20 @@
     text-align: center;
     text-indent: 1px;
     margin-left: 2%;
-    margin-bottom: 5%;
+    
     font-family: 'apple-font-B';
+}
+.tagplace{
+    display: inline-block;
+    width: 600px;
+    margin-top: 18px;
+    margin-left: -14px;
+
 }
 .hackchild-tag{
     position: relative;
     float: left;
+    padding-top: 3px;
     top: 17%;
     width: 15%;
     font-size: 17px;
@@ -424,7 +435,7 @@
     height: 85%;
     text-align: center;
     vertical-align: middle;
-    margin-top:1.5%;
+    margin-top:2.3%;
 }
 .qna-comment{
     text-indent: 4%;
@@ -632,6 +643,8 @@
 .qna-filter-checkboxs{
     position: relative;
     text-align: left;
+    
+    
     top: 58%;
     left: 24%;
 }
@@ -640,13 +653,14 @@
     display: flex;
     align-items: center;
     float:left;
-    width:30px;
-    height:30px;
+    width:20px;
+    height:20px;
     background: #FFFFFF;
     border: 1px;
     border: 1px solid;
     border-radius: 3px;
-    margin-left: 8px;
+    margin-top: 6px;
+    margin-left: 6px;
 }
 .qna-filter-checkbox:hover{
     background: #FFFFFF;
@@ -654,7 +668,8 @@
 
 
 .qna-filter-name{
-    float:left
+    float:left;
+    font-size: 18px;
 }
 
 .qna-article-box{
@@ -689,8 +704,8 @@
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    line-height: 20px;
-    text-indent: 4%;
+    line-height: 24px;
+    text-indent: 0%;
     width: 85%;
     margin: 0px;
     color: #000000;
@@ -699,28 +714,32 @@
 .hackChild-create-button{
     position: relative;
     background: #FFFFFF;
-    border: 1px solid grey;
+    font-family: apple-font-EB;
+    border: 1.5px solid grey;
     color: #000000;
+    font-weight: 700;
+    padding-top:6px;
+    padding-bottom: -10px;
     border-radius: 80px;
     cursor : pointer;
-    vertical-align: middle;
-    margin-top: 1px;
-    margin-left: 0px;
-    font-size: 18px;
-    width: 13%;
-    height: 25%;
+    color: grey;
+    margin-top: 0px;
+    margin-left: -10px;
+    font-size: 15px;
+    width: 12%;
+    height: 23%;
 }
 .hackChild-create-button:hover{
    
-    border: 1px solid black;
-}
-.hackChild-create-button:active{
-    border:1px solid #4285F4;
-}
-
-.hackChild-create-button:hover{
+    border: 1.5px solid black;
     color: #000
 }
+.hackChild-create-button:active{
+    border:1.5px solid #4285F4;
+    color: #4285F4
+}
+
+-
 .hackChild-create-button:active{
     color: #4285F4
 }
@@ -781,6 +800,12 @@
     cursor: pointer;
     background: #7A96FC;
     color:white;
+}
+.hackchild-submit:hover{
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.4));
+}
+.hackchild-submit:active{
+    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
 }
 .checkbox{
     

@@ -218,7 +218,7 @@ function FilterBox(){
                                         setIsCheck1(1); 
                                     }
                             }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor1}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor1}}></CheckIcon>
                             </div>
                                 <div className='qna-filter-name'>
                                     시스템 해킹
@@ -238,7 +238,7 @@ function FilterBox(){
                                     setIsCheck2(2);
                                 }
                                 }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor2}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor2}}></CheckIcon>
                             </div>
                                 <div className='qna-filter-name'>
                                     웹 해킹
@@ -258,7 +258,7 @@ function FilterBox(){
                                     setIsCheck3(3);
                                 }
                             }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor3}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor3}}></CheckIcon>
                             </div>
                             <div className='qna-filter-name'>
                                     리버싱
@@ -278,7 +278,7 @@ function FilterBox(){
                                     setIsCheck4(4);
                                 }
                             }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor4}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor4}}></CheckIcon>
                             </div>
                                 <div className='qna-filter-name'>
                                     기타
@@ -305,8 +305,9 @@ function FilterBox(){
                       <div className='hackchild-art-body'>
                       <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
                         <div className="hackchild-arts-title">{article.title} </div>
-                        <Tag tag = {article.tag}></Tag>
-                         
+                        <div className="tagplace">
+                            <Tag tag = {article.tag}></Tag>
+                        </div>
                         <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
                       </div>
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>

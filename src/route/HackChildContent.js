@@ -4,6 +4,7 @@ import '../css/mainpage.css'
 import '../css/myactivity.css'
 import '../css/hackchild.css'
 import axios from 'axios'
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -60,7 +61,7 @@ import Qna from './Qna'
 function HackChildContent(props) {
     // console.log("props =",props)
     const baseURL = "http://127.0.0.1:8000"; 
-    const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 \n불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
+    const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
     const [cookies,,] = useCookies(['access_token']);
     const [qnaCheck, setQnaCheck] = useState(false);
     const [open, setOpen] = useState(false);
@@ -96,8 +97,8 @@ function HackChildContent(props) {
           </span>
          
           <span className='hackChild-create-button' onClick={handleClickOpen}>
-            <EditIcon className='hackChild-create-button-edit' sx={{width:18, height:18}} />
-             {'  글 작성하기'}
+            <EditIcon className='hackChild-create-button-edit' sx={{width:15, height:15, marginLeft:'5px',marginTop:'6.5px'}} />
+             {'   글 작성하기'}
           </span>
           
         </div>
@@ -186,7 +187,7 @@ function HackChildContent(props) {
             <FormControlLabel sx={{border:'0',outline:'0',width:'80px'}} control={<Checkbox onChange={e => {
             setQnaCheck(e.target.checked);
             
-          }}/>} label="질문" />
+          }}/>} label={<Typography sx={{fontWeight: 700,marginTop: '3px'}}>질문</Typography>} />
             </FormGroup>
             <div className="hackchild-submit" onClick={handleClickOpen2}>작성완료</div>
           </DialogActions>
@@ -210,8 +211,9 @@ function HackChildContent(props) {
                       <div className='hackchild-art-body'>
                       <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
                         <div className="hackchild-arts-title">{article.title} </div>
-                        <Tag tag = {article.tag}></Tag>
-                         
+                        <div className="tagplace">
+                          <Tag tag = {article.tag}></Tag>
+                        </div>
                         <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
                       </div>
                       
