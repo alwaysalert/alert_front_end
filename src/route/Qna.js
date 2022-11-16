@@ -14,7 +14,10 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CheckBox from './CheckBox';
 import { Link } from 'react-router-dom'
+import { NotificationsNone } from '@mui/icons-material';
 
+import { useCookies } from 'react-cookie';
+import * as glob from '../global'
 
 /**
  * Component Tag
@@ -28,7 +31,10 @@ function Tag(props){
         color : {tcolor},
         borderColor: {tcolor}
     }
-    if(props.tag===1){
+    if(props.tag === 0){
+        tag ='';
+        style.color = '#FFFFFF'
+    }else if(props.tag===1){
         tag = '시스템 해킹';
         style.color = '#4285F4'
     }else if(props.tag===2){
@@ -75,6 +81,36 @@ function Comment(props){
  * @returns 슬라이드에 있는 Q&A box
  */
 function CenterQnaBox(props){
+    // console.log(props.content);
+    const [qcomment, setqComment] =useState();
+    const [cookies, , ] = useCookies(['access_token']);
+    const createComment = () =>{
+        if(qcomment.length === 0){
+            alert('댓글을 입력하세요.')
+        }else if(cookies.access_token){
+            axios.post(`${glob.BACK_BASE_URL}/hackchildren/${props.content.id}/comment/create`,{
+                token: cookies.access_token,
+                text: qcomment
+              }).then((res) => {
+                //console.log(res)
+                document.location.reload()
+                // setqComment('');
+              }).catch(err => {
+                alert("오류 발생")
+              });
+        }else{
+            alert("로그인 후 이용 바랍니다.");
+        }
+        
+    }
+    const onChangeComment = (event) => {
+        const {
+          target: { value,}
+        } = event;
+        setqComment(value);
+        
+    }
+    
     
     const boxstyle = {transform:`scale(${props.boxScale})`}
     return (
@@ -85,14 +121,19 @@ function CenterQnaBox(props){
                 <div className='circle2'> </div>
                 <div className='circle3'> </div>
             </div>
+            
             <div className='hackchild-qna-box-body'>
+            <Link to ={'/hackChild/'+props.content.id}>
                 <div className='hackchild-qna-box-title'>{props.content.title}
                 </div>
+
+            </Link>
                 <Tag tag = {props.content.tag} classname="qna-tag"></Tag>
                 <div className='hackchild-qna-box-content'>
                     {props.content.body}
                 </div>
             </div>
+            
             <div className='hackchild-qna-box-answer1'>
                 <Comment 
                 comment = {props.content.comment} commentProfileCharacter ={props.content.comment_user_picture_id}
@@ -100,9 +141,14 @@ function CenterQnaBox(props){
                 ></Comment>
             </div>
             <div className='hackchild-qna-box-answer2'>
-                <textarea className='hackchild-qna-box-answer-input' rows='1' cols='40' placehoder ='(닉네임)님, 해킹이 처음인 핵린이를 위해 답변을 달아주세요.' ></textarea>
+                <textarea className='hackchild-qna-box-answer-input' rows='1' cols='40' placehoder ='(닉네임)님, 해킹이 처음인 핵린이를 위해 답변을 달아주세요.'
+                
+                    onChange ={(e)=>{ onChangeComment(e)}}
+                ></textarea>
             </div>
-            <div className='hackchild-qna-box-answer-button'>답변 달기</div>
+            <div className='hackchild-qna-box-answer-button' onClick={()=>{
+                createComment();
+            }}>답변 달기</div>
             
         </div>
     )
@@ -164,7 +210,7 @@ function FilterBox(){
         borderColor4 = '#4285F4';
     }
    
-    let newfilter;
+    let newfilter =[];
     // filter callback 함수
     const isCheck = (element) => {
         if(element === isCheck1){
@@ -178,7 +224,8 @@ function FilterBox(){
         }
     }
     // Q&A 받아오기
-    const [QnaArray, setArticle] = useState(null);
+    const [QnaArray, setArticle] = useState([]);
+    const [checkedArray,SetChecked] = useState([]);
     const baseurl= 'http://127.0.0.1:8000';
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -188,9 +235,11 @@ function FilterBox(){
             }).then(async (res) => {
                 // console.log(res.data);
                 setArticle(res.data);
+                SetChecked(newfilter);
             })
     },[isCheck1,isCheck2,isCheck3,isCheck4])
-
+    // console.log(newfilter.length)
+    
     return (
         <div>
             <div className='filter-box'>
@@ -288,8 +337,22 @@ function FilterBox(){
                       </div>
                   </div>
                 <div className='qna-article-box'>
+            {checkedArray.length>0 && QnaArray.length === 0 ? 
+            <div id="hackchild-no-filter">
+                <img id ='interest-boho'alt='interestboho' src ='/img/boho/interest_boho.png'>
+                </img>
+                <div id ='not-find'>
+                    <strong>
+                        앗! 찾으시려는 태그의 글이 존재하지 않아요.
+                    </strong>
+                    <div>
+                        다른 태그를 이용해서 글을 찾아보세요.
+                    </div>
+                </div>
+                
+            </div> : <></>}
             {QnaArray && QnaArray.map(article =>{
-            
+                
               function formatDate(date) {
                 return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
                   date.getDate().toString().padStart(2, '0')  + ' ' +
@@ -337,9 +400,9 @@ function FilterBox(){
                       
                       </Link>
                       </div>)
-            
-            
-  })}
+        })}           
+        
+                    
                 </div>
             </div>
             
@@ -355,10 +418,11 @@ function FilterBox(){
  */
 function Qna() {
     // https://ye-yo.github.io/react/2022/01/21/infinite-carousel.html 시발 이거보고 하자
-    
+    const [cookies, , ] = useCookies(['access_token']);
     const [hotqna, setHotQna] = useState();
-    
+    let newHotqna;
     const baseurl= 'http://127.0.0.1:8000'
+    //hotqna 받아오는 axios
     useEffect(() => {
         axios.get(`${baseurl}/hackchildren/hotqna`).then(async (res) => {
             // console.log('qna',res.data);
@@ -376,10 +440,17 @@ function Qna() {
 
     const [transit, setTransition] = useState('0.5s ease-in-out')
     // box크기를 배열로 조절하는디.. 가운데 있는 애를 1.2배 크게 만들었는데, 이거말고 다른 방법이 생각이 안나요..
-    const [boxscale, setBoxccale] = useState([1,1,1.2,1,1,1,1,1])
+    const [boxscale, setBoxccale] = useState([1,1,1.1,1,1,1,1,1])
     
     let newboxscale =[...boxscale];
-    
+    //빈 qna 정보, hotqna 게시물 없으면 이거로 채우기
+    let emptyQna = {
+        body :"게시물이 없어요",
+        comment : 'does not exist',
+        id : 0,
+        tag :0,
+        title :"게시물이 없어요"
+    }
     /**
      * function changeSlide
      * @param {*} num에 해당하는 값으로 index를 고침
@@ -426,9 +497,17 @@ function Qna() {
 
     // qna css for 무한 슬라이드
     const style ={transition : transit, transform :`matrix(1,0,0,1,${-705*currentIndex - 593 -703},0)`};
-
+    // console.log(hotqna);
     if(hotqna){
         let len = hotqna.length;
+        if(len === 0){
+            hotqna.push(emptyQna);
+            hotqna.push(emptyQna);
+            len =2;
+        }else if(len === 1){
+            hotqna.push(emptyQna);
+            len ++;
+        }
         // hotqna 게시물이 5개보다 적을 때 -> 지금까지 온 애들로 5개를 채우기
             return (
                 <div>
@@ -463,7 +542,7 @@ function Qna() {
     }else{
         return (
             <div>
-                gg
+                지금 뜨는 질문이 없어요 ㅠ
             </div>
         )
     }
