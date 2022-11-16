@@ -47,10 +47,10 @@ function Tag(props){
         tag = '기타'
         style.color = '#F85858'
     }
-
-    return (<div className='qna-tag' style = {style}>
+    // 태그 큰거 작은거 디자인 다르게해야할거같아서 classname도 props로 넣어줌
+    return (<div className={props.classname} style = {style}>              
         {tag}
-    </div>)
+    </div>)                                     
 }
 /**
  * Component Comment
@@ -126,8 +126,9 @@ function CenterQnaBox(props){
             <Link to ={'/hackChild/'+props.content.id}>
                 <div className='hackchild-qna-box-title'>{props.content.title}
                 </div>
+
             </Link>
-                <Tag tag = {props.content.tag}></Tag>
+                <Tag tag = {props.content.tag} classname="qna-tag"></Tag>
                 <div className='hackchild-qna-box-content'>
                     {props.content.body}
                 </div>
@@ -263,7 +264,7 @@ function FilterBox(){
                                         setIsCheck1(1); 
                                     }
                             }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor1}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor1}}></CheckIcon>
                             </div>
                                 <div className='qna-filter-name'>
                                     시스템 해킹
@@ -283,7 +284,7 @@ function FilterBox(){
                                     setIsCheck2(2);
                                 }
                                 }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor2}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor2}}></CheckIcon>
                             </div>
                                 <div className='qna-filter-name'>
                                     웹 해킹
@@ -303,7 +304,7 @@ function FilterBox(){
                                     setIsCheck3(3);
                                 }
                             }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor3}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor3}}></CheckIcon>
                             </div>
                             <div className='qna-filter-name'>
                                     리버싱
@@ -323,7 +324,7 @@ function FilterBox(){
                                     setIsCheck4(4);
                                 }
                             }}>
-                                <CheckIcon sx={{width:30, height:30, color :checkColor4}}></CheckIcon>
+                                <CheckIcon sx={{width:20, height:20, color :checkColor4}}></CheckIcon>
                             </div>
                                 <div className='qna-filter-name'>
                                     기타
@@ -347,13 +348,14 @@ function FilterBox(){
               return (<div  key={article.id} name={article.id} id="hackchild-arts-grid" >
                       <Link to={'/HackChild/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
                       <div>
-                      <div className='hackchild-art-body'>
+                      
                       <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
-                        <div className="hackchild-arts-title">{article.title} </div>
-                        <Tag tag = {article.tag}></Tag>
-                         
+                        <div className="hackchild-arts-title"><strong>{article.title}</strong></div>
+                        <div className="tagplace">
+                            <Tag tag = {article.tag} classname="hackchild-tag"></Tag>
+                        </div>
                         <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
-                      </div>
+                      
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                       <span className="count-container">
               <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
