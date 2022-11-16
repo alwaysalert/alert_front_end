@@ -210,7 +210,7 @@ function FilterBox(){
         borderColor4 = '#4285F4';
     }
    
-    let newfilter;
+    let newfilter =[];
     // filter callback 함수
     const isCheck = (element) => {
         if(element === isCheck1){
@@ -224,7 +224,8 @@ function FilterBox(){
         }
     }
     // Q&A 받아오기
-    const [QnaArray, setArticle] = useState(null);
+    const [QnaArray, setArticle] = useState([]);
+    const [checkedArray,SetChecked] = useState([]);
     const baseurl= 'http://127.0.0.1:8000';
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -234,9 +235,11 @@ function FilterBox(){
             }).then(async (res) => {
                 // console.log(res.data);
                 setArticle(res.data);
+                SetChecked(newfilter);
             })
     },[isCheck1,isCheck2,isCheck3,isCheck4])
-
+    // console.log(newfilter.length)
+    
     return (
         <div>
             <div className='filter-box'>
@@ -334,8 +337,22 @@ function FilterBox(){
                       </div>
                   </div>
                 <div className='qna-article-box'>
+            {checkedArray.length>0 && QnaArray.length === 0 ? 
+            <div id="hackchild-no-filter">
+                <img id ='interest-boho'alt='interestboho' src ='/img/boho/interest_boho.png'>
+                </img>
+                <div id ='not-find'>
+                    <strong>
+                        앗! 찾으시려는 태그의 글이 존재하지 않아요.
+                    </strong>
+                    <div>
+                        다른 태그를 이용해서 글을 찾아보세요.
+                    </div>
+                </div>
+                
+            </div> : <></>}
             {QnaArray && QnaArray.map(article =>{
-            
+                
               function formatDate(date) {
                 return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
                   date.getDate().toString().padStart(2, '0')  + ' ' +
@@ -383,9 +400,9 @@ function FilterBox(){
                       
                       </Link>
                       </div>)
-            
-            
-  })}
+        })}           
+        
+                    
                 </div>
             </div>
             
@@ -423,7 +440,7 @@ function Qna() {
 
     const [transit, setTransition] = useState('0.5s ease-in-out')
     // box크기를 배열로 조절하는디.. 가운데 있는 애를 1.2배 크게 만들었는데, 이거말고 다른 방법이 생각이 안나요..
-    const [boxscale, setBoxccale] = useState([1,1,1.2,1,1,1,1,1])
+    const [boxscale, setBoxccale] = useState([1,1,1.1,1,1,1,1,1])
     
     let newboxscale =[...boxscale];
     //빈 qna 정보, hotqna 게시물 없으면 이거로 채우기
