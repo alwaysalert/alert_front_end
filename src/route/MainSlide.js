@@ -14,13 +14,14 @@ import axios from 'axios';
 function MainArticle(props){
     return (
         <div >
-            <a href = {props.news.link} target="_blank" rel="noreferrer">
                 <div className ="news-container">
-                    <img className = 'news-img'alt ={props.news.id} src ={props.news.img} ></img>
+                <a href = {props.news.link} target="_blank" rel="noreferrer">
+                    <img className = 'news-img'alt ={props.news.id} src ={props.news.img} ></img>  
+                </a>
                 </div>
+                <a href = {props.news.link} target="_blank" rel="noreferrer">
                 <div className = 'news-titile'>{props.news.title}</div>
-            </a>
-            
+                </a>   
         </div>
     )
 }
