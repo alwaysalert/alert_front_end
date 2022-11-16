@@ -41,10 +41,10 @@ function Tag(props){
         tag = '기타'
         style.color = '#F85858'
     }
-
-    return (<div className='qna-tag' style = {style}>
+    // 태그 큰거 작은거 디자인 다르게해야할거같아서 classname도 props로 넣어줌
+    return (<div className={props.classname} style = {style}>              
         {tag}
-    </div>)
+    </div>)                                     
 }
 /**
  * Component Comment
@@ -88,7 +88,7 @@ function CenterQnaBox(props){
             <div className='hackchild-qna-box-body'>
                 <div className='hackchild-qna-box-title'>{props.content.title}
                 </div>
-                <Tag tag = {props.content.tag}></Tag>
+                <Tag tag = {props.content.tag} classname="qna-tag"></Tag>
                 <div className='hackchild-qna-box-content'>
                     {props.content.body}
                 </div>
@@ -302,14 +302,14 @@ function FilterBox(){
               return (<div  key={article.id} name={article.id} id="hackchild-arts-grid" >
                       <Link to={'/HackChild/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
                       <div>
-                      <div className='hackchild-art-body'>
+                      
                       <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
-                        <div className="hackchild-arts-title">{article.title} </div>
+                        <div className="hackchild-arts-title"><strong>{article.title}</strong></div>
                         <div className="tagplace">
-                            <Tag tag = {article.tag}></Tag>
+                            <Tag tag = {article.tag} classname="hackchild-tag"></Tag>
                         </div>
                         <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
-                      </div>
+                      
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                       <span className="count-container">
               <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
