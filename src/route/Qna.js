@@ -308,7 +308,7 @@ function FilterBox(){
                         <div className="tagplace">
                             <Tag tag = {article.tag} classname="hackchild-tag"></Tag>
                         </div>
-                        <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
+                        <div className = 'hackchild-arts-text'>{article.body.split('\n').length < 3 ? article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body : article.body.split('\n')[0] + '\n...'}</div> 
                       
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                       <span className="count-container">
