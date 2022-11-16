@@ -50,7 +50,7 @@ import Qna from './Qna'
       tag = '기타'
       style.color = '#F85858'
   }
-  console.log(tag)
+  // console.log(tag)
 
   return (<div className='hackchild-tag' style = {style}>
       {tag}
@@ -139,7 +139,7 @@ function HackChildContent(props) {
      
       axios.post(`${baseURL}/hackchildren/create`,{
         token: cookies.access_token,
-        title:title1,
+        title: title1,
         body: contents1,
         isqna: qnaCheck,
         tag: props.num,
