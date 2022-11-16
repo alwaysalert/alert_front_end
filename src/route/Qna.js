@@ -302,9 +302,13 @@ function FilterBox(){
               return (<div  key={article.id} name={article.id} id="hackchild-arts-grid" >
                       <Link to={'/HackChild/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
                       <div>
+                      <div className='hackchild-art-body'>
                       <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
-                      <h4 className="myactivity-arts-title"><strong>{article.title}</strong></h4>
-                      <p className = 'myactivity-arts-text'><strong>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</strong></p>
+                        <div className="hackchild-arts-title">{article.title} </div>
+                        <Tag tag = {article.tag}></Tag>
+                         
+                        <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
+                      </div>
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                       <span className="count-container">
               <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
