@@ -208,14 +208,14 @@ function HackChildContent(props) {
                       <Link to={'/HackChild/'+article.id} style={{width:'930px',height:'130px', backgroundColor:'red'}}>
                       <div>
                       
-                      <div className='hackchild-art-body'>
+                      
                       <div className= "myactivity-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="myactivity-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
-                        <div className="hackchild-arts-title">{article.title} </div>
+                        <div className="hackchild-arts-title"><strong>{article.title}</strong></div>
                         <div className="tagplace">
                           <Tag tag = {article.tag}></Tag>
                         </div>
                         <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
-                      </div>
+                      
                       
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                       <span className="count-container">

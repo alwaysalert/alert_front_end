@@ -165,10 +165,14 @@ input::placeholder {
 .freeart-arts-title{
     font-family: 'apple-font-M';
     line-height: 30px;
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 400;
+    font-size: 19px;
+    clear:both;
+    margin-top: 16px;
 }
-.freeart-arts-content{
-    font-family: 'apple-font-M';
-}
+
 .form-last{
     display: inline-block;
     width: 100%;
@@ -242,7 +246,7 @@ input::placeholder {
     height: 90px;
 }
 
-.freeart-arts-container div h4{
+/* .freeart-arts-container div h4{
     display: inline-block;
     vertical-align: top;
     font-weight: 400;
@@ -252,12 +256,15 @@ input::placeholder {
     
     
     color: #000;
-}
-.freeart-arts-container div p{
+} */
+.freeart-arts-content{
+    display: inline-block;
     color: #000;
     height:48px;
-    width:97%;
+    overflow:hidden;word-wrap:break-word;
+    width:84%;
     font-size: 15px;
+    font-family: 'apple-font-M';
 }
 .freeart-arts-whenwho{
     display: inline-block;
@@ -323,8 +330,9 @@ input::placeholder {
     margin-bottom:10px
 }
 .fmc-contents{
-    
+    overflow:hidden;word-wrap:break-word;
     font-family: 'apple-font-EB';
+    width: 96.5%;
     margin-left: 17px;
     margin-bottom: 10px;
 }
