@@ -131,9 +131,9 @@ input::placeholder {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }
 .freeart-edit-form{
-    position: absolute;
-    left: 528px;
-    top: 342px;
+    position: relative;
+    left: 324px;
+    top: 0px;
     width: 943.36px;
     border-radius: 1px;
     height: 302.2px;
@@ -294,9 +294,9 @@ input::placeholder {
 }
 .freeart-maincontents{
     display: inline-block;
-    position: absolute;
-    left: 530px;
-    top: 343px;
+    position: relative;
+    left: 324px;
+    top: 0px;
     width: 940px;
     border: 1px solid #B7B7B7;
 }
