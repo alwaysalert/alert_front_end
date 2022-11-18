@@ -82,6 +82,7 @@ function Comment(props){
  */
 function CenterQnaBox(props){
     // console.log(props.content);
+    console.log()
     const [qcomment, setqComment] =useState();
     const [cookies, , ] = useCookies(['access_token']);
     const createComment = () =>{
