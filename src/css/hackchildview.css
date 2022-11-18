@@ -5,9 +5,9 @@
     min-height:100px;
 }
 .hackview-maincontents{
-    position: absolute;
-    left: 528px;
-    top: 342px;
+    position: relative;
+    left: 324px;
+    top: 0px;
     display: inline-block;
     width: 940px;
     min-height: 300px;
