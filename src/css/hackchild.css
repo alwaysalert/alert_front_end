@@ -62,6 +62,9 @@
 }
 .hackChild-content-activity{
     display: inline-block;
+    position: absolute;
+    left: 513px;
+    top: 343px;
     vertical-align: top;
     margin-bottom:22px;
     width: 940px;
