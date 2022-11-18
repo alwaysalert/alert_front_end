@@ -156,8 +156,9 @@ useEffect(() => {
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
         <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo} board ='자유게시판'></BoardProfile>
-        
-        {props.isLoggedIn ? <div className="freeart-form-div">
+        <div className="freeart-arts-container">
+        {props.isLoggedIn ? 
+        <div className="freeart-form-div">
         <form className="freeart-form" onSubmit={onSubmit}>
             <div className="form-title-div">
               <input value={title} onChange={onChangeTitle} type="text" className="form-title" id='freeart-title' placeholder="글 제목을 입력하세요" ></input>
@@ -172,7 +173,7 @@ useEffect(() => {
             </div>
         </form>
         </div> : <></>}
-        <div className="freeart-arts-container">
+        
         {articleArray && articleArray.map(article =>{
           function formatDate(date) {
             return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 

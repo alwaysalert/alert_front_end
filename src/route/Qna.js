@@ -231,16 +231,21 @@ function FilterBox(){
     const [QnaArray, setArticle] = useState([]);
     const [checkedArray,SetChecked] = useState([]);
     const baseurl= 'http://127.0.0.1:8000';
+    const filterCheck =() => {
+        newfilter = articleCheck.filter(isCheck);
+        axios.post(`${baseurl}/hackchildren/qna`, {
+            tags : newfilter
+        }).then(async (res) => {
+            // console.log(res.data);
+            setArticle(res.data);
+            SetChecked(newfilter);
+        })
+    }
+
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         newfilter = articleCheck.filter(isCheck);
-        axios.post(`${baseurl}/hackchildren/qna`, {
-                tags : newfilter
-            }).then(async (res) => {
-                // console.log(res.data);
-                setArticle(res.data);
-                SetChecked(newfilter);
-            })
+        // SetChecked(newfilter);
     },[isCheck1,isCheck2,isCheck3,isCheck4])
     // console.log(newfilter.length)
     
@@ -336,6 +341,11 @@ function FilterBox(){
                                 <div className='qna-filter-name'>
                                     기타
                                 </div>
+                                <div className='qna-filter-name' id='option'
+                                onClick = {filterCheck}
+                                >
+                                    {'설정 하기'}
+                                </div>
 
                           </div>
                       </div>
@@ -421,6 +431,7 @@ function FilterBox(){
  * @returns qna 게시판임.
  */
 function Qna() {
+
     // https://ye-yo.github.io/react/2022/01/21/infinite-carousel.html 시발 이거보고 하자
     const [cookies, , ] = useCookies(['access_token']);
     const [hotqna, setHotQna] = useState();
