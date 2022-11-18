@@ -127,9 +127,9 @@ function HackChildContent(props) {
     {
       alert('제목을 입력하세요.')
     }
-    else if(title1.length > 20)
+    else if(title1.length > 19)
     {
-      alert('제목은 20글자를 넘길 수 없습니다.')
+      alert('제목은 19글자를 넘길 수 없습니다.')
     }
     else if(contents1.length === 0)
     {
@@ -214,7 +214,7 @@ function HackChildContent(props) {
                         <div className="tagplace">
                           <Tag tag = {article.tag}></Tag>
                         </div>
-                        <div className = 'hackchild-arts-text'>{article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body}</div> 
+                        <div className = 'hackchild-arts-text'>{article.body.split('\n').length < 3 ? article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body : article.body.split('\n')[0] + '\n...'}</div> 
                       
                       
                       <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
