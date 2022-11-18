@@ -70,7 +70,9 @@ function Comment(props){
                 <div className='qna-comment-profile' style ={{background : util.hexcolor(props.commentProfileColor)}}>
                     <img className ='qna-comment-profile-image' alt ='1' src ={util.image_route(props.commentProfileCharacter)}></img>
                 </div>
+                <div style={{lineHeight: '35px'}}>
                 {props.comment}
+                </div>
             </div>
         )
     }
@@ -131,13 +133,14 @@ function CenterQnaBox(props){
             </Link>
                 <Tag tag = {props.content.tag} classname="qna-tag"></Tag>
                 <div className='hackchild-qna-box-content'>
-                    {props.content.body}
+                    {props.content.body.split('\n').length < 3 ? props.content.body.length > 90 ? props.content.body.substr(0,90) + '...' : props.content.body : props.content.body.split('\n')[0] + '\n...' }
                 </div>
             </div>
             
             <div className='hackchild-qna-box-answer1'>
                 <Comment 
-                comment = {props.content.comment} commentProfileCharacter ={props.content.comment_user_picture_id}
+                comment = {props.content.comment.split('\n').length < 2 ? props.content.comment.length > 32 ? props.content.comment.substr(0,32) + '...' : props.content.comment : props.content.comment.split('\n')[0] + '...'} 
+                commentProfileCharacter ={props.content.comment_user_picture_id}
                 commentProfileColor ={props.content.comment_user_color_id}
                 ></Comment>
             </div>
