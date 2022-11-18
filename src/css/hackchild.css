@@ -324,7 +324,7 @@
     font-family: 'apple-font-EB';
     font-style: normal;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 24px;
     
     text-indent: 10px;
     margin-left: 2%;
@@ -341,7 +341,7 @@
     text-align: left;
     font-family: 'apple-font-M';
     margin-left: 4%;
-    font-size: 24px;
+    font-size: 20px;
     text-indent: 0px;
     word-wrap: break-word;
     white-space: normal;
@@ -393,11 +393,11 @@
 .qna-tag{
     /* display: inline-block; */
     position: relative;
-    padding-top: 4px;
+    padding-top: 3px;
     float: left;
-    top: 9%;
-    width: 15%;
-    font-size: 17px;
+    top: 9.5%;
+    width: 12%;
+    font-size: 13px;
     border: 1.5px solid;
     border-radius: 100px;
     text-align: center;
@@ -477,7 +477,7 @@
     color: #000;
     background: #D9D9D9;
 
-    line-height: 45px;
+    line-height: 51px;
     font-family: 'apple-font-EB';
     font-style: normal;
     font-size: 15px;

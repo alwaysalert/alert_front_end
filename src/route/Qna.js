@@ -148,7 +148,7 @@ function CenterQnaBox(props){
             </div>
             <div className='hackchild-qna-box-answer-button' onClick={()=>{
                 createComment();
-            }}>답변 달기</div>
+            }}>답변달기</div>
             
         </div>
     )

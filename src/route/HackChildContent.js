@@ -127,9 +127,9 @@ function HackChildContent(props) {
     {
       alert('제목을 입력하세요.')
     }
-    else if(title1.length > 20)
+    else if(title1.length > 19)
     {
-      alert('제목은 20글자를 넘길 수 없습니다.')
+      alert('제목은 19글자를 넘길 수 없습니다.')
     }
     else if(contents1.length === 0)
     {
