@@ -159,7 +159,7 @@ function Register(props) {
           setIsSame(true);
         }
         
-      else if(name.length <= 12)
+      else if(name.length <= 8)
         {
         axios.get(`${baseURL}/users/check_nickname`, {
           params: {
@@ -181,7 +181,7 @@ function Register(props) {
         });
         }
         else{
-          alert("닉네임은 12글자를 넘길 수 없습니다.")
+          alert("닉네임은 8글자를 넘길 수 없습니다.")
         }
       
       }
@@ -251,7 +251,7 @@ function Register(props) {
                 placeholder='사용하실 닉네임을 입력하세요'
                 onChange={(event) => {onChangeNickname(event)}}
                 value={nickname}
-                maxLength="12"
+                maxLength="8"
                 type='text'
                >
                   
@@ -273,16 +273,16 @@ function Register(props) {
             <div className='job-content'>
             <div>
             <Stack direction="row" spacing={1.5} sx={{width:'450px'}}>
-              <Button variant={button1} id='button1' sx={{minWidth: "130px"}} onClick={(event)=>{buttonClick(event)}}>중고등학생</Button>
-              <Button variant={button2} id='button2' sx={{minWidth: "130px"}} onClick={(event)=>{buttonClick(event)}}>대학생</Button>
-              <Button variant={button3} id='button3' sx={{minWidth: "130px"}} onClick={(event)=>{buttonClick(event)}}>졸업생</Button>
+              <Button variant={button1} id='button1' sx={{minWidth: "129px"}} onClick={(event)=>{buttonClick(event)}}>중고등학생</Button>
+              <Button variant={button2} id='button2' sx={{minWidth: "129px"}} onClick={(event)=>{buttonClick(event)}}>대학생</Button>
+              <Button variant={button3} id='button3' sx={{minWidth: "129px"}} onClick={(event)=>{buttonClick(event)}}>졸업생</Button>
             </Stack>
             </div>
             <div>
             <Stack direction="row" spacing={1.5} sx={{width:'450px'}}> 
-              <Button variant={button4} id='button4' sx={{minWidth: "130px"}} onClick={(event)=>{buttonClick(event)}}>교수님</Button>
-              <Button variant={button5} id='button5' sx={{minWidth: "130px"}} onClick={(event)=>{buttonClick(event)}}>현직 종사자</Button>
-              <Button variant={button6} id='button6' sx={{minWidth: "130px"}} onClick={(event)=>{buttonClick(event)}}>기타</Button>
+              <Button variant={button4} id='button4' sx={{minWidth: "129px"}} onClick={(event)=>{buttonClick(event)}}>교수님</Button>
+              <Button variant={button5} id='button5' sx={{minWidth: "129px"}} onClick={(event)=>{buttonClick(event)}}>현직 종사자</Button>
+              <Button variant={button6} id='button6' sx={{minWidth: "129px"}} onClick={(event)=>{buttonClick(event)}}>기타</Button>
             </Stack>
             </div>
             </div>

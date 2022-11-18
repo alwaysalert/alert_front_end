@@ -33,9 +33,9 @@ function Freeart(props) {
       const CheckButton = () => {
         const title = document.getElementById('freeart-title').value;
       const contents = document.getElementById('freeart-contents').value;
-        if(title.length === 0 || title.length > 20)
+        if(title.length === 0 || title.length > 19)
         {
-          alert("제목은 1글자부터 20글자까지입니다.")
+          alert("제목은 1글자부터 19글자까지입니다.")
         }
         else if(contents.length === 0)
         {

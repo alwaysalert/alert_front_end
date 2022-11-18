@@ -7,7 +7,7 @@
     
     display: inline-block;
     width: 99.8%;
-    height: 300px;
+    min-height: 300px;
     border: 1px solid #B7B7B7;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;

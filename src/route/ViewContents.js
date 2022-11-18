@@ -10,7 +10,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import StarIcon from '@mui/icons-material/Star';
 import { FormControlLabel } from '@mui/material';
 import { useCookies } from 'react-cookie';
-
+import * as util from '../util/util'
 import CheckBox from './CheckBox';
 import BoardProfile from './BoardProfile'
 import * as glob from '../global'
@@ -271,9 +271,9 @@ function ViewContents(props) {
       event.preventDefault();
       const title = document.getElementById('freeart-title').value;
       const contents = document.getElementById('freeart-contents').value;
-      if(title.length === 0 || title.length > 20)
+      if(title.length === 0 || title.length > 19)
         {
-          alert("제목은 1글자부터 20글자까지입니다.")
+          alert("제목은 1글자부터 19글자까지입니다.")
         }
         else if(contents.length === 0)
         {
@@ -451,8 +451,8 @@ const onDelete = () => {
         <div className="freeart-maincontents" >
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
-                <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img" alt="owner_profile"></img>
+                <div className='fm-img-background' style={{background : util.hexcolor(userInfo.profile_color_id)}}>
+                  <img src={util.image_route(userInfo.profile_picture_id)} className="fm-img" alt="owner_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
@@ -521,8 +521,8 @@ const onDelete = () => {
             <div className="freeart-comment" id={comment.id} key={Math.random()}>
         <div className="freeart-maincontents-header">
               <div className="fmh-left">
-                <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img" alt="writer_profile"></img>
+                <div className='fm-img-background' style={{background : util.hexcolor(comment.author_info.profile_color_id)}}>
+                  <img src={util.image_route(comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
@@ -554,8 +554,8 @@ const onDelete = () => {
               <div className='freeart-comcomment' id={child_comment.id} key={Math.random()}>
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
-                <div className='fm-img-background'>
-                  <img src='/img/profile/profile4.png' className="fm-img" alt="writer_profile"></img>
+                <div className='fm-img-background' style ={{background : util.hexcolor(child_comment.author_info.profile_color_id)}}>
+                  <img src={util.image_route(child_comment.author_info.profile_picture_id)} className="fm-img" alt="writer_profile"></img>
                 </div>
               </div>
               <div className="fmh-right">
