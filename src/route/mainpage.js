@@ -213,20 +213,22 @@ function Mainpage(props) {
             <Box
               sx={box}
             >
-              <Link to={'/Error'}>
+              <a href="http://home.sejong.ac.kr/~isdpt/6.html"
+              target="_blank" rel="noreferrer"
+              >
                 <Box
                   className={"box-high-major"}>
                     <img alt ='majorboho' src="/img/boho/majorboho.png" className="majorboho"/>
                   <div className="box-high-title" style={{color:"#9050E3"}}>
-                    우리<br/>학교는
+                    우리<br/>학과는
                   </div>
                   
                   <div className="box-high-contents" style={{color:"#3A1072"}}>
-                    정보보호학과에<br/>대한 모든 것
+                    정보보호학과<br/>공지사항을 확인하세요
                   </div>
                   
                 </Box>
-              </Link>
+              </a>
               
               <Box
                  className={"box-low"}>
@@ -259,7 +261,7 @@ function Mainpage(props) {
             >
               <MainSlide new1 = {new1} new2 = {new2} new3 = {new3}></MainSlide>
               {/*
-              이건 html이 아니라 jsx임 그리고 html도 // 안됨
+              
                <Box
                  className={"box-high-outside"}
                  >

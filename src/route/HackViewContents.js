@@ -98,6 +98,7 @@ function HackViewContents(props) {
     const [checkEdit,setCheckEdit] = useState(false);
     const [title,setTitle] = useState("")
     const [text,setText] = useState("")
+    
 
     useEffect(() => {
       CheckUser(cookies.access_token);
@@ -162,7 +163,7 @@ function HackViewContents(props) {
 
     if(DATA.author_info && userInfo.auth_user_id)
     {
-      
+      console.log(DATA);
       if(userInfo.nickname === DATA.author_info.nickname)
       {
         setcheckAuthor(true)
@@ -433,8 +434,8 @@ const onDelete = () => {
         <div className="freeart-form-div">
         {checkEdit ?
         <> 
-        <div className="freeart-form-div" style={{marginLeft:'0px'}}>
-        <form className="freeart-form" onSubmit={onEditSubmit}>
+        <div className="freeart-form" style={{marginLeft:'0px'}}>
+        <form className="freeart-edit-form" onSubmit={onEditSubmit}>
             <div className="form-title-div">
               <input value={title} onChange={onChangeTitle} type="text" className="form-title" id='freeart-title'  ></input>
             </div>
@@ -489,7 +490,7 @@ const onDelete = () => {
             </div>
             <div className = 'hackview-body'>
               <div className='fmc-title' style={{fontFamily: 'apple-font-EB'}}>{DATA.title}</div>
-              <div className='fmc-contents'>{DATA.body}</div>
+              <div className='hackview-body-contents'>{DATA.body}</div>
             </div>
             
             <div className='hackview-icon'>
@@ -518,12 +519,8 @@ const onDelete = () => {
               
             
           
-              
-            
             </div>
-        </div>
-        </>}
-        {/* map을 사용할때 루트요소가 <></>이면 오류가 나니까 조심하자. */}
+                    {/* map을 사용할때 루트요소가 <></>이면 오류가 나니까 조심하자. */}
         {COMMENT && COMMENT.map(comment =>  {
           var time = new Date(comment.created_time);
           return(<div key={Math.random()}>
@@ -558,7 +555,7 @@ const onDelete = () => {
                     신고하기
               </div>
               </div>
-              <div className='fmc-contents'>{comment.text}</div>
+              <div className='hackview-contents'>{comment.text}</div>
                 {comment.child && comment.child.map(child_comment => {
                   var time2 = new Date(child_comment.created_time);
                   return(<div key={Math.random()}>
@@ -588,7 +585,7 @@ const onDelete = () => {
                                     신고하기
                               </div>
                             </div>
-                            <div className='fmc-contents'>{child_comment.text}</div>
+                            <div className='hackview-contents'>{child_comment.text}</div>
                           </div>
                         </div>)
             })}
@@ -616,6 +613,9 @@ const onDelete = () => {
           </div>
         </div>
         </>) : <></>}
+        </div>
+        </>}
+        
         <div style={{marginBottm:'50px'}}></div>
         </div>
        

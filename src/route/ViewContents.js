@@ -426,14 +426,12 @@ const onDelete = () => {
           <div className="freeart-content-head-title">자유게시판</div>
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
-        <div className="freeart-content-profile">
         <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo} board ='자유게시판'></BoardProfile>
-        </div>
         <div className="freeart-form-div">
         {checkEdit ?
         <> 
-        <div className="freeart-form-div" style={{marginLeft:'0px'}}>
-        <form className="freeart-form" onSubmit={onEditSubmit}>
+        <div  style={{marginLeft:'0px'}}>
+        <form className="freeart-edit-form" onSubmit={onEditSubmit}>
             <div className="form-title-div">
               <input value={title} onChange={onChangeTitle} type="text" className="form-title" id='freeart-title'  ></input>
             </div>
@@ -447,7 +445,9 @@ const onDelete = () => {
             </div>
         </form>
         </div>
-        </> : <>
+        </> 
+        : 
+        <>
         <div className="freeart-maincontents" >
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
@@ -512,9 +512,7 @@ const onDelete = () => {
               
             
             </div>
-        </div>
-        </>}
-        {COMMENT && COMMENT.map(comment =>  {
+            {COMMENT && COMMENT.map(comment =>  {
           
           var time = new Date(comment.created_time);
           return(<>
@@ -594,7 +592,7 @@ const onDelete = () => {
         </div>
           </>)
 })}
-        {commentFlag ? (<>
+          {commentFlag ? (<>
         <div className='fmc-comment-input'>
           <textarea  id='writeComment' className='write-comment' placeholder="댓글을 입력하세요." ></textarea>
           
@@ -605,8 +603,11 @@ const onDelete = () => {
           </div>
         </div>
         </>) : <></>}
-        <div style={{marginBottm:'50px'}}></div>
         </div>
+        </>}
+        
+        <div style={{marginBottm:'50px'}}></div>
+      </div>
        
         
         
