@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import '../css/whowe.css'
 import Nav from './Nav';
-
+import Slide from './Slide';
 
 
 function WhoAreWe() {
@@ -44,7 +44,9 @@ function WhoAreWe() {
     <div>
         <Nav></Nav>
         <div className ='whoAreWE'>
-        <div className='block1'></div>
+        <div className='block1'>
+          <Slide></Slide>
+        </div>
         <span className='question'>Who Are We?</span>
         <section ref = {WeAlert} className='we-alert'><strong>We are 
         </strong></section>
