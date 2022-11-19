@@ -70,7 +70,9 @@ function Comment(props){
                 <div className='qna-comment-profile' style ={{background : util.hexcolor(props.commentProfileColor)}}>
                     <img className ='qna-comment-profile-image' alt ='1' src ={util.image_route(props.commentProfileCharacter)}></img>
                 </div>
+                <div style={{lineHeight: '35px'}}>
                 {props.comment}
+                </div>
             </div>
         )
     }
@@ -131,13 +133,14 @@ function CenterQnaBox(props){
             </Link>
                 <Tag tag = {props.content.tag} classname="qna-tag"></Tag>
                 <div className='hackchild-qna-box-content'>
-                    {props.content.body}
+                    {props.content.body.split('\n').length < 3 ? props.content.body.length > 90 ? props.content.body.substr(0,90) + '...' : props.content.body : props.content.body.split('\n')[0] + '\n...' }
                 </div>
             </div>
             
             <div className='hackchild-qna-box-answer1'>
                 <Comment 
-                comment = {props.content.comment} commentProfileCharacter ={props.content.comment_user_picture_id}
+                comment = {props.content.comment.split('\n').length < 2 ? props.content.comment.length > 32 ? props.content.comment.substr(0,32) + '...' : props.content.comment : props.content.comment.split('\n')[0] + '...'} 
+                commentProfileCharacter ={props.content.comment_user_picture_id}
                 commentProfileColor ={props.content.comment_user_color_id}
                 ></Comment>
             </div>
@@ -228,16 +231,21 @@ function FilterBox(){
     const [QnaArray, setArticle] = useState([]);
     const [checkedArray,SetChecked] = useState([]);
     const baseurl= 'http://127.0.0.1:8000';
+    const filterCheck =() => {
+        newfilter = articleCheck.filter(isCheck);
+        axios.post(`${baseurl}/hackchildren/qna`, {
+            tags : newfilter
+        }).then(async (res) => {
+            // console.log(res.data);
+            setArticle(res.data);
+            SetChecked(newfilter);
+        })
+    }
+
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         newfilter = articleCheck.filter(isCheck);
-        axios.post(`${baseurl}/hackchildren/qna`, {
-                tags : newfilter
-            }).then(async (res) => {
-                // console.log(res.data);
-                setArticle(res.data);
-                SetChecked(newfilter);
-            })
+        // SetChecked(newfilter);
     },[isCheck1,isCheck2,isCheck3,isCheck4])
     // console.log(newfilter.length)
     
@@ -333,6 +341,11 @@ function FilterBox(){
                                 <div className='qna-filter-name'>
                                     기타
                                 </div>
+                                <div className='qna-filter-name' id='option'
+                                onClick = {filterCheck}
+                                >
+                                    {'설정 하기'}
+                                </div>
 
                           </div>
                       </div>
@@ -418,6 +431,7 @@ function FilterBox(){
  * @returns qna 게시판임.
  */
 function Qna() {
+
     // https://ye-yo.github.io/react/2022/01/21/infinite-carousel.html 시발 이거보고 하자
     const [cookies, , ] = useCookies(['access_token']);
     const [hotqna, setHotQna] = useState();

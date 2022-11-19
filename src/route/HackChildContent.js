@@ -86,6 +86,7 @@ function HackChildContent(props) {
     
     //article 받아오기
     const [articleArray, setArticle] = useState(null);
+
     function CreateAriticle(){                          //useState를 사용하기 위해 함수 안으로 집어 넣음
 
       return (
@@ -103,8 +104,8 @@ function HackChildContent(props) {
           
         </div>
       )
-    
     } 
+
     useEffect(() => {
       //Q&A
       if(props.num === 0){
@@ -161,6 +162,10 @@ function HackChildContent(props) {
   }else{
     return (
       <div className='hackchild-content-background'>
+        <div className='floating-editbutton' onClick={handleClickOpen}>
+          <EditIcon  sx={{width:50, height:50, marginLeft:'5px',marginTop:'6.5px'}} />
+        </div>
+        
         <CheckBox Open={open2} cancelButton={CancelButton} checkButton={createContents} contents={"정말 작성하시겠습니까?"}/>
         <Dialog
           open={open}
