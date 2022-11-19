@@ -66,6 +66,7 @@ input::placeholder {
 }
 .freeart-content-profile{
     display:inline-block;
+    position: fixed;
     text-align: center;
     width: 304px;
     height: 304px;
@@ -116,14 +117,24 @@ input::placeholder {
     
     display: inline-block;
     vertical-align: top;
-    margin-bottom:22px;
+    margin: bottom 22px;
     width: 943.36px;
-    margin-left: 16.5px;
+    margin-left: px;
+
     
 }
 .freeart-form{
-    
-    
+    width: 943.36px;
+    border-radius: 1px;
+    height: 302.2px;
+    border: 1px solid #B7B7B7;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+.freeart-edit-form{
+    position: relative;
+    left: 324px;
+    top: 0px;
+    width: 943.36px;
     border-radius: 1px;
     height: 302.2px;
     border: 1px solid #B7B7B7;
@@ -208,6 +219,7 @@ input::placeholder {
 .freeart-arts-container{
     display: inline-block;
     vertical-align: top;
+    
     float: right;
     margin-right:1.5px;
     width: 941px;
@@ -282,7 +294,10 @@ input::placeholder {
 }
 .freeart-maincontents{
     display: inline-block;
-    width: 99.8%;
+    position: relative;
+    left: 324px;
+    top: 0px;
+    width: 940px;
     border: 1px solid #B7B7B7;
 }
 .freeart-maincontents-header{
@@ -333,6 +348,7 @@ input::placeholder {
     overflow:hidden;word-wrap:break-word;
     font-family: 'apple-font-EB';
     width: 96.5%;
+    min-height: 30px;
     margin-left: 17px;
     margin-bottom: 10px;
 }
@@ -458,8 +474,9 @@ input::placeholder {
 }
 .freeart-comment{
     margin-top: -1px;
+    width: 940px;
     border: 1px solid #B7B7B7;
-    min-height:100px;
+    min-height: 10px;
 }
 .freeart-comcomment{
     border: 1px solid #B7B7B7;
@@ -471,7 +488,9 @@ input::placeholder {
 }
 .fmc-comment-input{
     border: 1px solid #B7B7B7;
-    
+    position: relative;
+    left: 0px;
+    top: 0px;
     /* background-color: #f4f4f4; */
     margin-top: -1px;
     min-height:35px;
