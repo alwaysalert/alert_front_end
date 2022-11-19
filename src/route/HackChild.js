@@ -8,6 +8,9 @@ import BoardProfile from './BoardProfile';
 import axios from 'axios'
 import { useCookies } from 'react-cookie';
 
+
+
+
 function HackChild(props) {
     //버튼
     const [whatNum, setWhatNum] = useState(0);
@@ -98,6 +101,7 @@ function HackChild(props) {
   return (
     <div>
         <Nav />
+        
         <div className="freeart-content">
         <div className="hackChild-content-head1">
           <div className="hackChild-content-head-title">핵린이 게시판</div>

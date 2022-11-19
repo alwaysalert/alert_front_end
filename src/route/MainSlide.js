@@ -44,7 +44,8 @@ function MainSlide(props) {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        centerMode :true
+        centerMode :true,
+        autoplay:true
       };
     return (
         <div>

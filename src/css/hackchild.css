@@ -62,11 +62,14 @@
 }
 .hackChild-content-activity{
     display: inline-block;
+    position: relative;
+    left: 25.5%;
+    top: 0px;
     vertical-align: top;
     margin-bottom:22px;
     width: 940px;
     height: 200px;
-    margin-left: 18px;
+    
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
     margin: 5 auto;
     border-radius: 5px;
@@ -337,7 +340,7 @@
     top: 43%;
     left: 0%;
     width: 90%;
-    height: 65%;
+    height: 60%;
     text-align: left;
     font-family: 'apple-font-M';
     margin-left: 4%;
@@ -395,7 +398,8 @@
     position: relative;
     padding-top: 3px;
     float: left;
-    top: 18%;
+    top: 16px;
+
     width: 12%;
     font-size: 13px;
     border: 1.5px solid;
@@ -677,8 +681,24 @@
 
 
 .qna-filter-name{
+    position: relative;
     float:left;
     font-size: 18px;
+}
+#option{
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    display: flex;
+    margin-left: 10px;
+    background: #FFFFFF;
+    border-radius: 100px;
+    width: 110px;
+    font-family: 'apple-font-B';
+    font-size: 15px;
+    line-height: 30px;
+    
+    text-indent: 25px;
 }
 
 .qna-article-box{
@@ -848,4 +868,21 @@
     text-indent: 10px;
 
     color: #000000;
+}
+
+
+.floating-editbutton{
+    width: 61px;
+    cursor: pointer;
+    border-radius: 100px;
+    background-color: #F4F4F4;;
+    position: fixed;
+    top: 80%;
+    left: 92%;
+    right: 0;
+    color: #B7B7B7;
+}
+.floating-editbutton:hover{
+    background-color:#B7B7B7;
+    color: #000;
 }
