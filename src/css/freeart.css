@@ -116,7 +116,7 @@ input::placeholder {
     
     display: inline-block;
     vertical-align: top;
-    margin-bottom:22px;
+    margin-bottom:16.5px;
     width: 943.36px;
     margin-left: 16.5px;
     
@@ -222,10 +222,11 @@ input::placeholder {
     margin-top: -1px;
     vertical-align: top;
     float: left;
-    width: 940px;
+    width: 941px;
     border: 1px solid #B7B7B7;
     height: 130px;
-    margin-right:-1px;    
+    /* margin-right:-1px;   */
+    margin-left: -1px;
     
 }
 .freeart-arts-profile-circle{
