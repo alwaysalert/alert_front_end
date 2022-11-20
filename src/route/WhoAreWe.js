@@ -8,10 +8,10 @@ function WhoAreWe() {
     const boho1 = useRef();
     const WeAlert = useRef();
     const AlertLogo = useRef();
-    console.log(boho1.current);
+    
 
     const handleScroll = () => {
-        console.log("scrollY",window.scrollY);
+      
         if(window.scrollY>100){
             boho1.current.style.animation= "slideboho1 2s ease-out";
             boho1.current.style.opacity=1;

@@ -13,11 +13,11 @@ import { useCookies } from 'react-cookie';
 import * as util from '../util/util'
 import CheckBox from './CheckBox';
 import BoardProfile from './BoardProfile'
-import * as glob from '../global'
+
 
 
 function ViewContents(props) {
-    const baseURL = glob.BACK_BASE_URL;
+    const baseURL = process.env.REACT_APP_BACK_BASE_URL;
 
     
    
@@ -63,13 +63,13 @@ function ViewContents(props) {
     
     }
     const checkScrapColor = (bookmark,userInfo) => {
-      console.log("check ",userInfo)
+      
       if(bookmark.includes(userInfo.auth_user_id) === false)
       {
         setScrapColor('scrapbutton1')
       }
       else{
-        //console.log('yes!')
+        
         setScrapColor('scrapbutton2')
       }
     }
@@ -79,7 +79,7 @@ function ViewContents(props) {
         setLikeColor('thumbutton1')
       }
       else{
-        //console.log('yes!')
+        
         setLikeColor('thumbutton2')
       }
     }
@@ -102,7 +102,7 @@ function ViewContents(props) {
       axios.get(`${baseURL}/freeboards/${id}/?format=json`)
       .then(async (res) => {
       
-      console.log("change =",res.data)
+     
       datafunc(res.data);
       
       }).catch(err => {
@@ -121,11 +121,11 @@ function ViewContents(props) {
             })
             if(comment.parent_comment === null)
             {
-              //console.log(comment)
+              
               comment.child = [];
               setCOMMENT(prev => [...prev, comment]);
               commentIndex2[commentIndex2.length] = comment.id
-              console.log("index",commentIndex2)
+              
             }
             else
             {
@@ -134,7 +134,7 @@ function ViewContents(props) {
 
               setCOMMENT(prev => {
                 const arr = prev
-                //console.log("arr=",commentIndex)
+                
                 arr[index].child[arr[index].child.length] = comment
                 return arr
               })
@@ -157,7 +157,7 @@ function ViewContents(props) {
   
     useEffect(() => {
     
-      console.log(DATA.author_info)
+     
     if(DATA.author_info && userInfo.auth_user_id)
     {
       
@@ -193,7 +193,7 @@ function ViewContents(props) {
               ...commentLikeLib,
               [comment_id]: value + 1
             })
-            console.log(commentLikeLib)
+            
           }
           else if(res.data.message === "like deleted")
           {
@@ -202,7 +202,7 @@ function ViewContents(props) {
               ...commentLikeLib,
               [comment_id]: value - 1
             })
-            console.log(commentLikeLib)
+            
           }
       }).catch(err => {
         alert("오류 발생")
@@ -288,7 +288,7 @@ function ViewContents(props) {
             body: contents,
             
           }).then((res) => {
-            console.log(res.data)
+           
             setCheckEdit(false)
             document.location.reload();
           }).catch(err => {
@@ -310,7 +310,7 @@ function ViewContents(props) {
           token: cookies.access_token,
           text: val,
         }).then((res) => {
-          //console.log(res)
+          
            document.location.reload()
         }).catch(err => {
           alert("오류 발생")
@@ -323,8 +323,8 @@ function ViewContents(props) {
    }
    const onWriteComcomment = (event) => {
     let val = null
-    //console.log(event.target.parentElement)
-    console.log(event.target)
+   
+  
     if(event.target.id === 'submittt')
     {
       val = event.target.parentElement;
