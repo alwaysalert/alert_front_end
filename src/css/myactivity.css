@@ -1,0 +1,217 @@
+@font-face {
+    font-family: 'apple-font-M';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'apple-font-EB';
+    src: url('../../public/font/apple/AppleSDGothicNeoM.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'hanna-font';
+    src: url('../../public/font/bm/BMHANNA_11yrs_ttf.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'apple-font-B';
+    src: url('../../public/font/apple/AppleSDGothicNeoB.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BM HANNA_TTF';
+    src: url(../../public/font/bm/BM-HANNA.ttf);
+}
+
+.myactivity-content-head1{
+    display: block;
+    width: 100%;
+    height: 250px;
+    background: #C6DBFF;
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.myactivity-content-head-title{
+    display:inline-block;
+    font-family: 'hanna-font';
+    width:100%;
+    margin-top:125px;
+    margin-left:30px;
+    text-align:left;
+    color: #3677E2;
+    font-size: 65px;
+    margin-bottom:7px;
+
+}
+.myactivity-content-head-content{
+    display:inline-block;
+    font-family: 'apple-font-EB';
+    
+    width:100%;
+    text-align:left;
+    margin-left:30px;
+    color:#113A7E;
+    font-weight: bold;
+
+}
+.myactivity-content-activity{
+    display: block;
+    width: 100%;
+    min-height:850px;
+    text-align: center;
+    background: #F4F4F4;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.myactivity-content-activity-header{
+    display: block;
+    width: 100%;
+    height:200px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    
+}
+
+.myactivity-content-head{
+    position: relative;
+    width: 100%;
+    text-align: left;
+    font-family: 'BM HANNA_TTF';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    /* line-height: 90px;
+    text-indent: 30px; */
+    /* top:20px;
+    left:10px; */
+    color: #29559F;
+}
+.myactivity-button1{
+    cursor:pointer;
+    font-family: 'apple-font-B';
+    border-top: #FFFFFF;
+    border-left: #FFFFFF;
+    border-right: #FFFFFF;
+    
+
+    width : 215px;
+    height: 87.3px;
+    
+    background: #FFFFFF;
+    
+    font-size: 35px;
+}
+.myactivity-button2{
+    cursor:pointer;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border : none;
+    font-family: 'apple-font-B';
+    width : 215px;
+    height: 87.3px;
+    
+    background: #FFFFFF;
+    border: none;
+    font-size: 35px;
+}
+.myactivity-button3{
+    cursor:pointer;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border : none;
+    font-family: 'apple-font-B';
+    width : 215px;
+    height: 87.3px;
+    
+    background: #FFFFFF;
+    border: none;
+    font-size: 35px;
+}
+.myactivity-button4{
+    cursor:pointer;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border : none;
+    font-family: 'apple-font-B';
+    width : 215px;
+    height: 87.3px;
+    
+    background: #FFFFFF;
+    border: none;
+    font-size: 35px;
+}
+
+
+.myactivity-content-background{
+
+    width: 100%;
+    vertical-align: top;
+    text-align: center;
+    
+    
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+}
+/* .myactivity-content-post{
+    display: block;
+    width: 900px;
+    height: 200px;
+    text-align: center;
+    background: #FFFFFF;
+    margin: 0 auto;
+    margin-bottom: 0.1px;
+    border: 1px solid #B7B7B7;
+} */
+
+#myactivity-arts-grid{
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    /* margin: 0 auto; */
+    width: 858px;
+    border: 1px solid #B7B7B7;
+    height: 130px;
+    background-color: #FFFFFF;
+    
+    
+}
+
+.arts-title{
+    font-family: 'apple-font-M';
+    
+    
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 400;
+    font-size: 19px;
+    clear:both;
+    margin-top: 16px;
+    
+    
+    color: #000;
+}
+.arts-text{
+    font-family: 'apple-font-M';
+    color: #000;
+    height:48px;
+    width:97%;
+    font-size: 15px;
+}
+.arts-whenwho{
+    font-family: 'apple-font-M';
+    display: inline-block;
+    vertical-align:bottom;
+    margin-top: 15px;
+    color: #b7b7b7;
+    font-size: 13px;
+}

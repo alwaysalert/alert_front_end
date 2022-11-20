@@ -1,25 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import KakaoLogin from "react-kakao-login";
 import "../../css/login.css"
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import Register from '../Register';
+import * as glob from '../../global';
 
-function Kakao_Login() {
-  const baseURL1 = "http://127.0.0.1:8000";
 
-  const kakaoClientId ="cb5886c97fbfdcb48c2d87a880d04304";
-  const [cookies, setCookie,] = useCookies(['access_token']);
+function KakaoLoginFunc() {
+  const baseURL = glob.BACK_BASE_URL;
 
+  const kakaoClientId =glob.KAKAO_CLIENT_ID;
+  const [, setCookie,] = useCookies(['access_token']);
+  const [open, setOpen] = React.useState(false);
+  const [token,setToken] = React.useState(null);
+  const [token2,setToken2] = React.useState(null);
+  const [flag,setFlag] = React.useState(null);
   
-  //const drfClientId = 'E8OnwQW68N9XKGqifO9N9MM6bYi0nEoZhIkCG0ea';
-  const drfClientId = 'aYvyQ1SMvUAi6W3J60cwmMRG6ZwxorWSTY3Y00Hl'
-  //const drfClientSecret = '1P3H0iMt6RIGktsFfESorhFCvYOvv5jcwCokCAZlYvFoG4pGB5HRqNh19aouSCQxFTKp9EdGBkBpNeV0ibak0eLIR4nIdVZSv9UVj95kCrOI7KqEnXwDhSGsb8xBYoK2';
-  const drfClientSecret = 'tZ78DGY9qyR94RiKba2uY9JhUUvWEihEio5FqpuM9W69HBxj2s67DSPhDzMQASIfaEn60eAR60WItie3XsNtOuAE4HTaCdYzCWLmCFuwdcdx92pH7kr4QJ57DqVavUBJ'
+  const drfClientId = glob.GIVEN_DRF_TOKEN;
+  const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
+  if (!window.Kakao.isInitialized()) {
+    // JavaScript key를 인자로 주고 SDK 초기화
+    window.Kakao.init(glob.KAKAO_CLIENT_ID);
+    // SDK 초기화 여부를 확인하자.
+    console.log(window.Kakao.isInitialized());
+  }
+  const CheckUser = (access_token) => {
+    
+    
+    
+    axios.get(`${baseURL}/users/check_user`, {
+        params: {
+          token: access_token,
+          format: 'json',
+        }}).then(async (res) => {
+          
+          if(res.data.id > 0)
+          {
+            setFlag(true);
+          }
+          else if(res.data.is_existing === false)
+          {
+            setFlag(false);
+          }
+        }).catch((err) => {
+          console.log("Error check", err);
+        });
   
+  }
   const handleKakaoLogin = (response) => {
-    console.log(response);
+    
     axios
-      .post(`${baseURL1}/auth/convert-token`, {
+      .post(`${baseURL}/auth/convert-token`, {
         
         token: response.response.access_token,
         backend: 'kakao',
@@ -28,29 +60,46 @@ function Kakao_Login() {
         client_secret: drfClientSecret
       })
       .then((res) => {
-        console.log('hi it is kakao')
-        console.log(res);
-        const {access_token, refresh_token} = res.data;
-        console.log({access_token, refresh_token});
+        const { access_token, refresh_token } = res.data;
+
+        setToken(access_token);
+        setToken2(refresh_token)
+      //setFlag(false);
+        CheckUser(access_token);
         
-        setCookie('access_token',access_token);
-        setCookie('refresh_token',refresh_token);
-        //localStorage.setItem('access_token', access_token);
-        //localStorage.setItem('refresh_token', refresh_token);
-        document.location.reload();
+        
       })
       .catch(err => {
-        console.log("Error Kakao login",err);
+        document.location="/Error";
       });
   };
+  useEffect(() => {
+    
+    if(flag === true)
+    {
+      
+      setCookie('access_token',token);
+      setCookie('refresh_token',token2);
+      document.location.reload();
+    }
+    else if(flag === false)
+    {
+      
+      setOpen(true);
+      
+      //eslint-disable-next-line
+    }}, [flag,]);
 return (
   <KakaoLogin
-      jsKey={"cb5886c97fbfdcb48c2d87a880d04304"}
+      jsKey={kakaoClientId}
       render={renderProps => (
+                            <>
+                              <Register open={open} setOpen={setOpen} setFlag={setFlag} token={token}/>
                               <button onClick={renderProps.onClick} className="login-container" id="kakao">
-                                <img className="loginlogo" src="/img/kakaocorp.png" />
-                                <div className="loginword"><strong>카카오 로그인</strong></div>
+                                <img className="loginlogo" src="/img/kakaocorp.png" alt="kakaologo"/>
+                                <div className="loginword">카카오로 로그인</div>
                               </button>
+                            </>
                             )}
                           onSuccess={(response) => handleKakaoLogin(response)}
                           onFailure={(err) => console.log("Kakao Login failed ", err)}
@@ -60,4 +109,4 @@ return (
 )
 }
 
-export default Kakao_Login
+export default KakaoLoginFunc

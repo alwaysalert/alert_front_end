@@ -7,6 +7,7 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar';
 export default function Calendarpg() {
 // Apikey는 환경 변수를 이용해 숨겼다
   //const apiKey = process.env.REACT_APP_CAL_API_KEY;
+  
    const apiKey='AIzaSyARuGhCq-zIorRLrzi9Ba7tb0FUhL_0crc';
   return (
     <div className="cal-container">

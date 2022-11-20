@@ -1,50 +1,135 @@
-import { Box } from '@mui/system'
+
 import React, { useEffect, useState } from 'react'
 import '../css/mainpage.css'
 import '../css/freeart.css'
 import Nav from './Nav'
-import TagIcon from '@mui/icons-material/Tag';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { dbService } from '../firebase'
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 
-function Freeart() {
-  const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
-  const [nweets, setNweets] = useState([]);
-  const getNweets = async() =>{
-    const dbNweets =  await dbService.collection("freeart").get()                  //서버(firebase)로부터 게시글이 저장되어있는 폴더를 연결한다
-    setNweets([]);
-    dbNweets.forEach((document) => {
-      const nweetObject = {
-        ...document.data(),
-        id: document.id,
-      }
-      
-      setNweets((prev) => {
+import ChatIcon from '@mui/icons-material/Chat';
+import StarIcon from '@mui/icons-material/Star';
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import BoardProfile from './BoardProfile'
+import { useCookies } from 'react-cookie';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+
+//util.js
+import * as util from '../util/util';
+import * as glob from '../global'
+import CheckBox from './CheckBox';
+
+function Freeart(props) {
+  const baseURL = glob.BACK_BASE_URL; 
+  const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 \n불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
+  //쿠키에서 access_token받아오기
+  const [cookies, , ] = useCookies(['access_token']);
+  //console.log('cookie =',cookies.access_token);
+  // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내고, 아니면 checkUser
+  const [open2, setOpen2] = useState(false);
+    const handleClickOpen = () => {
+        setOpen2(true);
+      };
+   
+      const CheckButton = () => {
+        const title = document.getElementById('freeart-title').value;
+      const contents = document.getElementById('freeart-contents').value;
+        if(title.length === 0 || title.length > 19)
+        {
+          alert("제목은 1글자부터 19글자까지입니다.")
+        }
+        else if(contents.length === 0)
+        {
+          alert("본문을 입력하세요.")
+        }
+        else if(cookies.access_token)
+        {
+          console.log(cookies.access_token)
+          axios.post(`${baseURL}/freeboards/create`, {
         
-        return([nweetObject, ...prev])
-      });
+            token: cookies.access_token,
+            title: title,
+            body: contents,
+          
+          }).then((res) => {
+          
+            document.location.reload();
+          }).catch(err => {
+            console.log(err)
+          });
+        }
+        else{
+          alert("로그인 후 이용 바랍니다")
+        }
+        setOpen2(false);
+      }
+      const CancelButton = () => {
+        
+        setOpen2(false);
+      }
+
+  const [userInfo, setUserInfo] = useState({
+    auth_user_id : null,
+    id : null,
+    is_existing : false,
+    nickname : null,
+    profile_color_id : null,
+    profile_picture_id : null,
+    user_email:null,
+    user_job : null
   });
-};
-useEffect(() =>{
-  getNweets();
+  let newUserInfo = {...userInfo};
+
+  const CheckUser = (access_token) => {
+   
+    
+    axios.get(`${baseURL}/users/check_user`, {
+        params: {
+          token: access_token,
+          format: 'json',
+        }}).then(async (res) => {
+          //console.log('data =',res.data);
+          newUserInfo ={...res.data};
+          //console.log(newUserInfo);
+          setUserInfo(newUserInfo);
+          //console.log('state:',userInfot);
+        })
   
- },[])
+  }
+
+
+  useEffect(() => {
+    CheckUser(cookies.access_token);
+    
+    //eslint-disable-next-line
+  }, []);
+
+
+
+  const [articleArray,setArticle] = useState(null)
+  
+  useEffect(() => {
+  
+  axios.get(`${baseURL}/freeboards/?format=json`).then((res) => {
+ 
+    setArticle(res.data);
+    //console.log(res.data);
+    
+    }).catch((err) => {
+      console.log("Error check", err);
+    });
+  //eslint-disable-next-line
+},[])
+useEffect(() => {
+  console.log('state',articleArray);
+},[articleArray])
 
  const[title, setWriteTitle] = useState("");
  const[text, setWriteContents] = useState("");
+ 
  const onSubmit = async(event) => {
     event.preventDefault();
-    await dbService.collection("freeart").add({
-      title,
-      text,
-      createdAt: Date.now(),
-    });
-    setWriteTitle("");
-    setWriteContents("");
-    window.location.reload();
+   
+    handleClickOpen();   
  }
  const onChangeTitle = (event) => {
     const {
@@ -58,67 +143,83 @@ useEffect(() =>{
     target: { value,}
   } = event;
   setWriteContents(value);
-
 }
   return (
     <>
 
       
       <Nav />
+      <CheckBox Open={open2} cancelButton={CancelButton} checkButton={CheckButton} contents={"정말 작성하시겠습니까?"}/>
       <div className="freeart-content">
         <div className="freeart-content-head">
-          <div className="freeart-content-head-title"><strong>자유게시판</strong></div>
+          <div className="freeart-content-head-title">자유게시판</div>
           <div className="freeart-content-head-content"><strong>자유게시판에서 여러분의 이야기를 자유롭게 들려주세요</strong></div>
         </div>
-        <div className="freeart-content-profile">
-          <div className="freeart-content-profile-name"><strong>{'조승현'}</strong></div>
-          <div className="freeart-content-profile-nim"><strong>님</strong></div>
-          <img className="freeart-content-profile-boho" src='/img/boho/mypageboho.png' />
-          <div className="freeart-activity"><strong>자유게시판에서 조승현님의 활동</strong></div>
-          <div className="freeart-buttonBoxes">
-            <div><strong>작성글</strong></div>
-            <div><strong>댓글</strong></div>
-            <div><strong>좋아요</strong></div>
-            <div><strong>스크랩</strong></div>
-          </div>  
-        </div>
-        <div className="freeart-form-div">
+        <BoardProfile isLoggedIn = {props.isLoggedIn} uInfo = {userInfo} board ='자유게시판'></BoardProfile>
+        
+        {props.isLoggedIn ? <div className="freeart-form-div">
         <form className="freeart-form" onSubmit={onSubmit}>
-          
-            <input value={title} onChange={onChangeTitle} type="text" className="form-title" placeholder="글 제목을 입력하세요" ></input>
-         
-         
-            <textarea value={text} onChange={onChangeContents} className="form-contents" placeholder={contentsPlaceholder} ></textarea>
+            <div className="form-title-div">
+              <input value={title} onChange={onChangeTitle} type="text" className="form-title" id='freeart-title' placeholder="글 제목을 입력하세요" ></input>
+            </div>
+            <div className="form-contents-div">
+              <textarea value={text} onChange={onChangeContents} className="form-contents" id='freeart-contents' placeholder={contentsPlaceholder} ></textarea>
+            </div>
             <div className="form-last">
-              <TagIcon className="tag-icon" sx={{ fontSize: 30, color: '#B7B7B7' }}/>
+              
               <AttachFileIcon className="clip-icon" sx={{ fontSize: 30,color: '#B7B7B7' }}/>
-              <input className="form-submit" type="submit" value="작성완료"></input>
+              <button className="form-submit" style={{fontSize:'20px'}} type="submit" onClick={(event) => {onSubmit(event);}}>작성완료</button>
             </div>
         </form>
-        </div>
+        </div> : <></>}
         <div className="freeart-arts-container">
-        {nweets && nweets.map(nweet => 
-          <div key={nweet._id} id="#freeart-arts-grid">
+        {articleArray && articleArray.map(article =>{
+          function formatDate(date) {
+            return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
+              date.getDate().toString().padStart(2, '0')  + ' ' +
+              date.getHours().toString().padStart(2, '0') + ':' + 
+              date.getMinutes().toString().padStart(2, '0')
+          }
+          var time = new Date(article.created_time);
+          
+          
+          return (<div  key={article.id} name={article.id} id="freeart-arts-grid" >
+                  <Link to={'/freeart/'+article.id} style={{width:'945px',height:'130px', backgroundColor:'red'}}>
+                  <div>
+                  <div className= "freeart-arts-profile-circle" style ={{background : util.hexcolor(article.author_info.profile_color_id)}} ><img alt = 'freeartprofile'className="freeart-arts-profile" src={util.image_route(article.author_info.profile_picture_id)}/></div>
+                  
                 
-                  <img className="freeart-arts-profile" src="/img/boho/mypageboho.png"/>
                 
-                
-                  <h4 className="freeart-arts-title"><strong>{nweet.title}</strong></h4>
-                  <p><strong>{nweet.text.length > 100 ? nweet.text.substr(0,100) + '...' : nweet.text}</strong></p>
-                  <span className="freeart-arts-whenwho">17:56 | 익명</span>
+                  <h4 className="freeart-arts-title"><strong>{article.title}</strong></h4>
+                  <p className="freeart-arts-content">{article.body.split('\n').length < 3 ? article.body.length > 100 ? article.body.substr(0,100) + '...' : article.body : article.body.split('\n')[0] + '\n...'}</p>
+                  <span className="freeart-arts-whenwho">{formatDate(time)}&nbsp;&nbsp;|&nbsp;&nbsp;{article.author_info.nickname}</span>
                   <span className="count-container">
-                    <ThumbUpOffAltIcon />
-                    <span className="count">30</span>
-                    <ChatBubbleOutlineIcon />
-                    <span className="count">30</span>
-                    <StarOutlineOutlinedIcon />
-                    <span className="count">30</span>
-                  </span>                  
-                  
-                  
-                
+          <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+            
+            <ThumbUpAltIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3' }}/>
           </div>
-          )}
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+            {article.like_users.length}
+          </span>
+          <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+            <ChatIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
+          </div>
+          <span style={{display:'inline-block',width:'20px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',marginRight:'-5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+          
+          {article.comment_count}
+          </span>
+          <div style={{display:'inline-block',width:'20px',height:'20px',marginRight:'6px'}}>
+            <StarIcon sx={{ color: '#b9b9b9',width:'23px',height:'23px',marginTop:'3px' }}/>
+          </div>
+          <span style={{display:'inline-block',width:'3px',fontSize:'11px',verticalAlign:'top',marginTop:'10.5px',fontFamily:'apple-font-EB',color:'#b9b9b9'}}>
+          {article.bookmark ? article.bookmark.length : "0"}
+          </span>
+                  </span>                  
+                  </div>
+                  
+                  </Link>
+                  </div>)
+})}
         
         </div>
       </div>
