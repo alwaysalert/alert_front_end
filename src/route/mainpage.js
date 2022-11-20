@@ -49,7 +49,7 @@ function Mainpage(props) {
   
       })
       // 보안 뉴스
-        axios.get(`${baseurl}/boannews/`)
+        axios.get(`/boannews`)
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
               xnews = [...res.data];
