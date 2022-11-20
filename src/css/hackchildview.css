@@ -1,6 +1,6 @@
 .hackview-comment{
     margin-top: -1px;
-    width: 946.3px;
+    width: 940px;
     margin-left: -1px;
     margin-bottom: -1px;
     border: 1px solid #B7B7B7;
@@ -8,10 +8,10 @@
 }
 .hackview-maincontents{
     position: absolute;
-    left: 528px;
-    top: 342px;
+    
+    margin-left: 2px;
     display: inline-block;
-    width: 946.3px;
+    width: 940px;
     min-height: 300px;
     border: 1px solid #B7B7B7;
     border-top-left-radius: 5px;
