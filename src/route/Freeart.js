@@ -15,15 +15,15 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 //util.js
 import * as util from '../util/util';
-import * as glob from '../global'
+
 import CheckBox from './CheckBox';
 
 function Freeart(props) {
-  const baseURL = glob.BACK_BASE_URL; 
+  const baseURL = process.env.REACT_APP_BACK_BASE_URL; 
   const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 \n불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
   //쿠키에서 access_token받아오기
   const [cookies, , ] = useCookies(['access_token']);
-  //console.log('cookie =',cookies.access_token);
+  
   // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내고, 아니면 checkUser
   const [open2, setOpen2] = useState(false);
     const handleClickOpen = () => {
@@ -43,7 +43,7 @@ function Freeart(props) {
         }
         else if(cookies.access_token)
         {
-          console.log(cookies.access_token)
+         
           axios.post(`${baseURL}/freeboards/create`, {
         
             token: cookies.access_token,
@@ -54,7 +54,7 @@ function Freeart(props) {
           
             document.location.reload();
           }).catch(err => {
-            console.log(err)
+            
           });
         }
         else{
@@ -87,11 +87,11 @@ function Freeart(props) {
           token: access_token,
           format: 'json',
         }}).then(async (res) => {
-          //console.log('data =',res.data);
+        
           newUserInfo ={...res.data};
-          //console.log(newUserInfo);
+         
           setUserInfo(newUserInfo);
-          //console.log('state:',userInfot);
+         
         })
   
   }
@@ -112,15 +112,15 @@ function Freeart(props) {
   axios.get(`${baseURL}/freeboards/?format=json`).then((res) => {
  
     setArticle(res.data);
-    //console.log(res.data);
+    
     
     }).catch((err) => {
-      console.log("Error check", err);
+      
     });
   //eslint-disable-next-line
 },[])
 useEffect(() => {
-  console.log('state',articleArray);
+  
 },[articleArray])
 
  const[title, setWriteTitle] = useState("");

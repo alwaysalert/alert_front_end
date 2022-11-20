@@ -13,7 +13,7 @@ function MyActivity(props) {
     const [whatPost3, setWhatPost3] = useState(false); 
     const [whatPost4, setWhatPost4] = useState(false); 
     const location = useLocation();
-    //console.log(location.state.id)
+    
 
     const [isHover1, setIsHover1] = useState(false);
     const [isHover2, setIsHover2] = useState(false);
@@ -50,7 +50,7 @@ function MyActivity(props) {
             setWhatPost4(true)
             setWhatNum(4);
         }
-        //console.log('a:', newUserInfot);
+       
          //eslint-disable-next-line
       }, []);
 

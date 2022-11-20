@@ -2,16 +2,16 @@ import React, { useEffect} from 'react'
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import Register from '../Register';
-import * as glob from '../../global';
+
 
 
 function NaverCallback({logged}) {
     
     const token = window.location.href.split('=')[1].split('&')[0];
 
-    const drfClientId = glob.GIVEN_DRF_TOKEN;
-    const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
-    const baseURL = glob.BACK_BASE_URL;
+    const drfClientId = process.env.REACT_APP_GIVEN_DRF_TOKEN;
+    const drfClientSecret = process.env.REACT_APP_GIVEN_DRF_SECRET_TOKEN;
+    const baseURL = process.env.REACT_APP_BACK_BASE_URL;
     
     const [, setCookie,] = useCookies(['token']);
     const [open, setOpen] = React.useState(false);
@@ -41,7 +41,7 @@ function NaverCallback({logged}) {
                 setFlag(false);
               }
             }).catch((err) => {
-                console.log('로그인이 필요합니다.')
+                alert('로그인이 필요합니다.')
             });
       
       }
@@ -82,17 +82,17 @@ useEffect(() => {
     if(token){
 
         const data = await handleNaverLogin(token)
-        console.log('datadata',data)
+        
         if(flag === true)
         {
-            console.log('check_one');
+            
             setCookie('access_token',accessToken);
             setCookie('refresh_token',refreshToken);
             document.location='/'
         }
         else if(flag === false)
         {
-            console.log('check_two');
+            
             setOpen(true);
   
   

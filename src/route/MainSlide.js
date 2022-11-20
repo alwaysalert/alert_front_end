@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect } from "react";
-import * as glob from '../global';
-import axios from 'axios';
+
 
 /**
  * Component MainArticle
@@ -34,7 +32,7 @@ function MainArticle(props){
  * npm slick 라이브러리를 이용했다. 나중에 내맘대로 고칠 예정
  */
 function MainSlide(props) {
-    // console.log(props);
+    
     
     let image_url1 = 'https://www.boannews.com/media/upFiles2/2022/11/01 utoimage_21724_sum.jpg';
     var settings = {

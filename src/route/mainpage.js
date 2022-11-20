@@ -30,7 +30,7 @@ function Mainpage(props) {
     fontSize: '0.875rem',
     };
 
-    const baseurl= 'http://127.0.0.1:8000';
+    const baseurl= process.env.REACT_APP_BACK_BASE_URL;
     let xnews=[];
     const [new1, setNews1] =useState({});
     const [new2, setNews2] =useState({});
@@ -53,7 +53,7 @@ function Mainpage(props) {
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
               xnews = [...res.data];
-              // console.log(xnews[0]);
+             
               // eslint-disable-next-line react-hooks/exhaustive-deps
               setNews1(xnews[0]);
               // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,7 +73,7 @@ function Mainpage(props) {
     useEffect(() => {
       if(hotArticles[0])
       {
-        //console.log(hotArticles[0].freeboard.date)
+       
         const val1 = new Date(hotArticles[0].freeboard.date)
         const val2 = new Date(hotArticles[0].hackchildren.date)
         setFreeTime(formatDate(val1))

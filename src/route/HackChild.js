@@ -20,7 +20,7 @@ function HackChild(props) {
     const [whatPost3, setWhatPost3] = useState(false); 
     const [whatPost4, setWhatPost4] = useState(false); 
 
-    //console.log(location.state.id)
+    
     const [isHover0, setIsHover0] = useState(false);
     const [isHover1, setIsHover1] = useState(false);
     const [isHover2, setIsHover2] = useState(false);
@@ -31,7 +31,7 @@ function HackChild(props) {
 
     //쿠키에서 access_token받아오기
   const [cookies,,] = useCookies(['access_token']);
-  //console.log('cookie =',cookies.access_token);
+  
   // 쿠키를 확인했을때 access_token이 없으면 되돌려 보내고, 아니면 checkUser
   
   const [userInfo, setUserInfo] = useState({
@@ -47,18 +47,18 @@ function HackChild(props) {
   let newUserInfo = {...userInfo};
 
   const CheckUser = (access_token) => {
-    const baseurl= 'http://127.0.0.1:8000'
+    const baseurl= process.env.REACT_APP_BACK_BASE_URL
     
     axios.get(`${baseurl}/users/check_user`, {
         params: {
           token: access_token,
           format: 'json',
         }}).then(async (res) => {
-          //console.log('data =',res.data);
+          
           newUserInfo ={...res.data};
-          //console.log(newUserInfo);
+          
           setUserInfo(newUserInfo);
-          //console.log('state:',userInfot);
+         
         })
   
   }
@@ -67,7 +67,7 @@ function HackChild(props) {
   useEffect(() => {
     CheckUser(cookies.access_token);
     
-    // console.log('a:', userInfo);
+   
   }, []);
 
     //어떤 버튼을 누르고 들어왔냐에 따라서 스테이트 다르게

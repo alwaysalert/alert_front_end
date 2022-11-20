@@ -33,7 +33,7 @@ function Mypage() {
   let newUserInfo = {...userInfo};
   //function CheckUser(access_token)
   const CheckUser = (access_token) => {
-    const baseurl= 'http://127.0.0.1:8000'
+    const baseurl= process.env.REACT_APP_BACK_BASE_URL;
     
     axios.get(`${baseurl}/users/check_user`, {
         params: {
