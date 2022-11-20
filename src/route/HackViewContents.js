@@ -458,9 +458,12 @@ const onDelete = () => {
           </div>
             <div className="freeart-maincontents-header">
               <div className="fmh-left">
-                <div className='fm-img-background' style ={{background : util.hexcolor(userInfo.profile_color_id)}}>
-                  <img src={util.image_route(userInfo.profile_picture_id)} className="fm-img" alt="owner_profile"></img>
+              {DATA.author_info ? (
+                <div className='fm-img-background' style={{background : util.hexcolor(DATA.author_info.profile_color_id)}}>
+                  <img src={util.image_route(DATA.author_info.profile_picture_id)} className="fm-img" alt="owner_profile"></img>
                 </div>
+                ) : <></>
+                }
               </div>
               <div className="fmh-right">
                   <div style={{display:"inline-block"}}>
