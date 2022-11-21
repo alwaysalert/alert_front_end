@@ -417,7 +417,7 @@ html {
     position: absolute;
     position : relative;
     width: 800px;
-    left: 439px;
+    left: calc(50% - 800px/2 - 0.5px);
     top: 450px;
     border-top:#FFFFFF;
     border-right:#FFFFFF;
@@ -430,7 +430,7 @@ html {
  /* width : 136 */
  .sicon{
     position: absolute;
-    left : 1190px;
+    left: calc(50% + 800px/2 - 50px);
     top : 522px;
     
  }
