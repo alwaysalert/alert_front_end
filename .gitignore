@@ -24,3 +24,4 @@ yarn-error.log*
 
 #global envirement value
 global.js
+.env

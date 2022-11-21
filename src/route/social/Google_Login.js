@@ -5,7 +5,7 @@ import GoogleLogin from "react-google-login";
 import "../../css/login.css"
 import { useCookies } from 'react-cookie';
 import Register from '../Register';
-import * as glob from '../../global';
+
 
 
 function GoogleLoginFunc() {
@@ -20,18 +20,18 @@ function GoogleLoginFunc() {
     
 
 
-  const drfClientId = glob.GIVEN_DRF_TOKEN;
-  const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
+  const drfClientId = process.env.REACT_APP_GIVEN_DRF_TOKEN;
+  const drfClientSecret = process.env.REACT_APP_GIVEN_DRF_SECRET_TOKEN;
   
   
   
   
-    const baseURL = glob.BACK_BASE_URL; 
+    const baseURL = process.env.REACT_APP_BACK_BASE_URL; 
 
     
     gapi.load('auth2', function () {
     gapi.auth2.init({
-    client_id: glob.GOOGLE_CLIENT_ID,
+    client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
     scope: 'email',
     fetch_basic_profile: false
     })
@@ -48,10 +48,10 @@ const CheckUser = (access_token) => {
         token: access_token,
         format: 'json',
       }}).then(async (res) => {
-        console.log('data =',res.data.id)
+        
         if(res.data.id > 0)
         {
-          console.log('data2 =',res.data.id)
+          
           setFlag(true);
         }
         else if(res.data.is_existing === false)
@@ -95,21 +95,21 @@ const handleGoogleLogin = (response) => {
 useEffect(() => {
 if(flag === true)
 {
-  console.log('check_one');
+ 
   setCookie('access_token',token);
   setCookie('refresh_token',token2);
   document.location.reload();
 }
 else if(flag === false)
 {
-  console.log('check_two');
+
   setOpen(true);
   
   //eslint-disable-next-line
 }}, [flag,]);
   return (
     <GoogleLogin
-        clientId={glob.GOOGLE_CLIENT_ID}
+        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
         buttonText="LOGIN WITH GOOGLE"
         render={renderProps => (
           <>

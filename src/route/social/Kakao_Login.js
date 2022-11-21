@@ -4,26 +4,26 @@ import "../../css/login.css"
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import Register from '../Register';
-import * as glob from '../../global';
+
 
 
 function KakaoLoginFunc() {
-  const baseURL = glob.BACK_BASE_URL;
+  const baseURL = process.env.REACT_APP_BACK_BASE_URL;
 
-  const kakaoClientId =glob.KAKAO_CLIENT_ID;
+  const kakaoClientId =process.env.REACT_APP_KAKAO_CLIENT_ID;
   const [, setCookie,] = useCookies(['access_token']);
   const [open, setOpen] = React.useState(false);
   const [token,setToken] = React.useState(null);
   const [token2,setToken2] = React.useState(null);
   const [flag,setFlag] = React.useState(null);
   
-  const drfClientId = glob.GIVEN_DRF_TOKEN;
-  const drfClientSecret = glob.GIVEN_DRF_SECRET_TOKEN;
+  const drfClientId = process.env.REACT_APP_GIVEN_DRF_TOKEN;
+  const drfClientSecret = process.env.REACT_APP_GIVEN_DRF_SECRET_TOKEN;
   if (!window.Kakao.isInitialized()) {
     // JavaScript key를 인자로 주고 SDK 초기화
-    window.Kakao.init(glob.KAKAO_CLIENT_ID);
+    window.Kakao.init(process.env.REACT_APP_KAKAO_CLIENT_ID);
     // SDK 초기화 여부를 확인하자.
-    console.log(window.Kakao.isInitialized());
+   
   }
   const CheckUser = (access_token) => {
     
@@ -44,7 +44,7 @@ function KakaoLoginFunc() {
             setFlag(false);
           }
         }).catch((err) => {
-          console.log("Error check", err);
+          
         });
   
   }
