@@ -208,7 +208,7 @@ function Mainpage(props) {
             <Box
               sx={box}
             >
-              달력이 들어갈 자리에요
+              <img alt='calender' src ='/img/calender.png' style={{width:'18rem'}} />
             </Box>
             <Box
               sx={box}
