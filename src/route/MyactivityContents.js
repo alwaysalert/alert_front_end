@@ -26,7 +26,7 @@ function MyactivityContents(props) {
     
     if(props.num === 1){
       
-      axios.get(`${baseURL}/mypage/myarticle`, {
+      axios.get(`/mypage/myarticle`, {
         params: {
           token: cookies.access_token,
           format: 'json',
@@ -41,7 +41,7 @@ function MyactivityContents(props) {
 
     }else if(props.num === 2){
      
-      axios.get(`${baseURL}/mypage/myscrap`, {
+      axios.get(`/mypage/myscrap`, {
         params: {
           token: cookies.access_token,
           format: 'json',
@@ -54,7 +54,7 @@ function MyactivityContents(props) {
         });
     }else if(props.num === 3){
       
-      axios.get(`${baseURL}/mypage/mylike`, {
+      axios.get(`/mypage/mylike`, {
         params: {
           token: cookies.access_token,
           format: 'json',

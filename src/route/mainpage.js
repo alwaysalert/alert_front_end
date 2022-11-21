@@ -43,13 +43,13 @@ function Mainpage(props) {
     }
 
     useEffect(() => {
-      axios.get(`${baseurl}/mainpage/boards`).then(res => {
+      axios.get(`/mainpage/boards`).then(res => {
         setHotArticles(res.data);
       }).catch(res => {
   
       })
       // 보안 뉴스
-        axios.get(`${baseurl}/boannews/`)
+        axios.get(`/boannews`)
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
               xnews = [...res.data];
@@ -208,7 +208,7 @@ function Mainpage(props) {
             <Box
               sx={box}
             >
-              달력이 들어갈 자리에요
+              <img alt='calender' src ='/img/calender.png' style={{width:'18rem'}} />
             </Box>
             <Box
               sx={box}

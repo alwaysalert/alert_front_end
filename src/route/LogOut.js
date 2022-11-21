@@ -54,7 +54,7 @@ function LogOut(props) {
 
   const CheckUser = (access_token) => {
     const baseurl= process.env.REACT_APP_BACK_BASE_URL;
-    axios.get(`${baseurl}/users/check_user`, {
+    axios.get(`/users/check_user`, {
         params: {
           token: access_token,
           format: 'json',
