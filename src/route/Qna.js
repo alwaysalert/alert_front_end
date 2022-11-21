@@ -91,7 +91,7 @@ function CenterQnaBox(props){
         if(qcomment.length === 0){
             alert('댓글을 입력하세요.')
         }else if(cookies.access_token){
-            axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${props.content.id}/comment/create`,{
+            axios.post(`/hackchildren/${props.content.id}/comment/create`,{
                 token: cookies.access_token,
                 text: qcomment
               }).then((res) => {
@@ -233,7 +233,7 @@ function FilterBox(){
     const baseurl= process.env.REACT_APP_BACK_BASE_URL;
     const filterCheck =() => {
         newfilter = articleCheck.filter(isCheck);
-        axios.post(`${baseurl}/hackchildren/qna`, {
+        axios.post(`/hackchildren/qna`, {
             tags : newfilter
         }).then(async (res) => {
            
@@ -439,7 +439,7 @@ function Qna() {
     const baseurl= process.env.REACT_APP_BACK_BASE_URL
     //hotqna 받아오는 axios
     useEffect(() => {
-        axios.get(`${baseurl}/hackchildren/hotqna`).then(async (res) => {
+        axios.get(`/hackchildren/hotqna`).then(async (res) => {
             
             setHotQna(res.data);
         })

@@ -44,7 +44,7 @@ function Freeart(props) {
         else if(cookies.access_token)
         {
          
-          axios.post(`${baseURL}/freeboards/create`, {
+          axios.post(`/freeboards/create`, {
         
             token: cookies.access_token,
             title: title,
@@ -82,7 +82,7 @@ function Freeart(props) {
   const CheckUser = (access_token) => {
    
     
-    axios.get(`${baseURL}/users/check_user`, {
+    axios.get(`/users/check_user`, {
         params: {
           token: access_token,
           format: 'json',
@@ -109,7 +109,7 @@ function Freeart(props) {
   
   useEffect(() => {
   
-  axios.get(`${baseURL}/freeboards/?format=json`).then((res) => {
+  axios.get(`/freeboards/?format=json`).then((res) => {
  
     setArticle(res.data);
     

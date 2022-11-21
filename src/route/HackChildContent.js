@@ -111,7 +111,7 @@ function HackChildContent(props) {
       if(props.num === 0){
         //axios -> Q&A
       }else{
-        axios.get(`${baseURL}/hackchildren/?tag=${props.num}&format=json`).then((res) => {
+        axios.get(`/hackchildren/?tag=${props.num}&format=json`).then((res) => {
           setArticle(res.data);
           
           

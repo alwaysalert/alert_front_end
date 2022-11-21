@@ -43,13 +43,13 @@ function Mainpage(props) {
     }
 
     useEffect(() => {
-      axios.get(`${baseurl}/mainpage/boards`).then(res => {
+      axios.get(`/mainpage/boards`).then(res => {
         setHotArticles(res.data);
       }).catch(res => {
   
       })
       // 보안 뉴스
-        axios.get(`${baseurl}/boannews/`)
+        axios.get(`/boannews`)
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
               xnews = [...res.data];

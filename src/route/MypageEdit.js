@@ -104,7 +104,7 @@ const CheckNickName = (name) => {
   }
   else{
     
-  axios.get(`${baseURL}/users/check_nickname`, {
+  axios.get(`/users/check_nickname`, {
     params: {
       nickname : name
     }
@@ -143,7 +143,7 @@ const onChangeNickname = (event) => {
 const CheckUser = (access_token) => {
   
   
-  axios.get(`${baseURL}/users/check_user`, {
+  axios.get(`/users/check_user`, {
       params: {
         token: access_token,
         format: 'json',
@@ -278,7 +278,7 @@ const updateUserInfo = () => {
   if(nicknameCheck === false){
     alert('닉네임 중복확인을 해주세요')
   }else{
-    axios.put(`${baseURL}/users/edit_profile`, {
+    axios.put(`/users/edit_profile`, {
       token:  cookies.access_token,
       nickname : userInfo.nickname,
       user_job : userInfo.user_job,

@@ -161,7 +161,7 @@ function Register(props) {
         
       else if(name.length <= 8)
         {
-        axios.get(`${baseURL}/users/check_nickname`, {
+        axios.get(`/users/check_nickname`, {
           params: {
             nickname : name
           }
@@ -190,7 +190,7 @@ function Register(props) {
         if(nicknameCheck === true || name.value.length === 0)
         {
         
-        axios.post(`${baseURL}/users/register`, {
+        axios.post(`/users/register`, {
           token: props.token,
           nickname:name.value,
           user_job: jobbb,
@@ -210,7 +210,7 @@ function Register(props) {
       };
       const handleClose2 = () => {
         
-        axios.post(`${baseURL}/users/register`, {
+        axios.post(`/users/register`, {
           token: props.token,
           nickname:'',
           user_job: 6,
