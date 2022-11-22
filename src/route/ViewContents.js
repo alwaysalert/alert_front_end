@@ -50,7 +50,7 @@ function ViewContents(props) {
     const CheckUser = (access_token) => {
     
       
-      axios.get(`/users/check_user`, {
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/users/check_user`, {
           params: {
             token: access_token,
             format: 'json',
@@ -99,7 +99,7 @@ function ViewContents(props) {
 
     useEffect(() => {
       CheckUser(cookies.access_token);
-      axios.get(`/freeboards/${id}/?format=json`)
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/?format=json`)
       .then(async (res) => {
       
      
@@ -108,7 +108,7 @@ function ViewContents(props) {
       }).catch(err => {
         document.location="/Error";
       });
-      axios.get(`/freeboards/${id}/comment?format=json`)
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/comment?format=json`)
       .then((res) => {
           
           const commentIndex2 = []
@@ -182,7 +182,7 @@ function ViewContents(props) {
       if(cookies.access_token)
       {
       const comment_id = event.target.parentElement.parentElement.id
-      axios.post(`/freeboards/${id}/comment/${comment_id}/like_user`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/comment/${comment_id}/like_user`,{
         token: cookies.access_token,
       }).then((res) => {
           const value =  commentLikeLib[comment_id]
@@ -215,7 +215,7 @@ function ViewContents(props) {
     const like = () => {
       if(cookies.access_token)
       {
-      axios.post(`/freeboards/${id}/like_user`, {
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/like_user`, {
         
           token: cookies.access_token
           
@@ -243,7 +243,7 @@ function ViewContents(props) {
     const scrap = () => {
       if(cookies.access_token)
       {
-      axios.post(`/freeboards/${id}/bookmark`, {
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/bookmark`, {
         
           token: cookies.access_token
           
@@ -281,7 +281,7 @@ function ViewContents(props) {
         }
         else if(cookies.access_token)
         {
-          axios.post(`/freeboards/${id}/update`, {
+          axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/update`, {
         
             token: cookies.access_token,
             title: title,
@@ -306,7 +306,7 @@ function ViewContents(props) {
       }
       else if(cookies.access_token)
       {
-      axios.post(`/freeboards/${id}/comment/create`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/comment/create`,{
           token: cookies.access_token,
           text: val,
         }).then((res) => {
@@ -343,7 +343,7 @@ function ViewContents(props) {
     }
     else if(cookies.access_token)
     {
-      axios.post(`/freeboards/${id}/comment/${val.id}/ccomment/create`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/comment/${val.id}/ccomment/create`,{
         token: cookies.access_token,
         text: inputVal,
         }).then(res => {
@@ -378,7 +378,7 @@ const CheckButton = () => {
   
   if(cookies.access_token)
   {
-    axios.delete(`/freeboards/${id}/delete`, {
+    axios.delete(`${process.env.REACT_APP_BACK_BASE_URL}/freeboards/${id}/delete`, {
         
       data:{token: cookies.access_token}
       

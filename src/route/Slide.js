@@ -4,7 +4,7 @@ import React from 'react'
 
 function Slide() {
   return (
-    <div>Slide</div>
+    <div>"이스터 에그" 입니다.</div>
   )
 }
 

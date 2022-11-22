@@ -111,7 +111,7 @@ function HackChildContent(props) {
       if(props.num === 0){
         //axios -> Q&A
       }else{
-        axios.get(`/hackchildren/?tag=${props.num}&format=json`).then((res) => {
+        axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/?tag=${props.num}&format=json`).then((res) => {
           setArticle(res.data);
           
           
@@ -138,7 +138,7 @@ function HackChildContent(props) {
     }
     else{
      
-      axios.post(`${baseURL}/hackchildren/create`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/create`,{
         token: cookies.access_token,
         title: title1,
         body: contents1,

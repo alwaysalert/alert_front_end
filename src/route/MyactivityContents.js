@@ -26,7 +26,7 @@ function MyactivityContents(props) {
     
     if(props.num === 1){
       
-      axios.get(`/mypage/myarticle`, {
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/mypage/myarticle`, {
         params: {
           token: cookies.access_token,
           format: 'json',
@@ -41,7 +41,7 @@ function MyactivityContents(props) {
 
     }else if(props.num === 2){
      
-      axios.get(`/mypage/myscrap`, {
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/mypage/myscrap`, {
         params: {
           token: cookies.access_token,
           format: 'json',
@@ -54,7 +54,7 @@ function MyactivityContents(props) {
         });
     }else if(props.num === 3){
       
-      axios.get(`/mypage/mylike`, {
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/mypage/mylike`, {
         params: {
           token: cookies.access_token,
           format: 'json',
