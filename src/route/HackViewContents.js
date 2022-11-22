@@ -52,7 +52,7 @@ function HackViewContents(props) {
     const CheckUser = (access_token) => {
     
       
-      axios.get(`/users/check_user`, {
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/users/check_user`, {
           params: {
             token: access_token,
             format: 'json',
@@ -102,7 +102,7 @@ function HackViewContents(props) {
 
     useEffect(() => {
       CheckUser(cookies.access_token);
-      axios.get(`/hackchildren/${id}/?format=json`)
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/?format=json`)
       .then(async (res) => {
       
   
@@ -111,7 +111,7 @@ function HackViewContents(props) {
       }).catch(err => {
         // document.location="/Error";
       });
-      axios.get(`/hackchildren/${id}/comment?format=json`)
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/comment?format=json`)
       .then((res) => {
           
           const commentIndex2 = []
@@ -218,7 +218,7 @@ function HackViewContents(props) {
     const like = () => {
       if(cookies.access_token)
       {
-      axios.post(`/hackchildren/${id}/like_user`, {
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/like_user`, {
         
           token: cookies.access_token
           
@@ -246,7 +246,7 @@ function HackViewContents(props) {
     const scrap = () => {
       if(cookies.access_token)
       {
-      axios.post(`/hackchildren/${id}/bookmark`, {
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/bookmark`, {
         
           token: cookies.access_token
           
@@ -284,7 +284,7 @@ function HackViewContents(props) {
         }
         else if(cookies.access_token)
         {
-          axios.post(`/hackchildren/${id}/update`, {
+          axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/update`, {
         
             token: cookies.access_token,
             title: title,
@@ -309,7 +309,7 @@ function HackViewContents(props) {
       }
       else if(cookies.access_token)
       {
-      axios.post(`/hackchildren/${id}/comment/create`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/comment/create`,{
           token: cookies.access_token,
           text: val,
         }).then((res) => {
@@ -346,7 +346,7 @@ function HackViewContents(props) {
     }
     else if(cookies.access_token)
     {
-      axios.post(`/hackchildren/${id}/comment/${val.id}/ccomment/create`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/comment/${val.id}/ccomment/create`,{
         token: cookies.access_token,
         text: inputVal,
         }).then(res => {
@@ -381,7 +381,7 @@ const CheckButton = () => {
   
   if(cookies.access_token)
   {
-    axios.delete(`/hackchildren/${id}/delete`, {
+    axios.delete(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/delete`, {
         
       data:{token: cookies.access_token}
       
