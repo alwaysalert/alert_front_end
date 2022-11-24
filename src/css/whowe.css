@@ -27,7 +27,7 @@
 }
 
 .block1{
-    height: 500px;
+    height: 800px;
     background-color: #f7f7f7
 }
 .question{
@@ -116,5 +116,53 @@
     to{
         opacity: 0;
     }
+    
+}
+
+/* 슬라이드 */
+.slide-window{
+    position: relative;
+    background-color: #4285F4;
+    ;
+    width: 850px;
+    height: 800px; 
+    left: calc(50% - 850px/2);
+    overflow: hidden;
+}
+
+.slide-container{
+    position :absolute;
+    width: 4250px;
+    height: 600px;
+    left: calc(50% - 4250px/2);
+    top: calc(50% - 600px/2);
+    background-color:#FFFFFF;
+    transition: ease-in-out;
+}
+.slide-Box-area{
+    position: relative;
+    width: 850px;
+    height: 600px;
+    top: calc(50% - 600px/2);
+    background-color: #FFFFFF;
+    float: left;
+}
+.slide-Box{
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background-color: #f7f7f7;
+    left: calc(50% - 800px/2);
+    top: calc(50% - 600px/2);
+}
+
+#slide-logo{
+    position: relative;
+    left: calc(50% - 400px/2);
+    top: 30px;
+    width: 400px;
+}
+
+@keyframes identifier {
     
 }
