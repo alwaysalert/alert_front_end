@@ -50,7 +50,7 @@ import Qna from './Qna'
       tag = '기타'
       style.color = '#F85858'
   }
-  // console.log(tag)
+ 
 
   return (<div className='hackchild-tag' style = {style}>
       {tag}
@@ -59,15 +59,15 @@ import Qna from './Qna'
 
 
 function HackChildContent(props) {
-    // console.log("props =",props)
-    const baseURL = "http://127.0.0.1:8000"; 
+   
+    const baseURL = process.env.REACT_APP_BACK_BASE_URL; 
     const contentsPlaceholder = '글 내용을 입력하세요\nAlert는 누구나 자유롭게 참여가능한 커뮤니티를 형성하기 위해 정치, 사회 관련 행위, 홍보 및 판매 관련 행위, 그 밖의 타인의 권리를 침해하거나 불쾌함을 주는 모든 행위를 금하고 있으며, 이를 위반할 시 게시물이 삭제되고 Alert 서비스 이용에 제한이 생길 수 있습니다.'
     const [cookies,,] = useCookies(['access_token']);
     const [qnaCheck, setQnaCheck] = useState(false);
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
     const handleClickOpen2 = () => { //작성하시겠습니까?
-      // console.log(qnaCheck);  
+       
       setOpen2(true);
       };
       const CancelButton = () => {
@@ -111,12 +111,12 @@ function HackChildContent(props) {
       if(props.num === 0){
         //axios -> Q&A
       }else{
-        axios.get(`${baseURL}/hackchildren/?tag=${props.num}&format=json`).then((res) => {
+        axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/?tag=${props.num}&format=json`).then((res) => {
           setArticle(res.data);
-          // console.log(res.data);
+          
           
           }).catch((err) => {
-            console.log("Error check", err);
+            
           });
       }
         
@@ -138,7 +138,7 @@ function HackChildContent(props) {
     }
     else{
      
-      axios.post(`${baseURL}/hackchildren/create`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/create`,{
         token: cookies.access_token,
         title: title1,
         body: contents1,

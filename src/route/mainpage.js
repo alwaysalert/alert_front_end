@@ -30,7 +30,7 @@ function Mainpage(props) {
     fontSize: '0.875rem',
     };
 
-    const baseurl= 'http://127.0.0.1:8000';
+    const baseurl= process.env.REACT_APP_BACK_BASE_URL;
     let xnews=[];
     const [new1, setNews1] =useState({});
     const [new2, setNews2] =useState({});
@@ -43,17 +43,17 @@ function Mainpage(props) {
     }
 
     useEffect(() => {
-      axios.get(`${baseurl}/mainpage/boards`).then(res => {
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/mainpage/boards`).then(res => {
         setHotArticles(res.data);
       }).catch(res => {
   
       })
       // 보안 뉴스
-        axios.get(`${baseurl}/boannews/`)
+        axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/boannews`)
             .then(async (res) => {
               // eslint-disable-next-line react-hooks/exhaustive-deps
               xnews = [...res.data];
-              // console.log(xnews[0]);
+             
               // eslint-disable-next-line react-hooks/exhaustive-deps
               setNews1(xnews[0]);
               // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,7 +73,7 @@ function Mainpage(props) {
     useEffect(() => {
       if(hotArticles[0])
       {
-        //console.log(hotArticles[0].freeboard.date)
+       
         const val1 = new Date(hotArticles[0].freeboard.date)
         const val2 = new Date(hotArticles[0].hackchildren.date)
         setFreeTime(formatDate(val1))
@@ -183,7 +183,7 @@ function Mainpage(props) {
                 {/* 핵린이 게시판 지금 뜨는 이야기 */}
                 {hotArticles[0] ?
                 <> 
-                <Link to={`/HackChild/${hotArticles[0].freeboard.id}`}>         
+                <Link to={`/HackChild/${hotArticles[0].hackchildren.id}`}>         
                   <div className="box-low-contents">
                     {hotArticles[0].hackchildren.title}
                   </div>
@@ -208,7 +208,7 @@ function Mainpage(props) {
             <Box
               sx={box}
             >
-              달력이 들어갈 자리에요
+              <img alt='calender' src ='/img/calender.png' style={{width:'18rem'}} />
             </Box>
             <Box
               sx={box}

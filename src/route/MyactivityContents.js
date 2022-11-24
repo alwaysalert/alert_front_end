@@ -9,61 +9,61 @@ import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import * as glob from '../global'
+
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import * as util from '../util/util'
 
 function MyactivityContents(props) {
   //baseURL
-  const baseURL = glob.BACK_BASE_URL; 
+  const baseURL = process.env.REACT_APP_BACK_BASE_URL; 
   //articleArray
   const [articleArray,setArticle] = useState(null);
   const [cookies, , ] = useCookies(['access_token']);
-  console.log('cookie',cookies.access_token);
+  
   //const [whatNum, setWhatNum] = useState(props.num);
   useEffect(() => {
     //1 => 작성한글
-    console.log('num = ',props.num);
+    
     if(props.num === 1){
-      console.log(1);
-      axios.get(`${baseURL}/mypage/myarticle`, {
+      
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/mypage/myarticle`, {
         params: {
           token: cookies.access_token,
           format: 'json',
         }}).then(async (res) => {
         setArticle(res.data);
-        console.log(res.data);
+        
         
         }).catch((err) => {
-          console.log("1 Error check", err);
+          
           // document.location.href = "/Error";
         });
 
     }else if(props.num === 2){
-      console.log(2);
-      axios.get(`${baseURL}/mypage/myscrap`, {
+     
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/mypage/myscrap`, {
         params: {
           token: cookies.access_token,
           format: 'json',
         }}).then(async (res) => {
         setArticle(res.data);
-        console.log(res.data);
+        
         
         }).catch((err) => {
-          console.log("Error check", err);
+          
         });
     }else if(props.num === 3){
-      console.log(3);
-      axios.get(`${baseURL}/mypage/mylike`, {
+      
+      axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/mypage/mylike`, {
         params: {
           token: cookies.access_token,
           format: 'json',
         }}).then(async (res) => {
         setArticle(res.data);
-        console.log(res.data);
+       
         
         }).catch((err) => {
-          console.log("Error check", err);
+        
         });
     }
      //eslint-disable-next-line
@@ -81,7 +81,7 @@ function MyactivityContents(props) {
               date.getMinutes().toString().padStart(2, '0')
           }
           var time = new Date(article.created_time);
-          console.log("article=",article)
+          
           
           return (<div  key={article.id} name={article.id} id="myactivity-arts-grid" >
                   <Link to={'/freeart/'+article.id} style={{width:'930px',height:'130px'}}>

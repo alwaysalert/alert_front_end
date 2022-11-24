@@ -16,7 +16,7 @@ import * as util from '../util/util';
 
 function MypageEdit() {
 //중복 확인 state
-const baseURL = 'http://127.0.0.1:8000'
+const baseURL = process.env.REACT_APP_BACK_BASE_URL
 const [clickme,setClickme] = useState(false);
 const [nicknameCheck, setnicknameCheck] = useState(true)
 const [isSame, setIsSame] = useState(0);
@@ -104,7 +104,7 @@ const CheckNickName = (name) => {
   }
   else{
     
-  axios.get(`${baseURL}/users/check_nickname`, {
+  axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/users/check_nickname`, {
     params: {
       nickname : name
     }
@@ -141,9 +141,9 @@ const onChangeNickname = (event) => {
 
 
 const CheckUser = (access_token) => {
-  const baseurl= 'http://127.0.0.1:8000'
   
-  axios.get(`${baseurl}/users/check_user`, {
+  
+  axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/users/check_user`, {
       params: {
         token: access_token,
         format: 'json',
@@ -273,12 +273,12 @@ const button_style={
  * axios for update user information
  */
 const updateUserInfo = () => {
-  const baseURL= 'http://127.0.0.1:8000'
+  
   const newNickname = document.getElementById("nickname");
   if(nicknameCheck === false){
     alert('닉네임 중복확인을 해주세요')
   }else{
-    axios.put(`${baseURL}/users/edit_profile`, {
+    axios.put(`${process.env.REACT_APP_BACK_BASE_URL}/users/edit_profile`, {
       token:  cookies.access_token,
       nickname : userInfo.nickname,
       user_job : userInfo.user_job,
@@ -288,7 +288,7 @@ const updateUserInfo = () => {
       auth_user_id : userInfo.auth_user_id
     })
     .then((res) => {
-      console.log(res)
+     
       document.location.reload();
     }).catch(err => {
       

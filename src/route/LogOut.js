@@ -11,7 +11,7 @@ import { GoogleLogout } from 'react-google-login';
 
 
 import axios from 'axios';
-import * as glob from '../global'
+
 import * as util from '../util/util'
 
 function LogOut(props) {
@@ -36,7 +36,7 @@ function LogOut(props) {
   
   if(isgoogle === 'true'){
      google = true;
-     console.log("google : ",google)
+   
   }
   //프로필
 
@@ -53,15 +53,15 @@ function LogOut(props) {
   let newUserInfo = {...userInfo};
 
   const CheckUser = (access_token) => {
-    const baseurl= glob.BACK_BASE_URL;
-    axios.get(`${baseurl}/users/check_user`, {
+    const baseurl= process.env.REACT_APP_BACK_BASE_URL;
+    axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/users/check_user`, {
         params: {
           token: access_token,
           format: 'json',
         }}).then(async (res) => {
           newUserInfo ={...res.data};
           setUserInfo(newUserInfo);
-          //console.log('state:',userInfot);
+          
         }).catch(err => {
           document.location="/Error";
         });
@@ -129,7 +129,7 @@ const box = {
             </div>
           )}
           onLogoutSuccess={(event)=>{
-            console.log('logout');
+           
             // dispatch({type :"LogOut"})
             handle();
           }}

@@ -9,7 +9,7 @@ import "../css/register.css";
 import axios from "axios";
 function Register(props) {
    
-    const baseURL = 'http://127.0.0.1:8000'
+    const baseURL = process.env.REACT_APP_BACK_BASE_URL
     const [isSame, setIsSame] =useState(true);
   const [clickme,setClickme] = useState(false);
   const [nicknameCheck, setnicknameCheck] = useState(false)
@@ -161,14 +161,14 @@ function Register(props) {
         
       else if(name.length <= 8)
         {
-        axios.get(`${baseURL}/users/check_nickname`, {
+        axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/users/check_nickname`, {
           params: {
             nickname : name
           }
         })
         .then((res) => {
           
-          //console.log(res.data);   
+           
           if(res.data.is_existing === true){
             setIsSame(true);
           }else{
@@ -190,12 +190,12 @@ function Register(props) {
         if(nicknameCheck === true || name.value.length === 0)
         {
         
-        axios.post(`${baseURL}/users/register`, {
+        axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/users/register`, {
           token: props.token,
           nickname:name.value,
           user_job: jobbb,
         })
-        .then((res) => console.log('post =',res))
+        .then()
         .catch(err => {
           
         });
@@ -210,12 +210,12 @@ function Register(props) {
       };
       const handleClose2 = () => {
         
-        axios.post(`${baseURL}/users/register`, {
+        axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/users/register`, {
           token: props.token,
           nickname:'',
           user_job: 6,
         })
-        .then((res) => console.log('post =',res))
+        .then()
         .catch(err => {
           
         });

@@ -2,13 +2,13 @@ import React from 'react'
 import {useEffect} from 'react'
 import "../../css/login.css"
 import "../../css/mainpage.css"
-import * as glob from '../../global';
+
 
 function NaverLogin() {
     
     const { naver } = window
-	const NAVER_CLIENT = glob.NAVER_CLIENT_ID // 발급 받은 Client ID 입력 
-	const NAVER_CALLBACK = glob.NAVER_CALLBACK_URL // 작성했던 Callback URL 입력
+	const NAVER_CLIENT = process.env.REACT_APP_NAVER_CLIENT_ID // 발급 받은 Client ID 입력 
+	const NAVER_CALLBACK = process.env.REACT_APP_NAVER_CALLBACK_URL // 작성했던 Callback URL 입력
 
 
 

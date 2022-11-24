@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 import { NotificationsNone } from '@mui/icons-material';
 
 import { useCookies } from 'react-cookie';
-import * as glob from '../global'
+
 
 /**
  * Component Tag
@@ -83,19 +83,19 @@ function Comment(props){
  * @returns 슬라이드에 있는 Q&A box
  */
 function CenterQnaBox(props){
-    // console.log(props.content);
-    console.log()
+   
+  
     const [qcomment, setqComment] =useState();
     const [cookies, , ] = useCookies(['access_token']);
     const createComment = () =>{
         if(qcomment.length === 0){
             alert('댓글을 입력하세요.')
         }else if(cookies.access_token){
-            axios.post(`${glob.BACK_BASE_URL}/hackchildren/${props.content.id}/comment/create`,{
+            axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${props.content.id}/comment/create`,{
                 token: cookies.access_token,
                 text: qcomment
               }).then((res) => {
-                //console.log(res)
+                
                 document.location.reload()
                 // setqComment('');
               }).catch(err => {
@@ -230,13 +230,13 @@ function FilterBox(){
     // Q&A 받아오기
     const [QnaArray, setArticle] = useState([]);
     const [checkedArray,SetChecked] = useState([]);
-    const baseurl= 'http://127.0.0.1:8000';
+    const baseurl= process.env.REACT_APP_BACK_BASE_URL;
     const filterCheck =() => {
         newfilter = articleCheck.filter(isCheck);
-        axios.post(`${baseurl}/hackchildren/qna`, {
+        axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/qna`, {
             tags : newfilter
         }).then(async (res) => {
-            // console.log(res.data);
+           
             setArticle(res.data);
             SetChecked(newfilter);
         })
@@ -247,7 +247,7 @@ function FilterBox(){
         newfilter = articleCheck.filter(isCheck);
         // SetChecked(newfilter);
     },[isCheck1,isCheck2,isCheck3,isCheck4])
-    // console.log(newfilter.length)
+    
     
     return (
         <div>
@@ -436,11 +436,11 @@ function Qna() {
     const [cookies, , ] = useCookies(['access_token']);
     const [hotqna, setHotQna] = useState();
     let newHotqna;
-    const baseurl= 'http://127.0.0.1:8000'
+    const baseurl= process.env.REACT_APP_BACK_BASE_URL
     //hotqna 받아오는 axios
     useEffect(() => {
-        axios.get(`${baseurl}/hackchildren/hotqna`).then(async (res) => {
-            // console.log('qna',res.data);
+        axios.get(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/hotqna`).then(async (res) => {
+            
             setHotQna(res.data);
         })
 
@@ -512,7 +512,7 @@ function Qna() {
 
     // qna css for 무한 슬라이드
     const style ={transition : transit, transform :`matrix(1,0,0,1,${-705*currentIndex - 593 -703},0)`};
-    // console.log(hotqna);
+    
     if(hotqna){
         let len = hotqna.length;
         if(len === 0){
