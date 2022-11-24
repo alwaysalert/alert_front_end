@@ -183,7 +183,7 @@ function Mainpage(props) {
                 {/* 핵린이 게시판 지금 뜨는 이야기 */}
                 {hotArticles[0] ?
                 <> 
-                <Link to={`/HackChild/${hotArticles[0].freeboard.id}`}>         
+                <Link to={`/HackChild/${hotArticles[0].hackchildren.id}`}>         
                   <div className="box-low-contents">
                     {hotArticles[0].hackchildren.title}
                   </div>

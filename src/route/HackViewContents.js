@@ -185,7 +185,7 @@ function HackViewContents(props) {
       if(cookies.access_token)
       {
       const comment_id = event.target.parentElement.parentElement.id
-      axios.post(`/hackchildren/${id}/comment/${comment_id}/like_user`,{
+      axios.post(`${process.env.REACT_APP_BACK_BASE_URL}/hackchildren/${id}/comment/${comment_id}/like_user`,{
         token: cookies.access_token,
       }).then((res) => {
           const value =  commentLikeLib[comment_id]
