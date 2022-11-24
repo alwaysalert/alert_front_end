@@ -127,7 +127,7 @@
     width: 850px;
     height: 800px; 
     left: calc(50% - 850px/2);
-    overflow: hidden;
+    overflow: auto;
 }
 
 .slide-container{
