@@ -55,6 +55,7 @@ function WhoAreWe() {
         <img ref = {boho1} alt='whoweboho' className='boho1' src="/img/boho/whoweboho.png" />
 
     </div>
+    
     </div>
     
   )
